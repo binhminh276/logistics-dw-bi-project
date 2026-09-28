@@ -1,0 +1,62 @@
+# ==========================================
+# 1. Hệ điều hành & IDE tổng quát
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+*.swp
+*.bak
+
+# ==========================================
+# 2. Visual Studio / SSDT (SSIS, SSAS, SSRS)
+# ==========================================
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.asdatabase
+*.dbmdl
+*.jfm
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+
+# ==========================================
+# 3. Python & ETL Scripts
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+venv/
+.venv/
+env/
+ENV/
+
+# ==========================================
+# 4. File Dữ liệu lớn & Cache cục bộ
+# (Tránh vượt quá giới hạn 100MB của GitHub)
+# ==========================================
+*.log
+*.tmp
+*.temp
+
+# Bỏ dấu '#' ở dòng dưới nếu thư mục data raw của bạn quá nặng:
+# data/raw/
+# *.csv
+# *.parquet
+
+# Giữ lại các file mẫu cấu trúc nhỏ (nếu cần)
+!sample_*.csv
+
+# ==========================================
+# 5. File bảo mật & Chuỗi kết nối
+# ==========================================
+*.env
+appsettings.Development.json
+config.local.json
+secrets.json
+connection_strings.config
