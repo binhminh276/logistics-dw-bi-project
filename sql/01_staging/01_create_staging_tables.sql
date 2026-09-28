@@ -1,0 +1,1 @@
+-- Script tao cac bang Staging va ETL_Metadata

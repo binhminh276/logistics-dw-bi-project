@@ -1,0 +1,6 @@
+{
+  "oltp_connection": "Server=localhost;Database=Logistics_OLTP;Trusted_Connection=True;",
+  "staging_connection": "Server=localhost;Database=Logistics_Staging;Trusted_Connection=True;",
+  "dw_connection": "Server=localhost;Database=Logistics_DW;Trusted_Connection=True;",
+  "fuel_api_url": "http://localhost:8000/api/fuel-prices"
+}

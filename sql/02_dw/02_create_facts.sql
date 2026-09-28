@@ -1,0 +1,1 @@
+-- Script tao 6 bang Fact Tables

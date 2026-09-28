@@ -1,0 +1,1 @@
+-- Cac cau truy van T-SQL phan tich nghiep vu

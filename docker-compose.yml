@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  airflow-webserver:
+    image: apache/airflow:2.8.1
+    container_name: airflow_webserver
+    restart: always
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+    ports:
+      - "8080:8080"
+    command: webserver
