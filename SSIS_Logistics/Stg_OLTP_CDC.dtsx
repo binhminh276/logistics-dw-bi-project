@@ -1,19 +1,874 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:32:12 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="PHUCAN"
   DTS:CreatorName="PhucAn\Phuc An"
+  DTS:DelayValidation="True"
   DTS:DTSID="{4CCD7147-BA5D-4F84-B293-B8C621FDCC48}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1066"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="Stg_OLTP_CDC"
   DTS:PackageType="5"
-  DTS:VersionGUID="{8DAA22B8-8DAC-4094-9B18-70F41543F775}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{8998C6C1-BEB7-470F-B10E-558C23403240}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
-  <DTS:Executables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Logistics_OLTP 1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{E53FCDAF-C50A-4FFF-B12C-E1C0652EB0FB}"
+      DTS:ObjectName="LocalHost.Logistics_OLTP 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Logistics_OLTP;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-Stg_OLTP_CDC-{E53FCDAF-C50A-4FFF-B12C-E1C0652EB0FB}LocalHost.Logistics_OLTP 1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B2C3D4E5-F6A7-4B8C-9D0E-1F2A3B4C5D6E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CDC_State">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Extract_CDC_Loads"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{69C4D077-6932-4144-B2D2-8EE79C1AFA3C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Extract_CDC_Loads"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Stg_CDC_Loads"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_CDC_Loads]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[load_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="load_id"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[route_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="route_id"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[route_id]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[route_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[load_date]"
+                      cachedDataType="dbDate"
+                      cachedName="load_date"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_date]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[load_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_type"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_type]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[weight_lbs]"
+                      cachedDataType="i4"
+                      cachedName="weight_lbs"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[weight_lbs]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[pieces]"
+                      cachedDataType="i4"
+                      cachedName="pieces"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[pieces]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[pieces]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[revenue]"
+                      cachedDataType="numeric"
+                      cachedName="revenue"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[revenue]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[revenue]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[fuel_surcharge]"
+                      cachedDataType="numeric"
+                      cachedName="fuel_surcharge"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[accessorial_charges]"
+                      cachedDataType="numeric"
+                      cachedName="accessorial_charges"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[accessorial_charges]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[load_status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_status"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_status]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_status]" />
+                    <inputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].Columns[booking_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="booking_type"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[booking_type]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[booking_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[route_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="route_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[origin_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="origin_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[origin_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="origin_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[destination_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="destination_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[destination_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="destination_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="booking_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
+                      dataType="dbDate"
+                      name="load_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[weight_lbs]"
+                      dataType="i4"
+                      name="weight_lbs" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[pieces]"
+                      dataType="i4"
+                      name="pieces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[revenue]"
+                      dataType="numeric"
+                      name="revenue"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge]"
+                      dataType="numeric"
+                      name="fuel_surcharge"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[accessorial_charges]"
+                      dataType="numeric"
+                      name="accessorial_charges"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[cdc_operation]"
+                      dataType="wstr"
+                      length="10"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC_CDC_Loads"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+    load_id,
+    customer_id,
+    route_id,
+    load_date,
+    load_type,
+    weight_lbs,
+    pieces,
+    revenue,
+    fuel_surcharge,
+    accessorial_charges,
+    load_status,
+    booking_type,
+    'Insert' AS cdc_operation,
+    GETDATE() AS cdc_timestamp
+FROM dbo.loads</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Connections[OleDbConnection]"
+                  connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_id]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_id]"
+                      name="load_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[route_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[route_id]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[route_id]"
+                      name="route_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_date]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_date]"
+                      name="load_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_type]"
+                      name="load_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[weight_lbs]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]"
+                      name="weight_lbs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[pieces]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[pieces]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[pieces]"
+                      name="pieces"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[revenue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[revenue]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[revenue]"
+                      name="revenue"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[fuel_surcharge]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]"
+                      name="fuel_surcharge"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[accessorial_charges]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]"
+                      name="accessorial_charges"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[load_status]"
+                      name="load_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      name="booking_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      length="6"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      name="cdc_operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[route_id]"
+                      dataType="wstr"
+                      length="20"
+                      name="route_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_date]"
+                      dataType="dbDate"
+                      name="load_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[weight_lbs]"
+                      dataType="i4"
+                      name="weight_lbs" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[pieces]"
+                      dataType="i4"
+                      name="pieces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[revenue]"
+                      dataType="numeric"
+                      name="revenue"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[fuel_surcharge]"
+                      dataType="numeric"
+                      name="fuel_surcharge"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[accessorial_charges]"
+                      dataType="numeric"
+                      name="accessorial_charges"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="booking_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_id]"
+                      name="load_id" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[route_id]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[route_id]"
+                      name="route_id" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_date]"
+                      name="load_date" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      name="load_type" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[weight_lbs]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[weight_lbs]"
+                      name="weight_lbs" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[pieces]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[pieces]"
+                      name="pieces" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[revenue]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[revenue]"
+                      name="revenue"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[fuel_surcharge]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[fuel_surcharge]"
+                      name="fuel_surcharge"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[accessorial_charges]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[accessorial_charges]"
+                      name="accessorial_charges"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      name="load_status" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      name="booking_type" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      name="cdc_operation" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Extract_CDC_Loads.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Stg_CDC"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{32B8EBAD-D426-4D17-BD42-88047ACBE64F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Stg_CDC"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stg_CDC_Loads;&#xA;TRUNCATE TABLE dbo.Stg_CDC_Trips;&#xA;TRUNCATE TABLE dbo.Stg_CDC_Drivers;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1E2DB8F-A76F-42F9-8E2C-9895C80495CD}"
+      DTS:From="Package\SQL_Truncate_Stg_CDC"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Extract_CDC_Loads" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\DFT_Extract_CDC_Loads"
+          TopLeft="230.00000048961,183.529411603835" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SQL_Truncate_Stg_CDC"
+          TopLeft="232.142857637028,88.705882275187" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="327.871429063319,130.305882275187">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.2235293286481"
+              Start="0,0"
+              End="0,45.7235293286481">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.7235293286481" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Extract_CDC_Loads">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads"
+          TopLeft="280.714286311853,229.152941000853" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads"
+          TopLeft="287.142857754109,111.647058725666" />
+        <EdgeLayout
+          Id="Package\DFT_Extract_CDC_Loads.Paths[OLE DB Source Output]"
+          TopLeft="379.728572032981,153.247058725666">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.905882275187"
+              Start="0,0"
+              End="0,68.405882275187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.405882275187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Extract_CDC_Loads\OLE_DST_Stg_CDC_Loads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

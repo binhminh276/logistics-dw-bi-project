@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:33:27 PM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:VersionBuild="17"
-  DTS:VersionGUID="{E8D860DC-FB44-4AB1-B907-4C51C019D351}">
+  DTS:VersionGUID="{B49A5D12-FB1D-4782-9CD4-D40F1741764B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -264,13 +264,13 @@
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Maintenance_Profile]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Maintenance_Profile]</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Maintenance_Profile]) [refTable]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Maintenance_Profile]) [refTable]
 where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</property>
                     <property
                       dataType="System.Int32"
@@ -320,8 +320,8 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\LKP_Check_Existing.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="Connection manager used to access lookup data."
                       name="OleDbConnection" />
                   </connections>
@@ -434,7 +434,7 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -468,8 +468,8 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE DB Destination.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -565,7 +565,7 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT 
     TRIM(maintenance_type) AS maintenance_type, 
     TRIM(service_description) AS service_description 
 FROM dbo.maintenance_records;</property>
@@ -594,8 +594,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
+                      connectionManagerRefId="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -898,7 +898,7 @@ FROM dbo.maintenance_records;</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -932,8 +932,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\Insert Destination.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1118,7 +1118,7 @@ FROM dbo.maintenance_records;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Trailer] SET [expiration_date] = ? WHERE [trailer_id] = ? AND [expiration_date] IS NULL</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Trailer] SET [expiration_date] = ? WHERE [trailer_id] = ? AND [expiration_date] IS NULL</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1127,8 +1127,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\OLE DB Command.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1232,7 +1232,7 @@ FROM dbo.maintenance_records;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Trailer] SET [acquisition_date] = ?,[current_location] = ?,[length_feet] = ?,[model_year] = ?,[status] = ?,[trailer_number] = ?,[trailer_type] = ?,[vin] = ? WHERE [trailer_id] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Trailer] SET [acquisition_date] = ?,[current_location] = ?,[length_feet] = ?,[model_year] = ?,[status] = ?,[trailer_number] = ?,[trailer_type] = ?,[vin] = ? WHERE [trailer_id] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1241,8 +1241,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\OLE DB Command 1.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1475,7 +1475,7 @@ FROM dbo.maintenance_records;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Trailer] SET [trailer_number] = ?,[trailer_type] = ? WHERE [trailer_id] = ? AND [expiration_date] IS NULL</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Trailer] SET [trailer_number] = ?,[trailer_type] = ? WHERE [trailer_id] = ? AND [expiration_date] IS NULL</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1484,8 +1484,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\OLE DB Command 2.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1617,7 +1617,7 @@ FROM dbo.maintenance_records;</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT trailer_id, trailer_number, trailer_type, 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT trailer_id, trailer_number, trailer_type, 
        length_feet, model_year, vin, acquisition_date, 
        status, current_location 
 FROM dbo.trailers;</property>
@@ -1646,8 +1646,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\OLE_SRC_Trailers.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
+                      connectionManagerRefId="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1875,7 +1875,7 @@ FROM dbo.trailers;</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [acquisition_date], [current_location], [length_feet], [model_year], [status], [trailer_id], [trailer_number], [trailer_type], [vin],[effective_date],[expiration_date] FROM [dbo].[Dim_Trailer]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [acquisition_date], [current_location], [length_feet], [model_year], [status], [trailer_id], [trailer_number], [trailer_type], [vin],[effective_date],[expiration_date] FROM [dbo].[Dim_Trailer]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -1913,8 +1913,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\Slowly Changing Dimension.Connections[LookupConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="Defines the connection to use for lookups in the dimension table"
                       name="LookupConnection" />
                   </connections>
@@ -2741,7 +2741,7 @@ FROM dbo.trailers;</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2775,8 +2775,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Insert Destination.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -2983,7 +2983,7 @@ FROM dbo.trailers;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Truck] SET [expiration_date] = ? WHERE [truck_id] = ? AND [expiration_date] IS NULL</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Truck] SET [expiration_date] = ? WHERE [truck_id] = ? AND [expiration_date] IS NULL</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2992,8 +2992,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3097,7 +3097,7 @@ FROM dbo.trailers;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Truck] SET [acquisition_date] = ?,[acquisition_mileage] = ?,[fuel_type] = ?,[home_terminal] = ?,[make] = ?,[model_year] = ?,[status] = ?,[tank_capacity_gallons] = ?,[unit_number] = ?,[vin] = ? WHERE [truck_id] = ?</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Truck] SET [acquisition_date] = ?,[acquisition_mileage] = ?,[fuel_type] = ?,[home_terminal] = ?,[make] = ?,[model_year] = ?,[status] = ?,[tank_capacity_gallons] = ?,[unit_number] = ?,[vin] = ? WHERE [truck_id] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3106,8 +3106,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3376,7 +3376,7 @@ FROM dbo.trailers;</property>
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Dim_Truck] SET [fuel_type] = ?,[tank_capacity_gallons] = ?,[unit_number] = ? WHERE [truck_id] = ? AND [expiration_date] IS NULL</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE [dbo].[Dim_Truck] SET [fuel_type] = ?,[tank_capacity_gallons] = ?,[unit_number] = ? WHERE [truck_id] = ? AND [expiration_date] IS NULL</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -3385,8 +3385,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Connections[OleDbConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3535,7 +3535,7 @@ FROM dbo.trailers;</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT truck_id, unit_number, make, model_year, vin, 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT truck_id, unit_number, make, model_year, vin, 
        acquisition_date, acquisition_mileage, fuel_type, 
        tank_capacity_gallons, status, home_terminal 
 FROM dbo.trucks;</property>
@@ -3564,8 +3564,8 @@ FROM dbo.trucks;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
+                      connectionManagerRefId="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3832,7 +3832,7 @@ FROM dbo.trucks;</property>
                       dataType="System.String"
                       description="Specifies the SELECT statement used to create a schema rowset."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [acquisition_date], [acquisition_mileage], [fuel_type], [home_terminal], [make], [model_year], [status], [tank_capacity_gallons], [truck_id], [unit_number], [vin],[effective_date],[expiration_date] FROM [dbo].[Dim_Truck]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT [acquisition_date], [acquisition_mileage], [fuel_type], [home_terminal], [make], [model_year], [status], [tank_capacity_gallons], [truck_id], [unit_number], [vin],[effective_date],[expiration_date] FROM [dbo].[Dim_Truck]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
@@ -3870,8 +3870,8 @@ FROM dbo.trucks;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Connections[LookupConnection]"
-                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                      connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                      connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                       description="Defines the connection to use for lookups in the dimension table"
                       name="LookupConnection" />
                   </connections>

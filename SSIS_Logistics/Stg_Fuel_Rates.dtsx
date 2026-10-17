@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 11:26:48 AM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="Stg_Fuel_Rates"
   DTS:PackageType="5"
   DTS:VersionBuild="4"
-  DTS:VersionGUID="{CA52D331-D415-4CE5-9083-9278198A5E68}">
+  DTS:VersionGUID="{F0BC40B9-513C-437A-A135-BF672393136D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -518,7 +518,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -552,8 +552,8 @@
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fuel_Rates\OLE_DST_Stg_Market_Fuel.Connections[OleDbConnection]"
-                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
+                  connectionManagerRefId="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>

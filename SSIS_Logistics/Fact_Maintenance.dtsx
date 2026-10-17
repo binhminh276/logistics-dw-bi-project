@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 9:34:02 AM"
@@ -12,7 +12,7 @@
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
   DTS:VersionBuild="8"
-  DTS:VersionGUID="{505E6675-9C8D-4724-BC1B-BF3F8C891515}">
+  DTS:VersionGUID="{678FB30D-CA3B-4F08-8E97-C5A1FC044CA5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -362,13 +362,13 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Date]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Date]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Date]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Date]) [refTable]
 where [refTable].[date_key] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -418,8 +418,8 @@ where [refTable].[date_key] = ?</property>
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Date.Connections[OleDbConnection]"
-                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                  connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -520,13 +520,13 @@ where [refTable].[date_key] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Maintenance_Profile]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Maintenance_Profile]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Maintenance_Profile]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Maintenance_Profile]) [refTable]
 where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -576,8 +576,8 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Profile.Connections[OleDbConnection]"
-                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                  connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -696,13 +696,13 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT truck_key, truck_id FROM dbo.Dim_Truck WHERE is_current = 1;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT truck_key, truck_id FROM dbo.Dim_Truck WHERE is_current = 1;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT truck_key, truck_id FROM dbo.Dim_Truck WHERE is_current = 1;) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT truck_key, truck_id FROM dbo.Dim_Truck WHERE is_current = 1;) [refTable]
 where [refTable].[truck_id] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -752,8 +752,8 @@ where [refTable].[truck_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck.Connections[OleDbConnection]"
-                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                  connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -866,7 +866,7 @@ where [refTable].[truck_id] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -900,8 +900,8 @@ where [refTable].[truck_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Connections[OleDbConnection]"
-                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
+                  connectionManagerRefId="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1113,7 +1113,7 @@ where [refTable].[truck_id] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
     maintenance_id,
     truck_id,
     maintenance_date,
@@ -1160,8 +1160,8 @@ WHERE maintenance_date &gt; ?;</property>
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Connections[OleDbConnection]"
-                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
+                  connectionManagerRefId="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1661,7 +1661,7 @@ WHERE maintenance_date &gt; ?;</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -1695,8 +1695,8 @@ WHERE maintenance_date &gt; ?;</property>
               <connections>
                 <connection
                   refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
+                  connectionManagerRefId="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1914,7 +1914,7 @@ WHERE maintenance_date &gt; ?;</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1940,8 +1940,8 @@ WHERE maintenance_date &gt; ?;</property>
               <connections>
                 <connection
                   refId="Package\DFT_Stage_Maintenance\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                  connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
+                  connectionManagerRefId="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:invalid"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
