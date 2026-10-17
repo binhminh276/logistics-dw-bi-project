@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 11:26:48 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stg_Fuel_Rates"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{F0BC40B9-513C-437A-A135-BF672393136D}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6F277E78-CA77-46E4-ABA8-98BB29D849D7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,7 +30,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\Data\fuel\fuel_market_rates_2022_2024.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\fuel\fuel_market_rates_2022_2024.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="rate_date"
-              DTS:DTSID="{6D5B80E3-A9BF-4999-804A-1A5D3288643B}"
+              DTS:DTSID="{18B4374C-2DCE-4306-8E64-DC5015F8791B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +48,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{CB72A989-177E-4821-A2D2-CA4AA5F10C7F}"
+              DTS:DTSID="{D7BA82EE-7513-4F95-9724-F1C6589FD4B2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -57,7 +57,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{3BA926B8-3A3A-443C-91D9-2F9865100604}"
+              DTS:DTSID="{08A65723-32CA-4048-84F0-DBF9E605E811}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -66,7 +66,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="padd_region"
-              DTS:DTSID="{6F17D284-E0E3-4A15-A600-402EB69948F8}"
+              DTS:DTSID="{690A70C6-50C5-41E8-91ED-4B8E82C1A8CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="diesel_price_per_gallon"
-              DTS:DTSID="{517561D2-761A-4CDC-9478-342AA2A6626C}"
+              DTS:DTSID="{2D25C7DA-02C3-4798-A89B-AEAC173ADF1F}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -552,8 +552,8 @@
               <connections>
                 <connection
                   refId="Package\DFT_Load_Fuel_Rates\OLE_DST_Stg_Market_Fuel.Connections[OleDbConnection]"
-                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
-                  connectionManagerRefId="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:invalid"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -730,14 +730,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -753,7 +753,7 @@
     design-time-name="Package\DFT_Load_Fuel_Rates">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="167.2,41.6"
           Id="Package\DFT_Load_Fuel_Rates\DCNV_Data_Types"
@@ -785,7 +785,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-27.8251171875,21.46337890625,55.650234375,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -807,7 +809,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-27.8251171875,21.46337890625,55.650234375,9.5732421875"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
