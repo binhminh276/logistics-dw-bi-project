@@ -1,19 +1,2349 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="10/6/2026 9:32:13 PM"
+  DTS:CreationDate="10/8/2026 2:10:11 PM"
   DTS:CreationName="Microsoft.Package"
-  DTS:CreatorComputerName="PHUCAN"
-  DTS:CreatorName="PhucAn\Phuc An"
-  DTS:DTSID="{344A5680-57D6-423A-A8C6-73E272CE403B}"
+  DTS:CreatorComputerName="MSI"
+  DTS:CreatorName="MSI\tranq"
+  DTS:DTSID="{CE6DA633-481B-42D8-A5C7-0024B6EC56E9}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1066"
-  DTS:ObjectName="Package2"
+  DTS:ObjectName="Stg_CSV_Files"
   DTS:PackageType="5"
-  DTS:VersionGUID="{EC90E845-DD1C-44B3-AF40-6773B00871C0}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{B1AF446F-E7AE-44D4-AF54-E609A494AB82}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conn_Flat_Delivery_Events]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A37221FE-EFB2-4F8F-87C1-0865208C06E5}"
+      DTS:ObjectName="Conn_Flat_Delivery_Events">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\Kho\Project\Data\delivery_events.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_id"
+              DTS:DTSID="{43A1727A-A043-42C7-B9CC-F54DA9C04F7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="load_id"
+              DTS:DTSID="{7EB77525-8D9A-4B7A-AE55-F892938AB470}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="trip_id"
+              DTS:DTSID="{5E19167C-B688-46D5-B579-D1CE86242B92}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_type"
+              DTS:DTSID="{3777F850-D677-487A-8BFA-2996D4FDE379}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_id"
+              DTS:DTSID="{BFA1B6FD-2965-4347-9058-C394B8BD37BF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="scheduled_datetime"
+              DTS:DTSID="{412F7949-D3AC-4EAC-8CE0-902B553E0ED2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="actual_datetime"
+              DTS:DTSID="{62334F9D-389F-4383-BB8D-A4229477A6F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="detention_minutes"
+              DTS:DTSID="{994693E9-089F-48EE-A9E0-F75EBF6BD78F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="on_time_flag"
+              DTS:DTSID="{D769AC5C-448C-4AF8-9F78-2D9955C7010E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="location_city"
+              DTS:DTSID="{CA043D8E-35C4-46A7-906B-A508F1652E3B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="location_state"
+              DTS:DTSID="{27A431C3-A466-411D-9FD6-2DD354B20626}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conn_Flat_Facilities]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{666BA76C-F1E7-4CA6-8D78-F8513509E948}"
+      DTS:ObjectName="Conn_Flat_Facilities">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\Kho\Project\Data\facilities.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_id"
+              DTS:DTSID="{2319F3EA-447C-48B4-B6F7-8FCA9E535745}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_name"
+              DTS:DTSID="{8BBA0048-45EC-4374-A0BF-BE3DB5AFFE22}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_type"
+              DTS:DTSID="{06F6CCFD-8462-42FD-A014-04833A186288}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="city"
+              DTS:DTSID="{736B53E3-60A4-4B6D-9CE8-0228559DA53B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="state"
+              DTS:DTSID="{588292DC-4FE2-4C72-9B3A-A4F15719CCDC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="latitude"
+              DTS:DTSID="{B756B716-630E-439E-8BCE-1D911D1095D6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="longitude"
+              DTS:DTSID="{2A3ADF6E-A2CD-481B-AB22-8D8411A93125}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="dock_doors"
+              DTS:DTSID="{868E9977-5EA0-4EDC-A196-38E84F5DCEA9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="operating_hours"
+              DTS:DTSID="{78468DDA-A3BB-46F9-B9A1-1390C0726510}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conn_Flat_Routes]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BA2FE928-9D14-41DD-822C-33400F6BABE4}"
+      DTS:ObjectName="Conn_Flat_Routes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\Kho\Project\Data\routes.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="route_id"
+              DTS:DTSID="{BBFE8457-381C-4B25-AE50-724F5B181EC7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="origin_city"
+              DTS:DTSID="{935B5F47-B892-42C4-B865-2B4A26738700}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="origin_state"
+              DTS:DTSID="{FB545A38-FFCF-41A9-9628-5AB2AF6B58AD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="destination_city"
+              DTS:DTSID="{D66F8331-CFE6-4F0D-9A6F-4895D140DFAA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="destination_state"
+              DTS:DTSID="{8FBFDD7F-9672-47BA-9F9A-003DE9087C65}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="typical_distance_miles"
+              DTS:DTSID="{AAC6143D-5D3D-4C62-B20E-C02652B565C2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="base_rate_per_mile"
+              DTS:DTSID="{DBD7DA1A-EF7C-4262-965D-CCE799F4D51D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fuel_surcharge_rate"
+              DTS:DTSID="{2648A4F2-F0BC-48A1-8F23-EA73DA1459DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="typical_transit_days"
+              DTS:DTSID="{2825399F-0BA4-4CEF-9668-E15233A9D0FF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Stage_Delivery_Events"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B4EE5AE3-5510-4E8B-86AF-88979F97FC07}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Stage_Delivery_Events"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="FLAT_SRC_Delivery_Events"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conn_Flat_Delivery_Events]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conn_Flat_Delivery_Events]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[event_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_id]"
+                      name="event_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[load_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[load_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[load_id]"
+                      name="load_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[trip_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[trip_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[trip_id]"
+                      name="trip_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_type]"
+                      name="event_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[facility_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[facility_id]"
+                      name="facility_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[scheduled_datetime]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[scheduled_datetime]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[scheduled_datetime]"
+                      name="scheduled_datetime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[actual_datetime]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[actual_datetime]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[actual_datetime]"
+                      name="actual_datetime"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[detention_minutes]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[detention_minutes]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[detention_minutes]"
+                      name="detention_minutes"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[on_time_flag]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[on_time_flag]"
+                      length="10"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[on_time_flag]"
+                      name="on_time_flag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[location_city]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_city]"
+                      name="location_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[location_state]"
+                      length="10"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_state]"
+                      name="location_state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[event_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="event_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[trip_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="trip_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[event_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="event_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[scheduled_datetime]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="scheduled_datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[actual_datetime]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="actual_datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[detention_minutes]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="detention_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[on_time_flag]"
+                      dataType="wstr"
+                      length="10"
+                      name="on_time_flag" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[location_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="location_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].ExternalColumns[location_state]"
+                      dataType="wstr"
+                      length="10"
+                      name="location_state" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Stg_Delivery_Events"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_External_Delivery_Events]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[event_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="event_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[event_id]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[load_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[load_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[trip_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="trip_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[trip_id]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[trip_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[event_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="event_type"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[event_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[facility_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[facility_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[scheduled_datetime]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="scheduled_datetime"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[scheduled_datetime]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[scheduled_datetime]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[actual_datetime]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="actual_datetime"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[actual_datetime]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[actual_datetime]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[detention_minutes]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="detention_minutes"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[detention_minutes]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[detention_minutes]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[on_time_flag]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="on_time_flag"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[on_time_flag]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[on_time_flag]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[location_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="location_city"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[location_city]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_city]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].Columns[location_state]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="location_state"
+                      externalMetadataColumnId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[location_state]"
+                      lineageId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output].Columns[location_state]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[event_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="event_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[trip_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="trip_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[event_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="event_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[scheduled_datetime]"
+                      dataType="dbTimeStamp2"
+                      name="scheduled_datetime"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[actual_datetime]"
+                      dataType="dbTimeStamp2"
+                      name="actual_datetime"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[detention_minutes]"
+                      dataType="i4"
+                      name="detention_minutes" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[on_time_flag]"
+                      dataType="wstr"
+                      length="10"
+                      name="on_time_flag" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[location_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="location_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input].ExternalColumns[location_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="location_state" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
+              endId="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Stage_Facilities"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F2DD39E0-2414-43B7-A16B-EFDFDB9ACBE7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Stage_Facilities"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="FLAT_SRC_Facilities"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conn_Flat_Facilities]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conn_Flat_Facilities]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_id]"
+                      name="facility_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_name]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_name]"
+                      name="facility_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_type]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_type]"
+                      name="facility_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      length="10"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[latitude]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[latitude]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[longitude]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[longitude]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[dock_doors]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[dock_doors]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[dock_doors]"
+                      name="dock_doors"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[operating_hours]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[operating_hours]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[operating_hours]"
+                      name="operating_hours"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[facility_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="10"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[latitude]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="latitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[longitude]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[dock_doors]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="dock_doors" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].ExternalColumns[operating_hours]"
+                      dataType="wstr"
+                      length="50"
+                      name="operating_hours" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Stg_Facilities"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_External_Facilities]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[facility_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[facility_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_name"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_name]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_name]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[facility_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_type"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_type]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[facility_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[latitude]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="latitude"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[longitude]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="longitude"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[dock_doors]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="dock_doors"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[dock_doors]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[dock_doors]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].Columns[operating_hours]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="operating_hours"
+                      externalMetadataColumnId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[operating_hours]"
+                      lineageId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output].Columns[operating_hours]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_name]"
+                      dataType="wstr"
+                      length="150"
+                      name="facility_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[facility_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="100"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="20"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[latitude]"
+                      dataType="numeric"
+                      name="latitude"
+                      precision="9"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[longitude]"
+                      dataType="numeric"
+                      name="longitude"
+                      precision="9"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[dock_doors]"
+                      dataType="i2"
+                      name="dock_doors" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input].ExternalColumns[operating_hours]"
+                      dataType="wstr"
+                      length="50"
+                      name="operating_hours" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Stage_Facilities.Paths[Flat File Source Output]"
+              endId="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Stage_Routes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B0D9C409-7477-43EC-8647-CCC1DE6830EF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Stage_Routes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="FLAT_SRC_Routes"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conn_Flat_Routes]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conn_Flat_Routes]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[route_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[route_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[route_id]"
+                      name="route_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[origin_city]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_city]"
+                      name="origin_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[origin_state]"
+                      length="10"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_state]"
+                      name="origin_state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[destination_city]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_city]"
+                      name="destination_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[destination_state]"
+                      length="10"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_state]"
+                      name="destination_state"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_distance_miles]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[typical_distance_miles]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_distance_miles]"
+                      name="typical_distance_miles"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[base_rate_per_mile]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[base_rate_per_mile]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[base_rate_per_mile]"
+                      name="base_rate_per_mile"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[fuel_surcharge_rate]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[fuel_surcharge_rate]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[fuel_surcharge_rate]"
+                      name="fuel_surcharge_rate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_transit_days]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[typical_transit_days]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_transit_days]"
+                      name="typical_transit_days"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[route_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="route_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[origin_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="origin_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[origin_state]"
+                      dataType="wstr"
+                      length="10"
+                      name="origin_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[destination_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="destination_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[destination_state]"
+                      dataType="wstr"
+                      length="10"
+                      name="destination_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[typical_distance_miles]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="typical_distance_miles" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[base_rate_per_mile]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="base_rate_per_mile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[fuel_surcharge_rate]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="fuel_surcharge_rate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].ExternalColumns[typical_transit_days]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="typical_transit_days" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Stg_Routes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_External_Routes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[route_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="route_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[route_id]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[route_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[origin_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="origin_city"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[origin_city]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_city]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[origin_state]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="origin_state"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[origin_state]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[origin_state]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[destination_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="destination_city"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[destination_city]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_city]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[destination_state]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="destination_state"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[destination_state]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[destination_state]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[typical_distance_miles]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="typical_distance_miles"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[typical_distance_miles]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_distance_miles]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[base_rate_per_mile]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="base_rate_per_mile"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[base_rate_per_mile]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[base_rate_per_mile]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[fuel_surcharge_rate]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="fuel_surcharge_rate"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge_rate]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[fuel_surcharge_rate]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].Columns[typical_transit_days]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="typical_transit_days"
+                      externalMetadataColumnId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[typical_transit_days]"
+                      lineageId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output].Columns[typical_transit_days]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[route_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="route_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[origin_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="origin_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[origin_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="origin_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[destination_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="destination_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[destination_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="destination_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[typical_distance_miles]"
+                      dataType="i4"
+                      name="typical_distance_miles" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[base_rate_per_mile]"
+                      dataType="numeric"
+                      name="base_rate_per_mile"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge_rate]"
+                      dataType="numeric"
+                      name="fuel_surcharge_rate"
+                      precision="10"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input].ExternalColumns[typical_transit_days]"
+                      dataType="ui1"
+                      name="typical_transit_days" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Stage_Routes.Paths[Flat File Source Output]"
+              endId="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Stage_Routes\FLAT_SRC_Routes.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Truncate_Stg_CSV_Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4A3779F6-BD71-4E58-AEF9-3FB34F36DA11}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Truncate_Stg_CSV_Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Stg_External_Facilities;&#xA;TRUNCATE TABLE dbo.Stg_External_Routes;&#xA;TRUNCATE TABLE dbo.Stg_External_Delivery_Events;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4ED1E36B-20BC-407D-B132-D2CBDE40482A}"
+      DTS:From="Package\SQL_Truncate_Stg_CSV_Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Stage_Facilities" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4FD6E81E-A5EA-4BFC-B498-8EEC94F30B66}"
+      DTS:From="Package\DFT_Stage_Facilities"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Stage_Routes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A85D3AF-AECF-4475-B470-1A39874AFD0A}"
+      DTS:From="Package\DFT_Stage_Routes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Stage_Delivery_Events" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\SQL_Truncate_Stg_CSV_Tables"
+          TopLeft="121.428571687061,49.705882309372" />
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\DFT_Stage_Facilities"
+          TopLeft="150.714286035117,127.705882241002" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DFT_Stage_Routes"
+          TopLeft="150.714286035117,217.176470397872" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\DFT_Stage_Delivery_Events"
+          TopLeft="135.714286003186,306.647058554741" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="236.671428861089,91.305882309372">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.3999999316299"
+              Start="0,0"
+              End="0,28.8999999316299">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8999999316299" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="236.514286035117,169.305882241002">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.8705881568697"
+              Start="0,0"
+              End="0,40.3705881568697">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.3705881568697" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="237.814286019151,258.776470397872">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.8705881568696"
+              Start="0,0"
+              End="0,40.3705881568696">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.3705881568696" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Stage_Facilities">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
+          TopLeft="178.57142895156,47.4117646643241" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities"
+          TopLeft="167.857143214467,162.882352798404" />
+        <EdgeLayout
+          Id="Package\DFT_Stage_Facilities.Paths[Flat File Source Output]"
+          TopLeft="263.614286083014,89.0117646643241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73.8705881340796"
+              Start="0,0"
+              End="0,66.3705881340796">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.3705881340796" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Stage_Routes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DFT_Stage_Routes\FLAT_SRC_Routes"
+          TopLeft="169.999997466803,99.9999985098839" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes"
+          TopLeft="167.692305193498,212.307689144061" />
+        <EdgeLayout
+          Id="Package\DFT_Stage_Routes.Paths[Flat File Source Output]"
+          TopLeft="255.44615133015,141.599998509884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.7076906341773"
+              Start="0,0"
+              End="0,63.2076906341773">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.2076906341773" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Stage_Delivery_Events">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
+          TopLeft="177.999997347593,84.9999987334013" />
+        <NodeLayout
+          Size="224,41.6"
+          Id="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
+          TopLeft="170.999997451901,212.999996826053" />
+        <EdgeLayout
+          Id="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
+          TopLeft="282.299997399747,126.599998733401">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.3999980926514"
+              Start="0,0"
+              End="0,78.8999980926514">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.8999980926514" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=.;Initial Catalog=Logistics_OLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{89BCE546-91DC-46F8-939B-BFE4292BCFB8}LocalHost.Logistics_OLTP;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=Logistics_OLTP;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{89BCE546-91DC-46F8-939B-BFE4292BCFB8}LocalHost.Logistics_OLTP;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
