@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:32:14 PM"
@@ -11,9 +11,718 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Package3"
   DTS:PackageType="5"
-  DTS:VersionGUID="{7E79725F-0665-4CA6-A759-180A7CAA741A}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{BC68A030-4CD9-4B04-86B9-9ABEB47CC9C0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Dim_Load_Profile"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{653D3315-9FCD-4773-973E-6DF0BB6C03D1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Dim_Load_Profile"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Check_Existing_Profile"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Load_Profile]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Load_Profile]) [refTable]
+where [refTable].[load_status] = ? and [refTable].[booking_type] = ? and [refTable].[load_type] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="load_profile_key" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="load_status" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="booking_type" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="load_type" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_status]};#{Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[booking_type]};#{Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_type]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input].Columns[load_status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_status"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_status]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">load_status</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input].Columns[booking_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="booking_type"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[booking_type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">booking_type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input].Columns[load_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_type"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">load_type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]"
+                      name="load_profile_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">load_profile_key</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_status]"
+                      name="load_status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">load_status</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[booking_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[booking_type]"
+                      name="booking_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">booking_type</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Match Output].Columns[load_type]"
+                      name="load_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">load_type</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Dim_Load_Profile"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Load_Profile]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].Columns[load_status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_status"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[load_status]"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_status]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].Columns[booking_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="booking_type"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[booking_type]"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[booking_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].Columns[load_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_type"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[load_type]"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[load_profile_key]"
+                      dataType="i2"
+                      name="load_profile_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[load_status]"
+                      dataType="wstr"
+                      length="30"
+                      name="load_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[booking_type]"
+                      dataType="wstr"
+                      length="30"
+                      name="booking_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input].ExternalColumns[load_type]"
+                      dataType="wstr"
+                      length="30"
+                      name="load_type" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC_Distinct_Profiles"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    LTRIM(RTRIM(ISNULL(load_status, 'Unknown'))) AS load_status,
+    LTRIM(RTRIM(ISNULL(booking_type, 'Unknown'))) AS booking_type,
+    LTRIM(RTRIM(ISNULL(load_type, 'Unknown'))) AS load_type
+FROM dbo.Stg_CDC_Loads;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_status]"
+                      name="load_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      name="booking_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].Columns[load_type]"
+                      name="load_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="booking_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      name="load_status" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      name="booking_type" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      name="load_type" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Dim_Load_Profile.Paths[Lookup No Match Output]"
+              endId="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT_Load_Dim_Load_Profile.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\DFT_Load_Dim_Load_Profile"
+          TopLeft="326.428572123452,95.5882352103309" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Dim_Load_Profile">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles"
+          TopLeft="221.428571899935,67.2941175880729" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile"
+          TopLeft="224.28571476316,176.647058668691" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Load_Profile.Paths[OLE DB Source Output]"
+          TopLeft="325.257143331547,108.894117588073">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.7529410806185"
+              Start="0,0"
+              End="0,60.2529410806185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.2529410806185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile"
+          TopLeft="231.428571921222,271.47058799734" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Dim_Load_Profile.Paths[Lookup No Match Output]"
+          TopLeft="327.88571476316,218.247058668691">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.74285715806252,53.2235293286482"
+              Start="0,0"
+              End="8.74285715806252,45.7235293286482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.6117646643241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.6117646643241"
+                    Point2="0,26.6117646643241"
+                    Point3="4,26.6117646643241" />
+                  <mssgle:LineSegment
+                    End="4.74285715806252,26.6117646643241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.74285715806252,26.6117646643241"
+                    Point2="8.74285715806252,26.6117646643241"
+                    Point3="8.74285715806252,30.6117646643241" />
+                  <mssgle:LineSegment
+                    End="8.74285715806252,45.7235293286482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-51.4349581397187,31.6117646643241,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Load_Profile\OLE_SRC_Distinct_Profiles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Load_Profile\LKP_Check_Existing_Profile">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Load_Profile]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Dim_Load_Profile\OLE_DST_Dim_Load_Profile">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
