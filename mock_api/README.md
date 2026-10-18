@@ -4,7 +4,7 @@
 Thư mục này chứa toàn bộ mã nguồn trích xuất dữ liệu giá xăng dầu và dịch vụ REST API (FastAPI) phục vụ toàn bộ pipeline của dự án (SSIS, Airflow và Power BI).
 
 ### Thành phần:
-* **`fuel_crawler.py`**: Module Python cào chuỗi thời gian giá dầu On-Highway Diesel từ U.S. EIA / FRED, nội suy theo ngày cho 25 thành phố tác nghiệp (27.400 dòng, 2022–2024), xuất ra `data/fuel/fuel_market_rates_2022_2024.csv` và `.json`. Có cơ chế dự phòng offline.
+* **`fuel_crawler.py`**: Module Python cào chuỗi thời gian giá dầu On-Highway Diesel từ U.S. EIA / FRED, mở rộng theo ngày bằng phương pháp Forward-Fill (giữ nguyên biểu giá Thứ 2 áp dụng cho cả tuần theo chuẩn logistics) cho 25 thành phố tác nghiệp (27.400 dòng, 2022–2024), xuất ra `data/fuel/fuel_market_rates_2022_2024.csv` và `.json`. Có cơ chế dự phòng offline.
 * **`main.py`**: Web API service chạy trên nền FastAPI, tải dữ liệu vào RAM khi khởi động để phản hồi cực nhanh (< 2ms).
 * **`requirements.txt`**: Danh sách thư viện phụ thuộc (`fastapi`, `uvicorn`, `pandas`, `requests`, `pydantic`).
 

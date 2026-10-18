@@ -2,8 +2,9 @@
 ================================================================================
 ĐƯỜNG DẪN: mock_api/fuel_crawler.py
 MỤC ĐÍCH: Module cào và trích xuất dữ liệu giá dầu On-Highway Diesel thực tế
-          giai đoạn 2022-2024 từ U.S. EIA / FRED API, nội suy chuỗi thời gian
-          theo ngày, ánh xạ đơn giá thị trường cho 25 thành phố thuộc 5 vùng PADD,
+          giai đoạn 2022-2024 từ U.S. EIA / FRED API, mở rộng chuỗi thời gian
+          theo ngày (Forward-Fill giữ nguyên biểu giá Thứ 2 cho cả tuần theo chuẩn logistics),
+          ánh xạ đơn giá thị trường cho 25 thành phố thuộc 5 vùng PADD,
           xuất ra file CSV/JSON và tích hợp cơ chế dự phòng offline.
 TÁC GIẢ: Nhóm Logistics & Fleet Operations DW
 CÁCH CHẠY:
@@ -116,18 +117,18 @@ def fetch_national_diesel_prices() -> pd.DataFrame:
 
 def generate_market_fuel_rates(start_date: str = "2022-01-01", end_date: str = "2024-12-31") -> pd.DataFrame:
     """
-    Nội suy chuỗi giá hàng ngày giai đoạn 2022-2024 và ánh xạ cho 25 thành phố / 5 vùng PADD.
+    Mở rộng chuỗi giá theo tuần thành chuỗi ngày giai đoạn 2022-2024 (Forward-Fill theo chuẩn nghiệp vụ
+    vận tải: biểu giá công bố vào Thứ 2 có hiệu lực áp dụng cố định cho cả tuần) và ánh xạ cho 25 thành phố / 5 vùng PADD.
     """
     df_national = fetch_national_diesel_prices()
     
     # Tạo dải ngày liên tục đủ 1.096 ngày (2022, 2023 và 2024 năm nhuận 366 ngày)
     date_range = pd.date_range(start=start_date, end=end_date, freq="D", name="date")
-    df_daily = pd.DataFrame(index=date_range)
+    df_daily = pd.DataFrame({"date": date_range})
     
-    # Hợp nhất và nội suy chuỗi giá (Daily Time-Series Interpolation)
-    df_merged = df_daily.join(df_national.set_index("date"))
-    df_merged["national_diesel_price"] = df_merged["national_diesel_price"].interpolate(method="time").bfill().ffill()
-    df_merged = df_merged.reset_index()
+    # Ánh xạ giá công bố gần nhất vào từng ngày (Forward-fill: giữ nguyên giá Thứ 2 cho cả tuần)
+    df_merged = pd.merge_asof(df_daily, df_national, on="date", direction="backward")
+    df_merged["national_diesel_price"] = df_merged["national_diesel_price"].ffill().bfill()
     
     all_rows = []
     for city_info in CITY_PADD_METRICS:
