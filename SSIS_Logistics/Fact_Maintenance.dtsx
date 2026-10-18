@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 9:34:02 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{505E6675-9C8D-4724-BC1B-BF3F8C891515}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{910BB4B3-0248-4F28-AF95-A9853369771C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1133,7 +1133,7 @@ where [refTable].[truck_id] = ?</property>
         ELSE N'Standard'
     END AS service_urgency,
     1 AS maintenance_count
-FROM dbo.maintenance_records
+FROM dbo.Stg_External_Maintenance
 WHERE maintenance_date &gt; ?;</property>
                 <property
                   dataType="System.String"
@@ -1623,633 +1623,6 @@ WHERE maintenance_date &gt; ?;</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\DFT_Stage_Maintenance"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{4C49ADDE-EE40-44A7-8848-B70668D15388}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DFT_Stage_Maintenance"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\DFT_Stage_Maintenance\OLE DB Destination"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="OLE DB Destination"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Stg_External_Maintenance]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1258</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_id]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="maintenance_id"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[truck_id]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="truck_id"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[truck_id]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[truck_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_date]"
-                      cachedDataType="dbDate"
-                      cachedName="maintenance_date"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_date]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[maintenance_type]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="maintenance_type"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_type]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_type]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[odometer_reading]"
-                      cachedDataType="i4"
-                      cachedName="odometer_reading"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[odometer_reading]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[odometer_reading]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[labor_hours]"
-                      cachedDataType="numeric"
-                      cachedName="labor_hours"
-                      cachedPrecision="6"
-                      cachedScale="1"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[labor_hours]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_hours]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[labor_cost]"
-                      cachedDataType="numeric"
-                      cachedName="labor_cost"
-                      cachedPrecision="10"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[labor_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_cost]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parts_cost]"
-                      cachedDataType="numeric"
-                      cachedName="parts_cost"
-                      cachedPrecision="10"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parts_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[parts_cost]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total_cost]"
-                      cachedDataType="numeric"
-                      cachedName="total_cost"
-                      cachedPrecision="10"
-                      cachedScale="2"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_cost]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[facility_location]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="facility_location"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[facility_location]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[downtime_hours]"
-                      cachedDataType="numeric"
-                      cachedName="downtime_hours"
-                      cachedPrecision="6"
-                      cachedScale="1"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[downtime_hours]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[downtime_hours]" />
-                    <inputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[service_description]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="service_description"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[service_description]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_description]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
-                      dataType="wstr"
-                      length="50"
-                      name="maintenance_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[truck_id]"
-                      dataType="wstr"
-                      length="50"
-                      name="truck_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_date]"
-                      dataType="dbDate"
-                      name="maintenance_date" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_type]"
-                      dataType="wstr"
-                      length="50"
-                      name="maintenance_type" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[odometer_reading]"
-                      dataType="i4"
-                      name="odometer_reading" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[labor_hours]"
-                      dataType="numeric"
-                      name="labor_hours"
-                      precision="6"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[labor_cost]"
-                      dataType="numeric"
-                      name="labor_cost"
-                      precision="12"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parts_cost]"
-                      dataType="numeric"
-                      name="parts_cost"
-                      precision="12"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total_cost]"
-                      dataType="numeric"
-                      name="total_cost"
-                      precision="14"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
-                      dataType="wstr"
-                      length="100"
-                      name="facility_location" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[downtime_hours]"
-                      dataType="numeric"
-                      name="downtime_hours"
-                      precision="8"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[service_description]"
-                      dataType="wstr"
-                      length="255"
-                      name="service_description" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT_Stage_Maintenance\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[maintenance_records]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1258</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_id]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
-                      length="20"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_id]"
-                      name="maintenance_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[truck_id]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
-                      length="20"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[truck_id]"
-                      name="truck_id"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_date]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_date]"
-                      name="maintenance_date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_type]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
-                      length="50"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[maintenance_type]"
-                      name="maintenance_type"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[odometer_reading]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[odometer_reading]"
-                      name="odometer_reading"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_hours]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_hours]"
-                      name="labor_hours"
-                      precision="6"
-                      scale="1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_cost]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[labor_cost]"
-                      name="labor_cost"
-                      precision="10"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[parts_cost]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[parts_cost]"
-                      name="parts_cost"
-                      precision="10"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_cost]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[total_cost]"
-                      name="total_cost"
-                      precision="10"
-                      scale="2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[facility_location]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
-                      length="50"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[facility_location]"
-                      name="facility_location"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[downtime_hours]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[downtime_hours]"
-                      name="downtime_hours"
-                      precision="6"
-                      scale="1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
-                      length="100"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].Columns[service_description]"
-                      name="service_description"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
-                      dataType="wstr"
-                      length="20"
-                      name="maintenance_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
-                      dataType="wstr"
-                      length="20"
-                      name="truck_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
-                      dataType="dbDate"
-                      name="maintenance_date" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
-                      dataType="wstr"
-                      length="50"
-                      name="maintenance_type" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
-                      dataType="i4"
-                      name="odometer_reading" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
-                      dataType="numeric"
-                      name="labor_hours"
-                      precision="6"
-                      scale="1" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
-                      dataType="numeric"
-                      name="labor_cost"
-                      precision="10"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
-                      dataType="numeric"
-                      name="parts_cost"
-                      precision="10"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
-                      dataType="numeric"
-                      name="total_cost"
-                      precision="10"
-                      scale="2" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
-                      dataType="wstr"
-                      length="50"
-                      name="facility_location" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
-                      dataType="numeric"
-                      name="downtime_hours"
-                      precision="6"
-                      scale="1" />
-                    <externalMetadataColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
-                      dataType="wstr"
-                      length="100"
-                      name="service_description" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
-                      dataType="wstr"
-                      length="20"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
-                      name="maintenance_id" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[truck_id]"
-                      dataType="wstr"
-                      length="20"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[truck_id]"
-                      name="truck_id" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
-                      dataType="dbDate"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
-                      name="maintenance_date" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
-                      name="maintenance_type" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
-                      name="odometer_reading" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
-                      dataType="numeric"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
-                      name="labor_hours"
-                      precision="6"
-                      scale="1" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
-                      dataType="numeric"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
-                      name="labor_cost"
-                      precision="10"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
-                      dataType="numeric"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
-                      name="parts_cost"
-                      precision="10"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_cost]"
-                      dataType="numeric"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[total_cost]"
-                      name="total_cost"
-                      precision="10"
-                      scale="2" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[facility_location]"
-                      dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[facility_location]"
-                      name="facility_location" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
-                      dataType="numeric"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
-                      name="downtime_hours"
-                      precision="6"
-                      scale="1" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_description]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[service_description]"
-                      name="service_description" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\DFT_Stage_Maintenance.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Stage_Maintenance\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\DFT_Stage_Maintenance\OLE DB Source.Outputs[OLE DB Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\SQL_Get_Watermark"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2263,7 +1636,7 @@ WHERE maintenance_date &gt; ?;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
-          SQLTask:SqlStatementSource="SELECT ISNULL(last_load_date, '1900-01-01') AS last_load_date &#xA;FROM dbo.ETL_Metadata &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM Logistics_Staging.dbo.Stg_External_Maintenance),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -2285,7 +1658,7 @@ WHERE maintenance_date &gt; ?;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
-          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM Logistics_OLTP.dbo.maintenance_records),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM dbo.Stg_External_Maintenance),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::vRowsInserted"
@@ -2313,14 +1686,6 @@ WHERE maintenance_date &gt; ?;</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SQL_Update_Watermark" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
-      DTS:CreationName=""
-      DTS:DTSID="{FB1CA840-7CF0-40A1-AC6F-58590CDFB87F}"
-      DTS:From="Package\DFT_Stage_Maintenance"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 2"
-      DTS:To="Package\SQL_Get_Watermark" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2338,10 +1703,6 @@ WHERE maintenance_date &gt; ?;</property>
           Size="216.8,41.6"
           Id="Package\DFT_Load_Fact_Maintenance"
           TopLeft="299.285714922815,165.176470443452" />
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\DFT_Stage_Maintenance"
-          TopLeft="434.285715210195,12.2352941069223" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\SQL_Get_Watermark"
@@ -2418,40 +1779,6 @@ WHERE maintenance_date &gt; ?;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="531.885715210195,53.8352941069223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-17.0571428738687,30.2823528781688"
-              Start="0,0"
-              End="-17.0571428738687,22.7823528781688">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.1411764390844" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.1411764390844"
-                    Point2="0,15.1411764390844"
-                    Point3="-4,15.1411764390844" />
-                  <mssgle:LineSegment
-                    End="-13.0571428738687,15.1411764390844" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-13.0571428738687,15.1411764390844"
-                    Point2="-17.0571428738687,15.1411764390844"
-                    Point3="-17.0571428738687,19.1411764390844" />
-                  <mssgle:LineSegment
-                    End="-17.0571428738687,22.7823528781688" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2463,227 +1790,75 @@ WHERE maintenance_date &gt; ?;</property>
         <NodeLayout
           Size="212.8,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance"
-          TopLeft="486.42857246405,627.588235073591" />
+          TopLeft="6.42857144225604,177.858823458361" />
         <NodeLayout
           Size="155.2,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Profile"
-          TopLeft="492.857143906307,398.894117428543" />
+          TopLeft="460.00000097922,265.835294015762" />
         <NodeLayout
           Size="184,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta"
-          TopLeft="473.571429579538,36.705882320767" />
+          TopLeft="40.714285800956,100.941176382109" />
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact"
-          TopLeft="500.714286780175,546.058823310226" />
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\DER_Default_Keys"
-          TopLeft="490.000001043081,466.623529203303" />
-        <NodeLayout
-          Size="148,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Date"
-          TopLeft="498.571429632756,246.235293901812" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck"
-          TopLeft="495.714286769531,319.541176279554" />
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\DER_Calculations"
-          TopLeft="481.428572453407,167.4705880885" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Row Count Output 1]"
-          TopLeft="575.914286780175,587.658823310226">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="16.9142856838755,39.9294117633651"
-              Start="0,0"
-              End="16.9142856838755,32.4294117633651">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.9647058816826" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.9647058816826"
-                    Point2="0,19.9647058816826"
-                    Point3="4,19.9647058816826" />
-                  <mssgle:LineSegment
-                    End="12.9142856838755,19.9647058816826" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.9142856838755,19.9647058816826"
-                    Point2="16.9142856838755,19.9647058816826"
-                    Point3="16.9142856838755,23.9647058816826" />
-                  <mssgle:LineSegment
-                    End="16.9142856838755,32.4294117633651" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output2]"
-          TopLeft="571.628572474694,440.494117428543">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26.1294117747603"
-              Start="0,0"
-              End="0,18.6294117747603">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.6294117747603" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,3.51001838738014,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output1]"
-          TopLeft="571.085715337919,361.141176279554">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.7529411489884"
-              Start="0,0"
-              End="0,30.2529411489884">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.2529411489884" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.3217830744942,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output]"
-          TopLeft="572.142858201144,287.835293901812">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31.705882377742"
-              Start="0,0"
-              End="0,24.205882377742">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.205882377742" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.298253688871,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output1]"
-          TopLeft="574.357143911628,508.223529203303">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.8352941069225"
-              Start="0,0"
-              End="0,30.3352941069225">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.3352941069225" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output]"
-          TopLeft="561.428572453407,209.0705880885">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.1428571793498,37.1647058133127"
-              Start="0,0"
-              End="11.1428571793498,29.6647058133127">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14.5823529066563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.5823529066563"
-                    Point2="0,18.5823529066563"
-                    Point3="4,18.5823529066563" />
-                  <mssgle:LineSegment
-                    End="7.14285717934979,18.5823529066563" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.14285717934979,18.5823529066563"
-                    Point2="11.1428571793498,18.5823529066563"
-                    Point3="11.1428571793498,22.5823529066563" />
-                  <mssgle:LineSegment
-                    End="11.1428571793498,29.6647058133127" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="30.0000000638621,270.329411763366" />
         <NodeLayout
           Size="187.2,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter"
-          TopLeft="480.7142867376,100.941176382109" />
+          TopLeft="284.285714890884,103.99999990884" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\DER_Default_Keys"
+          TopLeft="240.000000510897,269.32941172918" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Date"
+          TopLeft="700.714287205922,113.176470489031" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck"
+          TopLeft="700.714287205922,263.717646916721" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\DER_Calculations"
+          TopLeft="505.714286790819,109.352941080619" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Maintenance.Paths[OLE DB Source Output]"
-          TopLeft="565.571429579538,78.305882320767">
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Row Count Output 1]"
+          TopLeft="109.014285753059,270.329411763366">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="8.74285715806263,22.6352940613424"
+              EndConnector="0,-50.870588305005"
               Start="0,0"
-              End="8.74285715806263,15.1352940613424">
+              End="0,-43.370588305005">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.31764703067119" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,7.31764703067119"
-                    Point2="0,11.3176470306712"
-                    Point3="4,11.3176470306712" />
+                    End="0,-43.370588305005" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[OLE DB Source Output]"
+          TopLeft="224.714285800956,123.270588145474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="59.5714290899277,0"
+              Start="0,0"
+              End="52.0714290899277,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="4.74285715806263,11.3176470306712" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.74285715806263,11.3176470306712"
-                    Point2="8.74285715806263,11.3176470306712"
-                    Point3="8.74285715806263,15.3176470306712" />
-                  <mssgle:LineSegment
-                    End="8.74285715806263,15.1352940613424" />
+                    End="52.0714290899277,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2694,38 +1869,142 @@ WHERE maintenance_date &gt; ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Fact_Maintenance.Paths[New_Records]"
-          TopLeft="574.3142867376,142.541176382109">
+          TopLeft="471.485714890884,127.476470494729">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.8857142841932,24.9294117063906"
+              EndConnector="34.2285718999355,0"
               Start="0,0"
-              End="-12.8857142841932,17.4294117063906">
+              End="26.7285718999355,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,8.46470585319528" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,8.46470585319528"
-                    Point2="0,12.4647058531953"
-                    Point3="-4,12.4647058531953" />
-                  <mssgle:LineSegment
-                    End="-8.88571428419323,12.4647058531953" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.88571428419323,12.4647058531953"
-                    Point2="-12.8857142841932,12.4647058531953"
-                    Point3="-12.8857142841932,16.4647058531953" />
-                  <mssgle:LineSegment
-                    End="-12.8857142841932,17.4294117063906" />
+                    End="26.7285718999355,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-36.9354352670966,17.4647058531953,60.98515625,11.0625"
+              BoundingBox="-17.1282921750323,5,60.98515625,11.0625"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output2]"
+          TopLeft="460.00000097922,288.382352872471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-54.4000004683232,0"
+              Start="0,0"
+              End="-46.9000004683232,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-46.9000004683232,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-71.6413869529116,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output1]"
+          TopLeft="700.714287205922,285.576470466242">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.5142862267021,0"
+              Start="0,0"
+              End="-78.0142862267021,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-78.0142862267021,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-87.1985298321011,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output]"
+          TopLeft="775.714287205922,154.776470489031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,108.941176427689"
+              Start="0,0"
+              End="0,101.441176427689">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.441176427689" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,44.9159007138446,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output1]"
+          TopLeft="240.000000510897,290.629411746273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-59.6000004470345,0"
+              Start="0,0"
+              End="-52.1000004470345,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-52.1000004470345,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output]"
+          TopLeft="665.714286790819,132.064705784825">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.0000004151029,0"
+              Start="0,0"
+              End="27.5000004151029,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.5000004151029,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2823,70 +2102,6 @@ WHERE maintenance_date &gt; ?;</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT_Stage_Maintenance">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="149.6,41.6"
-          Id="Package\DFT_Stage_Maintenance\OLE DB Source"
-          TopLeft="686.999989762902,60.9999990910292" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\DFT_Stage_Maintenance\OLE DB Destination"
-          TopLeft="673.999989956618,138.999997928739" />
-        <EdgeLayout
-          Id="Package\DFT_Stage_Maintenance.Paths[OLE DB Source Output]"
-          TopLeft="760.49998985976,102.599999091029">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36.3999988377095"
-              Start="0,0"
-              End="0,28.8999988377095">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.8999988377095" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Maintenance\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Maintenance\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

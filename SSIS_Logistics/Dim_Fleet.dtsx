@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:33:27 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{E8D860DC-FB44-4AB1-B907-4C51C019D351}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{6B93538A-18FD-4C22-ACE9-FDF98F7C7908}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -568,7 +568,7 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
     TRIM(maintenance_type) AS maintenance_type, 
     TRIM(service_description) AS service_description 
-FROM dbo.maintenance_records;</property>
+FROM dbo.Stg_External_Maintenance;</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -594,8 +594,8 @@ FROM dbo.maintenance_records;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1620,7 +1620,7 @@ FROM dbo.maintenance_records;</property>
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT trailer_id, trailer_number, trailer_type, 
        length_feet, model_year, vin, acquisition_date, 
        status, current_location 
-FROM dbo.trailers;</property>
+FROM dbo.Stg_CDC_Trailers;</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -1646,8 +1646,8 @@ FROM dbo.trailers;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Trailer\DFT_Dim_Trailer\OLE_SRC_Trailers.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3008,7 +3008,7 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command.Inputs[OLE DB Command Input].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]" />
@@ -3134,21 +3134,21 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[fuel_type]"
                           cachedDataType="wstr"
-                          cachedLength="30"
+                          cachedLength="15"
                           cachedName="fuel_type"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]" />
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[home_terminal]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="home_terminal"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]" />
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[make]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="make"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]" />
@@ -3161,7 +3161,7 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[status]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="15"
                           cachedName="status"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]" />
@@ -3174,21 +3174,21 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]" />
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[unit_number]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="unit_number"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]" />
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[vin]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="vin"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]" />
@@ -3401,7 +3401,7 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[fuel_type]"
                           cachedDataType="wstr"
-                          cachedLength="30"
+                          cachedLength="15"
                           cachedName="fuel_type"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]" />
@@ -3414,14 +3414,14 @@ FROM dbo.trailers;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]" />
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].Columns[unit_number]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="unit_number"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]" />
@@ -3538,7 +3538,7 @@ FROM dbo.trailers;</property>
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT truck_id, unit_number, make, model_year, vin, 
        acquisition_date, acquisition_mileage, fuel_type, 
        tank_capacity_gallons, status, home_terminal 
-FROM dbo.trucks;</property>
+FROM dbo.Stg_CDC_Trucks;</property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -3564,8 +3564,8 @@ FROM dbo.trucks;</property>
                   <connections>
                     <connection
                       refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Connections[OleDbConnection]"
-                      connectionManagerID="{89BCE546-91DC-46F8-939B-BFE4292BCFB8}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[Conn_OLTP]"
+                      connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3580,7 +3580,7 @@ FROM dbo.trucks;</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
-                          length="20"
+                          length="50"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]"
                           name="truck_id"
                           truncationRowDisposition="FailComponent" />
@@ -3676,7 +3676,7 @@ FROM dbo.trucks;</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[home_terminal]"
-                          length="50"
+                          length="30"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]"
                           name="home_terminal"
                           truncationRowDisposition="FailComponent" />
@@ -3686,7 +3686,7 @@ FROM dbo.trucks;</property>
                         <externalMetadataColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
                           dataType="wstr"
-                          length="20"
+                          length="50"
                           name="truck_id" />
                         <externalMetadataColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[unit_number]"
@@ -3744,7 +3744,7 @@ FROM dbo.trucks;</property>
                         <outputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                           dataType="wstr"
-                          length="20"
+                          length="50"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                           name="truck_id" />
                         <outputColumn
@@ -3909,7 +3909,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[fuel_type]"
                           cachedDataType="wstr"
-                          cachedLength="30"
+                          cachedLength="15"
                           cachedName="fuel_type"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[fuel_type]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]">
@@ -3923,7 +3923,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[home_terminal]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="home_terminal"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[home_terminal]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]">
@@ -3937,7 +3937,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[make]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="make"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[make]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]">
@@ -3964,7 +3964,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[status]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="15"
                           cachedName="status"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[status]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]">
@@ -3991,7 +3991,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[truck_id]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]">
@@ -4005,7 +4005,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[unit_number]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="unit_number"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[unit_number]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]">
@@ -4019,7 +4019,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[vin]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="vin"
                           externalMetadataColumnId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[vin]"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]">
@@ -4161,7 +4161,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]">
                           <properties>
@@ -4175,7 +4175,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[unit_number]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="unit_number"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]">
                           <properties>
@@ -4189,7 +4189,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[make]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="make"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]">
                           <properties>
@@ -4216,7 +4216,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[vin]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="vin"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]">
                           <properties>
@@ -4256,7 +4256,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[fuel_type]"
                           cachedDataType="wstr"
-                          cachedLength="30"
+                          cachedLength="15"
                           cachedName="fuel_type"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]">
                           <properties>
@@ -4283,7 +4283,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[status]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="15"
                           cachedName="status"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]">
                           <properties>
@@ -4297,7 +4297,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 1].Columns[home_terminal]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="home_terminal"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]">
                           <properties>
@@ -4319,7 +4319,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[truck_id]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="truck_id"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]">
                           <properties>
@@ -4333,7 +4333,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[unit_number]"
                           cachedDataType="wstr"
-                          cachedLength="20"
+                          cachedLength="10"
                           cachedName="unit_number"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]">
                           <properties>
@@ -4347,7 +4347,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[make]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="make"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]">
                           <properties>
@@ -4374,7 +4374,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[vin]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="vin"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]">
                           <properties>
@@ -4414,7 +4414,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[fuel_type]"
                           cachedDataType="wstr"
-                          cachedLength="30"
+                          cachedLength="15"
                           cachedName="fuel_type"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]">
                           <properties>
@@ -4441,7 +4441,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[status]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="15"
                           cachedName="status"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]">
                           <properties>
@@ -4455,7 +4455,7 @@ FROM dbo.trucks;</property>
                         <inputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Inputs[Union All Input 2].Columns[home_terminal]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="30"
                           cachedName="home_terminal"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]">
                           <properties>
@@ -4485,7 +4485,7 @@ FROM dbo.trucks;</property>
                         <outputColumn
                           refId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Outputs[Union All Output 1].Columns[truck_id]"
                           dataType="wstr"
-                          length="20"
+                          length="50"
                           lineageId="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All.Outputs[Union All Output 1].Columns[truck_id]"
                           name="truck_id" />
                         <outputColumn
@@ -4738,32 +4738,44 @@ FROM dbo.trucks;</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck">
+    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks"
-          TopLeft="151.3,5.49999999999995" />
+          Size="194.4,41.6"
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct"
+          TopLeft="642.999990418553,71.9999989271164" />
         <NodeLayout
-          Size="208,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension"
-          TopLeft="126.9,107.1" />
+          Size="182.4,41.6"
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\DER_Service_Urgency"
+          TopLeft="634.999990537763,145.99999782443" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[OLE DB Source Output]"
-          TopLeft="230.9,47.1">
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[OLE DB Source Output]"
+          TopLeft="740.199990418554,113.599998927116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="-13.9999998807905,32.3999988973141"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="-13.9999998807905,24.8999988973141">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,12.199999448657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.199999448657"
+                    Point2="0,16.199999448657"
+                    Point3="-4,16.199999448657" />
+                  <mssgle:LineSegment
+                    End="-9.99999988079048,16.199999448657" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.99999988079048,16.199999448657"
+                    Point2="-13.9999998807905,16.199999448657"
+                    Point3="-13.9999998807905,20.199999448657" />
+                  <mssgle:LineSegment
+                    End="-13.9999998807905,24.8999988973141" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4773,274 +4785,94 @@ FROM dbo.trucks;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Derived Column"
-          TopLeft="17.5,208.7" />
+          Size="175.2,41.6"
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\AGG_Distinct_Profile"
+          TopLeft="650.999990299344,231.999996542931" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Historical Attribute Inserts Output]"
-          TopLeft="170.9,148.7">
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Derived Column Output]"
+          TopLeft="726.199990537763,187.59999782443">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-77,60"
+              EndConnector="12.3999997615811,44.3999987185002"
               Start="0,0"
-              End="-77,52.5">
+              End="12.3999997615811,36.8999987185002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.8378378378378" />
+                    End="0,18.1999993592501" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.8378378378378"
-                    Point2="0,17.8378378378378"
-                    Point3="-4,17.8378378378378" />
+                    Point1="0,18.1999993592501"
+                    Point2="0,22.1999993592501"
+                    Point3="4,22.1999993592501" />
                   <mssgle:LineSegment
-                    End="-73,17.8378378378378" />
+                    End="8.39999976158106,22.1999993592501" />
                   <mssgle:CubicBezierSegment
-                    Point1="-73,17.8378378378378"
-                    Point2="-77,17.8378378378378"
-                    Point3="-77,21.8378378378378" />
+                    Point1="8.39999976158106,22.1999993592501"
+                    Point2="12.3999997615811,22.1999993592501"
+                    Point3="12.3999997615811,26.1999993592501" />
                   <mssgle:LineSegment
-                    End="-77,52.5" />
+                    End="12.3999997615811,36.8999987185002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\LKP_Check_Existing"
+          TopLeft="652.999990269542,316.999995276332" />
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Aggregate Output 1]"
+          TopLeft="738.799990284443,273.599996542931">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3999987334013"
+              Start="0,0"
+              End="0,35.8999987334013">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8999987334013" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE DB Destination"
+          TopLeft="658.999990180135,398.599995037913" />
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Lookup No Match Output]"
+          TopLeft="741.599990224838,358.599995276332">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.9999997615814"
+              Start="0,0"
+              End="0,32.4999997615814">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.4999997615814" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-113.55638671875,22.8378378378378,150.1127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command"
-          TopLeft="5.49999999999997,310.3" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Derived Column Output]"
-          TopLeft="90.9,250.3">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All"
-          TopLeft="170.9,411.9" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[New Output]"
-          TopLeft="210.9,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="38.6666666666667,263.2"
-              Start="0,0"
-              End="38.6666666666667,255.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,138.046830382638" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,138.046830382638"
-                    Point2="0,142.046830382638"
-                    Point3="4,142.046830382638" />
-                  <mssgle:LineSegment
-                    End="34.6666666666667,142.046830382638" />
-                  <mssgle:CubicBezierSegment
-                    Point1="34.6666666666667,142.046830382638"
-                    Point2="38.6666666666667,142.046830382638"
-                    Point3="38.6666666666667,146.046830382638" />
-                  <mssgle:LineSegment
-                    End="38.6666666666667,255.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-7.75805338541667,147.046830382638,54.1827734375,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[OLE DB Command Output]"
-          TopLeft="87.9,351.9">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="124.333333333333,59.9999999999998"
-              Start="0,0"
-              End="124.333333333333,52.4999999999998">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5263157894736" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.5263157894736"
-                    Point2="0,35.5263157894736"
-                    Point3="4,35.5263157894736" />
-                  <mssgle:LineSegment
-                    End="120.333333333333,35.5263157894736" />
-                  <mssgle:CubicBezierSegment
-                    Point1="120.333333333333,35.5263157894736"
-                    Point2="124.333333333333,35.5263157894736"
-                    Point3="124.333333333333,39.5263157894736" />
-                  <mssgle:LineSegment
-                    End="124.333333333333,52.4999999999998" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Derived Column 1"
-          TopLeft="149.7,513.5" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Union All Output 1]"
-          TopLeft="230.9,453.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Insert Destination"
-          TopLeft="149.7,615.099999999999" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Derived Column Output1]"
-          TopLeft="230.9,555.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1"
-          TopLeft="291.7,208.7" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Inferred Member Updates Output]"
-          TopLeft="250.9,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="128,59.9999999999999"
-              Start="0,0"
-              End="128,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.8085106382978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.8085106382978"
-                    Point2="0,26.8085106382978"
-                    Point3="4,26.8085106382978" />
-                  <mssgle:LineSegment
-                    End="124,26.8085106382978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="124,26.8085106382978"
-                    Point2="128,26.8085106382978"
-                    Point3="128,30.8085106382978" />
-                  <mssgle:LineSegment
-                    End="128,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-10.40298828125,31.8085106382978,148.8059765625,11.658203125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2"
-          TopLeft="526.7,208.7" />
-        <EdgeLayout
-          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Changing Attribute Updates Output]"
-          TopLeft="290.9,148.7">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="323,59.9999999999999"
-              Start="0,0"
-              End="323,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.8378378378378" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.8378378378378"
-                    Point2="0,17.8378378378378"
-                    Point3="4,17.8378378378378" />
-                  <mssgle:LineSegment
-                    End="319,17.8378378378378" />
-                  <mssgle:CubicBezierSegment
-                    Point1="319,17.8378378378378"
-                    Point2="323,17.8378378378378"
-                    Point3="323,21.8378378378378" />
-                  <mssgle:LineSegment
-                    End="323,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="82.96609375,22.8378378378378,157.0678125,11.6630859375"
+              BoundingBox="-55.80638671875,10.4453123807907,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5048,7 +4880,38 @@ FROM dbo.trucks;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks">
+    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\LKP_Check_Existing">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Maintenance_Profile]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5057,108 +4920,6 @@ FROM dbo.trucks;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension">
-    <Properties>
-      <Property>
-        <Name>SCDMetadata</Name>
-        <Value
-          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionID&gt;{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}&lt;/ConnectionID&gt;
-  &lt;TableName&gt;[dbo].[Dim_Truck]&lt;/TableName&gt;
-  &lt;InputToColumnsCollection&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[acquisition_date]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;acquisition_date&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[acquisition_mileage]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;acquisition_mileage&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;fuel_type&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;home_terminal&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;make&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;model_year&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;status&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[tank_capacity_gallons]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;tank_capacity_gallons&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;truck_id&lt;/ColumnName&gt;
-      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
-      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;unit_number&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-    &lt;InputColumnToDBColumn&gt;
-      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]&lt;/IdentificationString&gt;
-      &lt;ColumnName&gt;vin&lt;/ColumnName&gt;
-      &lt;KeyType&gt;None&lt;/KeyType&gt;
-      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
-    &lt;/InputColumnToDBColumn&gt;
-  &lt;/InputToColumnsCollection&gt;
-  &lt;GeneratedComponentsIdentificationStrings&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
-    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 2&lt;/anyType&gt;
-  &lt;/GeneratedComponentsIdentificationStrings&gt;
-  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
-  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
-  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
-  &lt;CurrentIndicatorColumn /&gt;
-  &lt;InferredIndicatorColumn /&gt;
-  &lt;ValueCurrent /&gt;
-  &lt;ValueExpired /&gt;
-  &lt;StartDateColumn&gt;effective_date&lt;/StartDateColumn&gt;
-  &lt;EndDateColumn&gt;expiration_date&lt;/EndDateColumn&gt;
-  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
-  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
-&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5571,44 +5332,60 @@ FROM dbo.trucks;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile">
+    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="194.4,41.6"
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct"
-          TopLeft="642.999990418553,71.9999989271164" />
+          Size="164.8,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command"
+          TopLeft="5.49999999999997,310.3" />
         <NodeLayout
-          Size="182.4,41.6"
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\DER_Service_Urgency"
-          TopLeft="634.999990537763,145.99999782443" />
+          Size="174.4,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 1"
+          TopLeft="291.7,208.7" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Derived Column 1"
+          TopLeft="149.7,513.5" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks"
+          TopLeft="151.3,5.49999999999995" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Union All"
+          TopLeft="170.9,411.9" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension"
+          TopLeft="126.9,107.1" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE DB Command 2"
+          TopLeft="526.7,208.7" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Insert Destination"
+          TopLeft="149.7,615.099999999999" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Derived Column"
+          TopLeft="17.5,208.7" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[OLE DB Source Output]"
-          TopLeft="740.199990418554,113.599998927116">
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Union All Output 1]"
+          TopLeft="230.9,453.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-13.9999998807905,32.3999988973141"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="-13.9999998807905,24.8999988973141">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.199999448657" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.199999448657"
-                    Point2="0,16.199999448657"
-                    Point3="-4,16.199999448657" />
-                  <mssgle:LineSegment
-                    End="-9.99999988079048,16.199999448657" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9.99999988079048,16.199999448657"
-                    Point2="-13.9999998807905,16.199999448657"
-                    Point3="-13.9999998807905,20.199999448657" />
-                  <mssgle:LineSegment
-                    End="-13.9999998807905,24.8999988973141" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5617,36 +5394,20 @@ FROM dbo.trucks;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175.2,41.6"
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\AGG_Distinct_Profile"
-          TopLeft="650.999990299344,231.999996542931" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Derived Column Output]"
-          TopLeft="726.199990537763,187.59999782443">
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[OLE DB Source Output]"
+          TopLeft="230.9,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="12.3999997615811,44.3999987185002"
+              EndConnector="0,59.9999999999999"
               Start="0,0"
-              End="12.3999997615811,36.8999987185002">
+              End="0,52.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1999993592501" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.1999993592501"
-                    Point2="0,22.1999993592501"
-                    Point3="4,22.1999993592501" />
-                  <mssgle:LineSegment
-                    End="8.39999976158106,22.1999993592501" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.39999976158106,22.1999993592501"
-                    Point2="12.3999997615811,22.1999993592501"
-                    Point3="12.3999997615811,26.1999993592501" />
-                  <mssgle:LineSegment
-                    End="12.3999997615811,36.8999987185002" />
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5655,24 +5416,32 @@ FROM dbo.trucks;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,41.6"
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\LKP_Check_Existing"
-          TopLeft="652.999990269542,316.999995276332" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Aggregate Output 1]"
-          TopLeft="738.799990284443,273.599996542931">
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[OLE DB Command Output]"
+          TopLeft="87.9,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43.3999987334013"
+              EndConnector="124.333333333333,59.9999999999998"
               Start="0,0"
-              End="0,35.8999987334013">
+              End="124.333333333333,52.4999999999998">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.8999987334013" />
+                    End="0,31.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5263157894736"
+                    Point2="0,35.5263157894736"
+                    Point3="4,35.5263157894736" />
+                  <mssgle:LineSegment
+                    End="120.333333333333,35.5263157894736" />
+                  <mssgle:CubicBezierSegment
+                    Point1="120.333333333333,35.5263157894736"
+                    Point2="124.333333333333,35.5263157894736"
+                    Point3="124.333333333333,39.5263157894736" />
+                  <mssgle:LineSegment
+                    End="124.333333333333,52.4999999999998" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5681,31 +5450,191 @@ FROM dbo.trucks;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE DB Destination"
-          TopLeft="658.999990180135,398.599995037913" />
         <EdgeLayout
-          Id="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile.Paths[Lookup No Match Output]"
-          TopLeft="741.599990224838,358.599995276332">
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[New Output]"
+          TopLeft="210.9,148.7">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39.9999997615814"
+              EndConnector="38.6666666666667,263.2"
               Start="0,0"
-              End="0,32.4999997615814">
+              End="38.6666666666667,255.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.4999997615814" />
+                    End="0,138.046830382638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,138.046830382638"
+                    Point2="0,142.046830382638"
+                    Point3="4,142.046830382638" />
+                  <mssgle:LineSegment
+                    End="34.6666666666667,142.046830382638" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.6666666666667,142.046830382638"
+                    Point2="38.6666666666667,142.046830382638"
+                    Point3="38.6666666666667,146.046830382638" />
+                  <mssgle:LineSegment
+                    End="38.6666666666667,255.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,10.4453123807907,111.6127734375,11.609375"
+              BoundingBox="-7.75805338541667,147.046830382638,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Inferred Member Updates Output]"
+          TopLeft="250.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128,59.9999999999999"
+              Start="0,0"
+              End="128,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8085106382978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8085106382978"
+                    Point2="0,26.8085106382978"
+                    Point3="4,26.8085106382978" />
+                  <mssgle:LineSegment
+                    End="124,26.8085106382978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124,26.8085106382978"
+                    Point2="128,26.8085106382978"
+                    Point3="128,30.8085106382978" />
+                  <mssgle:LineSegment
+                    End="128,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-10.40298828125,31.8085106382978,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Historical Attribute Inserts Output]"
+          TopLeft="170.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-77,60"
+              Start="0,0"
+              End="-77,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8378378378378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8378378378378"
+                    Point2="0,17.8378378378378"
+                    Point3="-4,17.8378378378378" />
+                  <mssgle:LineSegment
+                    End="-73,17.8378378378378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-73,17.8378378378378"
+                    Point2="-77,17.8378378378378"
+                    Point3="-77,21.8378378378378" />
+                  <mssgle:LineSegment
+                    End="-77,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-113.55638671875,22.8378378378378,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Derived Column Output1]"
+          TopLeft="230.9,555.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Derived Column Output]"
+          TopLeft="90.9,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Dim_Truck\DFT_Dim_Truck.Paths[Changing Attribute Updates Output]"
+          TopLeft="290.9,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="323,59.9999999999999"
+              Start="0,0"
+              End="323,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8378378378378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8378378378378"
+                    Point2="0,17.8378378378378"
+                    Point3="4,17.8378378378378" />
+                  <mssgle:LineSegment
+                    End="319,17.8378378378378" />
+                  <mssgle:CubicBezierSegment
+                    Point1="319,17.8378378378378"
+                    Point2="323,17.8378378378378"
+                    Point3="323,21.8378378378378" />
+                  <mssgle:LineSegment
+                    End="323,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="82.96609375,22.8378378378378,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5713,38 +5642,7 @@ FROM dbo.trucks;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE_SRC_Maint_Distinct">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\LKP_Check_Existing">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Maintenance_Profile]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Dim_Maint_Profile\DFT_Dim_Maint_Profile\OLE DB Destination">
+    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck\OLE_SRC_Trucks">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5753,6 +5651,108 @@ FROM dbo.trucks;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Dim_Truck\DFT_Dim_Truck\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Dim_Truck]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[acquisition_date]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;acquisition_date&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[acquisition_mileage]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;acquisition_mileage&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[fuel_type]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;fuel_type&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;home_terminal&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[make]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;make&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;model_year&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[status]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;status&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[tank_capacity_gallons]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;tank_capacity_gallons&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[truck_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;truck_id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[unit_number]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;unit_number&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;vin&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;FixedAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 2&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;effective_date&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;expiration_date&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
