@@ -73,6 +73,3 @@ appsettings.Development.json
 config.local.json
 secrets.json
 connection_strings.config
-/SSIS_Logistics/Dim_Fleet.dtsx
-/SSIS_Logistics/Fact_Maintenance.dtsx
-/SSIS_Logistics/SSIS_Logistics.dtproj
