@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_CSV_Files"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{D9072F7A-9A92-438F-802F-BA4467730163}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A52464CD-4D01-4479-8A01-AA103CE5F5CC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -231,6 +231,134 @@
               DTS:TextQualified="True"
               DTS:ObjectName="operating_hours"
               DTS:DTSID="{33C8B5DE-BA72-4FC1-848A-418E141FD445}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conn_Flat_Maintenance]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A5C635CB-E0FE-4833-9B0F-6AD47EE75631}"
+      DTS:ObjectName="Conn_Flat_Maintenance">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1066"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1258"
+          DTS:ConnectionString="D:\Kho\Project\Data\raw\maintenance_records.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="maintenance_id"
+              DTS:DTSID="{3B5A93E7-F17D-4AEC-A207-FA8015611456}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="truck_id"
+              DTS:DTSID="{89910A85-46B1-4805-80CF-19B4B34F080B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="maintenance_date"
+              DTS:DTSID="{874840AE-C8C5-4861-85C3-1D217918D816}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="maintenance_type"
+              DTS:DTSID="{6E74CFFE-BFE6-4F38-9092-EA8509FF6A24}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="odometer_reading"
+              DTS:DTSID="{25C9F7BE-A734-462C-B0ED-B7F10DA8BBEF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="labor_hours"
+              DTS:DTSID="{DB0C04A2-61D8-4C55-981A-F9C0E602675A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="labor_cost"
+              DTS:DTSID="{E98E1C55-A48D-4DC5-B311-58E702103A34}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="parts_cost"
+              DTS:DTSID="{92811B0E-AAC1-43F4-AFA3-C52C7D7EA131}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="total_cost"
+              DTS:DTSID="{AB00C713-2CA9-42E3-A631-1563CD4E60C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_location"
+              DTS:DTSID="{85C461CF-D16D-40FF-AF15-F96A35B57F46}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="downtime_hours"
+              DTS:DTSID="{B7BD6992-87ED-4F21-8125-9E36F9682512}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="service_description"
+              DTS:DTSID="{499DE6F2-EC03-4742-A496-F351981A4E52}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1505,6 +1633,694 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\DFT_Stage_Maintenance"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{b82e71da-3f9e-4521-adcf-1a29dbff8c7d}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Stage_Maintenance"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1066"
+              name="FLAT_SRC_Maintenance"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conn_Flat_Maintenance]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conn_Flat_Maintenance]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_id]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_id]"
+                      name="maintenance_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[truck_id]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[truck_id]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[truck_id]"
+                      name="truck_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_date]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_date]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_date]"
+                      name="maintenance_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_type]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_type]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_type]"
+                      name="maintenance_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[odometer_reading]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[odometer_reading]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[odometer_reading]"
+                      name="odometer_reading"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_hours]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_hours]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_hours]"
+                      name="labor_hours"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_cost]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_cost]"
+                      name="labor_cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[parts_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[parts_cost]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[parts_cost]"
+                      name="parts_cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[total_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[total_cost]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[total_cost]"
+                      name="total_cost"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[facility_location]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[facility_location]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[facility_location]"
+                      name="facility_location"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[downtime_hours]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[downtime_hours]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[downtime_hours]"
+                      name="downtime_hours"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[service_description]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[service_description]"
+                      length="50"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[service_description]"
+                      name="service_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="maintenance_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[truck_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="truck_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_date]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="maintenance_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_type]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="maintenance_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[odometer_reading]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="odometer_reading" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_hours]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="labor_hours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="labor_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[parts_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="parts_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[total_cost]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="total_cost" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[facility_location]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="facility_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[downtime_hours]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="downtime_hours" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[service_description]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="service_description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Stg_Conn_Flat_Maintenance"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_External_Maintenance]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="maintenance_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[truck_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="truck_id"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[truck_id]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[truck_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_date]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="maintenance_date"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_date]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_date]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_type]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="maintenance_type"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_type]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_type]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[odometer_reading]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="odometer_reading"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[odometer_reading]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[odometer_reading]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_hours]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="labor_hours"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_hours]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_hours]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_cost]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="labor_cost"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_cost]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[parts_cost]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="parts_cost"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[parts_cost]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[parts_cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[total_cost]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="total_cost"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[total_cost]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[total_cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[facility_location]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="facility_location"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[facility_location]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[downtime_hours]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="downtime_hours"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[downtime_hours]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[downtime_hours]" />
+                    <inputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[service_description]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="service_description"
+                      externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[service_description]"
+                      lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[service_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="maintenance_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[truck_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="truck_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_date]"
+                      dataType="dbDate"
+                      name="maintenance_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="maintenance_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[odometer_reading]"
+                      dataType="i4"
+                      name="odometer_reading" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_hours]"
+                      dataType="numeric"
+                      name="labor_hours"
+                      precision="6"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_cost]"
+                      dataType="numeric"
+                      name="labor_cost"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[parts_cost]"
+                      dataType="numeric"
+                      name="parts_cost"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[total_cost]"
+                      dataType="numeric"
+                      name="total_cost"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
+                      dataType="wstr"
+                      length="100"
+                      name="facility_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[downtime_hours]"
+                      dataType="numeric"
+                      name="downtime_hours"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[service_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="service_description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Stage_Maintenance.Paths[Flat File Source Output]"
+              endId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\DFT_Stage_Routes"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -2094,6 +2910,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\DFT_Stage_Delivery_Events" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{487ED4A5-AC24-4EF5-B4E0-AEC9B22E7B82}"
+      DTS:From="Package\DFT_Stage_Delivery_Events"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT_Stage_Maintenance" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2106,7 +2930,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="210.4,41.6"
           Id="Package\DFT_Stage_Delivery_Events"
@@ -2189,11 +3013,37 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\DFT_Stage_Maintenance"
+          TopLeft="145.535714595522,389.129411512675" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="242.025000299354,348.247058554741">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.882352957934"
+              Start="0,0"
+              End="0,33.382352957934">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.382352957934" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Stage_Delivery_Events">
+    design-time-name="Package\DFT_Stage_Facilities">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
@@ -2232,19 +3082,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT_Stage_Facilities">
     <LayoutInfo>
@@ -2283,46 +3120,33 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\DFT_Stage_Routes">
+    design-time-name="Package\DFT_Stage_Delivery_Events">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="181.6,41.6"
-          Id="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes"
-          TopLeft="167.692305193498,212.307689144061" />
+          Size="207.2,41.6"
+          Id="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
+          TopLeft="177.999997347593,84.9999987334013" />
         <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\DFT_Stage_Routes\FLAT_SRC_Routes"
-          TopLeft="169.999997466803,99.9999985098839" />
+          Size="224,41.6"
+          Id="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
+          TopLeft="170.999997451901,212.999996826053" />
         <EdgeLayout
-          Id="Package\DFT_Stage_Routes.Paths[Flat File Source Output]"
-          TopLeft="255.44615133015,141.599998509884">
+          Id="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
+          TopLeft="282.299997399747,126.599998733401">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,70.7076906341773"
+              EndConnector="0,86.3999980926514"
               Start="0,0"
-              End="0,63.2076906341773">
+              End="0,78.8999980926514">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.2076906341773" />
+                    End="0,78.8999980926514" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2337,7 +3161,33 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
