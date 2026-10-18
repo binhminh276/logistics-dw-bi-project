@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:33:27 PM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{6B93538A-18FD-4C22-ACE9-FDF98F7C7908}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{B84C27F3-7F56-4B63-B624-276E521ED7EE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5400,14 +5400,14 @@ FROM dbo.Stg_CDC_Trucks;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5482,7 +5482,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-7.75805338541667,147.046830382638,54.1827734375,11.43359375"
+              BoundingBox="-7.75805338541664,147.046830382638,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5492,33 +5492,33 @@ FROM dbo.Stg_CDC_Trucks;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="128,59.9999999999999"
+              EndConnector="128,60"
               Start="0,0"
-              End="128,52.4999999999999">
+              End="128,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.8085106382978" />
+                    End="0,22.8085106382979" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.8085106382978"
-                    Point2="0,26.8085106382978"
-                    Point3="4,26.8085106382978" />
+                    Point1="0,22.8085106382979"
+                    Point2="0,26.8085106382979"
+                    Point3="4,26.8085106382979" />
                   <mssgle:LineSegment
-                    End="124,26.8085106382978" />
+                    End="124,26.8085106382979" />
                   <mssgle:CubicBezierSegment
-                    Point1="124,26.8085106382978"
-                    Point2="128,26.8085106382978"
-                    Point3="128,30.8085106382978" />
+                    Point1="124,26.8085106382979"
+                    Point2="128,26.8085106382979"
+                    Point3="128,30.8085106382979" />
                   <mssgle:LineSegment
-                    End="128,52.4999999999999" />
+                    End="128,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-10.40298828125,31.8085106382978,148.8059765625,11.658203125"
+              BoundingBox="-10.40298828125,31.8085106382979,148.8059765625,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5528,9 +5528,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-77,60"
+              EndConnector="-76.9999999999999,60"
               Start="0,0"
-              End="-77,52.5">
+              End="-76.9999999999999,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -5541,13 +5541,13 @@ FROM dbo.Stg_CDC_Trucks;</property>
                     Point2="0,17.8378378378378"
                     Point3="-4,17.8378378378378" />
                   <mssgle:LineSegment
-                    End="-73,17.8378378378378" />
+                    End="-72.9999999999999,17.8378378378378" />
                   <mssgle:CubicBezierSegment
-                    Point1="-73,17.8378378378378"
-                    Point2="-77,17.8378378378378"
-                    Point3="-77,21.8378378378378" />
+                    Point1="-72.9999999999999,17.8378378378378"
+                    Point2="-76.9999999999999,17.8378378378378"
+                    Point3="-76.9999999999999,21.8378378378378" />
                   <mssgle:LineSegment
-                    End="-77,52.5" />
+                    End="-76.9999999999999,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5608,9 +5608,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="323,59.9999999999999"
+              EndConnector="323,60"
               Start="0,0"
-              End="323,52.4999999999999">
+              End="323,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -5627,7 +5627,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
                     Point2="323,17.8378378378378"
                     Point3="323,21.8378378378378" />
                   <mssgle:LineSegment
-                    End="323,52.4999999999999" />
+                    End="323,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
