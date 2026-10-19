@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/6/2026 9:32:16 PM"
@@ -9,11 +9,2421 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1066"
-  DTS:ObjectName="Package5"
+  DTS:ObjectName="Fact_Load"
   DTS:PackageType="5"
-  DTS:VersionGUID="{18733F7B-F533-488B-A59A-646D03722A19}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{9CBE5B83-A531-44CA-A9EE-FE0368D6AFEF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EFA5F11E-42F4-4FDB-8F14-ECC3A20AD1D7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vLastLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/19/2026 5:31:39 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A324072D-CF2F-4750-8AB5-D9309F5C763C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vRowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Fact_Load"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D0BE382C-39B0-4803-BE60-FC8DF33D9E9C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Fact_Load"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="CNT_Rows_Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::vRowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\DER_Calculations"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER_Calculations"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input].Columns[revenue]"
+                      cachedDataType="numeric"
+                      cachedName="revenue"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input].Columns[fuel_surcharge]"
+                      cachedDataType="numeric"
+                      cachedName="fuel_surcharge"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input].Columns[accessorial_charges]"
+                      cachedDataType="numeric"
+                      cachedName="accessorial_charges"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[total_revenue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[total_revenue]"
+                      name="total_revenue"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_NUMERIC,14,2)(#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]} + #{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]} + #{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_NUMERIC,14,2)(revenue + fuel_surcharge + accessorial_charges)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[load_count]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[load_count]"
+                      name="load_count"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)1</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\DER_Default_Keys"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER_Default_Keys"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input].Columns[customer_key]"
+                      cachedDataType="i4"
+                      cachedName="customer_key"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]}) ? -1 : #{Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(customer_key) ? -1 : customer_key</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input].Columns[route_key]"
+                      cachedDataType="i4"
+                      cachedName="route_key"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]}) ? -1 : #{Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(route_key) ? -1 : route_key</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input].Columns[load_profile_key]"
+                      cachedDataType="i2"
+                      cachedName="load_profile_key"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]}) ? (DT_UI1)255 : #{Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(load_profile_key) ? (DT_UI1)255 : load_profile_key</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input].Columns[load_date_key]"
+                      cachedDataType="i4"
+                      cachedName="load_date_key"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]}) ? -1 : #{Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(load_date_key) ? -1 : load_date_key</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Dim_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Customer]) [refTable]
+where [refTable].[customer_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="credit_terms_days" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="primary_freight_type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="account_status" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="contract_start_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="annual_revenue_potential" dataType="DT_NUMERIC" length="0" precision="15" scale="2" codePage="0"/&gt;&lt;referenceColumn name="effective_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="expiration_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="is_current" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="customer_id"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">customer_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]"
+                      name="customer_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">customer_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Dim_Date"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Date]) [refTable]
+where [refTable].[full_date] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="date_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="full_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="day_of_week" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="day_name" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month_number" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="month_name" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="calendar_quarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="calendar_year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fiscal_quarter" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="fiscal_year" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="is_weekend" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="holiday_flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input].Columns[load_date]"
+                      cachedDataType="dbDate"
+                      cachedName="load_date"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">full_date</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]"
+                      name="load_date_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">date_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Dim_Load_Profile"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Load_Profile]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Load_Profile]) [refTable]
+where [refTable].[booking_type] = ? and [refTable].[load_type] = ? and [refTable].[load_status] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="load_profile_key" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="load_status" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="booking_type" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="load_type" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]};#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]};#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input].Columns[load_status]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_status"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">load_status</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input].Columns[booking_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="booking_type"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">booking_type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input].Columns[load_type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_type"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">load_type</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]"
+                      name="load_profile_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">load_profile_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP_Dim_Route"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Route]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Route]) [refTable]
+where [refTable].[route_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="route_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="route_id" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="origin_city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="origin_state" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="destination_city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="destination_state" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="typical_distance_miles" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="base_rate_per_mile" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="fuel_surcharge_rate" dataType="DT_NUMERIC" length="0" precision="10" scale="4" codePage="0"/&gt;&lt;referenceColumn name="typical_transit_days" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input].Columns[route_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="route_id"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">route_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]"
+                      name="route_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">route_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_Fact_Load"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Load]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Connections[OleDbConnection]"
+                  connectionManagerID="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[load_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="load_id"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[weight_lbs]"
+                      cachedDataType="i4"
+                      cachedName="weight_lbs"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[weight_lbs]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[pieces]"
+                      cachedDataType="i4"
+                      cachedName="pieces"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[pieces]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[revenue]"
+                      cachedDataType="numeric"
+                      cachedName="revenue"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[revenue]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[fuel_surcharge]"
+                      cachedDataType="numeric"
+                      cachedName="fuel_surcharge"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[accessorial_charges]"
+                      cachedDataType="numeric"
+                      cachedName="accessorial_charges"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[accessorial_charges]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[total_revenue]"
+                      cachedDataType="numeric"
+                      cachedName="total_revenue"
+                      cachedPrecision="14"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[total_revenue]"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[total_revenue]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[load_count]"
+                      cachedDataType="i4"
+                      cachedName="load_count"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_count]"
+                      lineageId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output].Columns[load_count]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[customer_key]"
+                      cachedDataType="i4"
+                      cachedName="customer_key"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output].Columns[customer_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[route_key]"
+                      cachedDataType="i4"
+                      cachedName="route_key"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[route_key]"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output].Columns[route_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[load_profile_key]"
+                      cachedDataType="i2"
+                      cachedName="load_profile_key"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_profile_key]"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output].Columns[load_profile_key]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].Columns[load_date_key]"
+                      cachedDataType="i4"
+                      cachedName="load_date_key"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_date_key]"
+                      lineageId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output].Columns[load_date_key]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_date_key]"
+                      dataType="i4"
+                      name="load_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[route_key]"
+                      dataType="i4"
+                      name="route_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_profile_key]"
+                      dataType="i2"
+                      name="load_profile_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[weight_lbs]"
+                      dataType="i4"
+                      name="weight_lbs" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[pieces]"
+                      dataType="i4"
+                      name="pieces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[revenue]"
+                      dataType="numeric"
+                      name="revenue"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[fuel_surcharge]"
+                      dataType="numeric"
+                      name="fuel_surcharge"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[accessorial_charges]"
+                      dataType="numeric"
+                      name="accessorial_charges"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[total_revenue]"
+                      dataType="numeric"
+                      name="total_revenue"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input].ExternalColumns[load_count]"
+                      dataType="i4"
+                      name="load_count" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC_Stg_Loads"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Stg_CDC_Loads]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_id]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]"
+                      name="load_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[route_id]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]"
+                      name="route_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[origin_city]"
+                      length="100"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_city]"
+                      name="origin_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[origin_state]"
+                      length="20"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_state]"
+                      name="origin_state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[destination_city]"
+                      length="100"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_city]"
+                      name="destination_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[destination_state]"
+                      length="20"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_state]"
+                      name="destination_state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]"
+                      name="booking_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]"
+                      name="load_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]"
+                      name="load_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_date]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]"
+                      name="load_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[weight_lbs]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]"
+                      name="weight_lbs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[pieces]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]"
+                      name="pieces"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[revenue]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]"
+                      name="revenue"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[fuel_surcharge]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]"
+                      name="fuel_surcharge"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[accessorial_charges]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]"
+                      name="accessorial_charges"
+                      precision="14"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      length="10"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      name="cdc_operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[route_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="route_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[origin_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="origin_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[origin_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="origin_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[destination_city]"
+                      dataType="wstr"
+                      length="100"
+                      name="destination_city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[destination_state]"
+                      dataType="wstr"
+                      length="20"
+                      name="destination_state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="booking_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      name="load_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[load_date]"
+                      dataType="dbDate"
+                      name="load_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[weight_lbs]"
+                      dataType="i4"
+                      name="weight_lbs" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[pieces]"
+                      dataType="i4"
+                      name="pieces" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[revenue]"
+                      dataType="numeric"
+                      name="revenue"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[fuel_surcharge]"
+                      dataType="numeric"
+                      name="fuel_surcharge"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[accessorial_charges]"
+                      dataType="numeric"
+                      name="accessorial_charges"
+                      precision="14"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      dataType="wstr"
+                      length="10"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_id]"
+                      name="load_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[route_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[route_id]"
+                      name="route_id" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[origin_city]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[origin_city]"
+                      name="origin_city" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[origin_state]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[origin_state]"
+                      name="origin_state" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[destination_city]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[destination_city]"
+                      name="destination_city" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[destination_state]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[destination_state]"
+                      name="destination_state" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[booking_type]"
+                      name="booking_type" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_type]"
+                      name="load_type" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_status]"
+                      name="load_status" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[load_date]"
+                      name="load_date" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[weight_lbs]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[weight_lbs]"
+                      name="weight_lbs" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[pieces]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[pieces]"
+                      name="pieces" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[revenue]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[revenue]"
+                      name="revenue"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[fuel_surcharge]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[fuel_surcharge]"
+                      name="fuel_surcharge"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[accessorial_charges]"
+                      dataType="numeric"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[accessorial_charges]"
+                      name="accessorial_charges"
+                      precision="14"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      name="cdc_operation" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="SPL_Incremental_Filter"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[load_date]"
+                      cachedDataType="dbDate"
+                      cachedName="load_date"
+                      lineageId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Incremental_Loads]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Incremental_Loads"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]} &gt; @[User::vLastLoadDate]</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">load_date &gt; @[User::vLastLoadDate]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Derived Column Output]"
+              endId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_Fact_Load\DER_Calculations.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Derived Column Output1]"
+              endId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Incremental_Loads]"
+              endId="Package\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input]"
+              name="Incremental_Loads"
+              startId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Incremental_Loads]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
+              endId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
+              endId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+              endId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
+              endId="Package\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
+              endId="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
+              endId="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Get_Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C2B21E40-4A9D-4AB6-AABA-DEFCD2B3A29C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Get_Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="SELECT ISNULL(last_load_date, '1900-01-01') AS last_load_date &#xA;FROM dbo.ETL_Metadata &#xA;WHERE table_name = 'Fact_Load';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="last_load_date"
+            SQLTask:DtsVariableName="User::vLastLoadDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Update_Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6BEEEBA5-183E-4CE2-A205-51255AE7818D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Update_Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata&#xA;SET last_load_date = (SELECT ISNULL(MAX(load_date), '1900-01-01') FROM dbo.Stg_CDC_Loads),&#xA;    rows_inserted = ?,&#xA;    execution_status = 'SUCCESS'&#xA;WHERE table_name = 'Fact_Load';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vRowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EA26B115-1406-451B-BE85-BC883DE7750F}"
+      DTS:From="Package\SQL_Get_Watermark"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Load_Fact_Load" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{ADD91A19-9BFA-48F3-A663-A6E6CCCBFE27}"
+      DTS:From="Package\DFT_Load_Fact_Load"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL_Update_Watermark" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\SQL_Get_Watermark"
+          TopLeft="202.857143288972,68.0588234697556" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\DFT_Load_Fact_Load"
+          TopLeft="211.214286152197,163.029411626625" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="291.257143288972,109.658823469756">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.95714286322499,53.3705881568697"
+              Start="0,0"
+              End="9.95714286322499,45.8705881568697">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.6852940784349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.6852940784349"
+                    Point2="0,26.6852940784349"
+                    Point3="4,26.6852940784349" />
+                  <mssgle:LineSegment
+                    End="5.95714286322499,26.6852940784349" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.95714286322499,26.6852940784349"
+                    Point2="9.95714286322499,26.6852940784349"
+                    Point3="9.95714286322499,30.6852940784349" />
+                  <mssgle:LineSegment
+                    End="9.95714286322499,45.8705881568697" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="194.4,41.6"
+          Id="Package\SQL_Update_Watermark"
+          TopLeft="271.428572006372,246.235293901812" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="301.214286152197,204.629411626625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.4142858541742,41.605882275187"
+              Start="0,0"
+              End="67.4142858541742,34.105882275187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8029411375935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.8029411375935"
+                    Point2="0,20.8029411375935"
+                    Point3="4,20.8029411375935" />
+                  <mssgle:LineSegment
+                    End="63.4142858541742,20.8029411375935" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.4142858541742,20.8029411375935"
+                    Point2="67.4142858541742,20.8029411375935"
+                    Point3="67.4142858541742,24.8029411375935" />
+                  <mssgle:LineSegment
+                    End="67.4142858541742,34.105882275187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Fact_Load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads"
+          TopLeft="270.714286290565,87.1764705118217" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter"
+          TopLeft="285.00000060669,178.941176313739" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
+          TopLeft="359.114286290565,128.776470511822">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.4857143161249,50.1647058019176"
+              Start="0,0"
+              End="19.4857143161249,42.6647058019176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0823529009588"
+                    Point2="0,25.0823529009588"
+                    Point3="4,25.0823529009588" />
+                  <mssgle:LineSegment
+                    End="15.4857143161249,25.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.4857143161249,25.0823529009588"
+                    Point2="19.4857143161249,25.0823529009588"
+                    Point3="19.4857143161249,29.0823529009588" />
+                  <mssgle:LineSegment
+                    End="19.4857143161249,42.6647058019176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_Load_Fact_Load\DER_Calculations"
+          TopLeft="127.857143129317,277.588235050801" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Incremental_Loads]"
+          TopLeft="378.60000060669,220.541176313739">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-170.742857477373,57.0470587370614"
+              Start="0,0"
+              End="-170.742857477373,49.5470587370614">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5235293685307" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5235293685307"
+                    Point2="0,28.5235293685307"
+                    Point3="-4,28.5235293685307" />
+                  <mssgle:LineSegment
+                    End="-166.742857477373,28.5235293685307" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-166.742857477373,28.5235293685307"
+                    Point2="-170.742857477373,28.5235293685307"
+                    Point3="-170.742857477373,32.5235293685307" />
+                  <mssgle:LineSegment
+                    End="-170.742857477373,49.5470587370614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-128.055608426187,33.5235293685307,85.368359375,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Customer"
+          TopLeft="375.000000798276,302.482352730034" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output]"
+          TopLeft="287.857143129317,298.388235050801">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.1428576689593,24.894117679233"
+              Start="0,0"
+              End="79.6428576689593,24.894117679233">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="39.5714288344797,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.5714288344797,0"
+                    Point2="43.5714288344797,0"
+                    Point3="43.5714288344797,4" />
+                  <mssgle:LineSegment
+                    End="43.5714288344797,20.894117679233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5714288344797,20.894117679233"
+                    Point2="43.5714288344797,24.894117679233"
+                    Point3="47.5714288344797,24.894117679233" />
+                  <mssgle:LineSegment
+                    End="79.6428576689593,24.894117679233" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Route"
+          TopLeft="685.178572887137,296.120588051466" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
+          TopLeft="546.200000798277,320.10147039075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.97857208886,0"
+              Start="0,0"
+              End="131.47857208886,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="131.47857208886,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.5478993256802,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile"
+          TopLeft="674.821430007946,393.949999797739" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
+          TopLeft="764.400001447542,337.720588051466">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.2294117462726"
+              Start="0,0"
+              End="0,48.7294117462726">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.7294117462726" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.5600183731363,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Date"
+          TopLeft="409.107143728025,391.111764590257" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+          TopLeft="674.821430007946,413.330882193998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.714286279921,0"
+              Start="0,0"
+              End="-110.214286279921,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-110.214286279921,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DFT_Load_Fact_Load\DER_Default_Keys"
+          TopLeft="92.8571430548113,393.279411504129" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
+          TopLeft="409.107143728025,412.995588047193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150.650000673213,0"
+              Start="0,0"
+              End="-143.150000673213,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-143.150000673213,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-119.766387055357,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted"
+          TopLeft="91.9642859100535,475.617646728704" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output1]"
+          TopLeft="177.410714482432,434.879411504129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.7382352245746"
+              Start="0,0"
+              End="0,33.2382352245746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2382352245746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
+          TopLeft="346.428572166027,475.411764447819" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
+          TopLeft="266.364285910054,496.314705588261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.0642862559735,0"
+              Start="0,0"
+              End="72.5642862559735,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="72.5642862559735,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Route">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Route]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Load_Profile]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Date">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Date]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
