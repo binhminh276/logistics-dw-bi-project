@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_CSV_Files"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{A52464CD-4D01-4479-8A01-AA103CE5F5CC}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{FBA6F292-DEA9-4DB5-ADDF-1AFB3252FCCA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -21,6 +21,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{A37221FE-EFB2-4F8F-87C1-0865208C06E5}"
       DTS:ObjectName="Conn_Flat_Delivery_Events">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::DataFolderPath] + "\\raw\\delivery_events.csv"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -30,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\delivery_events.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\delivery_events.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -140,6 +142,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{666BA76C-F1E7-4CA6-8D78-F8513509E948}"
       DTS:ObjectName="Conn_Flat_Facilities">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::DataFolderPath] + "\\raw\\facilities.csv"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -149,7 +153,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\facilities.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\facilities.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -241,6 +245,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{A5C635CB-E0FE-4833-9B0F-6AD47EE75631}"
       DTS:ObjectName="Conn_Flat_Maintenance">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::DataFolderPath] + "\\raw\\maintenance_records.csv"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -249,26 +255,26 @@
           DTS:ColumnNamesInFirstDataRow="True"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1258"
-          DTS:ConnectionString="D:\Kho\Project\Data\raw\maintenance_records.csv">
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\Kho\Project\data\raw\maintenance_records.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_id"
-              DTS:DTSID="{3B5A93E7-F17D-4AEC-A207-FA8015611456}"
+              DTS:DTSID="{8A78BB4E-50DE-45A6-92BF-BA82141F5BFD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="truck_id"
-              DTS:DTSID="{89910A85-46B1-4805-80CF-19B4B34F080B}"
+              DTS:DTSID="{7C0FDAA7-F30B-4E37-8C05-C3D40C51168D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -277,16 +283,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_date"
-              DTS:DTSID="{874840AE-C8C5-4861-85C3-1D217918D816}"
+              DTS:DTSID="{3639F86A-2AF9-4EE4-98ED-4C388B223650}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_type"
-              DTS:DTSID="{6E74CFFE-BFE6-4F38-9092-EA8509FF6A24}"
+              DTS:DTSID="{1DA18EC1-9549-4F81-A72A-2CEE094F6004}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -295,7 +301,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="odometer_reading"
-              DTS:DTSID="{25C9F7BE-A734-462C-B0ED-B7F10DA8BBEF}"
+              DTS:DTSID="{0E7211DE-BED4-445B-AC86-2D140EE98C78}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -304,7 +310,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_hours"
-              DTS:DTSID="{DB0C04A2-61D8-4C55-981A-F9C0E602675A}"
+              DTS:DTSID="{5D9138C9-AE30-4C15-BCA7-5A85F5E4F4EF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -313,7 +319,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_cost"
-              DTS:DTSID="{E98E1C55-A48D-4DC5-B311-58E702103A34}"
+              DTS:DTSID="{74C58A86-5A89-437D-BF73-C1E6A9A22C4E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -322,7 +328,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="parts_cost"
-              DTS:DTSID="{92811B0E-AAC1-43F4-AFA3-C52C7D7EA131}"
+              DTS:DTSID="{79373FC6-5DA4-40BB-B010-CBB0C7AE9F06}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -331,16 +337,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="total_cost"
-              DTS:DTSID="{AB00C713-2CA9-42E3-A631-1563CD4E60C0}"
+              DTS:DTSID="{7B57021A-AE9E-491C-9D7E-B5CBF734BDF8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_location"
-              DTS:DTSID="{85C461CF-D16D-40FF-AF15-F96A35B57F46}"
+              DTS:DTSID="{D363B2FE-E656-49C6-A81E-8BEC66236EBD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -349,16 +355,16 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="downtime_hours"
-              DTS:DTSID="{B7BD6992-87ED-4F21-8125-9E36F9682512}"
+              DTS:DTSID="{922F7010-02DF-4FFA-BF17-39430976437F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000A_"
               DTS:MaximumWidth="50"
-              DTS:DataType="129"
+              DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="service_description"
-              DTS:DTSID="{499DE6F2-EC03-4742-A496-F351981A4E52}"
+              DTS:DTSID="{05C32580-DC53-468B-BE50-D314B92B7508}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -369,6 +375,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{BA2FE928-9D14-41DD-822C-33400F6BABE4}"
       DTS:ObjectName="Conn_Flat_Routes">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::DataFolderPath] + "\\raw\\routes.csv"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -378,7 +386,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\routes.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\routes.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -1679,8 +1687,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_id]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_id]"
@@ -1701,8 +1708,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[truck_id]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[truck_id]"
@@ -1723,7 +1729,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_date]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1745,8 +1751,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_type]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_type]"
@@ -1767,7 +1772,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[odometer_reading]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1789,7 +1794,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_hours]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1811,7 +1816,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1833,7 +1838,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[parts_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1855,7 +1860,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[total_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1877,8 +1882,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[facility_location]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[facility_location]"
@@ -1899,7 +1903,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[downtime_hours]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
@@ -1921,8 +1925,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[service_description]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[service_description]"
@@ -1946,74 +1949,69 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_id]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="maintenance_id" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[truck_id]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="truck_id" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_date]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="maintenance_date" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[maintenance_type]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="maintenance_type" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[odometer_reading]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="odometer_reading" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_hours]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="labor_hours" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[labor_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="labor_cost" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[parts_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="parts_cost" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[total_cost]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="total_cost" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[facility_location]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="facility_location" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[downtime_hours]"
-                      codePage="1258"
+                      codePage="65001"
                       dataType="str"
                       length="50"
                       name="downtime_hours" />
                     <externalMetadataColumn
                       refId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].ExternalColumns[service_description]"
-                      codePage="1258"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="service_description" />
                   </externalMetadataColumns>
@@ -2121,23 +2119,21 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_id]"
-                      cachedCodepage="1258"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="maintenance_id"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_id]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[truck_id]"
-                      cachedCodepage="1258"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="truck_id"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[truck_id]"
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[truck_id]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_date]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="maintenance_date"
@@ -2145,15 +2141,14 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_date]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_type]"
-                      cachedCodepage="1258"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="maintenance_type"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_type]"
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[maintenance_type]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[odometer_reading]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="odometer_reading"
@@ -2161,7 +2156,7 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[odometer_reading]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_hours]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="labor_hours"
@@ -2169,7 +2164,7 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_hours]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_cost]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="labor_cost"
@@ -2177,7 +2172,7 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[labor_cost]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[parts_cost]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="parts_cost"
@@ -2185,7 +2180,7 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[parts_cost]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[total_cost]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="total_cost"
@@ -2193,15 +2188,14 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[total_cost]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[facility_location]"
-                      cachedCodepage="1258"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="facility_location"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[facility_location]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[downtime_hours]"
-                      cachedCodepage="1258"
+                      cachedCodepage="65001"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="downtime_hours"
@@ -2209,8 +2203,7 @@
                       lineageId="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance.Outputs[Flat File Source Output].Columns[downtime_hours]" />
                     <inputColumn
                       refId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].Columns[service_description]"
-                      cachedCodepage="1258"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="service_description"
                       externalMetadataColumnId="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[service_description]"
@@ -2934,33 +2927,37 @@
         <NodeLayout
           Size="210.4,41.6"
           Id="Package\DFT_Stage_Delivery_Events"
-          TopLeft="135.714286003186,306.647058554741" />
+          TopLeft="312.857143523134,209.529411581045" />
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\DFT_Stage_Facilities"
-          TopLeft="150.714286035117,127.705882241002" />
+          TopLeft="40.0000000851496,123.882352832589" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\DFT_Stage_Maintenance"
+          TopLeft="623.392858469897,210.952941080618" />
         <NodeLayout
           Size="168,41.6"
           Id="Package\DFT_Stage_Routes"
-          TopLeft="150.714286035117,217.176470397872" />
+          TopLeft="45.7142858115996,210.294117462728" />
         <NodeLayout
           Size="227.2,41.6"
           Id="Package\SQL_Truncate_Stg_CSV_Tables"
-          TopLeft="121.428571687061,49.705882309372" />
+          TopLeft="15.0000000319311,36.705882320767" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="236.671428861089,91.305882309372">
+          TopLeft="128.10000005854,78.305882320767">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.3999999316299"
+              EndConnector="0,45.5764705118218"
               Start="0,0"
-              End="0,28.8999999316299">
+              End="0,38.0764705118218">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.8999999316299" />
+                    End="0,38.0764705118218" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2971,18 +2968,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="236.514286035117,169.305882241002">
+          TopLeft="128.657142948375,165.482352832589">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47.8705881568697"
+              EndConnector="0,44.8117646301394"
               Start="0,0"
-              End="0,40.3705881568697">
+              End="0,37.3117646301394">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.3705881568697" />
+                    End="0,37.3117646301394" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2993,18 +2990,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="237.814286019151,258.776470397872">
+          TopLeft="213.7142858116,230.711764521886">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,47.8705881568696"
+              EndConnector="99.1428577115343,0"
               Start="0,0"
-              End="0,40.3705881568696">
+              End="91.6428577115343,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.3705881568696" />
+                    End="91.6428577115343,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3013,24 +3010,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\DFT_Stage_Maintenance"
-          TopLeft="145.535714595522,389.129411512675" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="242.025000299354,348.247058554741">
+          TopLeft="523.257143523134,231.041176330832">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.882352957934"
+              EndConnector="100.135714946763,0"
               Start="0,0"
-              End="0,33.382352957934">
+              End="92.6357149467634,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.382352957934" />
+                    End="92.6357149467634,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3049,14 +3042,14 @@
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="224,41.6"
-          Id="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
+          Id="55"
           TopLeft="170.999997451901,212.999996826053" />
         <NodeLayout
           Size="207.2,41.6"
-          Id="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
+          Id="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
           TopLeft="177.999997347593,84.9999987334013" />
         <EdgeLayout
-          Id="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
+          Id="94"
           TopLeft="282.299997399747,126.599998733401">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -3083,32 +3076,32 @@
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\DFT_Stage_Facilities">
+    design-time-name="Package\DFT_Stage_Maintenance">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities"
-          TopLeft="167.857143214467,162.882352798404" />
+          Size="261.6,41.6"
+          Id="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance"
+          TopLeft="5.50000000000003,107.1" />
         <NodeLayout
-          Size="172,41.6"
-          Id="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
-          TopLeft="178.57142895156,47.4117646643241" />
+          Size="192,41.6"
+          Id="Package\DFT_Stage_Maintenance\FLAT_SRC_Maintenance"
+          TopLeft="40.3,5.49999999999995" />
         <EdgeLayout
-          Id="Package\DFT_Stage_Facilities.Paths[Flat File Source Output]"
-          TopLeft="263.614286083014,89.0117646643241">
+          Id="Package\DFT_Stage_Maintenance.Paths[Flat File Source Output]"
+          TopLeft="136.3,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,73.8705881340796"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,66.3705881340796">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.3705881340796" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3120,84 +3113,5 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <TaskHost
-    design-time-name="Package\DFT_Stage_Delivery_Events">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="207.2,41.6"
-          Id="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
-          TopLeft="177.999997347593,84.9999987334013" />
-        <NodeLayout
-          Size="224,41.6"
-          Id="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
-          TopLeft="170.999997451901,212.999996826053" />
-        <EdgeLayout
-          Id="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
-          TopLeft="282.299997399747,126.599998733401">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,86.3999980926514"
-              Start="0,0"
-              End="0,78.8999980926514">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.8999980926514" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

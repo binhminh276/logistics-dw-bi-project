@@ -39,6 +39,8 @@ USE [Logistics_Staging];
 GO
 
 PRINT '-> 2. Tạo View vw_Delivery_Fulfillment_Pivot cho Fact_Delivery_Fulfillment...';
+GO
+
 CREATE OR ALTER VIEW [dbo].[vw_Delivery_Fulfillment_Pivot] AS
 SELECT 
     p.load_id,

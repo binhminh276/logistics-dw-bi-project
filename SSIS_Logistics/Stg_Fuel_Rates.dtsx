@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stg_Fuel_Rates"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{6F277E78-CA77-46E4-ABA8-98BB29D849D7}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{39D702E3-E142-43F8-AEC9-B0085B1A9B83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -21,6 +21,8 @@
       DTS:CreationName="FLATFILE"
       DTS:DTSID="{A8528758-42E9-4402-BD71-7FD54DFA2A51}"
       DTS:ObjectName="Conn_FlatFile_Fuel">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::DataFolderPath] + "\\fuel\\fuel_market_rates_2022_2024.csv"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -30,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\fuel\fuel_market_rates_2022_2024.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\fuel\fuel_market_rates_2022_2024.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -518,7 +520,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
