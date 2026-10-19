@@ -12,8 +12,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Master_Orchestrator"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{9EE3BC98-4538-4D60-BA34-F40FC6267501}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{BAC8F8E6-BC03-45C4-AC82-1BED9F4C5EC1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -299,7 +299,7 @@
           PanelSize="545.6,187.2"
           Size="545.6,230.4"
           Id="Package\SEQ_Fact_Layer"
-          TopLeft="216.755324407386,363.930205096504" />
+          TopLeft="216.755324407386,363.165499214821" />
         <NodeLayout
           Size="168.8,41.6"
           Id="Package\SEQ_Staging_Layer\EPT_Stg_CSV_Files"
@@ -347,14 +347,14 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,28.9951445946585"
+              EndConnector="0,28.2304387129763"
               Start="0,0"
-              End="0,21.4951445946585">
+              End="0,20.7304387129763">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.4951445946585" />
+                    End="0,20.7304387129763" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

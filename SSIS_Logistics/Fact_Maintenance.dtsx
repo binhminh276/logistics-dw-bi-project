@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 9:34:02 AM"
@@ -76,27 +76,27 @@
                       refId="Package\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input].Columns[maintenance_date]"
                       cachedDataType="dbDate"
                       cachedName="maintenance_date"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input].Columns[service_description]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="service_description"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input].Columns[labor_cost]"
                       cachedDataType="numeric"
                       cachedName="labor_cost"
                       cachedPrecision="10"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_cost]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input].Columns[parts_cost]"
                       cachedDataType="numeric"
                       cachedName="parts_cost"
                       cachedPrecision="10"
                       cachedScale="2"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[parts_cost]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -124,7 +124,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_NUMERIC,14,2)(#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_cost]} + #{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[parts_cost]})</property>
+                          name="Expression">(DT_NUMERIC,14,2)(#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]} + #{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -168,7 +168,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_I4)((DT_WSTR,4)[YEAR](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]}) + [RIGHT]("0" + (DT_WSTR,2)[MONTH](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DAY](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]}),2))</property>
+                          name="Expression">(DT_I4)((DT_WSTR,4)[YEAR](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]}) + [RIGHT]("0" + (DT_WSTR,2)[MONTH](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]}),2) + [RIGHT]("0" + (DT_WSTR,2)[DAY](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]}),2))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -191,7 +191,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]}),1,9)) == "EMERGENCY" ? (DT_WSTR,30)"Emergency" : [UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]}),1,7)) == "ROUTINE" ? (DT_WSTR,30)"Routine" : [UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]}),1,9)) == "SCHEDULED" ? (DT_WSTR,30)"Scheduled" : (DT_WSTR,30)"Standard"</property>
+                          name="Expression">[UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]}),1,9)) == "EMERGENCY" ? (DT_WSTR,30)"Emergency" : [UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]}),1,7)) == "ROUTINE" ? (DT_WSTR,30)"Routine" : [UPPER]([SUBSTRING]([TRIM](#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]}),1,9)) == "SCHEDULED" ? (DT_WSTR,30)"Scheduled" : (DT_WSTR,30)"Standard"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -563,7 +563,7 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_type]};#{Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter};</property>
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_type]};#{Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -608,7 +608,7 @@ where [refTable].[maintenance_type] = ? and [refTable].[service_urgency] = ?</pr
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="maintenance_type"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_type]">
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_type]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -739,7 +739,7 @@ where [refTable].[truck_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[truck_id]};</property>
+                  name="ParameterMap">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[truck_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -767,7 +767,7 @@ where [refTable].[truck_id] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="truck_id"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[truck_id]">
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[truck_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -919,20 +919,20 @@ where [refTable].[truck_id] = ?</property>
                       cachedLength="20"
                       cachedName="maintenance_id"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[maintenance_id]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_id]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_id]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[facility_location]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="facility_location"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[facility_location]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[facility_location]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[facility_location]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[odometer_reading]"
                       cachedDataType="i4"
                       cachedName="odometer_reading"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[odometer_reading]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[odometer_reading]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[odometer_reading]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_hours]"
                       cachedDataType="numeric"
@@ -940,7 +940,7 @@ where [refTable].[truck_id] = ?</property>
                       cachedPrecision="6"
                       cachedScale="1"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_hours]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_hours]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_hours]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[labor_cost]"
                       cachedDataType="numeric"
@@ -948,7 +948,7 @@ where [refTable].[truck_id] = ?</property>
                       cachedPrecision="10"
                       cachedScale="2"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[labor_cost]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_cost]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[parts_cost]"
                       cachedDataType="numeric"
@@ -956,7 +956,7 @@ where [refTable].[truck_id] = ?</property>
                       cachedPrecision="10"
                       cachedScale="2"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[parts_cost]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[parts_cost]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[downtime_hours]"
                       cachedDataType="numeric"
@@ -964,7 +964,7 @@ where [refTable].[truck_id] = ?</property>
                       cachedPrecision="6"
                       cachedScale="1"
                       externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].ExternalColumns[downtime_hours]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[downtime_hours]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[downtime_hours]" />
                     <inputColumn
                       refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input].Columns[maintenance_date_key]"
                       cachedDataType="i4"
@@ -1089,11 +1089,11 @@ where [refTable].[truck_id] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta"
+              refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE_SRC_Maint_Delta"
+              name="OLE_SRC_Stg_Maintenance"
               usesDispositions="true"
               version="7">
               <properties>
@@ -1159,7 +1159,7 @@ WHERE maintenance_date &gt; ?;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Connections[OleDbConnection]"
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Connections[OleDbConnection]"
                   connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1167,128 +1167,128 @@ WHERE maintenance_date &gt; ?;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
                       length="20"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_id]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_id]"
                       name="maintenance_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[truck_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[truck_id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
                       length="20"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[truck_id]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[truck_id]"
                       name="truck_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]"
                       name="maintenance_date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_type]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
                       length="50"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_type]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_type]"
                       name="maintenance_type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
                       length="100"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[service_description]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[service_description]"
                       name="service_description"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[facility_location]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[facility_location]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
                       length="50"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[facility_location]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[facility_location]"
                       name="facility_location"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[odometer_reading]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[odometer_reading]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[odometer_reading]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[odometer_reading]"
                       name="odometer_reading"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_hours]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_hours]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_hours]"
                       name="labor_hours"
                       precision="6"
                       scale="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[labor_cost]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]"
                       name="labor_cost"
                       precision="10"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[parts_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[parts_cost]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]"
                       name="parts_cost"
                       precision="10"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[downtime_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[downtime_hours]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[downtime_hours]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[downtime_hours]"
                       name="downtime_hours"
                       precision="6"
                       scale="1"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[total_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[total_cost]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[total_cost]"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[total_cost]"
                       name="total_cost"
                       precision="14"
                       scale="2"
@@ -1297,64 +1297,64 @@ WHERE maintenance_date &gt; ?;</property>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_id]"
                       dataType="wstr"
                       length="50"
                       name="maintenance_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
                       dataType="wstr"
                       length="50"
                       name="truck_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_date]"
                       dataType="dbDate"
                       name="maintenance_date" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[maintenance_type]"
                       dataType="wstr"
                       length="50"
                       name="maintenance_type" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[service_description]"
                       dataType="wstr"
                       length="255"
                       name="service_description" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[facility_location]"
                       dataType="wstr"
                       length="100"
                       name="facility_location" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[odometer_reading]"
                       dataType="i4"
                       name="odometer_reading" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[labor_hours]"
                       dataType="numeric"
                       name="labor_hours"
                       precision="6"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[labor_cost]"
                       dataType="numeric"
                       name="labor_cost"
                       precision="12"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[parts_cost]"
                       dataType="numeric"
                       name="parts_cost"
                       precision="12"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[downtime_hours]"
                       dataType="numeric"
                       name="downtime_hours"
                       precision="8"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].ExternalColumns[total_cost]"
                       dataType="numeric"
                       name="total_cost"
                       precision="14"
@@ -1362,95 +1362,95 @@ WHERE maintenance_date &gt; ?;</property>
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_id]"
                       name="maintenance_id" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[truck_id]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[truck_id]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                       name="truck_id" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
                       dataType="dbDate"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_date]"
                       name="maintenance_date" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[maintenance_type]"
                       name="maintenance_type" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[service_description]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[service_description]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[service_description]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[service_description]"
                       name="service_description" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[facility_location]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[facility_location]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[facility_location]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[facility_location]"
                       name="facility_location" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[odometer_reading]"
                       name="odometer_reading" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
                       dataType="numeric"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[labor_hours]"
                       name="labor_hours"
                       precision="6"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[total_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[total_cost]"
                       dataType="numeric"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[total_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[total_cost]"
                       name="total_cost"
                       precision="14"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
                       dataType="numeric"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[labor_cost]"
                       name="labor_cost"
                       precision="12"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
                       dataType="numeric"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[parts_cost]"
                       name="parts_cost"
                       precision="12"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
                       dataType="numeric"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[downtime_hours]"
                       name="downtime_hours"
                       precision="8"
                       scale="2" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1459,11 +1459,11 @@ WHERE maintenance_date &gt; ?;</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact"
+              refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
               componentClassID="Microsoft.RowCount"
               contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="RC_Count_Fact">
+              name="CNT_Rows_Inserted">
               <properties>
                 <property
                   dataType="System.String"
@@ -1472,7 +1472,7 @@ WHERE maintenance_date &gt; ?;</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact.Inputs[Row Count Input 1]"
+                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
                   hasSideEffects="true"
                   name="Row Count Input 1">
                   <externalMetadataColumns />
@@ -1480,9 +1480,9 @@ WHERE maintenance_date &gt; ?;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact.Outputs[Row Count Output 1]"
+                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Outputs[Row Count Output 1]"
                   name="Row Count Output 1"
-                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact.Inputs[Row Count Input 1]">
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -1504,7 +1504,7 @@ WHERE maintenance_date &gt; ?;</property>
                       refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[maintenance_date]"
                       cachedDataType="dbDate"
                       cachedName="maintenance_date"
-                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1524,7 +1524,7 @@ WHERE maintenance_date &gt; ?;</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output].Columns[maintenance_date]} &gt; @[User::vLastLoadDate]</property>
+                      name="Expression">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]} &gt; @[User::vLastLoadDate]</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -1585,7 +1585,7 @@ WHERE maintenance_date &gt; ?;</property>
               startId="Package\DFT_Load_Fact_Maintenance\DER_Calculations.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output1]"
-              endId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact.Inputs[Row Count Input 1]"
+              endId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
               name="Derived Column Output"
               startId="Package\DFT_Load_Fact_Maintenance\DER_Default_Keys.Outputs[Derived Column Output]" />
             <path
@@ -1612,12 +1612,12 @@ WHERE maintenance_date &gt; ?;</property>
               refId="Package\DFT_Load_Fact_Maintenance.Paths[OLE DB Source Output]"
               endId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DFT_Load_Fact_Maintenance.Paths[Row Count Output 1]"
               endId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance.Inputs[OLE DB Destination Input]"
               name="Row Count Output 1"
-              startId="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact.Outputs[Row Count Output 1]" />
+              startId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1636,7 +1636,7 @@ WHERE maintenance_date &gt; ?;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
-          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM Logistics_Staging.dbo.Stg_External_Maintenance),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;"
+          SQLTask:SqlStatementSource="SELECT ISNULL(last_load_date, '1900-01-01') AS last_load_date &#xA;FROM dbo.ETL_Metadata &#xA;WHERE table_name = 'Fact_Maintenance';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="0"
@@ -1797,11 +1797,11 @@ WHERE maintenance_date &gt; ?;</property>
           TopLeft="460.00000097922,265.835294015762" />
         <NodeLayout
           Size="184,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta"
+          Id="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance"
           TopLeft="40.714285800956,100.941176382109" />
         <NodeLayout
           Size="150.4,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\RC_Count_Fact"
+          Id="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
           TopLeft="30.0000000638621,270.329411763366" />
         <NodeLayout
           Size="187.2,41.6"
@@ -2047,7 +2047,7 @@ WHERE maintenance_date &gt; ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Maint_Delta">
+    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
