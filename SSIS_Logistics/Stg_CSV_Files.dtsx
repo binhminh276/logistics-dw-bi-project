@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_CSV_Files"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{FBA6F292-DEA9-4DB5-ADDF-1AFB3252FCCA}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{22B3C01D-567A-4C20-A5ED-D6C76EA5DC58}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\delivery_events.csv">
+          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\delivery_events.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -41,7 +41,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="event_id"
-              DTS:DTSID="{35161AE7-293F-47CF-BAEF-9893C8491E56}"
+              DTS:DTSID="{5A4303CF-1626-47B9-B188-24E4F32EA0A6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -50,7 +50,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="load_id"
-              DTS:DTSID="{76D3561D-338F-44C6-A94D-7964EC4F675B}"
+              DTS:DTSID="{48C5AEF8-52B8-46D5-8BD0-DBCD1DE449BD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -59,7 +59,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="trip_id"
-              DTS:DTSID="{F5E926C9-4DAA-45F0-BA90-66C990F9FDDA}"
+              DTS:DTSID="{DC68B27A-D7D7-4BAE-87DA-6C0F220455A4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -68,7 +68,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="event_type"
-              DTS:DTSID="{FD2C8744-93BA-45B5-9570-788367C87476}"
+              DTS:DTSID="{B23B381C-0940-4172-87DC-2C8AA09CA1B7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +77,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_id"
-              DTS:DTSID="{57172694-15F3-4288-9C00-4B5DE8DE4C5C}"
+              DTS:DTSID="{2A76C0AF-5F3C-4225-9C41-AC0B8C7E7B99}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -86,7 +86,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="scheduled_datetime"
-              DTS:DTSID="{AB83A503-22A0-4360-8DD3-ECEFA071EEE8}"
+              DTS:DTSID="{964A221A-B4AB-473D-B3FF-FA3AB1BCDAF2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -95,7 +95,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="actual_datetime"
-              DTS:DTSID="{A80FB2CE-AEF6-4A50-9054-99BF575B60AA}"
+              DTS:DTSID="{F436A5C2-144A-4860-81C5-5A4F3C483F2B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -104,7 +104,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="detention_minutes"
-              DTS:DTSID="{1ABC1F25-F8C7-4E4E-A719-D69D7288A587}"
+              DTS:DTSID="{1120DC35-98B3-45F9-8AD4-E0DB9CD682AA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +113,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="on_time_flag"
-              DTS:DTSID="{0647DCBA-030C-4E8D-A69C-1058D0E07E34}"
+              DTS:DTSID="{F0DBC079-E0AD-4A3F-9F2C-67EAF3B3A5E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +122,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="location_city"
-              DTS:DTSID="{646D523A-DACC-4D44-8799-AE508ABAE43D}"
+              DTS:DTSID="{E17D3B93-2234-479C-9E29-A88B198C1F08}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -131,7 +131,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="location_state"
-              DTS:DTSID="{F11E1B4C-FF45-4756-86DB-6DC960A7CC45}"
+              DTS:DTSID="{D17367EC-3A8F-43D7-B029-A17DFFC945C1}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -153,7 +153,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\facilities.csv">
+          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\facilities.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -162,7 +162,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_id"
-              DTS:DTSID="{D2B85192-41D4-4A27-91E5-F3F65005F9F3}"
+              DTS:DTSID="{3C97A385-CBE6-4ED7-96C9-C4E0E7FBFA4E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -171,7 +171,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_name"
-              DTS:DTSID="{75DB2998-01C0-48D0-B5B4-B5CB94344F7A}"
+              DTS:DTSID="{8FB1E1ED-44F5-4261-913B-C0940A526DF6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -180,7 +180,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_type"
-              DTS:DTSID="{7EA3C36D-D4C5-41D0-9FD6-9D14277E99DD}"
+              DTS:DTSID="{2749BB64-D323-4D27-B374-0688F4F56F6D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -189,7 +189,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{7224FB86-4357-450B-8D11-F8000DEFAA4C}"
+              DTS:DTSID="{490AEC0A-E8FF-48D7-9A0D-60A704E2AD57}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -198,7 +198,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{22B939B9-7931-49FC-A8DB-3FB861233A02}"
+              DTS:DTSID="{73283655-294A-45A3-A502-B8559E458046}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -207,7 +207,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="latitude"
-              DTS:DTSID="{CF0C5BA2-05E4-4981-9056-465F09077E8E}"
+              DTS:DTSID="{7C5C0C19-93FB-4491-841A-596F80D18C1A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -216,7 +216,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="longitude"
-              DTS:DTSID="{59B67A7E-207A-43A4-B477-123FF43F3AD6}"
+              DTS:DTSID="{5745210C-D33C-4E65-8820-D424152354AA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -225,7 +225,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="dock_doors"
-              DTS:DTSID="{62CE6956-0BF5-45BF-8217-BCA07D25F8CE}"
+              DTS:DTSID="{1B71F57F-F1BC-4D72-8BC1-1106F6232388}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -234,7 +234,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="operating_hours"
-              DTS:DTSID="{33C8B5DE-BA72-4FC1-848A-418E141FD445}"
+              DTS:DTSID="{62AE9802-8E5E-491B-9A97-174B6B4CDF8A}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -256,7 +256,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\maintenance_records.csv">
+          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\maintenance_records.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -265,7 +265,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_id"
-              DTS:DTSID="{8A78BB4E-50DE-45A6-92BF-BA82141F5BFD}"
+              DTS:DTSID="{17B9E107-0F58-4D04-B40F-EC392EFDAE8A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -274,7 +274,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="truck_id"
-              DTS:DTSID="{7C0FDAA7-F30B-4E37-8C05-C3D40C51168D}"
+              DTS:DTSID="{98900A2A-7607-46D4-A285-DD1F29FD4C4B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -283,7 +283,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_date"
-              DTS:DTSID="{3639F86A-2AF9-4EE4-98ED-4C388B223650}"
+              DTS:DTSID="{1F619D2D-A8E4-4997-BF42-C15E9ED30538}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -292,7 +292,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_type"
-              DTS:DTSID="{1DA18EC1-9549-4F81-A72A-2CEE094F6004}"
+              DTS:DTSID="{98405D4D-4513-429F-9133-64B53241449E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -301,7 +301,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="odometer_reading"
-              DTS:DTSID="{0E7211DE-BED4-445B-AC86-2D140EE98C78}"
+              DTS:DTSID="{641350FD-8CF7-47DB-A902-63445BC4B616}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -310,7 +310,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_hours"
-              DTS:DTSID="{5D9138C9-AE30-4C15-BCA7-5A85F5E4F4EF}"
+              DTS:DTSID="{B557CA9A-2844-434C-A470-460FC33E55A7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -319,7 +319,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_cost"
-              DTS:DTSID="{74C58A86-5A89-437D-BF73-C1E6A9A22C4E}"
+              DTS:DTSID="{42BF4C3F-041D-4D4E-A596-7C37D3ADAB20}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -328,7 +328,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="parts_cost"
-              DTS:DTSID="{79373FC6-5DA4-40BB-B010-CBB0C7AE9F06}"
+              DTS:DTSID="{C950393F-B4A0-4EDD-BAF4-2996C7737D3B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -337,7 +337,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="total_cost"
-              DTS:DTSID="{7B57021A-AE9E-491C-9D7E-B5CBF734BDF8}"
+              DTS:DTSID="{B1DA1941-2A24-4A1C-96A8-27F685D39684}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -346,7 +346,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_location"
-              DTS:DTSID="{D363B2FE-E656-49C6-A81E-8BEC66236EBD}"
+              DTS:DTSID="{7BEE5431-B110-472E-97C0-95B0A03437C3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -355,7 +355,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="downtime_hours"
-              DTS:DTSID="{922F7010-02DF-4FFA-BF17-39430976437F}"
+              DTS:DTSID="{4B54E44C-C9CD-4614-BF29-7BE24DF90B87}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -364,7 +364,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="service_description"
-              DTS:DTSID="{05C32580-DC53-468B-BE50-D314B92B7508}"
+              DTS:DTSID="{9D42E5A6-98F8-49CE-9C5E-36B908D090DE}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -386,7 +386,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\routes.csv">
+          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\routes.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -395,7 +395,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="route_id"
-              DTS:DTSID="{65494C24-5B31-4BA3-B396-EBC7440E3018}"
+              DTS:DTSID="{61E70227-46E7-43DF-B37C-DA1121C11C21}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -404,7 +404,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="origin_city"
-              DTS:DTSID="{455BD75C-4ABB-4289-819E-43A803B443DC}"
+              DTS:DTSID="{8743C458-CA3F-43B9-9011-C66D6831CC2A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -413,7 +413,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="origin_state"
-              DTS:DTSID="{4F48E37E-D707-4F28-889C-390B89F6E034}"
+              DTS:DTSID="{B5AC7160-C9AA-4505-AAD2-B314FB630BA5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -422,7 +422,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="destination_city"
-              DTS:DTSID="{A1C254AD-0E8D-4CB4-9A73-D8E918227A84}"
+              DTS:DTSID="{CA03BADF-FB61-4FB0-8800-2106747A2E64}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -431,7 +431,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="destination_state"
-              DTS:DTSID="{ECCCD993-AE82-430F-A4DF-1D1BB1283EF5}"
+              DTS:DTSID="{D9C50F40-4C08-413D-A763-9929C2F9F462}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -440,7 +440,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="typical_distance_miles"
-              DTS:DTSID="{751229D3-E96A-4474-A144-C257010781B7}"
+              DTS:DTSID="{6E04492C-2202-4DD1-AFDF-34BA389BA228}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -449,7 +449,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="base_rate_per_mile"
-              DTS:DTSID="{739E5440-4669-4874-BD30-042A0303FAE7}"
+              DTS:DTSID="{1660F4A0-2AC0-44BE-8171-F7AA5612ED00}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -458,7 +458,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="fuel_surcharge_rate"
-              DTS:DTSID="{03A9F46A-FF23-41E2-BA6F-210BA106EE0C}"
+              DTS:DTSID="{BC1E7134-158F-4C60-9502-E7B8CB1D137D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -467,7 +467,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="typical_transit_days"
-              DTS:DTSID="{429B6B97-2F73-49DE-8BF1-D3B3525A5000}"
+              DTS:DTSID="{F09F952D-4247-4F84-B439-3B00F1A4BF26}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -3036,33 +3036,29 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT_Stage_Facilities">
+    design-time-name="Package\DFT_Stage_Delivery_Events">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="224,41.6"
-          Id="55"
-          TopLeft="170.999997451901,212.999996826053" />
+          Size="NaN,NaN"
+          Id="Package\DFT_Stage_Delivery_Events\OLE_DST_Stg_Delivery_Events"
+          TopLeft="NaN,NaN" />
         <NodeLayout
-          Size="207.2,41.6"
-          Id="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
-          TopLeft="177.999997347593,84.9999987334013" />
+          Size="NaN,NaN"
+          Id="Package\DFT_Stage_Delivery_Events\FLAT_SRC_Delivery_Events"
+          TopLeft="NaN,NaN" />
         <EdgeLayout
-          Id="94"
-          TopLeft="282.299997399747,126.599998733401">
+          Id="Package\DFT_Stage_Delivery_Events.Paths[Flat File Source Output]"
+          TopLeft="NaN,NaN">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,86.3999980926514"
+              EndConnector="{assembly:Null}"
               Start="0,0"
-              End="0,78.8999980926514">
+              End="0,0">
               <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,78.8999980926514" />
-                </mssgle:SegmentCollection>
+                <assembly:Null />
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
@@ -3076,10 +3072,48 @@
     </LayoutInfo>
   </TaskHost>
   <TaskHost
-    design-time-name="Package\DFT_Stage_Maintenance">
+    design-time-name="Package\DFT_Stage_Facilities">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\DFT_Stage_Facilities\OLE_DST_Stg_Facilities"
+          TopLeft="14.3,107.1" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\DFT_Stage_Facilities\FLAT_SRC_Facilities"
+          TopLeft="5.50000000000001,5.50000000000007" />
+        <EdgeLayout
+          Id="Package\DFT_Stage_Facilities.Paths[Flat File Source Output]"
+          TopLeft="109.1,47.1000000000001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Stage_Maintenance">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="261.6,41.6"
           Id="Package\DFT_Stage_Maintenance\OLE_DST_Stg_Conn_Flat_Maintenance"
@@ -3107,7 +3141,45 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Stage_Routes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package\DFT_Stage_Routes\OLE_DST_Stg_Routes"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package\DFT_Stage_Routes\FLAT_SRC_Routes"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package\DFT_Stage_Routes.Paths[Flat File Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

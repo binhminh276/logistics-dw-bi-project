@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{CCBCFC0B-F99B-4311-A1B0-AB70FFBD0D68}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{54EA113D-226B-405D-B64C-B490A61A0D39}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1658,7 +1658,7 @@ WHERE maintenance_date &gt; ?;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
-          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM dbo.Stg_External_Maintenance),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata &#xA;SET last_load_date = (SELECT ISNULL(MAX(maintenance_date), GETDATE()) FROM dbo.Stg_External_Maintenance),&#xA;    rows_inserted = ?, &#xA;    execution_status = 'SUCCESS', &#xA;    updated_at = GETDATE() &#xA;WHERE table_name = 'Fact_Maintenance';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
             SQLTask:DtsVariableName="User::vRowsInserted"
@@ -1842,7 +1842,9 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1864,7 +1866,9 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1982,7 +1986,9 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2004,7 +2010,9 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -1,0 +1,201 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="acae2309-3810-44c0-a4d6-1f823c4eee15" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim_Truck</ID>
+  <Name>Dim_Truck</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="3409fe9d-33a0-4a30-810d-3003ccc5c518">
+    <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="95780989-0ff1-42b0-a304-c93f60ae391b">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="f1ed2bc8-27b5-42bd-b0f3-eb8067ad2587">
+      <ID>Truck Key</ID>
+      <Name>Truck Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5895bd5f-060c-4c3d-b7d1-0d12645a6bf8">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="81ceeb7e-4762-4039-b4f1-1496bee232d9">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>truck_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="f750f7c4-b456-4b77-a2d0-527ff846a1c9">
+          <AttributeID>Truck Id</AttributeID>
+          <Name>Truck Id</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6bebfef2-42e8-4cc7-b9ff-b3fb5665467e">
+          <AttributeID>Unit Number</AttributeID>
+          <Name>Unit Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f152065f-7098-48c9-8e87-f997d3a45283">
+          <AttributeID>Make</AttributeID>
+          <Name>Make</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4d36e329-2bab-4fb5-b716-f5ffd74cf955">
+          <AttributeID>Model Year</AttributeID>
+          <Name>Model Year</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="677ba4ee-b031-42a8-9921-00c9bf6a890b">
+          <AttributeID>Status</AttributeID>
+          <Name>Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b3ab37e2-efe5-4d7d-a3a7-f0129c3fee6c">
+          <AttributeID>Home Terminal</AttributeID>
+          <Name>Home Terminal</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dc03220c-968f-4240-b0a4-c7fc899cef9d">
+      <ID>Truck Id</ID>
+      <Name>Truck Id</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="424d6885-6396-4a21-8358-f2046fd3d705">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ff255efa-a61d-44bc-809e-b234f6174cdd">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>truck_id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a6bd7a9b-7ee4-474e-95b6-a597b968a8dc">
+      <ID>Unit Number</ID>
+      <Name>Unit Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5293a905-dabe-43f2-b4e7-62cbab862133">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="df3520eb-17d2-421d-aa8d-12e1269dd759">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>unit_number</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2dc3e4b5-8f4d-4f1b-97c9-06eebe03ef4c">
+      <ID>Make</ID>
+      <Name>Make</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="76f0caa0-9f1b-426a-8cf1-8941f7fe425d">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="dbdea9af-0cb8-4bba-add1-846065eeafff">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>make</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="21b8e38d-269d-4ad7-ae49-ebdd1eeefe27">
+      <ID>Model Year</ID>
+      <Name>Model Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="154ef73e-5425-42fe-9432-50bc0c21ce13">
+          <DataType>SmallInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0a3cfdea-6cc2-432f-94de-e0747b08258c">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>model_year</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="536d723f-dc7f-4086-b6b6-fd4cb80be5a2">
+      <ID>Status</ID>
+      <Name>Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="508e2ee8-4275-4997-862f-ef557a9e38c6">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2bade814-594e-49e0-8f88-3f2961c5016a">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>status</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f8ee0ed0-f2b7-4938-be4d-d287c830e4df">
+      <ID>Home Terminal</ID>
+      <Name>Home Terminal</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ab095470-f5b7-48c5-9ede-72199584bc5c">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f80ebca3-8738-4b84-9e8b-4992bd76f8fa">
+            <TableID>dbo_Dim_Truck</TableID>
+            <ColumnID>home_terminal</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

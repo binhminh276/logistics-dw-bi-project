@@ -1,0 +1,181 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a01654d2-758d-49b4-b080-33a646b73751" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dim_Trailer</ID>
+  <Name>Dim_Trailer</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="89982107-7f91-4689-96c4-52b28cf21267">
+    <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="0799d92e-7f93-4f98-bcd3-a1b7fbb9fa56">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="d77df8b4-0bfe-4b66-b7ae-dab7e7788b16">
+      <ID>Trailer Key</ID>
+      <Name>Trailer Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="14640735-5d90-4072-98da-a5f93e3657a3">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8d1b4d86-3c6f-4d70-9897-b3def1f44c57">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>trailer_key</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="0f291c51-8b02-4d33-badf-90ba29bcd182">
+          <AttributeID>Trailer Id</AttributeID>
+          <Name>Trailer Id</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b287c9ed-f209-464d-a829-55fd4d0acefc">
+          <AttributeID>Trailer Number</AttributeID>
+          <Name>Trailer Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="14cec005-fd75-4e79-9e38-1d995218e71b">
+          <AttributeID>Trailer Type</AttributeID>
+          <Name>Trailer Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4622d243-7287-479b-9972-dfde48a89740">
+          <AttributeID>Status</AttributeID>
+          <Name>Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="76c6f8b0-3a30-4c39-9b3e-86bdb872a5cc">
+          <AttributeID>Current Location</AttributeID>
+          <Name>Current Location</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="80bdf8e4-8799-423b-98c8-f76e1b493839">
+      <ID>Trailer Id</ID>
+      <Name>Trailer Id</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bacf03ab-e6b0-49ab-bb97-5f82d104cfec">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9b155112-2fce-43a7-9cab-45421f5b9ded">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>trailer_id</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="03397725-9b56-4a2d-ac8c-022f3d0512c4">
+      <ID>Trailer Number</ID>
+      <Name>Trailer Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="97eaaa3d-67a3-41c8-b40d-f18d5cd50d84">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3c38773e-4abf-434d-8a64-c8f18c32367e">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>trailer_number</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a3f5402e-9ba2-4729-a96a-fe6a43cf6b96">
+      <ID>Trailer Type</ID>
+      <Name>Trailer Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="781f3bf1-720c-4a6d-83a0-fafbdf83c52c">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cd9e4d4e-34d8-473b-8d97-fe15c5771e01">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>trailer_type</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c37296c8-527b-41c1-8e73-42734a5aa9ca">
+      <ID>Status</ID>
+      <Name>Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5ae0a993-e19c-41a9-abab-c8e8c1ff6f47">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="113e0d75-1a8e-4d0a-9743-5c84e9ba483a">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>status</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dae01205-7ced-4cbc-b0f7-dc21aa2973c1">
+      <ID>Current Location</ID>
+      <Name>Current Location</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f01eee02-d1c2-4483-9c11-c6fe4d1ede33">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a9ba6e3c-2b9f-4144-a80b-6e9100371e8c">
+            <TableID>dbo_Dim_Trailer</TableID>
+            <ColumnID>current_location</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
