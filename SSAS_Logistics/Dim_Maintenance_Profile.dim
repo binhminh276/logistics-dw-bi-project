@@ -1,4 +1,4 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="6c4afefb-d87f-4f0c-8293-f9776b4bd758" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="ea5e6349-6f16-4117-9399-f4797a9ab7b8" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Dim_Maintenance_Profile</ID>
   <Name>Dim_Maintenance_Profile</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -6,6 +6,32 @@
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1483" scrolltop="-6827" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7430" y="15600" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_Maintenance_Profile" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4424" height="1947" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000e0000481100009b070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dbo_Dim_Maintenance_Profile" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
@@ -21,15 +47,15 @@
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
-      <Value>0</Value>
+      <Value>-1483</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
-      <Value>0</Value>
+      <Value>-6827</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
-      <Value>0</Value>
+      <Value>20</Value>
     </Annotation>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
@@ -42,35 +68,35 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="59ad83e2-24d6-44ff-81df-40598b85833d">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="722587e1-704d-487c-99e2-922f4eb05caf">
     <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
   </Source>
-  <ErrorConfiguration dwd:design-time-name="2ecf01c4-a68c-4448-a5d5-c47067207ba2">
-    <KeyNotFound>ReportAndStop</KeyNotFound>
-    <KeyDuplicate>ReportAndStop</KeyDuplicate>
-    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="0d2123af-b98e-4bdd-aa43-770efc182b9e">
+    <KeyNotFound>IgnoreError</KeyNotFound>
+    <NullKeyNotAllowed>IgnoreError</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="8a814fc8-9e65-4c14-8f34-6f6ff02a6d8d">
+    <Attribute dwd:design-time-name="abea4219-a923-4321-acb0-171a8989443c">
       <ID>Maintenance Profile Key</ID>
       <Name>Maintenance Profile Key</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="f6f83251-db4a-4470-9289-f20262ef312d">
+        <KeyColumn dwd:design-time-name="493a7939-0fc7-4668-8505-22a099bf84ad">
           <DataType>SmallInt</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="223c930e-a447-4644-9cc5-9eb2ca1fb68a">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bf411e5b-a686-4a80-aab2-d197837ba6bb">
             <TableID>dbo_Dim_Maintenance_Profile</TableID>
             <ColumnID>maintenance_profile_key</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="45b19fda-2bd3-4b1d-8364-13a5792454ff">
+        <AttributeRelationship dwd:design-time-name="fc73ade1-e804-40fc-9973-333bdcf9c501">
           <AttributeID>Maintenance Type</AttributeID>
           <Name>Maintenance Type</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="06980a1a-1819-4305-b290-7a86a0cedffd">
+        <AttributeRelationship dwd:design-time-name="9f0b5e39-c5ab-486d-a0ac-0081323bc173">
           <AttributeID>Service Urgency</AttributeID>
           <Name>Service Urgency</Name>
         </AttributeRelationship>
@@ -79,14 +105,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="d05502bc-c4ce-4ec1-a831-9929c10b7173">
+    <Attribute dwd:design-time-name="d7fd3961-1f4b-45f4-bce4-f587591ca4fe">
       <ID>Maintenance Type</ID>
       <Name>Maintenance Type</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="f77788b7-58e8-477d-b597-efcf378089f7">
+        <KeyColumn dwd:design-time-name="79e9fa94-6488-41fd-af47-358d16eceb17">
           <DataType>WChar</DataType>
           <DataSize>50</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="d062bf73-7726-4643-8db4-5895c0c5c1a9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b30de651-e6c9-4a26-94bb-f2221be96b97">
             <TableID>dbo_Dim_Maintenance_Profile</TableID>
             <ColumnID>maintenance_type</ColumnID>
           </Source>
@@ -96,14 +122,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="6f8e6271-817e-421f-bd9c-b93adc6c8be3">
+    <Attribute dwd:design-time-name="da58abfb-06e7-4233-afe0-40870adaeed9">
       <ID>Service Urgency</ID>
       <Name>Service Urgency</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="9e5eeabf-851b-4f0e-a768-18338654ac69">
+        <KeyColumn dwd:design-time-name="e5274f6c-5a1e-4cb0-aa20-2d21ff807ec5">
           <DataType>WChar</DataType>
           <DataSize>30</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="cfbc931e-8904-413e-a7d5-e5fdd1ba86e9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2d6f3c48-f6c2-4985-b382-426d745fe8f8">
             <TableID>dbo_Dim_Maintenance_Profile</TableID>
             <ColumnID>service_urgency</ColumnID>
           </Source>

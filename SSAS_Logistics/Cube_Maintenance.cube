@@ -1,0 +1,287 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="7374f4e8-26ba-4a67-913b-d6ce5b8fd43f" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Cube_Maintenance</ID>
+  <Name>Cube_Maintenance</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="4bfaae5c-afd7-4758-864c-fcbb1a7aca06">
+      <ID>Dim_Maintenance_Profile</ID>
+      <Name>Dim_Maintenance_Profile</Name>
+      <DimensionID>Dim_Maintenance_Profile</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="5670ee2d-6255-4182-b6c8-1e5765140315">
+          <AttributeID>Maintenance Profile Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="35ed7dae-f675-402c-8eac-12a112d68321">
+          <AttributeID>Maintenance Type</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="35084915-ca87-412d-8ffb-aa75fff8f729">
+          <AttributeID>Service Urgency</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="348d2527-6ffc-475c-938e-bb80e2332975">
+      <ID>Dim_Truck</ID>
+      <Name>Dim_Truck</Name>
+      <DimensionID>Dim_Truck</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="17c4c8ab-ecff-45c3-b507-b003e4059eee">
+          <AttributeID>Truck Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9dca095d-ae7d-4ac9-b7a6-90c243ce06e1">
+          <AttributeID>Truck Id</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="b7088ac3-0fef-4f0c-999f-bac9eef4ddec">
+          <AttributeID>Unit Number</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="99993416-c309-431a-b559-de76e0604b14">
+          <AttributeID>Make</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9dd8fb66-593b-48b2-8bcc-c008c25be3fb">
+          <AttributeID>Model Year</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="e4c25c09-c958-4cb9-ab5d-8f31b4670f4e">
+          <AttributeID>Status</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="76f914b5-96f5-42c3-ae3d-a5b9be00a7a9">
+          <AttributeID>Home Terminal</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="cea55443-1bf6-4a09-b3c5-81fed989bf95">
+      <ID>Dim_Date</ID>
+      <Name>Dim_Date</Name>
+      <DimensionID>Dim_Date</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="ef14ae0d-9cfc-4a8b-ac62-c84e238e2927">
+          <AttributeID>Date Key</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="4cd2982f-27ec-4143-abd9-a3ca12cc3db7">
+          <AttributeID>Month Name</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="fc8391e4-5469-4632-b037-922be02cf2b1">
+          <AttributeID>Calendar Quarter</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="2e2e6421-b554-4f5c-ba42-0c14f3f200c1">
+          <AttributeID>Calendar Year</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="4c16f7f9-e48b-46d9-8172-68d3a6afe130">
+          <AttributeID>Fiscal Quarter</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="49542812-952e-4c5a-afec-86386b8095fc">
+          <AttributeID>Fiscal Year</AttributeID>
+        </Attribute>
+      </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="29b63af3-0db2-4171-bfa8-d8d8fbd7bcbe">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+        <Hierarchy dwd:design-time-name="4236902b-3841-4071-a24a-9ee4663406fa">
+          <HierarchyID>Hierarchy 1</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="b298841d-b477-4bd1-8874-22704343ee91">
+      <ID>Fact Maintenance</ID>
+      <Name>Fact Maintenance</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="757f285e-9e53-4f78-b144-62ca81a2511c">
+          <ID>Odometer Reading</ID>
+          <Name>Odometer Reading</Name>
+          <Source dwd:design-time-name="1814f0ab-49ca-4265-a5bf-2c87ee5ef057">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="e085f86f-8b6d-4049-9548-97e36bf126cb">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>odometer_reading</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="6de23a8a-2a66-4658-8059-27fb4b69d513">
+          <ID>Labor Hours</ID>
+          <Name>Labor Hours</Name>
+          <Source dwd:design-time-name="78ea70d6-fa9f-4602-b50c-8a5f9acfc721">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="31ee424e-671a-4b83-ba94-b222ef77c332">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>labor_hours</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="d6c70e9f-6165-475d-a4b3-325eb506ab0d">
+          <ID>Labor Cost</ID>
+          <Name>Labor Cost</Name>
+          <Source dwd:design-time-name="6df256ce-3b5c-4f1f-b85c-6783ac9d69e5">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="8dc4d0b1-98e6-4bdb-9fb8-8b052ad16f71">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>labor_cost</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="aa060af4-88e4-4969-805c-589e1913e221">
+          <ID>Parts Cost</ID>
+          <Name>Parts Cost</Name>
+          <Source dwd:design-time-name="98cb640c-19b9-4bc6-9b63-4f9b3dde97ff">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="29fb83bc-0406-465a-8916-29bf889f969b">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>parts_cost</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="244383bf-210c-4e29-a133-3fcb7afc2395">
+          <ID>Total Maintenance Cost</ID>
+          <Name>Total Maintenance Cost</Name>
+          <Source dwd:design-time-name="c0cccc91-6092-49f8-a8b6-89062eef0c59">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="e86f1962-5e14-41e4-b0fc-5b99cdd3460a">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>total_maintenance_cost</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="ccb85a20-5928-4ec1-a4ec-4e2f42cb35f4">
+          <ID>Downtime Hours</ID>
+          <Name>Downtime Hours</Name>
+          <Source dwd:design-time-name="05a31946-e463-4613-981b-a38008b42092">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="25eb3853-42c7-4d94-aab4-9e5c36776faf">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>downtime_hours</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="9bb763dd-b27d-4283-b53e-23e57df415a3">
+          <ID>Maintenance Count</ID>
+          <Name>Maintenance Count</Name>
+          <Source dwd:design-time-name="d5ce1321-2641-4b5d-be5f-61b573399909">
+            <DataType>Integer</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d1989390-b002-4bf1-bc66-b27515512322">
+              <TableID>dbo_Fact_Maintenance</TableID>
+              <ColumnID>maintenance_count</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="7b264c18-6449-4f83-9494-2160cb81df4a">
+          <ID>Fact Maintenance Count</ID>
+          <Name>Fact Maintenance Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="02d4a5b6-2d42-4971-a3b4-059775e37ce4">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="6b7b0624-9202-4648-a3a9-3b3f97448c32">
+              <TableID>dbo_Fact_Maintenance</TableID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e148d75c-c112-43e4-b311-ed74e90090fd">
+          <CubeDimensionID>Dim_Maintenance_Profile</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="f95bf4db-2bce-4176-80e4-19ac9737f12f">
+              <AttributeID>Maintenance Profile Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="a8dbbb41-5f70-43d2-91ba-ee5d573d368a">
+                  <DataType>SmallInt</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="6b31027f-745f-44a6-a54a-7f722b4a785b">
+                    <TableID>dbo_Fact_Maintenance</TableID>
+                    <ColumnID>maintenance_profile_key</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="4c5c113b-8518-432a-9730-2f917c091387">
+          <CubeDimensionID>Dim_Truck</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="fbe31abe-b826-4074-b6be-88fdfb31e271">
+              <AttributeID>Truck Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="291bae85-85c8-48e2-bc16-16ebf43e6e91">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="df3f2ccb-c8ea-4d1d-9250-2f6c73d6c85a">
+                    <TableID>dbo_Fact_Maintenance</TableID>
+                    <ColumnID>truck_key</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="046dc468-3aa6-4899-8d94-387eaa7b0ecc">
+          <CubeDimensionID>Dim_Date</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="44dfa23d-9bcf-4ad0-afbc-f14f4e0a72a2">
+              <AttributeID>Date Key</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="f0f2c34a-1dfb-49fe-96a0-2b8cc151738d">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="a2832156-a6e6-43ba-bb96-9ac30d8a3d84">
+                    <TableID>dbo_Fact_Maintenance</TableID>
+                    <ColumnID>maintenance_date_key</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="2367d5ee-ab44-49ea-8931-bd5e9490341b">
+    <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
+  </Source>
+</Cube>

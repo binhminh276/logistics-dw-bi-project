@@ -8,12 +8,42 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>Cube_Logistics_Galaxy.cube</Name>
-      <FullPath>Cube_Logistics_Galaxy.cube</FullPath>
+      <Name>Cube_Commercial.cube</Name>
+      <FullPath>Cube_Commercial.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>Cube_Logistics_Galaxy.partitions</Name>
-          <FullPath>Cube_Logistics_Galaxy.partitions</FullPath>
+          <Name>Cube_Commercial.partitions</Name>
+          <FullPath>Cube_Commercial.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cube_Maintenance.cube</Name>
+      <FullPath>Cube_Maintenance.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Cube_Maintenance.partitions</Name>
+          <FullPath>Cube_Maintenance.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cube_Fleet_Operations.cube</Name>
+      <FullPath>Cube_Fleet_Operations.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Cube_Fleet_Operations.partitions</Name>
+          <FullPath>Cube_Fleet_Operations.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Cube_Fulfillment.cube</Name>
+      <FullPath>Cube_Fulfillment.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>Cube_Fulfillment.partitions</Name>
+          <FullPath>Cube_Fulfillment.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
