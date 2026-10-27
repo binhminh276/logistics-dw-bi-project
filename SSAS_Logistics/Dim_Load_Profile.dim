@@ -1,4 +1,4 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="beccd01f-ccfa-428d-9925-79e50bd7ebd4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8c0354b5-df27-4a03-a1a3-4f7ab5651028" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Dim_Load_Profile</ID>
   <Name>Dim_Load_Profile</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -8,9 +8,9 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2055" scrolltop="-6647" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7430" y="15600" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2055" scrolltop="-6647" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6392" y="6943" backcolor="16119285" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -68,55 +68,56 @@
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="fc999f97-4757-4c26-ac0a-ab1151b4f213">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="11a5b243-e910-4ab4-885a-98d158ffc24c">
     <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="d02602b9-79bc-4c8d-bf45-fc3c729f97fa">
+  <ErrorConfiguration dwd:design-time-name="26117c91-d109-4fc5-905c-056871e74860">
     <KeyNotFound>IgnoreError</KeyNotFound>
     <NullKeyNotAllowed>IgnoreError</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="47c5f7c3-ba29-48ab-850d-ac39e1ba8c38">
+    <Attribute dwd:design-time-name="1af17c44-f937-4058-9cb7-4b2a901bd368">
       <ID>Load Profile Key</ID>
       <Name>Load Profile Key</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="ed19f530-bf8f-484f-9c12-7a8e74c7ddb0">
+        <KeyColumn dwd:design-time-name="4b887815-f61c-481d-b4d1-063be0975e9f">
           <DataType>SmallInt</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="1f1ae3db-7a15-4675-b015-fdc4a312fcd5">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1a15f842-0c59-4c21-a26c-e1765cedfc04">
             <TableID>dbo_Dim_Load_Profile</TableID>
             <ColumnID>load_profile_key</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="bba90ce5-bae6-4c34-82b9-09cc2007def2">
+        <AttributeRelationship dwd:design-time-name="8f9fe15d-bdbe-4be4-b701-efbbab14ce6a">
           <AttributeID>Load Status</AttributeID>
           <Name>Load Status</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="2fb5acef-88fb-4b20-bd74-50d864edf92c">
+        <AttributeRelationship dwd:design-time-name="a5c1a308-f076-4b84-b114-65d8e7a7283e">
           <AttributeID>Booking Type</AttributeID>
           <Name>Booking Type</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="176b906e-94ea-4bdb-8e1c-d3a8eff16709">
+        <AttributeRelationship dwd:design-time-name="cdc91db0-06b0-436b-9303-5c7c411ed627">
           <AttributeID>Load Type</AttributeID>
           <Name>Load Type</Name>
         </AttributeRelationship>
       </AttributeRelationships>
       <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="bef6f9e6-4076-4926-988c-559f9981702b">
+    <Attribute dwd:design-time-name="06aba3a5-e7dc-46ea-942e-91734ee93885">
       <ID>Load Status</ID>
       <Name>Load Status</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="8ffd0055-40aa-4d2c-a876-3267578f46d2">
+        <KeyColumn dwd:design-time-name="d7a5e854-b905-46ea-94bc-abb0138c49ae">
           <DataType>WChar</DataType>
           <DataSize>30</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="4aad299e-e367-418b-b718-5e2da89a28c8">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1d061264-974b-403b-929f-d412b72e7922">
             <TableID>dbo_Dim_Load_Profile</TableID>
             <ColumnID>load_status</ColumnID>
           </Source>
@@ -126,14 +127,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="6b041297-a836-4d80-b7d3-f3ad18cca009">
+    <Attribute dwd:design-time-name="1038b5d8-9ade-47c7-9bac-bd24c88476da">
       <ID>Booking Type</ID>
       <Name>Booking Type</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="afdc271a-3b5b-4ca7-a38a-a976cdcfb6c5">
+        <KeyColumn dwd:design-time-name="3410b57d-3dc8-4a42-9612-251f771f5326">
           <DataType>WChar</DataType>
           <DataSize>30</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="2825c323-80b9-441e-8701-252e446b4724">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="15184344-9d02-47b5-ae47-cd28e15e31aa">
             <TableID>dbo_Dim_Load_Profile</TableID>
             <ColumnID>booking_type</ColumnID>
           </Source>
@@ -143,14 +144,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="5dede0ae-f2aa-4a60-83ae-80585bae6b42">
+    <Attribute dwd:design-time-name="bfc9a388-fade-425c-b91c-c5b951ce9175">
       <ID>Load Type</ID>
       <Name>Load Type</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="f59bf6ae-57c8-4bc7-9607-7b019f297bd6">
+        <KeyColumn dwd:design-time-name="71944ee5-8388-4407-8d94-78c45b631232">
           <DataType>WChar</DataType>
           <DataSize>30</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="c44d9052-91ec-442e-9975-25388bc146c0">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="81d555ad-6ac2-459c-b2fb-2768a9395be2">
             <TableID>dbo_Dim_Load_Profile</TableID>
             <ColumnID>load_type</ColumnID>
           </Source>
