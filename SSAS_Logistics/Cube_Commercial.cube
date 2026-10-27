@@ -508,4 +508,31 @@
   <Source dwd:design-time-name="ff62f317-b95a-4a3b-b20a-ea22f3763725">
     <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
   </Source>
+  <MdxScripts>
+    <MdxScript dwd:design-time-name="c16af90e-4094-41e7-b9e9-010b4d82593c">
+      <ID>MdxScript</ID>
+      <Name>MdxScript</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Commands>
+        <Command>
+          <Text>/*
+The CALCULATE command controls the aggregation of leaf cells in the cube.
+If the CALCULATE command is deleted or modified, the data within the cube is affected.
+You should edit this command only if you manually specify how the cube is aggregated.
+*/
+CALCULATE;
+CREATE MEMBER CURRENTCUBE.[Measures].[CM_Revenue_Per_Pound] AS
+IIF(
+    [Measures].[Weight Lbs] = 0,
+    0,
+    [Measures].[Total Revenue] / [Measures].[Weight Lbs]
+),
+FORMAT_STRING = "$#,##0.0000",
+ASSOCIATED_MEASURE_GROUP = 'Fact Load';
+</Text>
+        </Command>
+      </Commands>
+    </MdxScript>
+  </MdxScripts>
 </Cube>
