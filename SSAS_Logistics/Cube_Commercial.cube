@@ -69,7 +69,24 @@
         <Attribute dwd:design-time-name="22d6dc8d-4f6b-4f89-aae1-331cd1449a98">
           <AttributeID>Typical Distance Miles</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="6e3e9dfb-021e-411e-ba09-c55be85bbeac">
+          <AttributeID>Base Rate Per Mile</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="4eeebb93-6d20-4b0e-837d-94fa7ee7af34">
+          <AttributeID>Fuel Surcharge Rate</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="4f0e2f8c-3404-40de-8f20-d77359f8eafa">
+          <AttributeID>Typical Transit Days</AttributeID>
+        </Attribute>
       </Attributes>
+      <Hierarchies>
+        <Hierarchy dwd:design-time-name="be452b08-8247-4759-8c06-4d33aa8cc270">
+          <HierarchyID>Hierarchy</HierarchyID>
+        </Hierarchy>
+        <Hierarchy dwd:design-time-name="46e419a1-f7c0-487a-9cc2-f505d28237ba">
+          <HierarchyID>Hierarchy 1</HierarchyID>
+        </Hierarchy>
+      </Hierarchies>
     </Dimension>
     <Dimension dwd:design-time-name="68a6dc56-8d97-4aa9-aa5c-f65d0d78ff13">
       <ID>Dim_Customer</ID>
