@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{9CBE5B83-A531-44CA-A9EE-FE0368D6AFEF}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{C1C50806-8C83-43C6-8FE5-A25EBBDDC4B4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1933,13 +1933,17 @@ where [refTable].[route_id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="180,41.6"
+          Id="Package\DFT_Load_Fact_Load"
+          TopLeft="211.214286152197,163.029411626625" />
+        <NodeLayout
           Size="176.8,41.6"
           Id="Package\SQL_Get_Watermark"
           TopLeft="202.857143288972,68.0588234697556" />
         <NodeLayout
-          Size="180,41.6"
-          Id="Package\DFT_Load_Fact_Load"
-          TopLeft="211.214286152197,163.029411626625" />
+          Size="194.4,41.6"
+          Id="Package\SQL_Update_Watermark"
+          TopLeft="271.428572006372,246.235293901812" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="291.257143288972,109.658823469756">
@@ -1974,10 +1978,6 @@ where [refTable].[route_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194.4,41.6"
-          Id="Package\SQL_Update_Watermark"
-          TopLeft="271.428572006372,246.235293901812" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="301.214286152197,204.629411626625">
@@ -2025,47 +2025,89 @@ where [refTable].[route_id] = ?</property>
           Id="Package\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads"
           TopLeft="270.714286290565,87.1764705118217" />
         <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Date"
+          TopLeft="409.107143728025,391.111764590257" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Route"
+          TopLeft="685.178572887137,296.120588051466" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
+          TopLeft="346.428572166027,475.411764447819" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\DFT_Load_Fact_Load\DER_Calculations"
+          TopLeft="127.857143129317,277.588235050801" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Customer"
+          TopLeft="375.000000798276,302.482352730034" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\DFT_Load_Fact_Load\DER_Default_Keys"
+          TopLeft="92.8571430548113,393.279411504129" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted"
+          TopLeft="91.9642859100535,475.617646728704" />
+        <NodeLayout
+          Size="184,41.6"
+          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile"
+          TopLeft="674.821430007946,393.949999797739" />
+        <NodeLayout
           Size="187.2,41.6"
           Id="Package\DFT_Load_Fact_Load\SPL_Incremental_Filter"
           TopLeft="285.00000060669,178.941176313739" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
-          TopLeft="359.114286290565,128.776470511822">
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
+          TopLeft="764.400001447542,337.720588051466">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.4857143161249,50.1647058019176"
+              EndConnector="0,56.2294117462726"
               Start="0,0"
-              End="19.4857143161249,42.6647058019176">
+              End="0,48.7294117462726">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.0823529009588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.0823529009588"
-                    Point2="0,25.0823529009588"
-                    Point3="4,25.0823529009588" />
-                  <mssgle:LineSegment
-                    End="15.4857143161249,25.0823529009588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.4857143161249,25.0823529009588"
-                    Point2="19.4857143161249,25.0823529009588"
-                    Point3="19.4857143161249,29.0823529009588" />
-                  <mssgle:LineSegment
-                    End="19.4857143161249,42.6647058019176" />
+                    End="0,48.7294117462726" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.5600183731363,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\DFT_Load_Fact_Load\DER_Calculations"
-          TopLeft="127.857143129317,277.588235050801" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
+          TopLeft="546.200000798276,320.10147039075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.978572088861,0"
+              Start="0,0"
+              End="131.478572088861,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="131.478572088861,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="17.5478993256805,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_Load_Fact_Load.Paths[Incremental_Loads]"
           TopLeft="378.60000060669,220.541176313739">
@@ -2102,36 +2144,20 @@ where [refTable].[route_id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Customer"
-          TopLeft="375.000000798276,302.482352730034" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output]"
-          TopLeft="287.857143129317,298.388235050801">
+          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output1]"
+          TopLeft="177.410714482432,434.879411504129">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="87.1428576689593,24.894117679233"
+              EndConnector="0,40.7382352245746"
               Start="0,0"
-              End="79.6428576689593,24.894117679233">
+              End="0,33.2382352245746">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="39.5714288344797,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="39.5714288344797,0"
-                    Point2="43.5714288344797,0"
-                    Point3="43.5714288344797,4" />
-                  <mssgle:LineSegment
-                    End="43.5714288344797,20.894117679233" />
-                  <mssgle:CubicBezierSegment
-                    Point1="43.5714288344797,20.894117679233"
-                    Point2="43.5714288344797,24.894117679233"
-                    Point3="47.5714288344797,24.894117679233" />
-                  <mssgle:LineSegment
-                    End="79.6428576689593,24.894117679233" />
+                    End="0,33.2382352245746" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2140,94 +2166,96 @@ where [refTable].[route_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="153.6,41.6"
-          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Route"
-          TopLeft="685.178572887137,296.120588051466" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
-          TopLeft="546.200000798277,320.10147039075">
+          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output]"
+          TopLeft="287.857143129317,298.388235050801">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="138.97857208886,0"
+              EndConnector="87.142857668959,24.894117679233"
               Start="0,0"
-              End="131.47857208886,0">
+              End="79.642857668959,24.894117679233">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="131.47857208886,0" />
+                    End="39.5714288344795,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.5714288344795,0"
+                    Point2="43.5714288344795,0"
+                    Point3="43.5714288344795,4" />
+                  <mssgle:LineSegment
+                    End="43.5714288344795,20.894117679233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5714288344795,20.894117679233"
+                    Point2="43.5714288344795,24.894117679233"
+                    Point3="47.5714288344795,24.894117679233" />
+                  <mssgle:LineSegment
+                    End="79.642857668959,24.894117679233" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="17.5478993256802,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,41.6"
-          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile"
-          TopLeft="674.821430007946,393.949999797739" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
-          TopLeft="764.400001447542,337.720588051466">
+          Id="Package\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
+          TopLeft="266.364285910054,496.314705588261">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.2294117462726"
+              EndConnector="80.0642862559735,0"
               Start="0,0"
-              End="0,48.7294117462726">
+              End="72.5642862559735,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.7294117462726" />
+                    End="72.5642862559735,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.5600183731363,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="148,41.6"
-          Id="Package\DFT_Load_Fact_Load\LKP_Dim_Date"
-          TopLeft="409.107143728025,391.111764590257" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
-          TopLeft="674.821430007946,413.330882193998">
+          Id="Package\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
+          TopLeft="359.114286290565,128.776470511822">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-117.714286279921,0"
+              EndConnector="19.4857143161249,50.1647058019176"
               Start="0,0"
-              End="-110.214286279921,0">
+              End="19.4857143161249,42.6647058019176">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-110.214286279921,0" />
+                    End="0,21.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0823529009588"
+                    Point2="0,25.0823529009588"
+                    Point3="4,25.0823529009588" />
+                  <mssgle:LineSegment
+                    End="15.4857143161249,25.0823529009588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.4857143161249,25.0823529009588"
+                    Point2="19.4857143161249,25.0823529009588"
+                    Point3="19.4857143161249,29.0823529009588" />
+                  <mssgle:LineSegment
+                    End="19.4857143161249,42.6647058019176" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\DFT_Load_Fact_Load\DER_Default_Keys"
-          TopLeft="92.8571430548113,393.279411504129" />
         <EdgeLayout
           Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
           TopLeft="409.107143728025,412.995588047193">
@@ -2252,56 +2280,28 @@ where [refTable].[route_id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\DFT_Load_Fact_Load\CNT_Rows_Inserted"
-          TopLeft="91.9642859100535,475.617646728704" />
         <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Derived Column Output1]"
-          TopLeft="177.410714482432,434.879411504129">
+          Id="Package\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+          TopLeft="674.821430007946,413.330882193998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40.7382352245746"
+              EndConnector="-117.714286279921,0"
               Start="0,0"
-              End="0,33.2382352245746">
+              End="-110.214286279921,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.2382352245746" />
+                    End="-110.214286279921,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="176,41.6"
-          Id="Package\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
-          TopLeft="346.428572166027,475.411764447819" />
-        <EdgeLayout
-          Id="Package\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
-          TopLeft="266.364285910054,496.314705588261">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="80.0642862559735,0"
-              Start="0,0"
-              End="72.5642862559735,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="72.5642862559735,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2321,22 +2321,22 @@ where [refTable].[route_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Customer">
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Date">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Dim_Customer]</Value>
+          type="q3:string">[dbo].[Dim_Date]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2349,7 +2349,7 @@ where [refTable].[route_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2359,53 +2359,7 @@ where [refTable].[route_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Load_Profile]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Date">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Date]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2422,6 +2376,52 @@ where [refTable].[route_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Load\LKP_Dim_Load_Profile">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Load_Profile]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

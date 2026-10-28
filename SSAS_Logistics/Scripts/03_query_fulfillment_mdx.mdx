@@ -1,0 +1,8 @@
+SELECT 
+    { [Measures].[Total Fulfillment Count], [Measures].[Perfect Fulfillment Count] } ON COLUMNS,
+    TOPCOUNT(
+        [Dim_Customer].[Customer Name].Children,
+        5,
+        [Measures].[Perfect Fulfillment Count]
+    ) ON ROWS
+FROM [Cube_Fulfillment]

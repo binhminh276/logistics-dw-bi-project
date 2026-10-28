@@ -1,0 +1,10 @@
+SELECT 
+    { [Measures].[Fact Trip Count], [Measures].[Actual Duration Hours] } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Driver].[Full Name].Children * 
+        [Dim_Trailer].[Trailer Type].Children
+    ) ON ROWS
+FROM [Cube_Fleet_Operations]
+WHERE ([Dim_Date].[Calendar Year].&[2023])
+
+
