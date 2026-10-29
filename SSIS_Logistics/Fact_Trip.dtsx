@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Trip"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{449CE1D9-9DB4-4D46-8E7D-80CA7AA07168}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{7C7861E3-3994-451A-B67E-68867A7E664A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1823,29 +1823,29 @@ where [refTable].[truck_id] = ?</property>
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\DFT_Load_Fact_Trip"
-          TopLeft="32.1428572112809,253.117646836956" />
+          TopLeft="320.714286397002,70.3529411148033" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\SQL_Get_Watermark"
-          TopLeft="31.4285714954746,174.352941023643" />
+          TopLeft="30.7142857796684,72.647058759851" />
         <NodeLayout
           Size="194.4,41.6"
           Id="Package\SQL_Update_Watermark"
-          TopLeft="24.2857143374122,349.47058792897" />
+          TopLeft="589.285715540149,68.0588234697559" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="119.785714353378,215.952941023643">
+          TopLeft="207.514285779668,92.2999999373272">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37.1647058133126"
+              EndConnector="113.200000617334,0"
               Start="0,0"
-              End="0,29.6647058133126">
+              End="105.700000617334,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.6647058133126" />
+                    End="105.700000617334,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1856,18 +1856,18 @@ where [refTable].[truck_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="120.614285774347,294.717646836956">
+          TopLeft="495.914286397002,90.0058822922796">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,54.7529410920135"
+              EndConnector="93.3714291431468,0"
               Start="0,0"
-              End="0,47.2529410920135">
+              End="85.8714291431468,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,47.2529410920135" />
+                    End="85.8714291431468,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
