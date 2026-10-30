@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="10/7/2026 9:34:02 AM"
@@ -11,11 +11,20 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{54EA113D-226B-405D-B64C-B490A61A0D39}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{BEEC45DC-028B-431A-A5BC-A6239F339EA3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0AB55857-17FB-4075-B6A8-A0B984768AE5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vBatchID">
+      <DTS:VariableValue
+        DTS:DataType="20">1</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{EBBC405A-4659-4E14-98DB-15AEB2B4FE1B}"
@@ -36,6 +45,15 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{854410E8-3F02-425F-A733-75E85D92671D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="vPackageLogID">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{8B099FFD-BE9B-4772-BD94-50C90E279252}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
@@ -45,6 +63,40 @@
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BEGIN_TRANSACTION"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AEB3F096-25C1-4697-AAA7-9C4506815FCF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BEGIN_TRANSACTION"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\COMMIT_TRANSACTION"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2C471CB7-78B7-4105-A2FA-7640511759CC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="COMMIT_TRANSACTION"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}"
+          SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\DFT_Load_Fact_Maintenance"
       DTS:CreationName="Microsoft.Pipeline"
@@ -59,6 +111,132 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="CNT_Rows_Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::vRowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER_Audit_Rejection_Info"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RuleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RuleName]"
+                      name="RuleName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,100)"Negative Cost or Hours"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,100)"Negative Cost or Hours"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RejectionReason]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="500"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RejectionReason]"
+                      name="RejectionReason"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,500)"Gia tri chi phi hoac so gio bao duong bi am"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,500)"Gia tri chi phi hoac so gio bao duong bi am"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\DFT_Load_Fact_Maintenance\DER_Calculations"
               componentClassID="Microsoft.DerivedColumn"
@@ -842,6 +1020,172 @@ where [refTable].[truck_id] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST_DQ_Rejections"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Connections[OleDbConnection]"
+                  connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[RuleName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="RuleName"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RuleName]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[RejectionReason]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="RejectionReason"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[RejectionReason]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[maintenance_id]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="maintenance_id"
+                      externalMetadataColumnId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_id]"
+                      dataType="i8"
+                      name="rejection_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[batch_id]"
+                      dataType="i8"
+                      name="batch_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[package_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="package_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[source_table]"
+                      dataType="wstr"
+                      length="100"
+                      name="source_table" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                      dataType="wstr"
+                      length="100"
+                      name="business_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="rule_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejected_raw_data]"
+                      dataType="nText"
+                      name="rejected_raw_data" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                      dataType="wstr"
+                      length="500"
+                      name="rejection_reason" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                      dataType="dbTimeStamp2"
+                      name="created_at"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -1459,35 +1803,6 @@ WHERE maintenance_date &gt; ?;</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
-              componentClassID="Microsoft.RowCount"
-              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-              name="CNT_Rows_Inserted">
-              <properties>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable to hold the row count."
-                  name="VariableName">User::vRowsInserted</property>
-              </properties>
-              <inputs>
-                <input
-                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
-                  hasSideEffects="true"
-                  name="Row Count Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Outputs[Row Count Output 1]"
-                  name="Row Count Output 1"
-                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]">
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter"
               componentClassID="Microsoft.ConditionalSplit"
               contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1505,6 +1820,34 @@ WHERE maintenance_date &gt; ?;</property>
                       cachedDataType="dbDate"
                       cachedName="maintenance_date"
                       lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[labor_hours]"
+                      cachedDataType="numeric"
+                      cachedName="labor_hours"
+                      cachedPrecision="6"
+                      cachedScale="1"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_hours]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[labor_cost]"
+                      cachedDataType="numeric"
+                      cachedName="labor_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[parts_cost]"
+                      cachedDataType="numeric"
+                      cachedName="parts_cost"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[downtime_hours]"
+                      cachedDataType="numeric"
+                      cachedName="downtime_hours"
+                      cachedPrecision="6"
+                      cachedScale="1"
+                      lineageId="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[downtime_hours]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1535,6 +1878,34 @@ WHERE maintenance_date &gt; ?;</property>
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
                       name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[Bad_Cost_Or_Hours]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Bad_Cost_Or_Hours"
+                  synchronousInputId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_cost]} &lt; 0 || #{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[parts_cost]} &lt; 0 || #{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[downtime_hours]} &lt; 0 || #{Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[labor_hours]} &lt; 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">labor_cost &lt; 0 || parts_cost &lt; 0 || downtime_hours &lt; 0 || labor_hours &lt; 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
                   </properties>
                   <externalMetadataColumns />
                 </output>
@@ -1579,6 +1950,11 @@ WHERE maintenance_date &gt; ?;</property>
           </components>
           <paths>
             <path
+              refId="Package\DFT_Load_Fact_Maintenance.Paths[Bad_Cost_Or_Hours]"
+              endId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Inputs[Derived Column Input]"
+              name="Bad_Cost_Or_Hours"
+              startId="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[Bad_Cost_Or_Hours]" />
+            <path
               refId="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output]"
               endId="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Date.Inputs[Lookup Input]"
               name="Derived Column Output"
@@ -1588,6 +1964,11 @@ WHERE maintenance_date &gt; ?;</property>
               endId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Inputs[Row Count Input 1]"
               name="Derived Column Output"
               startId="Package\DFT_Load_Fact_Maintenance\DER_Default_Keys.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output2]"
+              endId="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output]"
               endId="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck.Inputs[Lookup Input]"
@@ -1620,6 +2001,53 @@ WHERE maintenance_date &gt; ?;</property>
               startId="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted.Outputs[Row Count Output 1]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Finish_Package_Audit"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E211A71F-5C70-409E-BC49-19577A18D8E9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Finish_Package_Audit"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="UPDATE audit.Package_Log&#xA;SET end_time = SYSDATETIME(),&#xA;    inserted_row_count = ?,&#xA;    status = 'SUCCESS'&#xA;WHERE package_log_id = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vRowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::vPackageLogID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ROLLBACK_ON_FAILURE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{59CCCFE2-0541-4EFB-8FDD-5AD3FB1FE9C1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ROLLBACK_ON_FAILURE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}"
+          SQLTask:SqlStatementSource="IF @@TRANCOUNT &gt; 0&#xA;BEGIN&#xA;    ROLLBACK TRANSACTION;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1668,25 +2096,147 @@ WHERE maintenance_date &gt; ?;</property>
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Start_Package_Audit"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{26B9865D-35BC-4265-913A-7855B44172CF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Start_Package_Audit"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="INSERT INTO audit.Package_Log (batch_id, package_name, start_time, status)&#xA;VALUES (?, ?, SYSDATETIME(), 'RUNNING');&#xA;&#xA;SELECT CAST(SCOPE_IDENTITY() AS BIGINT) AS package_log_id;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::vPackageLogID" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::vBatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{A653842F-3F5C-421F-A1A4-846E7A5550E3}"
+      DTS:DTSID="{9B499964-BA24-47F0-8AFF-96E32D8BDC8A}"
       DTS:From="Package\SQL_Get_Watermark"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\DFT_Load_Fact_Maintenance" />
+      DTS:To="Package\BEGIN_TRANSACTION" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{7C027682-58B0-4299-B579-3984EE968182}"
-      DTS:From="Package\DFT_Load_Fact_Maintenance"
+      DTS:DTSID="{D8D152E3-D78D-40BE-A569-9C28C91AFDA3}"
+      DTS:From="Package\BEGIN_TRANSACTION"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Load_Fact_Maintenance" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{65D73B2F-2323-4DFE-AD81-83387762B755}"
+      DTS:From="Package\DFT_Load_Fact_Maintenance"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL_Update_Watermark" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{E4FD3B1C-EE17-434D-8658-5CC9E55B61A3}"
+      DTS:From="Package\SQL_Update_Watermark"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\COMMIT_TRANSACTION" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{01DF7999-4937-457B-B2E7-4C7231DD3257}"
+      DTS:From="Package\DFT_Load_Fact_Maintenance"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\ROLLBACK_ON_FAILURE"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{4513FB11-7AE9-4D57-AFC4-0AD69D8C32DA}"
+      DTS:From="Package\SQL_Update_Watermark"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\ROLLBACK_ON_FAILURE"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A1B2048-57BA-44DA-BF66-B95500AF7A2B}"
+      DTS:From="Package\Start_Package_Audit"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\SQL_Get_Watermark" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{4FC6B0CD-3973-48F2-8513-0DFE2F426E04}"
+      DTS:From="Package\COMMIT_TRANSACTION"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Finish_Package_Audit" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{4758E16C-CC44-4F40-98CE-4BFDDCA0E70A}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{5390BE1E-8DA8-4D97-B494-579C32CAB699}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\EH_Rollback_Dangling_Transaction"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{36D758B2-A8E4-4C7A-B0AD-0DD206C6B07B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EH_Rollback_Dangling_Transaction"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}"
+              SQLTask:SqlStatementSource="IF @@TRANCOUNT &gt; 0&#xA;BEGIN&#xA;    ROLLBACK TRANSACTION;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -1698,45 +2248,53 @@ WHERE maintenance_date &gt; ?;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\BEGIN_TRANSACTION"
+          TopLeft="379.285715093114,150.423529305858" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\COMMIT_TRANSACTION"
+          TopLeft="363.357143618926,400.497575121309" />
         <NodeLayout
           Size="216.8,41.6"
           Id="Package\DFT_Load_Fact_Maintenance"
-          TopLeft="300.000000638621,165.176470443452" />
+          TopLeft="365.000000776989,246.388235096382" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Finish_Package_Audit"
+          TopLeft="377.142857945695,471.411764436424" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\ROLLBACK_ON_FAILURE"
+          TopLeft="692.857144332054,258.341176347925" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\SQL_Get_Watermark"
-          TopLeft="426.428572336326,84.1176469850911" />
+          TopLeft="385.71428653537,82.7411764162942" />
         <NodeLayout
           Size="194.4,41.6"
           Id="Package\SQL_Update_Watermark"
-          TopLeft="302.14285778604,244.705882138447" />
+          TopLeft="375.714286514083,319.035293856232" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Start_Package_Audit"
+          TopLeft="380.714286524726,0.152941194568498" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="514.828572336326,125.717646985091">
+          TopLeft="472.900000814242,124.341176416294">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-106.428571697705,39.4588234583609"
+              EndConnector="0,26.0823528895639"
               Start="0,0"
-              End="-106.428571697705,31.9588234583609">
+              End="0,18.5823528895639">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.7294117291804" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.7294117291804"
-                    Point2="0,19.7294117291804"
-                    Point3="-4,19.7294117291804" />
-                  <mssgle:LineSegment
-                    End="-102.428571697705,19.7294117291804" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-102.428571697705,19.7294117291804"
-                    Point2="-106.428571697705,19.7294117291804"
-                    Point3="-106.428571697705,23.7294117291804" />
-                  <mssgle:LineSegment
-                    End="-106.428571697705,31.9588234583609" />
+                    End="0,18.5823528895639" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1747,30 +2305,190 @@ WHERE maintenance_date &gt; ?;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="408.400000638621,206.776470443452">
+          TopLeft="472.542857935052,192.023529305859">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9.05714285258125,37.929411694995"
+              EndConnector="0,54.3647057905229"
               Start="0,0"
-              End="-9.05714285258125,30.429411694995">
+              End="0,46.8647057905229">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.9647058474975" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14.9647058474975"
-                    Point2="0,18.9647058474975"
-                    Point3="-4,18.9647058474975" />
+                    End="0,46.8647057905229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="473.157143645536,287.988235096381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.0470587598512"
+              Start="0,0"
+              End="0,23.5470587598512">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-5.05714285258125,18.9647058474975" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-5.05714285258125,18.9647058474975"
-                    Point2="-9.05714285258125,18.9647058474975"
-                    Point3="-9.05714285258125,22.9647058474975" />
+                    End="0,23.5470587598512" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="472.914286514083,360.635293856232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.9571428951566,39.8622812650771"
+              Start="0,0"
+              End="-11.9571428951566,32.3622812650771">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="-9.05714285258125,30.429411694995" />
+                    End="0,15.9311406325385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9311406325385"
+                    Point2="0,19.9311406325385"
+                    Point3="-4,19.9311406325385" />
+                  <mssgle:LineSegment
+                    End="-7.95714289515661,19.9311406325385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.95714289515661,19.9311406325385"
+                    Point2="-11.9571428951566,19.9311406325385"
+                    Point3="-11.9571428951566,23.9311406325385" />
+                  <mssgle:LineSegment
+                    End="-11.9571428951566,32.3622812650771" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="581.800000776989,267.188235096382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.057143555065,11.9529412515433"
+              Start="0,0"
+              End="103.557143555065,11.9529412515433">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.6714289249512,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.6714289249512,0"
+                    Point2="57.6714289249512,0"
+                    Point3="57.6714289249512,4" />
+                  <mssgle:LineSegment
+                    End="57.6714289249512,7.95294125154328" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.6714289249512,7.95294125154328"
+                    Point2="57.6714289249512,11.9529412515433"
+                    Point3="61.6714289249512,11.9529412515433" />
+                  <mssgle:LineSegment
+                    End="103.557143555065,11.9529412515433" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.4300812687012,-15.7490234375,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="570.114286514083,339.835293856232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122.742857817971,-55.0941175083079"
+              Start="0,0"
+              End="115.242857817971,-55.0941175083079">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.918095628161,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.918095628161,0"
+                    Point2="70.918095628161,0"
+                    Point3="70.918095628161,-4" />
+                  <mssgle:LineSegment
+                    End="70.918095628161,-51.0941175083079" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.918095628161,-51.0941175083079"
+                    Point2="70.918095628161,-55.0941175083079"
+                    Point3="74.918095628161,-55.0941175083079" />
+                  <mssgle:LineSegment
+                    End="115.242857817971,-55.0941175083079" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="55.676747971911,1,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="471.414286530048,41.7529411945685">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9882352217257"
+              Start="0,0"
+              End="0,33.4882352217257">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4882352217257" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="464.050000782311,442.097575121309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.3141893151154"
+              Start="0,0"
+              End="0,21.8141893151154">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8141893151154" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1782,31 +2500,47 @@ WHERE maintenance_date &gt; ?;</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="244,41.6"
+          Id="Package.EventHandlers[OnError]\EH_Rollback_Dangling_Transaction"
+          TopLeft="527.999992132187,54.9999991804361" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\DFT_Load_Fact_Maintenance">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="212.8,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance"
-          TopLeft="6.42857144225604,177.858823458361" />
+          Size="184,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance"
+          TopLeft="40.714285800956,100.941176382109" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck"
+          TopLeft="700.714287205922,263.717646916721" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections"
+          TopLeft="652.678572817953,27.720588210996" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter"
+          TopLeft="284.285714890884,103.99999990884" />
         <NodeLayout
           Size="155.2,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Profile"
           TopLeft="460.00000097922,265.835294015762" />
         <NodeLayout
-          Size="184,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance"
-          TopLeft="40.714285800956,100.941176382109" />
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
-          TopLeft="30.0000000638621,270.329411763366" />
-        <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter"
-          TopLeft="284.285714890884,103.99999990884" />
+          Size="212.8,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance"
+          TopLeft="6.42857144225604,177.858823458361" />
         <NodeLayout
           Size="165.6,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\DER_Default_Keys"
@@ -1816,13 +2550,17 @@ WHERE maintenance_date &gt; ?;</property>
           Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Date"
           TopLeft="700.714287205922,113.176470489031" />
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck"
-          TopLeft="700.714287205922,263.717646916721" />
+          Size="150.4,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\CNT_Rows_Inserted"
+          TopLeft="30.0000000638621,270.329411763366" />
         <NodeLayout
           Size="160,41.6"
           Id="Package\DFT_Load_Fact_Maintenance\DER_Calculations"
           TopLeft="505.714286790819,109.352941080619" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DFT_Load_Fact_Maintenance\DER_Audit_Rejection_Info"
+          TopLeft="375.892857943035,28.6764705630993" />
         <EdgeLayout
           Id="Package\DFT_Load_Fact_Maintenance.Paths[Row Count Output 1]"
           TopLeft="109.014285753059,270.329411763366">
@@ -1842,9 +2580,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1866,9 +2602,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1968,6 +2702,28 @@ WHERE maintenance_date &gt; ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output2]"
+          TopLeft="578.292857943035,48.9985293870476">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.3857148749183,0"
+              Start="0,0"
+              End="66.8857148749183,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.8857148749183,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DFT_Load_Fact_Maintenance.Paths[Derived Column Output1]"
           TopLeft="240.000000510897,290.629411746273">
           <EdgeLayout.Curve>
@@ -1986,9 +2742,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2010,8 +2764,42 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Load_Fact_Maintenance.Paths[Bad_Cost_Or_Hours]"
+          TopLeft="377.885714890884,103.99999990884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.207143052151,-33.7235293457407"
+              Start="0,0"
+              End="99.207143052151,-26.2235293457407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-12.8617646728704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-12.8617646728704"
+                    Point2="0,-16.8617646728704"
+                    Point3="4,-16.8617646728704" />
+                  <mssgle:LineSegment
+                    End="95.207143052151,-16.8617646728704" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.207143052151,-16.8617646728704"
+                    Point2="99.207143052151,-16.8617646728704"
+                    Point3="99.207143052151,-20.8617646728704" />
+                  <mssgle:LineSegment
+                    End="99.207143052151,-26.2235293457407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="4.67099340107551,-11.8617646728704,89.86515625,11.0625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2019,7 +2807,43 @@ WHERE maintenance_date &gt; ?;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance">
+    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_DST_DQ_Rejections">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2055,7 +2879,7 @@ WHERE maintenance_date &gt; ?;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance">
+    design-time-name="Package\DFT_Load_Fact_Maintenance\OLE_DST_Fact_Maintenance">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2079,29 +2903,6 @@ WHERE maintenance_date &gt; ?;</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Dim_Date]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Load_Fact_Maintenance\LKP_Dim_Truck">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

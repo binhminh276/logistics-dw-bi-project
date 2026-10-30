@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="ETL_Trip_Operations_Delivery"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{1AA6C5DE-DB1E-4306-984D-1908BA62D51C}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{166CBF5D-FB1A-4A09-AA11-B7AB421348B2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4121,11 +4121,15 @@ where [refTable].[driver_id] = ?</property>
         <NodeLayout
           Size="184.8,41.6"
           Id="Package\SEQ_Master_Trip_Delivery_ETL\BEGIN_TRANSACTION"
-          TopLeft="49.5428573709362,12.3294116494152" />
+          TopLeft="49.5428573709361,12.3294116494152" />
         <NodeLayout
           Size="195.2,41.6"
           Id="Package\SEQ_Master_Trip_Delivery_ETL\COMMIT_TRANSACTION"
           TopLeft="44.8857144119181,248.623529089353" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment"
+          TopLeft="53.5142859712548,167.647058634506" />
         <NodeLayout
           Size="204.8,41.6"
           Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Trip_Fulfillment"
@@ -4136,14 +4140,14 @@ where [refTable].[driver_id] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.5764705232166"
+              EndConnector="0,32.5764705232167"
               Start="0,0"
-              End="0,25.0764705232166">
+              End="0,25.0764705232167">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.0764705232166" />
+                    End="0,25.0764705232167" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4152,10 +4156,6 @@ where [refTable].[driver_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment"
-          TopLeft="53.5142859712548,167.647058634506" />
         <EdgeLayout
           Id="Package\SEQ_Master_Trip_Delivery_ETL.PrecedenceConstraints[Constraint 1]"
           TopLeft="145.242857333683,128.105882172632">
@@ -4258,17 +4258,17 @@ where [refTable].[driver_id] = ?</property>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="47.2502813492712,0" />
+                    End="47.2502813492714,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="47.2502813492712,0"
-                    Point2="51.2502813492712,0"
-                    Point3="51.2502813492712,-4" />
+                    Point1="47.2502813492714,0"
+                    Point2="51.2502813492714,0"
+                    Point3="51.2502813492714,-4" />
                   <mssgle:LineSegment
-                    End="51.2502813492712,-55.6627451422787" />
+                    End="51.2502813492714,-55.6627451422787" />
                   <mssgle:CubicBezierSegment
-                    Point1="51.2502813492712,-55.6627451422787"
-                    Point2="51.2502813492712,-59.6627451422787"
-                    Point3="55.2502813492712,-59.6627451422787" />
+                    Point1="51.2502813492714,-55.6627451422787"
+                    Point2="51.2502813492714,-59.6627451422787"
+                    Point3="55.2502813492714,-59.6627451422787" />
                   <mssgle:LineSegment
                     End="119.842857935053,-59.6627451422787" />
                 </mssgle:SegmentCollection>
@@ -4299,13 +4299,306 @@ where [refTable].[driver_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="51.5800811037242,5,30.4826953125,9.7490234375"
+              BoundingBox="51.580081103724,5,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SRC_Staging_Fulfillment"
+          TopLeft="20.9999996870756,31.9999995231628" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SPLIT_Fulfillment_DQ"
+          TopLeft="287.999995708466,32.9999995082617" />
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[OLE DB Source Output]"
+          TopLeft="213.799999687076,53.2999995157122">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.1999960213902,0"
+              Start="0,0"
+              End="66.6999960213902,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.6999960213902,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\LKP_Dim_Customer"
+          TopLeft="513.999992340803,135.999997973442" />
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Conditional Split Default Output]"
+          TopLeft="378.399995708466,74.5999995082617">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="221.199996632338,61.3999984651804"
+              Start="0,0"
+              End="221.199996632338,53.8999984651804">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.6999992325902"
+                    Point2="0,30.6999992325902"
+                    Point3="4,30.6999992325902" />
+                  <mssgle:LineSegment
+                    End="217.199996632338,30.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="217.199996632338,30.6999992325902"
+                    Point2="221.199996632338,30.6999992325902"
+                    Point3="221.199996632338,34.6999992325902" />
+                  <mssgle:LineSegment
+                    End="221.199996632338,53.8999984651804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="39.9860920661688,35.6999992325902,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DER_Unknown_Customer"
+          TopLeft="787.999988257885,36.999999448657" />
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Lookup No Match Output]"
+          TopLeft="626.799992340803,135.999997973442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.666662583748,-57.3999985247851"
+              Start="0,0"
+              End="228.666662583748,-49.8999985247851">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-24.7449860759228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-24.7449860759228"
+                    Point2="0,-28.7449860759228"
+                    Point3="4,-28.7449860759228" />
+                  <mssgle:LineSegment
+                    End="224.666662583748,-28.7449860759228" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.666662583748,-28.7449860759228"
+                    Point2="228.666662583748,-28.7449860759228"
+                    Point3="228.666662583748,-32.7449860759228" />
+                  <mssgle:LineSegment
+                    End="228.666662583748,-49.8999985247851" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="58.5269445731239,-23.7449860759228,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208.8,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\UNION_Combine_Customer"
+          TopLeft="809.99998793006,190.999997153878" />
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Lookup Match Output]"
+          TopLeft="685.199992340803,169.599997973442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="124.799995589256,42.1999991804359"
+              Start="0,0"
+              End="117.299995589256,42.1999991804359">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="58.3999977946281,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.3999977946281,0"
+                    Point2="62.3999977946281,0"
+                    Point3="62.3999977946281,4" />
+                  <mssgle:LineSegment
+                    End="62.3999977946281,38.1999991804359" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.3999977946281,38.1999991804359"
+                    Point2="62.3999977946281,42.1999991804359"
+                    Point3="66.3999977946281,42.1999991804359" />
+                  <mssgle:LineSegment
+                    End="117.299995589256,42.1999991804359" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="14.2086110758781,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Derived Column Output]"
+          TopLeft="916.666654760639,78.599999448657">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,112.399997705221"
+              Start="0,0"
+              End="0,104.899997705221">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,104.899997705221" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DST_Fact_Fulfillment"
+          TopLeft="1130.99998314679,192.999997124076" />
+        <NodeLayout
+          Size="229.6,41.6"
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DER_Generate_Fulfillment_Keys"
+          TopLeft="1068.79999338388,72.9999989122153" />
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Union All Output 1]"
+          TopLeft="947.866654596726,190.999997153878">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.800005453825,-76.3999982416627"
+              Start="0,0"
+              End="198.800005453825,-68.8999982416627">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-34.2325515277542" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-34.2325515277542"
+                    Point2="0,-38.2325515277542"
+                    Point3="4,-38.2325515277542" />
+                  <mssgle:LineSegment
+                    End="194.800005453825,-38.2325515277542" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194.800005453825,-38.2325515277542"
+                    Point2="198.800005453825,-38.2325515277542"
+                    Point3="198.800005453825,-42.2325515277542" />
+                  <mssgle:LineSegment
+                    End="198.800005453825,-68.8999982416627" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Derived Column Output1]"
+          TopLeft="1220.166654932,114.599998912215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.3999982118605"
+              Start="0,0"
+              End="0,70.8999982118605">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.8999982118605" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SRC_Staging_Fulfillment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\LKP_Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DST_Fact_Fulfillment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Trip_Fulfillment">
     <LayoutInfo>
@@ -4673,299 +4966,6 @@ where [refTable].[driver_id] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Trip_Fulfillment\DST_Fact_Trip">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="192.8,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SRC_Staging_Fulfillment"
-          TopLeft="20.9999996870756,31.9999995231628" />
-        <NodeLayout
-          Size="180.8,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SPLIT_Fulfillment_DQ"
-          TopLeft="287.999995708466,32.9999995082617" />
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[OLE DB Source Output]"
-          TopLeft="213.799999687076,53.2999995157122">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="74.1999960213902,0"
-              Start="0,0"
-              End="66.6999960213902,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="66.6999960213902,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\LKP_Dim_Customer"
-          TopLeft="513.999992340803,135.999997973442" />
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Conditional Split Default Output]"
-          TopLeft="378.399995708466,74.5999995082617">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="221.199996632338,61.3999984651804"
-              Start="0,0"
-              End="221.199996632338,53.8999984651804">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.6999992325902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.6999992325902"
-                    Point2="0,30.6999992325902"
-                    Point3="4,30.6999992325902" />
-                  <mssgle:LineSegment
-                    End="217.199996632338,30.6999992325902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="217.199996632338,30.6999992325902"
-                    Point2="221.199996632338,30.6999992325902"
-                    Point3="221.199996632338,34.6999992325902" />
-                  <mssgle:LineSegment
-                    End="221.199996632338,53.8999984651804" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="39.9860920661688,35.6999992325902,141.2278125,11.658203125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DER_Unknown_Customer"
-          TopLeft="787.999988257885,36.999999448657" />
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Lookup No Match Output]"
-          TopLeft="626.799992340803,135.999997973442">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="228.666662583748,-57.3999985247851"
-              Start="0,0"
-              End="228.666662583748,-49.8999985247851">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-24.7449860759228" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-24.7449860759228"
-                    Point2="0,-28.7449860759228"
-                    Point3="4,-28.7449860759228" />
-                  <mssgle:LineSegment
-                    End="224.666662583748,-28.7449860759228" />
-                  <mssgle:CubicBezierSegment
-                    Point1="224.666662583748,-28.7449860759228"
-                    Point2="228.666662583748,-28.7449860759228"
-                    Point3="228.666662583748,-32.7449860759228" />
-                  <mssgle:LineSegment
-                    End="228.666662583748,-49.8999985247851" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="58.5269445731239,-23.7449860759228,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="208.8,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\UNION_Combine_Customer"
-          TopLeft="809.99998793006,190.999997153878" />
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Lookup Match Output]"
-          TopLeft="685.199992340803,169.599997973442">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="124.799995589256,42.1999991804359"
-              Start="0,0"
-              End="117.299995589256,42.1999991804359">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="58.3999977946281,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="58.3999977946281,0"
-                    Point2="62.3999977946281,0"
-                    Point3="62.3999977946281,4" />
-                  <mssgle:LineSegment
-                    End="62.3999977946281,38.1999991804359" />
-                  <mssgle:CubicBezierSegment
-                    Point1="62.3999977946281,38.1999991804359"
-                    Point2="62.3999977946281,42.1999991804359"
-                    Point3="66.3999977946281,42.1999991804359" />
-                  <mssgle:LineSegment
-                    End="117.299995589256,42.1999991804359" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="14.2086110758781,-17.609375,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Derived Column Output]"
-          TopLeft="916.666654760639,78.599999448657">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,112.399997705221"
-              Start="0,0"
-              End="0,104.899997705221">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,104.899997705221" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="177.6,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DST_Fact_Fulfillment"
-          TopLeft="1130.99998314679,192.999997124076" />
-        <NodeLayout
-          Size="229.6,41.6"
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DER_Generate_Fulfillment_Keys"
-          TopLeft="1068.79999338388,72.9999989122153" />
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Union All Output 1]"
-          TopLeft="947.866654596726,190.999997153878">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="198.800005453825,-76.3999982416627"
-              Start="0,0"
-              End="198.800005453825,-68.8999982416627">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-34.2325515277542" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-34.2325515277542"
-                    Point2="0,-38.2325515277542"
-                    Point3="4,-38.2325515277542" />
-                  <mssgle:LineSegment
-                    End="194.800005453825,-38.2325515277542" />
-                  <mssgle:CubicBezierSegment
-                    Point1="194.800005453825,-38.2325515277542"
-                    Point2="198.800005453825,-38.2325515277542"
-                    Point3="198.800005453825,-42.2325515277542" />
-                  <mssgle:LineSegment
-                    End="198.800005453825,-68.8999982416627" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment.Paths[Derived Column Output1]"
-          TopLeft="1220.166654932,114.599998912215">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,78.3999982118605"
-              Start="0,0"
-              End="0,70.8999982118605">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.8999982118605" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\SRC_Staging_Fulfillment">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\LKP_Dim_Customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Customer]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Master_Trip_Delivery_ETL\DFT_Load_Fulfillment\DST_Fact_Fulfillment">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
