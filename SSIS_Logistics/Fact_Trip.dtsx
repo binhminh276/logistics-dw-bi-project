@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Trip"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{7C7861E3-3994-451A-B67E-68867A7E664A}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{140A6525-48E9-495A-BB4A-046AE3D8FB25}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1823,18 +1823,18 @@ where [refTable].[truck_id] = ?</property>
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\DFT_Load_Fact_Trip"
-          TopLeft="320.714286397002,70.3529411148033" />
+          TopLeft="320.000000681196,70.3529411148033" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\SQL_Get_Watermark"
-          TopLeft="30.7142857796684,72.647058759851" />
+          TopLeft="30.0000000638622,72.647058759851" />
         <NodeLayout
           Size="194.4,41.6"
           Id="Package\SQL_Update_Watermark"
           TopLeft="589.285715540149,68.0588234697559" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="207.514285779668,92.2999999373272">
+          TopLeft="206.800000063862,92.2999999373272">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1856,18 +1856,18 @@ where [refTable].[truck_id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="495.914286397002,90.0058822922796">
+          TopLeft="495.200000681196,90.0058822922796">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93.3714291431468,0"
+              EndConnector="94.0857148589533,0"
               Start="0,0"
-              End="85.8714291431468,0">
+              End="86.5857148589533,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="85.8714291431468,0" />
+                    End="86.5857148589533,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
