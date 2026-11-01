@@ -12,12 +12,29 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Master_Orchestrator"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{D7279605-ED1A-4353-BAA5-CAC06C2DCDD6}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{C5A22EE2-FFDF-479C-89CC-5D32979FAD65}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EPT_ETL_Data_Reconciliation"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{A6A55FE3-5064-4B37-BEF4-DCEEA545C740}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EPT_ETL_Data_Reconciliation"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>ETL_Data_Reconciliation.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Dimension_Layer"
       DTS:CreationName="STOCK:SEQUENCE"
@@ -237,7 +254,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Finalize_Batch_Success"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -308,11 +325,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{EFB4DAC8-BCEB-4788-BBD5-8143D2B4B3CB}"
+      DTS:DTSID="{726480AF-6C4D-418F-9AD2-A130FBB2EF30}"
       DTS:From="Package\SEQ_Fact_Layer"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\SQL_Finalize_Batch_Success" />
+      DTS:To="Package\EPT_ETL_Data_Reconciliation" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
@@ -337,6 +354,14 @@
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\SQL_Mark_Batch_Failed"
       DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{56AE7621-234E-46CB-9DD8-B2B49E681916}"
+      DTS:From="Package\EPT_ETL_Data_Reconciliation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\SQL_Finalize_Batch_Success" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -554,40 +579,6 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1100.26178798918,372.257936188654">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96.1484184085393,-199.428944707043"
-              Start="0,0"
-              End="96.1484184085393,-191.928944707043">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-76.1159156290738" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-76.1159156290738"
-                    Point2="0,-80.1159156290738"
-                    Point3="4,-80.1159156290738" />
-                  <mssgle:LineSegment
-                    End="92.1484184085393,-80.1159156290738" />
-                  <mssgle:CubicBezierSegment
-                    Point1="92.1484184085393,-80.1159156290738"
-                    Point2="96.1484184085393,-80.1159156290738"
-                    Point3="96.1484184085393,-84.1159156290738" />
-                  <mssgle:LineSegment
-                    End="96.1484184085393,-191.928944707043" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="686.870746628695,193.017647036369">
           <EdgeLayout.Curve>
@@ -693,6 +684,78 @@
             <mssgm:EdgeLabel
               BoundingBox="-137.853703656038,-17.7477298343484,30.4826953125,9.7490234375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="217.6,41.6"
+          Id="Package\EPT_ETL_Data_Reconciliation"
+          TopLeft="959.619049423406,217.86274495616" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="1100.26178798918,372.257936188654">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.8427385657744,-112.795191232494"
+              Start="0,0"
+              End="-31.8427385657744,-105.295191232494">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-41.3128307800176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-41.3128307800176"
+                    Point2="0,-45.3128307800176"
+                    Point3="-4,-45.3128307800176" />
+                  <mssgle:LineSegment
+                    End="-27.8427385657744,-45.3128307800176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-27.8427385657744,-45.3128307800176"
+                    Point2="-31.8427385657744,-45.3128307800176"
+                    Point3="-31.8427385657744,-49.3128307800176" />
+                  <mssgle:LineSegment
+                    End="-31.8427385657744,-105.295191232494" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="1068.41904942341,217.86274495616">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.991156974314,-45.0337534745492"
+              Start="0,0"
+              End="127.991156974314,-37.5337534745492">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5168767372746" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5168767372746"
+                    Point2="0,-22.5168767372746"
+                    Point3="4,-22.5168767372746" />
+                  <mssgle:LineSegment
+                    End="123.991156974314,-22.5168767372746" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.991156974314,-22.5168767372746"
+                    Point2="127.991156974314,-22.5168767372746"
+                    Point3="127.991156974314,-26.5168767372746" />
+                  <mssgle:LineSegment
+                    End="127.991156974314,-37.5337534745492" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

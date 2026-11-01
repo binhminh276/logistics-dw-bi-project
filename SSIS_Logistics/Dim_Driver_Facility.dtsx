@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Dim_Driver_Facility"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{B0D0C1F0-3041-485D-842A-7257813FC4CD}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{B434FDA1-208F-4D49-9E6E-E25CB75B5B3C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -3973,6 +3973,18 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="196,41.6"
+          Id="Package\ROLLBACK_ON_FAILURE"
+          TopLeft="760.714287333647,133.823529294463" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Sequence Container\BEGIN_TRANSACTION"
+          TopLeft="11.0857144864239,127.117646859746" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Sequence Container\COMMIT_TRANSACTION"
+          TopLeft="310.314286269278,127.882352741429" />
+        <NodeLayout
           Size="156,41.6"
           Id="Package\Sequence Container\DFT_Dim_Driver"
           TopLeft="23.2285717402791,24.2941174855179" />
@@ -4002,14 +4014,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\Sequence Container\BEGIN_TRANSACTION"
-          TopLeft="11.0857144864239,127.117646859746" />
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\Sequence Container\COMMIT_TRANSACTION"
-          TopLeft="310.314286269278,127.882352741429" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 1]"
           TopLeft="102.357143113352,127.117646859746">
@@ -4061,10 +4065,6 @@
           Size="511.2,268"
           Id="Package\Sequence Container"
           TopLeft="164.014283225182,19.1176470420662" />
-        <NodeLayout
-          Size="196,41.6"
-          Id="Package\ROLLBACK_ON_FAILURE"
-          TopLeft="760.714287333647,133.823529294463" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="675.214283225182,153.870588168265">
@@ -4092,6 +4092,18 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package.EventHandlers[OnError]\Write_Global_Error_Log"
+          TopLeft="164.999997541308,41.9999993741512" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\Sequence Container\DFT_Dim_Driver">
     <LayoutInfo>
@@ -4120,7 +4132,7 @@
         <NodeLayout
           Size="232.8,41.6"
           Id="Package\Sequence Container\DFT_Dim_Driver\OLE_CMD_Update_Type1_Driver"
-          TopLeft="609.953968931447,19.7117649605941" />
+          TopLeft="608.525397499835,19.7117649605941" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\Sequence Container\DFT_Dim_Driver\DER_Set_SCD2_Current_Flags"
@@ -4331,33 +4343,33 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="263.821315377138,-71.2817925290852"
+              EndConnector="262.392743945526,-71.2817925290849"
               Start="0,0"
-              End="263.821315377138,-63.7817925290852">
+              End="262.392743945526,-63.7817925290849">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-31.6408962645426" />
+                    End="0,-31.6408962645424" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-31.6408962645426"
-                    Point2="0,-35.6408962645426"
-                    Point3="4,-35.6408962645426" />
+                    Point1="0,-31.6408962645424"
+                    Point2="0,-35.6408962645424"
+                    Point3="4,-35.6408962645424" />
                   <mssgle:LineSegment
-                    End="259.821315377138,-35.6408962645426" />
+                    End="258.392743945526,-35.6408962645424" />
                   <mssgle:CubicBezierSegment
-                    Point1="259.821315377138,-35.6408962645426"
-                    Point2="263.821315377138,-35.6408962645426"
-                    Point3="263.821315377138,-39.6408962645426" />
+                    Point1="258.392743945526,-35.6408962645424"
+                    Point2="262.392743945526,-35.6408962645424"
+                    Point3="262.392743945526,-39.6408962645424" />
                   <mssgle:LineSegment
-                    End="263.821315377138,-63.7817925290852" />
+                    End="262.392743945526,-63.7817925290849" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="53.3767514385688,-30.6408962645426,157.0678125,11.6630859375"
+              BoundingBox="52.6624657227628,-30.6408962645424,157.0678125,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4624,17 +4636,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnError]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="190.4,41.6"
-          Id="Package.EventHandlers[OnError]\Write_Global_Error_Log"
-          TopLeft="164.999997541308,41.9999993741512" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
