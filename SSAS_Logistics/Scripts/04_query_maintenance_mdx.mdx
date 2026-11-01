@@ -1,0 +1,72 @@
+-- ================================================================================
+-- SCRIPT: SSAS_Logistics/Scripts/04_query_maintenance_mdx.mdx
+-- MỤC ĐÍCH: Tập hợp các truy vấn MDX phân tích chuyên sâu trên [Cube_Maintenance]
+-- PHỤ TRÁCH: Nguyễn Phúc An
+-- ================================================================================
+
+-- --------------------------------------------------------------------------------
+-- 1. Phân tích chi phí & thời gian ngừng hoạt động (Downtime) theo từng Hãng xe
+--    Sử dụng các Calculated Members: Chi phí TB/lần, Downtime TB/lần
+-- --------------------------------------------------------------------------------
+SELECT 
+    { 
+        [Measures].[Total Maintenance Cost], 
+        [Measures].[Maintenance Count],
+        [Measures].[CM_Avg_Maintenance_Cost],
+        [Measures].[CM_Avg_Downtime_Hours]
+    } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Truck].[Make].[Make].ALLMEMBERS
+    ) ON ROWS
+FROM [Cube_Maintenance]
+WHERE ([Dim_Date].[Calendar Year].&[2023]);
+
+
+-- --------------------------------------------------------------------------------
+-- 2. Ma trận phân bổ loại bảo dưỡng và tỷ trọng phụ tùng (Failure Mode Analysis)
+-- --------------------------------------------------------------------------------
+SELECT 
+    { 
+        [Measures].[Total Maintenance Cost], 
+        [Measures].[Parts Cost],
+        [Measures].[Labor Cost],
+        [Measures].[CM_Parts_Cost_Ratio]
+    } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Maintenance_Profile].[Maintenance Type].[Maintenance Type].ALLMEMBERS
+    ) ON ROWS
+FROM [Cube_Maintenance];
+
+
+-- --------------------------------------------------------------------------------
+-- 3. Tìm TOP 5 Đầu xe tốn chi phí bảo dưỡng cao nhất toàn đội (Fleet Replacement)
+--    Sử dụng hàm TOPCOUNT trên phân cấp Truck Fleet Hierarchy
+-- --------------------------------------------------------------------------------
+SELECT 
+    { 
+        [Measures].[Total Maintenance Cost], 
+        [Measures].[Maintenance Count], 
+        [Measures].[Downtime Hours],
+        [Measures].[Odometer Reading]
+    } ON COLUMNS,
+    TOPCOUNT(
+        [Dim_Truck].[Truck Fleet Hierarchy].[Unit Number].ALLMEMBERS,
+        5,
+        [Measures].[Total Maintenance Cost]
+    ) ON ROWS
+FROM [Cube_Maintenance];
+
+
+-- --------------------------------------------------------------------------------
+-- 4. Phân tích xu hướng bảo dưỡng theo thời gian (Calendar Hierarchy: Năm -> Quý)
+-- --------------------------------------------------------------------------------
+SELECT 
+    { 
+        [Measures].[Total Maintenance Cost], 
+        [Measures].[Maintenance Count] 
+    } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Date].[Calendar Hierarchy].[Calendar Quarter].ALLMEMBERS
+    ) ON ROWS
+FROM [Cube_Maintenance];
+
