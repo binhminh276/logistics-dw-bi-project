@@ -12,8 +12,8 @@
   DTS:MaxConcurrentExecutables="1"
   DTS:ObjectName="ETL_Trip_Operations_Delivery"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{82381227-139B-448F-83F3-BE0D2ACEF798}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{89EEBD87-F5A2-410F-AEBA-3D21BEDB90F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4925,6 +4925,28 @@ where [refTable].[truck_id] = ?</property>
           Id="Package\SEQ_Fact_Fulfillment_Transaction\SQL_Update_Watermark"
           TopLeft="255.384128775307,227.547712139607" />
         <EdgeLayout
+          Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint]"
+          TopLeft="262.48254094728,35.8888887838016">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.0920629791395,0"
+              Start="0,0"
+              End="25.5920629791395,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.5920629791395,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint 1]"
           TopLeft="346.468255726405,124.78823514196">
           <EdgeLayout.Curve>
@@ -4969,50 +4991,6 @@ where [refTable].[truck_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint 4]"
-          TopLeft="255.384128775307,251.663398398588">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-49.4253985630206,0"
-              Start="0,0"
-              End="-41.9253985630206,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-41.9253985630206,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint]"
-          TopLeft="262.48254094728,35.8888887838016">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="33.0920629791395,0"
-              Start="0,0"
-              End="25.5920629791395,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="25.5920629791395,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint 3]"
           TopLeft="387.974603926419,58.3477122991372">
           <EdgeLayout.Curve>
@@ -5046,6 +5024,28 @@ where [refTable].[truck_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Fulfillment_Transaction.PrecedenceConstraints[Constraint 4]"
+          TopLeft="255.384128775307,251.663398398588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-49.4253985630206,0"
+              Start="0,0"
+              End="-41.9253985630206,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-41.9253985630206,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -5054,9 +5054,13 @@ where [refTable].[truck_id] = ?</property>
           Id="Package\SEQ_Fact_Fulfillment_Transaction"
           TopLeft="560.907030672481,282.119514263345" />
         <NodeLayout
-          Size="176,41.6"
-          Id="Package\Start_Package_Audit"
-          TopLeft="11.836734719075,189.380018508138" />
+          Size="184.8,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\BEGIN_TRANSACTION"
+          TopLeft="16.6111111347637,22.2483658953979" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\COMMIT_TRANSACTION"
+          TopLeft="17.8158730530413,202.464052011942" />
         <NodeLayout
           Size="175.2,41.6"
           Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip"
@@ -5069,6 +5073,50 @@ where [refTable].[truck_id] = ?</property>
           Size="194.4,41.6"
           Id="Package\SEQ_Fact_Trip_Transaction\SQL_Update_Watermark"
           TopLeft="243.174603564534,205.294117519703" />
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction.PrecedenceConstraints[Constraint]"
+          TopLeft="201.411111134764,40.0026143394626">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.0650797469005,0"
+              Start="0,0"
+              End="41.5650797469005,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="41.5650797469005,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction.PrecedenceConstraints[Constraint 1]"
+          TopLeft="243.174603564534,224.679084765822">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.1587305114929,0"
+              Start="0,0"
+              End="-22.6587305114929,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22.6587305114929,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Fact_Trip_Transaction.PrecedenceConstraints[Constraint 2]"
           TopLeft="337.047619450052,57.7568627835273">
@@ -5113,58 +5161,6 @@ where [refTable].[truck_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184.8,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\BEGIN_TRANSACTION"
-          TopLeft="16.6111111347637,22.2483658953979" />
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction.PrecedenceConstraints[Constraint]"
-          TopLeft="201.411111134764,40.0026143394626">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="49.0650797469005,0"
-              Start="0,0"
-              End="41.5650797469005,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="41.5650797469005,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="195.2,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\COMMIT_TRANSACTION"
-          TopLeft="17.8158730530413,202.464052011942" />
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction.PrecedenceConstraints[Constraint 1]"
-          TopLeft="243.174603564534,224.679084765822">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-30.1587305114929,0"
-              Start="0,0"
-              End="-22.6587305114929,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-22.6587305114929,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -5172,6 +5168,10 @@ where [refTable].[truck_id] = ?</property>
           Size="453.6,344.8"
           Id="Package\SEQ_Fact_Trip_Transaction"
           TopLeft="23.1671173384068,287.796451661834" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Start_Package_Audit"
+          TopLeft="11.836734719075,189.380018508138" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="99.836734719075,230.980018508138">
@@ -5387,287 +5387,6 @@ where [refTable].[truck_id] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="154.4,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Driver"
-          TopLeft="69.9999989569187,304.545450007374" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\DER_Prepare_Date"
-          TopLeft="257.272723439065,134.545452540571" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Truck"
-          TopLeft="71.8181807480075,384.545448815281" />
-        <NodeLayout
-          Size="172,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_SRC_Stg_Trips"
-          TopLeft="45.9999993145466,26.9999995976687" />
-        <NodeLayout
-          Size="172,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_DST_Fact_Trip"
-          TopLeft="699.090898673643,378.818176173351" />
-        <NodeLayout
-          Size="148,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Date"
-          TopLeft="68.1818171658299,210.909087766301" />
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\DER_Default_Keys"
-          TopLeft="328.701291273112,251.673793051937" />
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Trailer"
-          TopLeft="337.272722246972,382.181813548912" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\CNT_Rows_Inserted"
-          TopLeft="703.636353151365,252.727268961343" />
-        <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\SPL_Incremental_Filter"
-          TopLeft="247.272723588077,30.9090904485096" />
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output]"
-          TopLeft="144.690908061374,252.509087766301">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.036362241073"
-              Start="0,0"
-              End="0,44.536362241073">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.536362241073" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,16.4634936205365,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Incremental_Trips]"
-          TopLeft="341.072723513571,72.5090904485096">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62.0363620920614"
-              Start="0,0"
-              End="0,54.5363620920614">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,54.5363620920614" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-40.7191796875,21.4634935460307,81.438359375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Derived Column Output1]"
-          TopLeft="494.301291273112,273.00053100664">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="209.335061878253,0"
-              Start="0,0"
-              End="201.835061878253,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="201.835061878253,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Derived Column Output]"
-          TopLeft="341.272723439065,176.145452540571">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-199.090906273235,34.7636352257296"
-              Start="0,0"
-              End="-199.090906273235,27.2636352257296">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.3818176128648" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.3818176128648"
-                    Point2="0,17.3818176128648"
-                    Point3="-4,17.3818176128648" />
-                  <mssgle:LineSegment
-                    End="-195.090906273235,17.3818176128648" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-195.090906273235,17.3818176128648"
-                    Point2="-199.090906273235,17.3818176128648"
-                    Point3="-199.090906273235,21.3818176128648" />
-                  <mssgle:LineSegment
-                    End="-199.090906273235,27.2636352257296" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Row Count Output 1]"
-          TopLeft="787.963625912504,294.327268961343">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,84.4909072120081"
-              Start="0,0"
-              End="0,76.9909072120081">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.9909072120081" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[OLE DB Source Output]"
-          TopLeft="217.999999314547,49.7545450230891">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="29.2727242735299,0"
-              Start="0,0"
-              End="21.7727242735299,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="21.7727242735299,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output3]"
-          TopLeft="413.387006760042,382.181813548912">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,-88.9080204969753"
-              Start="0,0"
-              End="0,-81.4080204969753">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-81.4080204969753" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,-46.5086977484876,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output2]"
-          TopLeft="223.818180748008,404.163631182096">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="113.454541498964,0"
-              Start="0,0"
-              End="105.954541498964,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="105.954541498964,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="4.785884030732,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output1]"
-          TopLeft="147.509089852463,346.145450007374">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.3999988079073"
-              Start="0,0"
-              End="0,30.8999988079073">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.8999988079073" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.64531190395365,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_DST_Fact_Trip">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\SEQ_Fact_Fulfillment_Transaction\DFT_Load_Fact_Delivery_Fulfillment">
     <LayoutInfo>
@@ -6046,6 +5765,287 @@ where [refTable].[truck_id] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\SEQ_Fact_Fulfillment_Transaction\DFT_Load_Fact_Delivery_Fulfillment\OLE_DST_Fact_Delivery_Fulfillment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Driver"
+          TopLeft="69.9999989569187,304.545450007374" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\DER_Prepare_Date"
+          TopLeft="257.272723439065,134.545452540571" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Truck"
+          TopLeft="71.8181807480075,384.545448815281" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_SRC_Stg_Trips"
+          TopLeft="45.9999993145466,26.9999995976687" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_DST_Fact_Trip"
+          TopLeft="699.090898673643,378.818176173351" />
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Date"
+          TopLeft="68.1818171658299,210.909087766301" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\DER_Default_Keys"
+          TopLeft="328.701291273112,251.673793051937" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\LKP_Dim_Trailer"
+          TopLeft="337.272722246972,382.181813548912" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\CNT_Rows_Inserted"
+          TopLeft="703.636353151365,252.727268961343" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\SPL_Incremental_Filter"
+          TopLeft="247.272723588077,30.9090904485096" />
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output]"
+          TopLeft="144.690908061374,252.509087766301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.036362241073"
+              Start="0,0"
+              End="0,44.536362241073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.536362241073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,16.4634936205365,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Incremental_Trips]"
+          TopLeft="341.072723513571,72.5090904485096">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.0363620920614"
+              Start="0,0"
+              End="0,54.5363620920614">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.5363620920614" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-40.7191796875,21.4634935460307,81.438359375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Derived Column Output1]"
+          TopLeft="494.301291273112,273.00053100664">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="209.335061878253,0"
+              Start="0,0"
+              End="201.835061878253,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="201.835061878253,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Derived Column Output]"
+          TopLeft="341.272723439065,176.145452540571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-199.090906273235,34.7636352257296"
+              Start="0,0"
+              End="-199.090906273235,27.2636352257296">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3818176128648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3818176128648"
+                    Point2="0,17.3818176128648"
+                    Point3="-4,17.3818176128648" />
+                  <mssgle:LineSegment
+                    End="-195.090906273235,17.3818176128648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-195.090906273235,17.3818176128648"
+                    Point2="-199.090906273235,17.3818176128648"
+                    Point3="-199.090906273235,21.3818176128648" />
+                  <mssgle:LineSegment
+                    End="-199.090906273235,27.2636352257296" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Row Count Output 1]"
+          TopLeft="787.963625912504,294.327268961343">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.4909072120081"
+              Start="0,0"
+              End="0,76.9909072120081">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.9909072120081" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[OLE DB Source Output]"
+          TopLeft="217.999999314547,49.7545450230891">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.2727242735299,0"
+              Start="0,0"
+              End="21.7727242735299,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.7727242735299,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output3]"
+          TopLeft="413.387006760042,382.181813548912">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,-88.9080204969753"
+              Start="0,0"
+              End="0,-81.4080204969753">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-81.4080204969753" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,-46.5086977484876,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output2]"
+          TopLeft="223.818180748008,404.163631182096">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113.454541498964,0"
+              Start="0,0"
+              End="105.954541498964,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="105.954541498964,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="4.785884030732,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip.Paths[Lookup Match Output1]"
+          TopLeft="147.509089852463,346.145450007374">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3999988079073"
+              Start="0,0"
+              End="0,30.8999988079073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8999988079073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,9.64531190395365,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Fact_Trip_Transaction\DFT_Load_Fact_Trip\OLE_DST_Fact_Trip">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
