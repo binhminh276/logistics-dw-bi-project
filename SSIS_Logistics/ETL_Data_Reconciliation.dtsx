@@ -1,0 +1,224 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/1/2026 9:16:02 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NTBM2"
+  DTS:CreatorName="NTBM2\HP"
+  DTS:DTSID="{1A46F23B-FA34-4F73-9D35-6B8A59F89878}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1066"
+  DTS:ObjectName="ETL_Data_Reconciliation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{38AB3771-75C5-447C-ACD1-84B0D88B588C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D323772-398A-41EB-BAB0-020C05B34532}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="20">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3AC4AF4A-43F4-4AF9-80FD-AA1A644936CF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DiscrepancyCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Raise_Discrepancy_Error"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{92394521-7E1E-4C9D-9892-E0182BFBC3BC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Raise_Discrepancy_Error"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="RAISERROR(N'Cảnh báo: Phát hiện sai lệch số liệu giữa Staging và DWH! Pipeline bị chặn để kiểm tra.', 16, 1);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Reconciliation_Passed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BA298C68-158A-4B8C-AE08-E3826778DD92}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Reconciliation_Passed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="SELECT 1;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Run_Reconciliation_Check"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{01373BAD-ED40-428F-A978-CF18605CD695}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Run_Reconciliation_Check"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DC64635A-9789-4B29-88BF-84D7AFAA1621}"
+          SQLTask:SqlStatementSource="DECLARE @StgCount BIGINT, @DwhCount BIGINT;&#xA;DECLARE @StgRev DECIMAL(18,2), @DwhRev DECIMAL(18,2);&#xA;DECLARE @DiffCount BIGINT, @IsBalanced BIT;&#xA;&#xA;SELECT &#xA;    @StgCount = COUNT(*),&#xA;    @StgRev = COALESCE(SUM(revenue + fuel_surcharge + accessorial_charges), 0)&#xA;FROM Logistics_Staging.dbo.Stg_CDC_Loads;&#xA;&#xA;SELECT &#xA;    @DwhCount = COUNT(*),&#xA;    @DwhRev = COALESCE(SUM(total_revenue), 0)&#xA;FROM Logistics_DW.dbo.Fact_Load&#xA;WHERE load_id IN (SELECT load_id FROM Logistics_Staging.dbo.Stg_CDC_Loads);&#xA;&#xA;SET @DiffCount = ABS(@StgCount - @DwhCount);&#xA;SET @IsBalanced = CASE WHEN @DiffCount = 0 AND ABS(@StgRev - @DwhRev) &lt; 0.01 THEN 1 ELSE 0 END;&#xA;&#xA;INSERT INTO audit.Reconciliation_Log (&#xA;    batch_id, fact_table_name, source_row_count, dwh_row_count, difference_count,&#xA;    source_total_value, dwh_total_value, is_balanced&#xA;)&#xA;VALUES (?, 'Fact_Load', @StgCount, @DwhCount, @DiffCount, @StgRev, @DwhRev, @IsBalanced);&#xA;&#xA;SELECT CAST(@DiffCount AS INT) AS discrepancy_count;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::DiscrepancyCount" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::BatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EF872A39-733B-4EF8-A5A2-2A3E322CC428}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DiscrepancyCount] == 0"
+      DTS:From="Package\SQL_Run_Reconciliation_Check"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL_Reconciliation_Passed" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A3E296FE-FDF5-4F12-AC5A-20A35B8DBBF1}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DiscrepancyCount] &gt; 0"
+      DTS:From="Package\SQL_Run_Reconciliation_Check"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL_Raise_Discrepancy_Error" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="225.6,41.6"
+          Id="Package\SQL_Run_Reconciliation_Check"
+          TopLeft="250.714286247991,92.5294116836003" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\SQL_Reconciliation_Passed"
+          TopLeft="88.5714287599738,186.588235130566" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\SQL_Raise_Discrepancy_Error"
+          TopLeft="453.571429536963,182.764705722153" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="363.514286247991,134.1294116836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-172.142857488017,52.4588234469655"
+              Start="0,0"
+              End="-172.142857488017,44.9588234469655">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2294117234828" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2294117234828"
+                    Point2="0,26.2294117234828"
+                    Point3="-4,26.2294117234828" />
+                  <mssgle:LineSegment
+                    End="-168.142857488017,26.2294117234828" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-168.142857488017,26.2294117234828"
+                    Point2="-172.142857488017,26.2294117234828"
+                    Point3="-172.142857488017,30.2294117234828" />
+                  <mssgle:LineSegment
+                    End="-172.142857488017,44.9588234469655" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-94.0714287440084,31.2294117234828,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="399.780952914657,134.1294116836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163.390476622306,48.6352940385524"
+              Start="0,0"
+              End="163.390476622306,41.1352940385524">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.6596188578374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.6596188578374"
+                    Point2="0,19.6596188578374"
+                    Point3="4,19.6596188578374" />
+                  <mssgle:LineSegment
+                    End="159.390476622306,19.6596188578374" />
+                  <mssgle:CubicBezierSegment
+                    Point1="159.390476622306,19.6596188578374"
+                    Point2="163.390476622306,19.6596188578374"
+                    Point3="163.390476622306,23.6596188578374" />
+                  <mssgle:LineSegment
+                    End="163.390476622306,41.1352940385524" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="73.6952383111529,24.6596188578374,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
