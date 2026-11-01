@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{10045D6B-6314-40CE-ADBD-8C7AA215BB0A}">
+  DTS:VersionBuild="62"
+  DTS:VersionGUID="{A43C0695-5FA1-4A5F-8F3D-AFD82D833D51}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -79,15 +79,6 @@
       <DTS:VariableValue
         DTS:DataType="7">10/19/2026 5:31:39 PM</DTS:VariableValue>
     </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{A324072D-CF2F-4750-8AB5-D9309F5C763C}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="vRowsInserted">
-      <DTS:VariableValue
-        DTS:DataType="3">0</DTS:VariableValue>
-    </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
@@ -115,6 +106,35 @@
               version="1">
               <components>
                 <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Rejected_Rows">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RejectedRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -124,7 +144,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the variable to hold the row count."
-                      name="VariableName">User::vRowsInserted</property>
+                      name="VariableName">User::InsertedRowCount</property>
                   </properties>
                   <inputs>
                     <input
@@ -139,6 +159,407 @@
                       refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
                       synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Source_Rows">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::SourceRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER_Audit_Bad_Revenue"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input].Columns[load_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input].Columns[revenue]"
+                          cachedDataType="numeric"
+                          cachedName="revenue"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input].Columns[fuel_surcharge]"
+                          cachedDataType="numeric"
+                          cachedName="fuel_surcharge"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[DER_Audit_Bad_Revenue]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[DER_Audit_Bad_Revenue]"
+                          name="DER_Audit_Bad_Revenue"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)load_id</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rule_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rule_name]"
+                          name="rule_name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)"Bad_Revenue_Values"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)"Bad_Revenue_Values"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[source_table]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[source_table]"
+                          name="source_table"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)"Stg_CDC_Loads"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)"Stg_CDC_Loads"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="500"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          name="rejection_reason"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,500)"Doanh thu, phu phi xang dau hoac phi phat sinh bi am"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,500)"Doanh thu, phu phi xang dau hoac phi phat sinh bi am"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="1000"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          name="rejected_raw_data"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,1000)("revenue=" + (DT_WSTR,30)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]} + "; fuel_surcharge=" + (DT_WSTR,30)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,1000)("revenue=" + (DT_WSTR,30)revenue + "; fuel_surcharge=" + (DT_WSTR,30)fuel_surcharge)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER_Audit_Invalid_Weight"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input].Columns[load_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input].Columns[weight_lbs]"
+                          cachedDataType="i4"
+                          cachedName="weight_lbs"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input].Columns[pieces]"
+                          cachedDataType="i4"
+                          cachedName="pieces"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[business_key]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[business_key]"
+                          name="business_key"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)load_id</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rule_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rule_name]"
+                          name="rule_name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)"Invalid_Weight_Or_Pieces"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)"Invalid_Weight_Or_Pieces"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[source_table]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[source_table]"
+                          name="source_table"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)"Stg_CDC_Loads"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)"Stg_CDC_Loads"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="500"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          name="rejection_reason"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,500)"Khoi luong hoac so kien hang nho hon bang 0 hoac bi NULL"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,500)"Khoi luong hoac so kien hang nho hon bang 0 hoac bi NULL"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="1000"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          name="rejected_raw_data"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,1000)("weight=" + (DT_WSTR,30)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]} + "; pieces=" + (DT_WSTR,30)#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,1000)("weight=" + (DT_WSTR,30)weight_lbs + "; pieces=" + (DT_WSTR,30)pieces)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
                       <externalMetadataColumns />
                     </output>
                   </outputs>
@@ -399,6 +820,102 @@
                           refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER_Rejection_Metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[package_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[package_name]"
+                          name="package_name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)@[System::PackageName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[batch_id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[batch_id]"
+                          name="batch_id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::BatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::BatchID]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1068,6 +1585,199 @@ where [refTable].[route_id] = ?</property>
                           refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST_Data_Quality_Rejections"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1258</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Connections[OleDbConnection]"
+                      connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[business_key]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="business_key"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[business_key]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[rule_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="rule_name"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rule_name]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[source_table]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="source_table"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[source_table]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[source_table]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[rejection_reason]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="rejection_reason"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejection_reason]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[rejected_raw_data]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="rejected_raw_data"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejected_raw_data]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejected_raw_data]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[package_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="package_name"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[package_name]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[package_name]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].Columns[batch_id]"
+                          cachedDataType="i8"
+                          cachedName="batch_id"
+                          externalMetadataColumnId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[batch_id]"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output].Columns[batch_id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_id]"
+                          dataType="i8"
+                          name="rejection_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[batch_id]"
+                          dataType="i8"
+                          name="batch_id" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[package_name]"
+                          dataType="wstr"
+                          length="100"
+                          name="package_name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[source_table]"
+                          dataType="wstr"
+                          length="100"
+                          name="source_table" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                          dataType="wstr"
+                          length="100"
+                          name="business_key" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                          dataType="wstr"
+                          length="100"
+                          name="rule_name" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejected_raw_data]"
+                          dataType="nText"
+                          name="rejected_raw_data" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                          dataType="wstr"
+                          length="500"
+                          name="rejection_reason" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                          dataType="dbTimeStamp2"
+                          name="created_at"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1780,6 +2490,149 @@ where [refTable].[route_id] = ?</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="SPL_Check_Data_Quality"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input].Columns[weight_lbs]"
+                          cachedDataType="i4"
+                          cachedName="weight_lbs"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input].Columns[pieces]"
+                          cachedDataType="i4"
+                          cachedName="pieces"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input].Columns[revenue]"
+                          cachedDataType="numeric"
+                          cachedName="revenue"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input].Columns[fuel_surcharge]"
+                          cachedDataType="numeric"
+                          cachedName="fuel_surcharge"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]" />
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input].Columns[accessorial_charges]"
+                          cachedDataType="numeric"
+                          cachedName="accessorial_charges"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Bad_Revenue_Values]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Bad_Revenue_Values"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]} &lt; 0 || #{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]} &lt; 0 || #{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]} &lt; 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">revenue &lt; 0 || fuel_surcharge &lt; 0 || accessorial_charges &lt; 0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Invalid_Weight_Or_Pieces]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Invalid_Weight_Or_Pieces"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]}) || #{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]} &lt;= 0 || [ISNULL](#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]}) || #{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]} &lt; 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(weight_lbs) || weight_lbs &lt;= 0 || ISNULL(pieces) || pieces &lt; 0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Valid_Rows]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Valid_Rows"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter"
                   componentClassID="Microsoft.ConditionalSplit"
                   contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1868,8 +2721,819 @@ where [refTable].[route_id] = ?</property>
                     </output>
                   </outputs>
                 </component>
+                <component
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="UNI_Merge_Rejections"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[load_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[customer_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="customer_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[customer_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[route_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="route_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[route_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[origin_city]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="origin_city"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_city]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_city]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[origin_state]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="origin_state"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_state]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_state]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[destination_city]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="destination_city"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_city]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_city]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[destination_state]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="destination_state"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_state]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_state]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[booking_type]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="booking_type"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[booking_type]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[load_type]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_type"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_type]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[load_status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_status"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_status]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[load_date]"
+                          cachedDataType="dbDate"
+                          cachedName="load_date"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_date]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[weight_lbs]"
+                          cachedDataType="i4"
+                          cachedName="weight_lbs"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[weight_lbs]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[pieces]"
+                          cachedDataType="i4"
+                          cachedName="pieces"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[pieces]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[revenue]"
+                          cachedDataType="numeric"
+                          cachedName="revenue"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[revenue]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[fuel_surcharge]"
+                          cachedDataType="numeric"
+                          cachedName="fuel_surcharge"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[fuel_surcharge]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[accessorial_charges]"
+                          cachedDataType="numeric"
+                          cachedName="accessorial_charges"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[accessorial_charges]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[cdc_operation]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="cdc_operation"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_operation]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[cdc_timestamp]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="cdc_timestamp"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_timestamp]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[business_key]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="business_key"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[business_key]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[business_key]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[rule_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="rule_name"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rule_name]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rule_name]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[source_table]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="source_table"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[source_table]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[source_table]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[rejection_reason]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="rejection_reason"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejection_reason]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejection_reason]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1].Columns[rejected_raw_data]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="rejected_raw_data"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output].Columns[rejected_raw_data]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejected_raw_data]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[load_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[customer_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="customer_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[customer_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[customer_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[route_id]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="route_id"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[route_id]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[route_id]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[origin_city]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="origin_city"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_city]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_city]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[origin_state]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="origin_state"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[origin_state]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_state]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[destination_city]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="destination_city"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_city]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_city]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[destination_state]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="destination_state"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[destination_state]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_state]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[booking_type]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="booking_type"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[booking_type]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[booking_type]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[load_type]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_type"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_type]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_type]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[load_status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="load_status"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_status]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_status]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[load_date]"
+                          cachedDataType="dbDate"
+                          cachedName="load_date"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[load_date]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_date]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[weight_lbs]"
+                          cachedDataType="i4"
+                          cachedName="weight_lbs"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[weight_lbs]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[weight_lbs]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[pieces]"
+                          cachedDataType="i4"
+                          cachedName="pieces"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[pieces]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[pieces]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[revenue]"
+                          cachedDataType="numeric"
+                          cachedName="revenue"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[revenue]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[revenue]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[fuel_surcharge]"
+                          cachedDataType="numeric"
+                          cachedName="fuel_surcharge"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[fuel_surcharge]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[fuel_surcharge]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[accessorial_charges]"
+                          cachedDataType="numeric"
+                          cachedName="accessorial_charges"
+                          cachedPrecision="14"
+                          cachedScale="2"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[accessorial_charges]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[accessorial_charges]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[cdc_operation]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="cdc_operation"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_operation]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_operation]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[cdc_timestamp]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="cdc_timestamp"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output].Columns[cdc_timestamp]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_timestamp]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[rule_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="rule_name"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rule_name]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rule_name]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[source_table]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="source_table"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[source_table]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[source_table]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[rejection_reason]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="rejection_reason"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejection_reason]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejection_reason]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2].Columns[rejected_raw_data]"
+                          cachedDataType="wstr"
+                          cachedLength="1000"
+                          cachedName="rejected_raw_data"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output].Columns[rejected_raw_data]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejected_raw_data]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_id]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_id]"
+                          name="load_id" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[customer_id]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[customer_id]"
+                          name="customer_id" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[route_id]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[route_id]"
+                          name="route_id" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_city]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_city]"
+                          name="origin_city" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_state]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[origin_state]"
+                          name="origin_state" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_city]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_city]"
+                          name="destination_city" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_state]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[destination_state]"
+                          name="destination_state" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[booking_type]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[booking_type]"
+                          name="booking_type" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_type]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_type]"
+                          name="load_type" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_status]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_status]"
+                          name="load_status" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_date]"
+                          dataType="dbDate"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[load_date]"
+                          name="load_date" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[weight_lbs]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[weight_lbs]"
+                          name="weight_lbs" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[pieces]"
+                          dataType="i4"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[pieces]"
+                          name="pieces" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[revenue]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[revenue]"
+                          name="revenue"
+                          precision="14"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[fuel_surcharge]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[fuel_surcharge]"
+                          name="fuel_surcharge"
+                          precision="14"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[accessorial_charges]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[accessorial_charges]"
+                          name="accessorial_charges"
+                          precision="14"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_operation]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_operation]"
+                          name="cdc_operation" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_timestamp]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[cdc_timestamp]"
+                          name="cdc_timestamp" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[business_key]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[business_key]"
+                          name="business_key" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rule_name]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rule_name]"
+                          name="rule_name" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[source_table]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[source_table]"
+                          name="source_table" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejection_reason]"
+                          dataType="wstr"
+                          length="500"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejection_reason]"
+                          name="rejection_reason" />
+                        <outputColumn
+                          refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejected_raw_data]"
+                          dataType="wstr"
+                          length="1000"
+                          lineageId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1].Columns[rejected_raw_data]"
+                          name="rejected_raw_data" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
               </components>
               <paths>
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Bad_Revenue_Values]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Inputs[Derived Column Input]"
+                  name="Bad_Revenue_Values"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Bad_Revenue_Values]" />
                 <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output]"
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer.Inputs[Lookup Input]"
@@ -1881,10 +3545,40 @@ where [refTable].[route_id] = ?</property>
                   name="Derived Column Output"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Outputs[Derived Column Output]" />
                 <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output2]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output3]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 2]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output4]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Inputs[Union All Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Outputs[Derived Column Output]" />
+                <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Incremental_Loads]"
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Calculations.Inputs[Derived Column Input]"
                   name="Incremental_Loads"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter.Outputs[Incremental_Loads]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Invalid_Weight_Or_Pieces]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight.Inputs[Derived Column Input]"
+                  name="Invalid_Weight_Or_Pieces"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Invalid_Weight_Or_Pieces]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]"
@@ -1896,18 +3590,8 @@ where [refTable].[route_id] = ?</property>
                   name="Lookup Match Output"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output]" />
                 <path
-                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]"
-                  name="Lookup Match Output"
-                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output]" />
-                <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Inputs[Row Count Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads.Outputs[OLE DB Source Output]" />
                 <path
@@ -1915,6 +3599,26 @@ where [refTable].[route_id] = ?</property>
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Fact_Load.Inputs[OLE DB Destination Input]"
                   name="Row Count Output 1"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 11]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Inputs[Conditional Split Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 12]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Union All Output 1]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata.Inputs[Derived Column Input]"
+                  name="Union All Output 1"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections.Outputs[Union All Output 1]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Valid_Rows]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
+                  name="Valid_Rows"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Valid_Rows]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -1992,7 +3696,7 @@ where [refTable].[route_id] = ?</property>
               SQLTask:SqlStatementSource="UPDATE dbo.ETL_Metadata&#xA;SET last_load_date = (SELECT ISNULL(MAX(load_date), '1900-01-01') FROM dbo.Stg_CDC_Loads),&#xA;    rows_inserted = ?,&#xA;    execution_status = 'SUCCESS'&#xA;WHERE table_name = 'Fact_Load';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
-                SQLTask:DtsVariableName="User::vRowsInserted"
+                SQLTask:DtsVariableName="User::InsertedRowCount"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="3"
                 SQLTask:ParameterSize="-1" />
@@ -2044,7 +3748,7 @@ where [refTable].[route_id] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Finish_Package_Audit"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2092,7 +3796,7 @@ where [refTable].[route_id] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Rollback_On_Failure"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2179,6 +3883,14 @@ where [refTable].[route_id] = ?</property>
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load"
           TopLeft="82.9571431293168,186.674789703866" />
         <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\SQL_Begin_Transaction"
+          TopLeft="156.081633300371,22.1378150168882" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\SQL_Commit_Transaction"
+          TopLeft="131.591837329871,358.608402957253" />
+        <NodeLayout
           Size="176.8,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\SQL_Get_Watermark"
           TopLeft="115.416326883591,111.258823378596" />
@@ -2192,9 +3904,9 @@ where [refTable].[route_id] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-30.8591837542743,33.81596632527"
+              EndConnector="-30.8591837542742,33.81596632527"
               Start="0,0"
-              End="-30.8591837542743,26.31596632527">
+              End="-30.8591837542742,26.31596632527">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2205,13 +3917,13 @@ where [refTable].[route_id] = ?</property>
                     Point2="0,16.907983162635"
                     Point3="-4,16.907983162635" />
                   <mssgle:LineSegment
-                    End="-26.8591837542743,16.907983162635" />
+                    End="-26.8591837542742,16.907983162635" />
                   <mssgle:CubicBezierSegment
-                    Point1="-26.8591837542743,16.907983162635"
-                    Point2="-30.8591837542743,16.907983162635"
-                    Point3="-30.8591837542743,20.907983162635" />
+                    Point1="-26.8591837542742,16.907983162635"
+                    Point2="-30.8591837542742,16.907983162635"
+                    Point3="-30.8591837542742,20.907983162635" />
                   <mssgle:LineSegment
-                    End="-30.8591837542743,26.31596632527" />
+                    End="-30.8591837542742,26.31596632527" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2226,26 +3938,26 @@ where [refTable].[route_id] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="18.3326530966317,51.2193276449111"
+              EndConnector="18.3326530966317,51.219327644911"
               Start="0,0"
-              End="18.3326530966317,43.7193276449111">
+              End="18.3326530966317,43.719327644911">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.6096638224557" />
+                    End="0,21.6096638224555" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.6096638224557"
-                    Point2="0,25.6096638224557"
-                    Point3="4,25.6096638224557" />
+                    Point1="0,21.6096638224555"
+                    Point2="0,25.6096638224555"
+                    Point3="4,25.6096638224555" />
                   <mssgle:LineSegment
-                    End="14.3326530966317,25.6096638224557" />
+                    End="14.3326530966317,25.6096638224555" />
                   <mssgle:CubicBezierSegment
-                    Point1="14.3326530966317,25.6096638224557"
-                    Point2="18.3326530966317,25.6096638224557"
-                    Point3="18.3326530966317,29.6096638224557" />
+                    Point1="14.3326530966317,25.6096638224555"
+                    Point2="18.3326530966317,25.6096638224555"
+                    Point3="18.3326530966317,29.6096638224555" />
                   <mssgle:LineSegment
-                    End="18.3326530966317,43.7193276449111" />
+                    End="18.3326530966317,43.719327644911" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2254,10 +3966,6 @@ where [refTable].[route_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\SQL_Begin_Transaction"
-          TopLeft="156.081633300371,22.1378150168882" />
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction.PrecedenceConstraints[Constraint 2]"
           TopLeft="250.881633300371,63.7378150168882">
@@ -2292,10 +4000,6 @@ where [refTable].[route_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="200,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\SQL_Commit_Transaction"
-          TopLeft="131.591837329871,358.608402957253" />
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction.PrecedenceConstraints[Constraint 3]"
           TopLeft="191.289796225949,321.094117348777">
@@ -2338,6 +4042,14 @@ where [refTable].[route_id] = ?</property>
           Id="Package\Sequence_Fact_Load_Transaction"
           TopLeft="147.959183988436,59.1008402843303" />
         <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\SQL_Finish_Package_Audit"
+          TopLeft="694.897960662929,499.243697041385" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\SQL_Rollback_On_Failure"
+          TopLeft="681.632654512242,392.016806419142" />
+        <NodeLayout
           Size="200,41.6"
           Id="Package\SQL_Start_Package_Audit"
           TopLeft="616.734695190417,23.9243697269285" />
@@ -2375,10 +4087,6 @@ where [refTable].[route_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\SQL_Rollback_On_Failure"
-          TopLeft="681.632654512242,392.016806419142" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="543.959183988436,390.034173617664">
@@ -2415,10 +4123,6 @@ where [refTable].[route_id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204.8,41.6"
-          Id="Package\SQL_Finish_Package_Audit"
-          TopLeft="694.897960662929,499.243697041385" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="543.959183988436,430.90084028433">
@@ -2460,11 +4164,35 @@ where [refTable].[route_id] = ?</property>
     design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads"
-          TopLeft="270.714286290565,87.1764705118217" />
+          TopLeft="486.020409197875,22.7226890557129" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter"
+          TopLeft="285.00000060669,178.941176313739" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer"
+          TopLeft="375.000000798276,302.482352730034" />
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections"
+          TopLeft="1083.10714379188,528.661764365205" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Calculations"
+          TopLeft="127.857143129317,277.588235050801" />
+        <NodeLayout
+          Size="176,49.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
+          TopLeft="393.571429409239,478.47058797455" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality"
+          TopLeft="747.959185265678,95.731092410163" />
         <NodeLayout
           Size="148,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date"
@@ -2474,33 +4202,89 @@ where [refTable].[route_id] = ?</property>
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route"
           TopLeft="685.178572887137,296.120588051466" />
         <NodeLayout
-          Size="176,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Fact_Load"
-          TopLeft="346.428572166027,475.411764447819" />
+          Size="185.6,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections"
+          TopLeft="1107.71428706755,285.126050170244" />
         <NodeLayout
-          Size="160,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Calculations"
-          TopLeft="127.857143129317,277.588235050801" />
+          Size="198.4,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue"
+          TopLeft="1333.36734881011,179.899159538233" />
         <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer"
-          TopLeft="375.000000798276,302.482352730034" />
-        <NodeLayout
-          Size="165.6,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys"
-          TopLeft="92.8571430548113,393.279411504129" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted"
-          TopLeft="91.9642859100535,475.617646728704" />
+          Size="167.2,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows"
+          TopLeft="759.18367508549,23.6302521372278" />
         <NodeLayout
           Size="184,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile"
           TopLeft="674.821430007946,393.949999797739" />
         <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Incremental_Filter"
-          TopLeft="285.00000060669,178.941176313739" />
+          Size="174.4,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rows_Inserted"
+          TopLeft="91.9642859100535,475.617646728704" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Rejection_Metadata"
+          TopLeft="1095.14285837448,363.932772793248" />
+        <NodeLayout
+          Size="165.6,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys"
+          TopLeft="92.8571430548113,393.279411504129" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Rejected_Rows"
+          TopLeft="1109.17857241881,445.014705559774" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight"
+          TopLeft="983.551021835286,194.453781342159" />
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
+          TopLeft="409.107143728025,412.995588047193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-150.650000673213,0"
+              Start="0,0"
+              End="-143.150000673213,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-143.150000673213,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-119.766387055357,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+          TopLeft="674.821430007946,413.330882193998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.714286279921,0"
+              Start="0,0"
+              End="-110.214286279921,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-110.214286279921,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
           TopLeft="764.400001447542,337.720588051466">
@@ -2550,6 +4334,42 @@ where [refTable].[route_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Invalid_Weight_Or_Pieces]"
+          TopLeft="845.959185265678,137.331092410163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="239.991836569608,57.1226889319958"
+              Start="0,0"
+              End="239.991836569608,49.6226889319958">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5613444659979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5613444659979"
+                    Point2="0,28.5613444659979"
+                    Point3="4,28.5613444659979" />
+                  <mssgle:LineSegment
+                    End="235.991836569608,28.5613444659979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="235.991836569608,28.5613444659979"
+                    Point2="239.991836569608,28.5613444659979"
+                    Point3="239.991836569608,32.5613444659979" />
+                  <mssgle:LineSegment
+                    End="239.991836569608,49.6226889319958" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="61.7567385973042,33.5613444659979,116.478359375,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Incremental_Loads]"
           TopLeft="378.60000060669,220.541176313739">
           <EdgeLayout.Curve>
@@ -2581,8 +4401,98 @@ where [refTable].[route_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-128.055608426187,33.5235293685307,85.368359375,11.0625"
+              BoundingBox="-128.055608426186,33.5235293685307,85.368359375,11.0625"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output4]"
+          TopLeft="1085.95102183529,236.053781342159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.563265232268,49.0722688280851"
+              Start="0,0"
+              End="114.563265232268,41.5722688280851">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5361344140426" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.5361344140426"
+                    Point2="0,24.5361344140426"
+                    Point3="4,24.5361344140426" />
+                  <mssgle:LineSegment
+                    End="110.563265232268,24.5361344140426" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.563265232268,24.5361344140426"
+                    Point2="114.563265232268,24.5361344140426"
+                    Point3="114.563265232268,28.5361344140426" />
+                  <mssgle:LineSegment
+                    End="114.563265232268,41.5722688280851" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output3]"
+          TopLeft="1432.56734881011,221.499159538233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.453061742556,63.6268906320109"
+              Start="0,0"
+              End="-202.453061742556,56.1268906320109">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8498426323757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.8498426323757"
+                    Point2="0,37.8498426323757"
+                    Point3="-4,37.8498426323757" />
+                  <mssgle:LineSegment
+                    End="-198.453061742556,37.8498426323757" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.453061742556,37.8498426323757"
+                    Point2="-202.453061742556,37.8498426323757"
+                    Point3="-202.453061742556,41.8498426323757" />
+                  <mssgle:LineSegment
+                    End="-202.453061742556,56.1268906320109" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Derived Column Output2]"
+          TopLeft="1195.36071539665,405.532772793248">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.4819327665261"
+              Start="0,0"
+              End="0,31.9819327665261">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9819327665261" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2604,9 +4514,7 @@ where [refTable].[route_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2640,117 +4548,189 @@ where [refTable].[route_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Bad_Revenue_Values]"
+          TopLeft="892.959185265678,137.331092410163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="539.608163544432,42.5680671280701"
+              Start="0,0"
+              End="539.608163544432,35.0680671280701">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.570278010279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.570278010279"
+                    Point2="0,14.570278010279"
+                    Point3="4,14.570278010279" />
+                  <mssgle:LineSegment
+                    End="535.608163544432,14.570278010279" />
+                  <mssgle:CubicBezierSegment
+                    Point1="535.608163544432,14.570278010279"
+                    Point2="539.608163544432,14.570278010279"
+                    Point3="539.608163544432,18.570278010279" />
+                  <mssgle:LineSegment
+                    End="539.608163544432,35.0680671280701" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="222.001503647216,19.570278010279,95.60515625,11.0625"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Valid_Rows]"
+          TopLeft="845.959185265678,137.331092410163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-467.359184658988,41.610083903576"
+              Start="0,0"
+              End="-467.359184658988,34.110083903576">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.805041951788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.805041951788"
+                    Point2="0,20.805041951788"
+                    Point3="-4,20.805041951788" />
+                  <mssgle:LineSegment
+                    End="-463.359184658988,20.805041951788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-463.359184658988,20.805041951788"
+                    Point2="-467.359184658988,20.805041951788"
+                    Point3="-467.359184658988,24.805041951788" />
+                  <mssgle:LineSegment
+                    End="-467.359184658988,34.110083903576" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-259.760354048244,25.805041951788,52.1615234375,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Union All Output 1]"
+          TopLeft="1197.02857272102,326.726050170244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2067226230037"
+              Start="0,0"
+              End="0,29.7067226230037">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7067226230037" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 12]"
+          TopLeft="1200.94285810535,486.614705559774">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.0470588054312"
+              Start="0,0"
+              End="0,34.5470588054312">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5470588054312" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 11]"
+          TopLeft="844.371430175584,65.2302521372278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.5008402729352"
+              Start="0,0"
+              End="0,23.0008402729352">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0008402729352" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
-          TopLeft="266.364285910054,496.314705588261">
+          TopLeft="266.364285910054,499.844117351627">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="80.0642862559735,0"
+              EndConnector="127.207143499185,0"
               Start="0,0"
-              End="72.5642862559735,0">
+              End="119.707143499185,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="72.5642862559735,0" />
+                    End="119.707143499185,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
-          TopLeft="359.114286290565,128.776470511822">
+          TopLeft="662.820409197875,43.9764705964703">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="19.4857143161249,50.1647058019176"
+              EndConnector="96.3632658876153,0"
               Start="0,0"
-              End="19.4857143161249,42.6647058019176">
+              End="88.8632658876153,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.0823529009588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.0823529009588"
-                    Point2="0,25.0823529009588"
-                    Point3="4,25.0823529009588" />
-                  <mssgle:LineSegment
-                    End="15.4857143161249,25.0823529009588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.4857143161249,25.0823529009588"
-                    Point2="19.4857143161249,25.0823529009588"
-                    Point3="19.4857143161249,29.0823529009588" />
-                  <mssgle:LineSegment
-                    End="19.4857143161249,42.6647058019176" />
+                    End="88.8632658876153,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
-          TopLeft="409.107143728025,412.995588047193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-150.650000673213,0"
-              Start="0,0"
-              End="-143.150000673213,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-143.150000673213,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-119.766387055357,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
-          TopLeft="674.821430007946,413.330882193998">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-117.714286279921,0"
-              Start="0,0"
-              End="-110.214286279921,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-110.214286279921,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2758,6 +4738,55 @@ where [refTable].[route_id] = ?</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Data_Quality_Rejections">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Fact_Load">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2804,42 +4833,6 @@ where [refTable].[route_id] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Dim_Route]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_DST_Fact_Load">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Dim_Customer]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
