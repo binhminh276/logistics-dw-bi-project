@@ -5,14 +5,15 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="PHUCAN"
   DTS:CreatorName="PhucAn\Phuc An"
+  DTS:DelayValidation="True"
   DTS:DTSID="{E59CEC99-D139-4A7B-A7C6-6571A5613E2E}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1066"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{4D0DBA2C-4622-4D32-966E-F8582AB3B725}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{57CBEBC3-BD9C-487D-AD8F-627373B49ACE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
