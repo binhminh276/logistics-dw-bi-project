@@ -1,0 +1,53 @@
+-- Phân tích hiệu suất nhiên liệu (MPG) theo Hãng xe qua các năm
+-- Mục tiêu: Đánh giá dòng xe của hãng nào tiết kiệm nhiên liệu nhất qua từng năm
+WITH MEMBER [Measures].[MPG] AS
+  [Measures].[Actual Distance Miles] / [Measures].[Fuel Gallons Used],
+  FORMAT_STRING = "0.00"
+SELECT 
+    { [Measures].[Actual Distance Miles], [Measures].[Fuel Gallons Used], [Measures].[MPG] } ON COLUMNS,
+    NON EMPTY CROSSJOIN(
+        [Dim_Date].[Calendar Year].Children,
+        [Dim_Truck].[Make].Children
+    ) ON ROWS
+FROM [Cube_Fleet_Operations]
+
+-- Đánh giá Tỷ lệ Giao hàng Đúng giờ (SLA Compliance) & Nút thắt Kho bãi
+-- Mục tiêu: Tìm ra những khách hàng có tỷ lệ được giao hàng đúng giờ thấp nhất (rủi ro mất khách cao).
+WITH MEMBER [Measures].[On Time Pct] AS
+  ([Measures].[Delivery On Time Count] / [Measures].[Total Fulfillment Count]) * 100,
+  FORMAT_STRING = "0.00%"
+SELECT 
+    { [Measures].[Total Fulfillment Count], [Measures].[On Time Pct] } ON COLUMNS,
+    BOTTOMCOUNT(
+        FILTER([Dim_Customer].[Customer Name].Children, [Measures].[Total Fulfillment Count] > 50), 
+        10, 
+        [Measures].[On Time Pct]
+    ) ON ROWS
+FROM [Cube_Fulfillment]
+
+-- Phân tích Nút thắt Kho bãi - Điểm nóng kẹt xe (Detention Analysis)
+-- Mục tiêu: Phát hiện các Kho (Facility) có thời gian ngâm xe (Detention Minutes) cao nhất, làm giảm vòng quay đầu xe.
+WITH MEMBER [Measures].[Avg Delivery Detention] AS
+  [Measures].[Delivery Detention Minutes] / [Measures].[Total Fulfillment Count],
+  FORMAT_STRING = "0.00"
+SELECT 
+    { [Measures].[Total Fulfillment Count], [Measures].[Avg Delivery Detention] } ON COLUMNS,
+    TOPCOUNT(
+        [Destination Facility].[Facility Hierarchy].[Facility Name].Members, 
+        10, 
+        [Measures].[Avg Delivery Detention]
+    ) ON ROWS
+FROM [Cube_Fulfillment]
+
+-- Phân bổ khối lượng và thời gian làm việc của Tài xế theo Loại Rơ-moóc trong năm 2023.
+SELECT 
+    { [Measures].[Fact Trip Count], [Measures].[Actual Duration Hours] } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Driver].[Full Name].Children * 
+        [Dim_Trailer].[Trailer Type].Children
+    ) ON ROWS
+FROM [Cube_Fleet_Operations]
+WHERE ([Dim_Date].[Calendar Year].&[2023])
+
+
+

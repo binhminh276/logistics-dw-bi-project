@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{1086658A-6135-4DC5-80F4-21AD2F0DC887}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{4D0DBA2C-4622-4D32-966E-F8582AB3B725}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -20,6 +20,7 @@
     <DTS:Executable
       DTS:refId="Package\DFT_Dim_Maint_Profile"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{4E3394D9-3034-4DA5-B196-2B0966238203}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -4598,17 +4599,17 @@ FROM dbo.Stg_CDC_Trucks;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="153.6,41.6"
-          Id="Package\DFT_Dim_Truck"
-          TopLeft="481.428572453407,57.388235609156" />
+          Size="188.8,41.6"
+          Id="Package\DFT_Dim_Maint_Profile"
+          TopLeft="463.571429558251,249.800000079765" />
         <NodeLayout
           Size="157.6,41.6"
           Id="Package\DFT_Dim_Trailer"
           TopLeft="473.571429579538,156.858823515336" />
         <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\DFT_Dim_Maint_Profile"
-          TopLeft="463.571429558251,249.800000079765" />
+          Size="153.6,41.6"
+          Id="Package\DFT_Dim_Truck"
+          TopLeft="481.428572453407,57.388235609156" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="555.300001016472,98.988235609156">
