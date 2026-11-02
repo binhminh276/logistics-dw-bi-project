@@ -1,4 +1,4 @@
-# QUY CHUẨN THIẾT KẾ SSAS & HƯỚNG DẪN KỸ THUẬT TOÀN DIỆN CHO TEAM
+# QUY CHUẨN THIẾT KẾ SSAS & HƯỚNG DẪN KỸ THUẬT TOÀN DIỆN CHO TEAM (TÁCH CUBE)
 **Dự án:** Logistics & Fleet Operations Enterprise Data Warehouse (SSAS Semantic Layer)  
 **Người soạn thảo:** Quang Duy  
 **Đối tượng sử dụng:** Bình Minh, Phúc An  
