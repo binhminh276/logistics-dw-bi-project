@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Dim_Commercial"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{8BFCC43B-341E-4D0C-AD02-2F8EAB1D7CFD}">
+  DTS:VersionBuild="61"
+  DTS:VersionGUID="{8E0A91E5-50FC-448E-B245-21F184768392}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -455,6 +455,347 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Inserted_Customer">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::vInsertedRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Rejected_Customer">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::vRejectedRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Source_Customers">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::vSourceRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="CNT_Updated_SCD1_Customer">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::vUpdatedRowCount</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER_Audit_Rejection_Info"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input].Columns[customer_id]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="customer_id"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input].Columns[customer_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="customer_name"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[batch_id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[batch_id]"
+                          name="batch_id"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_I8)@[User::vBatchID]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_I8)@[User::vBatchID]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[package_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="14"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[package_name]"
+                          name="package_name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::PackageName]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::PackageName]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[source_table]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="9"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[source_table]"
+                          name="source_table"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">"customers"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">"customers"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[business_key]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[business_key]"
+                          name="business_key"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,100)#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,100)customer_id</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rule_name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="24"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rule_name]"
+                          name="rule_name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">"Invalid_Customer_Profile"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">"Invalid_Customer_Profile"</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="169"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejected_raw_data]"
+                          name="rejected_raw_data"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">"customer_id=" + (DT_WSTR,50)#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_id]} + "; name=" + ([ISNULL](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]}) ? "NULL" : #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">"customer_id=" + (DT_WSTR,50)customer_id + "; name=" + (ISNULL(customer_name) ? "NULL" : customer_name)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="56"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejection_reason]"
+                          name="rejection_reason"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">"Ten khach hang rong hoac han muc tin dung / doanh thu am"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">"Ten khach hang rong hoac han muc tin dung / doanh thu am"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Historical_Dates"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -661,7 +1002,7 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">3</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -673,7 +1014,7 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                     <property
                       dataType="System.String"
                       description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions"></property>
+                      name="FastLoadOptions">CHECK_CONSTRAINTS</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -841,6 +1182,199 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_Dim_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
                           lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_Dim_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST_DQ_Rejections"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1258</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Connections[OleDbConnection]"
+                      connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[batch_id]"
+                          cachedDataType="i8"
+                          cachedName="batch_id"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[batch_id]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[batch_id]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[package_name]"
+                          cachedDataType="wstr"
+                          cachedLength="14"
+                          cachedName="package_name"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[package_name]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[package_name]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[source_table]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="source_table"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[source_table]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[source_table]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[business_key]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="business_key"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[business_key]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[rule_name]"
+                          cachedDataType="wstr"
+                          cachedLength="24"
+                          cachedName="rule_name"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rule_name]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[rejected_raw_data]"
+                          cachedDataType="wstr"
+                          cachedLength="169"
+                          cachedName="rejected_raw_data"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejected_raw_data]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejected_raw_data]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].Columns[rejection_reason]"
+                          cachedDataType="wstr"
+                          cachedLength="56"
+                          cachedName="rejection_reason"
+                          externalMetadataColumnId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output].Columns[rejection_reason]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_id]"
+                          dataType="i8"
+                          name="rejection_id" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[batch_id]"
+                          dataType="i8"
+                          name="batch_id" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[package_name]"
+                          dataType="wstr"
+                          length="100"
+                          name="package_name" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[source_table]"
+                          dataType="wstr"
+                          length="100"
+                          name="source_table" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[business_key]"
+                          dataType="wstr"
+                          length="100"
+                          name="business_key" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rule_name]"
+                          dataType="wstr"
+                          length="100"
+                          name="rule_name" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejected_raw_data]"
+                          dataType="nText"
+                          name="rejected_raw_data" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[rejection_reason]"
+                          dataType="wstr"
+                          length="500"
+                          name="rejection_reason" />
+                        <externalMetadataColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input].ExternalColumns[created_at]"
+                          dataType="dbTimeStamp2"
+                          name="created_at"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -1416,6 +1950,108 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="SPL_Customer_DQ_Rules"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input].Columns[customer_name]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="customer_name"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input].Columns[credit_terms_days]"
+                          cachedDataType="i4"
+                          cachedName="credit_terms_days"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[credit_terms_days]" />
+                        <inputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input].Columns[annual_revenue_potential]"
+                          cachedDataType="numeric"
+                          cachedName="annual_revenue_potential"
+                          cachedPrecision="15"
+                          cachedScale="2"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[annual_revenue_potential]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Invalid_Customer_Profile]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Invalid_Customer_Profile"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]}) || [TRIM](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[customer_name]}) == "" || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[credit_terms_days]} &lt; 0 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output].Columns[annual_revenue_potential]} &lt; 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(customer_name) || TRIM(customer_name) == "" || credit_terms_days &lt; 0 || annual_revenue_potential &lt; 0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Clean_Customers]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Clean_Customers"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\UNI_Customer_Inserts"
                   componentClassID="Microsoft.UnionAll"
                   contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -1794,9 +2430,14 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
               <paths>
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Changing Attribute Updates Output]"
-                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Update_Customer_SCD1.Inputs[OLE DB Command Input]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer.Inputs[Row Count Input 1]"
                   name="Changing Attribute Updates Output"
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SCD_Customer.Outputs[Changing Attribute Updates Output]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Clean_Customers]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]"
+                  name="Clean_Customers"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Clean_Customers]" />
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output]"
                   endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Expire_Old_Customer.Inputs[OLE DB Command Input]"
@@ -1804,7 +2445,12 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Historical_Dates.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output1]"
-                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_Dim_Customer.Inputs[OLE DB Destination Input]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output2]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer.Inputs[Row Count Input 1]"
                   name="Derived Column Output"
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Set_Effective_date.Outputs[Derived Column Output]" />
                 <path
@@ -1812,6 +2458,11 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                   endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Historical_Dates.Inputs[Derived Column Input]"
                   name="Historical Attribute Inserts Output"
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SCD_Customer.Outputs[Historical Attribute Inserts Output]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Invalid_Customer_Profile]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info.Inputs[Derived Column Input]"
+                  name="Invalid_Customer_Profile"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Outputs[Invalid_Customer_Profile]" />
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[New Output]"
                   endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\UNI_Customer_Inserts.Inputs[Union All Input 1]"
@@ -1824,9 +2475,29 @@ WHERE [customer_id] = ? AND [expiration_date] IS NULL;</property>
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Expire_Old_Customer.Outputs[OLE DB Command Output]" />
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SCD_Customer.Inputs[Slowly Changing Dimension Input]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers.Inputs[Row Count Input 1]"
                   name="OLE DB Source Output"
                   startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 1]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules.Inputs[Conditional Split Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 11]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 12]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_Dim_Customer.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 13]"
+                  endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Update_Customer_SCD1.Inputs[OLE DB Command Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer.Outputs[Row Count Output 1]" />
                 <path
                   refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Union All Output 1]"
                   endId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Set_Effective_date.Inputs[Derived Column Input]"
@@ -4109,138 +4780,98 @@ where [refTable].[route_id] = ?</property>
     design-time-name="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="185.6,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\UNI_Customer_Inserts"
-          TopLeft="170.9,411.9" />
+          TopLeft="325.89999769032,545.983331394941" />
         <NodeLayout
           Size="198.4,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_SRC_Stg_Customers"
-          TopLeft="131.7,5.49999999999995" />
+          TopLeft="599.283326365799,0.750000130385111" />
         <NodeLayout
           Size="192,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Set_Effective_date"
-          TopLeft="149.7,513.5" />
+          TopLeft="316.128568948593,644.726188580373" />
         <NodeLayout
           Size="197.6,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_Dim_Customer"
-          TopLeft="149.7,615.099999999999" />
+          TopLeft="309.196750870066,795.020993049568" />
         <NodeLayout
           Size="148.8,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SCD_Customer"
-          TopLeft="156.5,107.1" />
+          TopLeft="311.49999769032,241.183331394941" />
         <NodeLayout
           Size="180,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Historical_Dates"
-          TopLeft="17.5,208.7" />
+          TopLeft="172.49999769032,342.783331394941" />
         <NodeLayout
           Size="207.2,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Expire_Old_Customer"
-          TopLeft="5.50000000000003,310.3" />
+          TopLeft="160.49999769032,444.383331394941" />
         <NodeLayout
           Size="221.6,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CMD_Update_Customer_SCD1"
-          TopLeft="291.7,208.7" />
+          TopLeft="531.699996423721,444.211901312109" />
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Union All Output 1]"
-          TopLeft="263.7,453.5">
+          TopLeft="415.414283319456,587.583331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-18,59.9999999999999"
+              EndConnector="0,57.1428571854319"
               Start="0,0"
-              End="-18,52.4999999999999">
+              End="0,49.6428571854319">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
-                  <mssgle:LineSegment
-                    End="-14,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-14,30"
-                    Point2="-18,30"
-                    Point3="-18,34" />
-                  <mssgle:LineSegment
-                    End="-18,52.4999999999999" />
+                    End="0,49.6428571854319" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[OLE DB Source Output]"
-          TopLeft="230.9,47.1">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
-              Start="0,0"
-              End="0,52.4999999999999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.4999999999999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[OLE DB Command Output]"
-          TopLeft="109.1,351.9">
+          TopLeft="264.09999769032,485.983331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125,59.9999999999999"
+              EndConnector="125,59.9999999999998"
               Start="0,0"
-              End="125,52.4999999999999">
+              End="125,52.4999999999998">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.6923076923076" />
+                    End="0,31.6923076923077" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.6923076923076"
-                    Point2="0,35.6923076923076"
-                    Point3="4,35.6923076923076" />
+                    Point1="0,31.6923076923077"
+                    Point2="0,35.6923076923077"
+                    Point3="4,35.6923076923077" />
                   <mssgle:LineSegment
-                    End="121,35.6923076923076" />
+                    End="121,35.6923076923077" />
                   <mssgle:CubicBezierSegment
-                    Point1="121,35.6923076923076"
-                    Point2="125,35.6923076923076"
-                    Point3="125,39.6923076923076" />
+                    Point1="121,35.6923076923077"
+                    Point2="125,35.6923076923077"
+                    Point3="125,39.6923076923077" />
                   <mssgle:LineSegment
-                    End="125,52.4999999999999" />
+                    End="125,52.4999999999998" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[New Output]"
-          TopLeft="230.9,148.7">
+          TopLeft="385.89999769032,282.783331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4270,13 +4901,13 @@ where [refTable].[route_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="4.10861328124999,161.570256410256,54.1827734375,11.43359375"
+              BoundingBox="4.10861328125002,161.570256410256,54.1827734375,11.43359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Historical Attribute Inserts Output]"
-          TopLeft="195.7,148.7">
+          TopLeft="350.69999769032,282.783331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4311,8 +4942,8 @@ where [refTable].[route_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output1]"
-          TopLeft="247.1,555.1">
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output]"
+          TopLeft="263.29999769032,384.383331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4329,69 +4960,297 @@ where [refTable].[route_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191.2,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Source_Customers"
+          TopLeft="608.178562366004,85.2499987892807" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[OLE DB Source Output]"
+          TopLeft="701.130944365902,42.3500001303851">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8999986588956"
+              Start="0,0"
+              End="0,35.3999986588956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3999986588956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\SPL_Customer_DQ_Rules"
+          TopLeft="606.74999095872,159.178569116231" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 1]"
+          TopLeft="704.864276662362,126.849998789281">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.3285703269498"
+              Start="0,0"
+              End="0,24.8285703269498">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8285703269498" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\DER_Audit_Rejection_Info"
+          TopLeft="826.249987687916,238.749996814877" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Invalid_Customer_Profile]"
+          TopLeft="705.94999095872,200.77856911623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="221.499996729195,37.9714276986462"
+              Start="0,0"
+              End="221.499996729195,30.4714276986462">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.9857138493231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.9857138493231"
+                    Point2="0,18.9857138493231"
+                    Point3="4,18.9857138493231" />
+                  <mssgle:LineSegment
+                    End="217.499996729195,18.9857138493231" />
+                  <mssgle:CubicBezierSegment
+                    Point1="217.499996729195,18.9857138493231"
+                    Point2="221.499996729195,18.9857138493231"
+                    Point3="221.499996729195,22.9857138493231" />
+                  <mssgle:LineSegment
+                    End="221.499996729195,30.4714276986462" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="55.0020491458477,23.9857138493231,111.4958984375,11.111328125"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Rejected_Customer"
+          TopLeft="836.999987527728,325.249995525926" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output1]"
+          TopLeft="931.024987607822,280.349996814877">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.8999987110497"
+              Start="0,0"
+              End="0,37.3999987110497">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.3999987110497" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections"
+          TopLeft="834.599988004565,402.999995186925" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 11]"
+          TopLeft="933.799987766147,366.849995525926">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.1499996609987"
+              Start="0,0"
+              End="0,28.6499996609987">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.6499996609987" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output]"
-          TopLeft="108.3,250.3">
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Clean_Customers]"
+          TopLeft="674.216657625387,200.77856911623">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="-288.316659935067,40.4047622787101"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="-288.316659935067,32.9047622787101">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,12.3558477704218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.3558477704218"
+                    Point2="0,16.3558477704218"
+                    Point3="-4,16.3558477704218" />
+                  <mssgle:LineSegment
+                    End="-284.316659935067,16.3558477704218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-284.316659935067,16.3558477704218"
+                    Point2="-288.316659935067,16.3558477704218"
+                    Point3="-288.316659935067,20.3558477704218" />
+                  <mssgle:LineSegment
+                    End="-288.316659935067,32.9047622787101" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-183.098427623784,21.3558477704218,77.8801953125,11.0625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Inserted_Customer"
+          TopLeft="309.99999538064,717.249994169921" />
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Derived Column Output2]"
+          TopLeft="409.464282164616,686.326188580373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.9238055895484"
+              Start="0,0"
+              End="0,23.4238055895484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.4238055895484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 12]"
+          TopLeft="407.398373125353,758.849994169921">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.1709988796468"
+              Start="0,0"
+              End="0,28.6709988796468">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.6709988796468" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="225.6,41.6"
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\CNT_Updated_SCD1_Customer"
+          TopLeft="531.714280115707,343.285712423069" />
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Changing Attribute Updates Output]"
-          TopLeft="266.1,148.7">
+          TopLeft="421.09999769032,282.783331394941">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="136.4,59.9999999999999"
+              EndConnector="223.414282425386,60.5023810281285"
               Start="0,0"
-              End="136.4,52.4999999999999">
+              End="223.414282425386,53.0023810281285">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.7042253521126" />
+                    End="0,16.8775821857626" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.7042253521126"
-                    Point2="0,20.7042253521126"
-                    Point3="4,20.7042253521126" />
+                    Point1="0,16.8775821857626"
+                    Point2="0,20.8775821857626"
+                    Point3="4,20.8775821857626" />
                   <mssgle:LineSegment
-                    End="132.4,20.7042253521126" />
+                    End="219.414282425386,20.8775821857626" />
                   <mssgle:CubicBezierSegment
-                    Point1="132.4,20.7042253521126"
-                    Point2="136.4,20.7042253521126"
-                    Point3="136.4,24.7042253521126" />
+                    Point1="219.414282425386,20.8775821857626"
+                    Point2="223.414282425386,20.8775821857626"
+                    Point3="223.414282425386,24.8775821857626" />
                   <mssgle:LineSegment
-                    End="136.4,52.4999999999999" />
+                    End="223.414282425386,53.0023810281285" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-10.33390625,25.7042253521126,157.0678125,11.6630859375"
+              BoundingBox="33.1732349626932,25.8775821857626,157.0678125,11.6630859375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer.Paths[Row Count Output 13]"
+          TopLeft="643.507138269714,384.885712423069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3261888890394"
+              Start="0,0"
+              End="0,51.8261888890394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8261888890394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4864,5 +5723,18 @@ where [refTable].[route_id] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Customer\OLE_DST_DQ_Rejections">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
