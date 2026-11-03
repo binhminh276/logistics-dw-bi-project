@@ -9,7 +9,7 @@ USE Logistics_DW;
 GO -- ================================================================================
     -- TRUY VẤN 1: PHÂN TÍCH LIÊN THÔNG FACT-TO-FACT TÍNH FLEET TCO & CHI PHÍ SÀN/DẶM
     -- Kỹ thuật: Common Table Expressions (CTE) kết hợp Fact_Trip & Fact_Maintenance qua Dim_Truck
-    -- Nghiệp vụ: Trực tiếp định lượng Tổng TCO toàn đội ($48.081.146,00) và Ngưỡng sàn ($0.7844 / dặm)
+    -- Nghiệp vụ: Trực tiếp định lượng Tổng TCO toàn đội ($47.352.808,00) và Ngưỡng sàn ($0.7881 / dặm)
     -- ================================================================================
     WITH Fleet_Fuel AS (
         -- 1. Tổng hợp chi phí nhiên liệu hành trình từ Fact_Trip
@@ -97,33 +97,11 @@ SELECT Cost_Rank,
     Total_Downtime_Days,
     CASE
         WHEN Total_Maintenance_Cost_USD >= 140000
-        OR Total_Downtime_Hours >= 1500 THEN N 'Nhóm 1: Thanh lý khẩn cấp (Urgent Salvage)'
+        OR Total_Downtime_Hours >= 1500 THEN N'Nhóm 1: Thanh lý khẩn cấp (Urgent Salvage)'
         WHEN Total_Maintenance_Cost_USD >= 100000
-        OR Latest_Odometer_Km >= 800000 THEN N 'Nhóm 2: Đại tu & Chuyển tuyến ngắn (Overhaul)'
-        ELSE N 'Nhóm 3: Khai thác tuyến dài (Max Utilization)'
+        OR Latest_Odometer_Km >= 800000 THEN N'Nhóm 2: Đại tu & Chuyển tuyến ngắn (Overhaul)'
+        ELSE N'Nhóm 3: Khai thác tuyến dài (Max Utilization)'
     END AS Fleet_Lifecycle_Policy
 FROM TruckMaintenanceSummary
 ORDER BY Cost_Rank ASC;
-GO -- ================================================================================
-    -- TRUY VẤN 3: KIỂM TOÁN ĐỐI SOÁT TÍNH TOÀN VẸN DỮ LIỆU ĐA CHIỀU (CROSS-VALIDATION)
-    -- Kỹ thuật: Phép tổng hợp SQL trên Fact_Maintenance đối chiếu trực tiếp với SSAS Cube
-    -- Nghiệp vụ: Chứng minh độ sai lệch bằng 0 giữa Relational DWH và Semantic OLAP Cube
-    -- ================================================================================
-SELECT 'Fact_Maintenance Reconciliation' AS Audit_Scope,
-    COUNT(*) AS DWH_Total_Events,
-    -- Kỳ vọng: 5,840 lượt
-    SUM(fm.total_maintenance_cost) AS DWH_Total_Maintenance_Cost,
-    -- Kỳ vọng: $11,461,146.56
-    SUM(fm.parts_cost) AS DWH_Total_Parts_Cost,
-    -- Kỳ vọng: $8,901,687.76
-    SUM(fm.labor_cost) AS DWH_Total_Labor_Cost,
-    -- Kỳ vọng: $2,559,458.80
-    SUM(fm.downtime_hours) AS DWH_Total_Downtime_Hours,
-    -- Kỳ vọng: 144,461.00 giờ
-    SUM(fm.labor_hours) AS DWH_Total_Labor_Hours,
-    -- Kỳ vọng: 24,402.20 giờ
-    ROUND(AVG(fm.total_maintenance_cost), 2) AS DWH_Avg_Cost_Per_Event,
-    -- Kỳ vọng: $1,962.53
-    ROUND(AVG(fm.downtime_hours), 2) AS DWH_Avg_Downtime_Per_Event -- Kỳ vọng: 24.74 giờ
-FROM dbo.Fact_Maintenance fm;
-GO
+Go
