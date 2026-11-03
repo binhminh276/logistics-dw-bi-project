@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Stg_Fuel_Rates"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{39D702E3-E142-43F8-AEC9-B0085B1A9B83}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{5E9BD83A-EA44-41F0-AE77-4EC907AE6C1F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -41,7 +41,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="rate_date"
-              DTS:DTSID="{18B4374C-2DCE-4306-8E64-DC5015F8791B}"
+              DTS:DTSID="{50A4DC26-B2EE-4C2F-875D-599DC2FD02E3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -50,7 +50,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{D7BA82EE-7513-4F95-9724-F1C6589FD4B2}"
+              DTS:DTSID="{2EB89738-CC2E-4EDC-B72F-AF007D87CB74}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -59,7 +59,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{08A65723-32CA-4048-84F0-DBF9E605E811}"
+              DTS:DTSID="{83DB47CC-DE9B-4ECF-9098-0D6F71D5BC97}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -68,7 +68,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="padd_region"
-              DTS:DTSID="{690A70C6-50C5-41E8-91ED-4B8E82C1A8CA}"
+              DTS:DTSID="{0D47F296-046B-4638-B2BC-5E49979AAF42}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +77,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="diesel_price_per_gallon"
-              DTS:DTSID="{2D25C7DA-02C3-4798-A89B-AEAC173ADF1F}"
+              DTS:DTSID="{ED09B4B2-7469-4674-9258-9354A03E5E2C}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -721,25 +721,25 @@
         <NodeLayout
           Size="183.2,41.6"
           Id="Package\DFT_Load_Fuel_Rates"
-          TopLeft="9.50000000000001,107.1" />
+          TopLeft="362.357143608283,107.1" />
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\SQL_Truncate_Stg_Fuel"
-          TopLeft="5.50000000000001,5.49999999999995" />
+          TopLeft="360.500000755702,30.7352940955273" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="101.1,47.1">
+          TopLeft="455.028572181992,72.3352940955273">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,34.7647059044727"
               Start="0,0"
-              End="0,52.5">
+              End="0,27.2647059044727">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,27.2647059044727" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -755,7 +755,7 @@
     design-time-name="Package\DFT_Load_Fuel_Rates">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="167.2,41.6"
           Id="Package\DFT_Load_Fuel_Rates\DCNV_Data_Types"
@@ -787,9 +787,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.8251171875,21.46337890625,55.650234375,9.5732421875"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -811,9 +809,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-27.8251171875,21.46337890625,55.650234375,9.5732421875"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

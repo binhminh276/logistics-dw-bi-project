@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\delivery_events.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\delivery_events.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -153,7 +153,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\facilities.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\facilities.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -256,7 +256,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\maintenance_records.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\maintenance_records.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -386,7 +386,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\logistics-dw-bi-project\data\raw\routes.csv">
+          DTS:ConnectionString="D:\Kho\Project\data\raw\routes.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"

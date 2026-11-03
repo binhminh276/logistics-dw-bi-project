@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{E9CBD9FB-F9E9-4DD1-9DF9-91098CE86467}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{30B384ED-5DEC-4B83-8D48-D7253E2EA251}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2334,14 +2334,14 @@ WHERE maintenance_date &gt; ?;</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30.2823528781671"
+              EndConnector="0,30.282352878167"
               Start="0,0"
-              End="0,22.7823528781671">
+              End="0,22.782352878167">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.7823528781671" />
+                    End="0,22.782352878167" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2387,7 +2387,7 @@ WHERE maintenance_date &gt; ?;</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="281.6,425.6"
+          PanelSize="299.2,425.6"
           Size="299.2,468.8"
           Id="Package\Sequence_Fact_Maintenance_Transaction"
           TopLeft="79.2857144544928,61.9411764162943" />
@@ -2576,9 +2576,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2600,9 +2598,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2720,9 +2716,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2744,9 +2738,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2768,9 +2760,7 @@ WHERE maintenance_date &gt; ?;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
