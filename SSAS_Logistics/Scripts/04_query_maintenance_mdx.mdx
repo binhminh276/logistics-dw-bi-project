@@ -1,12 +1,15 @@
 -- ================================================================================
 -- SCRIPT: SSAS_Logistics/Scripts/04_query_maintenance_mdx.mdx
--- MỤC ĐÍCH: Tập hợp các truy vấn MDX phân tích chuyên sâu trên [Cube_Maintenance]
+-- MỤC ĐÍCH: Tập hợp đúng 3 truy vấn MDX phân tích chuyên sâu trên [Cube_Maintenance]
+--           Đồng bộ 100% với Mục 3.3.2.2 trong Báo cáo Đồ án
 -- PHỤ TRÁCH: Nguyễn Phúc An
 -- ================================================================================
 
 -- --------------------------------------------------------------------------------
--- 1. Phân tích chi phí & thời gian ngừng hoạt động (Downtime) theo từng Hãng xe
---    Sử dụng các Calculated Members: Chi phí TB/lần, Downtime TB/lần
+-- TRUY VẤN 1: ĐÁNH GIÁ HIỆU QUẢ KINH TẾ & TỐC ĐỘ PHỤC HỒI THEO 6 HÃNG XE (MAKE EFFICIENCY)
+-- Nghiệp vụ: Cắt lát toàn bộ chu kỳ 3 năm (2022-2024), sắp xếp giảm dần theo tổng chi phí.
+-- Kết quả: Volvo kinh tế nhất ($1.864,26/lần), Kenworth phục hồi nhanh nhất (24,03 giờ),
+--          Mack tốn kém nhất ($2.039,39/lần, 24,98 giờ).
 -- --------------------------------------------------------------------------------
 SELECT 
     { 
@@ -15,42 +18,29 @@ SELECT
         [Measures].[CM_Avg_Maintenance_Cost],
         [Measures].[CM_Avg_Downtime_Hours]
     } ON COLUMNS,
-    NON EMPTY (
-        [Dim_Truck].[Make].[Make].ALLMEMBERS
-    ) ON ROWS
-FROM [Cube_Maintenance]
-WHERE ([Dim_Date].[Calendar Year].&[2023]);
-
-
--- --------------------------------------------------------------------------------
--- 2. Ma trận phân bổ loại bảo dưỡng và tỷ trọng phụ tùng (Failure Mode Analysis)
--- --------------------------------------------------------------------------------
-SELECT 
-    { 
-        [Measures].[Total Maintenance Cost], 
-        [Measures].[Parts Cost],
-        [Measures].[Labor Cost],
-        [Measures].[CM_Parts_Cost_Ratio]
-    } ON COLUMNS,
-    NON EMPTY (
-        [Dim_Maintenance_Profile].[Maintenance Type].[Maintenance Type].ALLMEMBERS
+    ORDER(
+        [Dim_Truck].[Make].[Make].Members,
+        [Measures].[Total Maintenance Cost],
+        DESC
     ) ON ROWS
 FROM [Cube_Maintenance];
 
 
 -- --------------------------------------------------------------------------------
--- 3. Tìm TOP 5 Đầu xe tốn chi phí bảo dưỡng cao nhất toàn đội (Fleet Replacement)
---    Sử dụng hàm TOPCOUNT trên phân cấp Truck Fleet Hierarchy
+-- TRUY VẤN 2: NHẬN DIỆN TOP 5 ĐẦU XE CÁ BIỆT TỐN CHI PHÍ BẢO DƯỠNG CAO NHẤT BẰNG HÀM TOPCOUNT
+-- Nghiệp vụ: Quét 120 đầu kéo trên phân cấp Truck Fleet Hierarchy cô lập cá thể xe bất thường.
+-- Kết quả: Xe Unit 2335 (Peterbilt 2018) đứng đầu: 82 lượt, $180.322,84, 94,4 ngày xe chết (2.266,2h).
 -- --------------------------------------------------------------------------------
 SELECT 
     { 
         [Measures].[Total Maintenance Cost], 
         [Measures].[Maintenance Count], 
         [Measures].[Downtime Hours],
+        [Measures].[Labor Hours],
         [Measures].[Odometer Reading]
     } ON COLUMNS,
     TOPCOUNT(
-        [Dim_Truck].[Truck Fleet Hierarchy].[Unit Number].ALLMEMBERS,
+        [Dim_Truck].[Truck Fleet Hierarchy].[Unit Number].Members,
         5,
         [Measures].[Total Maintenance Cost]
     ) ON ROWS
@@ -58,15 +48,18 @@ FROM [Cube_Maintenance];
 
 
 -- --------------------------------------------------------------------------------
--- 4. Phân tích xu hướng bảo dưỡng theo thời gian (Calendar Hierarchy: Năm -> Quý)
+-- TRUY VẤN 3: PHÂN TÍCH XU HƯỚNG BẢO DƯỠNG THEO THỜI GIAN (NĂM VÀ QUÝ)
+-- Nghiệp vụ: Khoan sâu dữ liệu nhận diện chu kỳ can thiệp kỹ thuật đại tu phòng ngừa.
+-- Kết quả: 2022 ($3,86M) -> 2023 ĐẠT ĐỈNH ($3,95M do đại tu tập trung) -> 2024 GIẢM MẠNH ($3,65M).
 -- --------------------------------------------------------------------------------
 SELECT 
     { 
         [Measures].[Total Maintenance Cost], 
-        [Measures].[Maintenance Count] 
+        [Measures].[Maintenance Count],
+        [Measures].[CM_Avg_Maintenance_Cost]
     } ON COLUMNS,
     NON EMPTY (
-        [Dim_Date].[Calendar Hierarchy].[Calendar Quarter].ALLMEMBERS
+        [Dim_Date].[Calendar Year].[Calendar Year].Members *
+        [Dim_Date].[Calendar Quarter].[Calendar Quarter].Members
     ) ON ROWS
 FROM [Cube_Maintenance];
-
