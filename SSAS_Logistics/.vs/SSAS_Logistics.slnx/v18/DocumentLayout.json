@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Kho\\logistics-dw-bi-project\\SSAS_Logistics\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1881F4-5CEF-80B2-2C30-6860161F5C60}|SSAS_Logistics.dwproj|D:\\Kho\\logistics-dw-bi-project\\SSAS_Logistics\\Cube_Fleet_Operations.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{FC1881F4-5CEF-80B2-2C30-6860161F5C60}|SSAS_Logistics.dwproj|solutionrelative:Cube_Fleet_Operations.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cube_Fleet_Operations.cube [Design]",
+              "DocumentMoniker": "D:\\Kho\\logistics-dw-bi-project\\SSAS_Logistics\\Cube_Fleet_Operations.cube",
+              "RelativeDocumentMoniker": "Cube_Fleet_Operations.cube",
+              "ToolTip": "D:\\Kho\\logistics-dw-bi-project\\SSAS_Logistics\\Cube_Fleet_Operations.cube [Design]",
+              "RelativeToolTip": "Cube_Fleet_Operations.cube [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-11-03T03:08:45.892Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>Logistics_SSAS</Database>
+    <Server>localhost</Server>
+    <ConnectionString>Data Source=localhost;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>XfVi9p9SDYXrBZVMjB23uNgt+70=23/10/2026 8:41:15 CH21/10/2026 8:51:53 SA</TimeStamp>
+        <ID>
+          <String>Logistics DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>J7uKGmD0s7NpGz4EjEeLy+26FJ4=23/10/2026 7:57:24 CH21/10/2026 8:54:24 SA</TimeStamp>
+        <ID>
+          <String>DSV_Logistics_DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Yh/MaF4nSDCFwob0vx3OETwNsWU=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim Customer</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>0qg45hKj+SvplKlzbVbqiwsyUoU=23/10/2026 3:16:26 CH21/10/2026 9:12:03 SA</TimeStamp>
+        <ID>
+          <String>Dim_Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>S+prGGmUjse0eg7I/a7RjwDhocw=23/10/2026 3:16:54 CH21/10/2026 9:13:42 SA</TimeStamp>
+        <ID>
+          <String>Dim_Driver</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>gF0S3WmpgDgGOeN4vVH0EBlnaGo=23/10/2026 3:17:16 CH21/10/2026 9:14:50 SA</TimeStamp>
+        <ID>
+          <String>Dim_Facility</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>fadfFM7n/sNbFyq91E+Sjs/nCQk=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim_Load_Profile</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>s/fwbHZPWyn+kvCTBHFVJfgTH6o=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim_Maintenance_Profile</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>fAj6i7WZh6aWDHfjaME49nOLsII=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim_Route</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Suur4MEfAP71CUYFXszmylQh/cQ=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim_Trailer</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>XvZ7x8ftMTES+eFHj1U5htRNZ5E=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SA</TimeStamp>
+        <ID>
+          <String>Dim_Truck</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>gaUT67+g3YZwABc5Wg+Qo1paQfs=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SAw589AJyKcdUo2WsUQ5cY1ElBqOc=23/10/2026 2:14:47 CH23/10/2026 2:14:47 CH</TimeStamp>
+        <ID>
+          <String>Cube_Commercial</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>AufcZo5XNyKxpiXk1/JzFqhJ8EM=28/10/2026 8:38:47 SA28/10/2026 8:38:47 SAt7TT/pADG3nHypfhQHocoLZhFZk=23/10/2026 2:15:51 CH23/10/2026 2:15:51 CH</TimeStamp>
+        <ID>
+          <String>Cube_Maintenance</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>Uql+tDxLCO73zPfqnBTYz9YcMB8=02/11/2026 9:24:08 SA23/10/2026 2:16:27 CH9r63WucLjgSlJzZXjl9ay4x3qis=23/10/2026 3:36:41 CH23/10/2026 2:16:27 CH</TimeStamp>
+        <ID>
+          <String>Cube_Fleet_Operations</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>72tVTTo99N1OuemDUD6RWgLQ9e0=02/11/2026 9:24:05 SA28/10/2026 8:41:42 SAcPzmKj5A9FC91QU+VYxz7J5bGhQ=23/10/2026 2:17:45 CH23/10/2026 2:17:45 CH</TimeStamp>
+        <ID>
+          <String>Cube_Fulfillment</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>eh4ZW30vKVRse0dc4Or5cztf8jU=21/10/2026 8:50:14 SA21/10/2026 8:50:13 SA</TimeStamp>
+      <ID>
+        <String>Logistics_SSAS</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2026-11-02T04:50:35.663333Z</LastDeployed>
+</DeploymentSnapshot>

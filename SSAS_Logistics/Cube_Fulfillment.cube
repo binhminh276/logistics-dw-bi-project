@@ -1,4 +1,4 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a3d812c4-abd2-48f4-b208-38a9f476e045" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="326a0080-5d8f-41cd-ba46-ddc080f30567" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Cube_Fulfillment</ID>
   <Name>Cube_Fulfillment</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -258,232 +258,232 @@
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
   <Dimensions>
-    <Dimension dwd:design-time-name="785ec609-3024-40d1-a4a1-25499e224994">
+    <Dimension dwd:design-time-name="bf974bd7-0cdc-42df-87a2-e9ef732b6a29">
       <ID>Origin Facility</ID>
       <Name>Origin Facility</Name>
       <DimensionID>Dim_Facility</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="710adfa5-a8f3-4b61-9667-c53a09f26671">
+        <Attribute dwd:design-time-name="71500f72-01ee-47bd-bda8-83095e02609d">
           <AttributeID>Facility Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="e0693aed-29ba-4d7c-977f-7e78a7189685">
+        <Attribute dwd:design-time-name="9138705c-6153-4528-be04-6594fabf66cd">
           <AttributeID>Facility Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="4f8226a9-24f3-44c4-bd93-91ac189e9f13">
+        <Attribute dwd:design-time-name="b6080eff-6ec7-47e3-826b-f868d69126c7">
           <AttributeID>Facility Type</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="ac8e4392-cb7b-4213-a86d-1059d556f2f4">
+        <Attribute dwd:design-time-name="3b17eb15-1d22-4f71-896f-1a3b470e7f9f">
           <AttributeID>City</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="2c00acbc-5fa3-4af4-877c-41c9e06677ba">
+        <Attribute dwd:design-time-name="89c7f956-cb5b-4f57-8267-4ef056b20398">
           <AttributeID>State</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="f276fed4-7898-47d6-9ce0-27c10fbc4c98">
+        <Hierarchy dwd:design-time-name="a50b9d89-68af-43f7-acba-4d1a3aa81f0e">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="df838290-b8b6-4fb4-8379-a3ee74b5e2f4">
+    <Dimension dwd:design-time-name="62f9cd13-016e-46e2-afba-43380779ca4b">
       <ID>Dim_Route</ID>
       <Name>Dim_Route</Name>
       <DimensionID>Dim_Route</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="bd9a58d6-bce0-49b4-baa1-5ddfd9b84e5d">
+        <Attribute dwd:design-time-name="66b59c83-9c1c-42c8-b553-3a4e06122b20">
           <AttributeID>Route Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="1386f500-0e58-4b8c-a3e4-6b7b71d4208f">
+        <Attribute dwd:design-time-name="32f6841f-39c8-4527-89fc-dc2d8305fdaf">
           <AttributeID>Route Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="6ddd7f58-33b0-4e94-b982-c2a2dc607713">
+        <Attribute dwd:design-time-name="9c006d99-43af-4e3b-8566-eaf2ab25ccd8">
           <AttributeID>Origin City</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f885ddb2-b632-409f-938c-c253461d94d2">
+        <Attribute dwd:design-time-name="a9d5db47-7e87-47d3-82ed-52d6a585655b">
           <AttributeID>Origin State</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="9333c058-f6da-4300-b480-b160ce1a22f1">
+        <Attribute dwd:design-time-name="4b494868-981e-4e78-80b5-e6ea126b6715">
           <AttributeID>Destination City</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="3d1dac78-c575-41c6-b0b4-bf727f3ccfb1">
+        <Attribute dwd:design-time-name="0798cb3d-6407-4989-acd5-ec8c285c2eaa">
           <AttributeID>Destination State</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="45ba705f-b3bf-4dc4-9aff-eafe7b4a6f7f">
+        <Attribute dwd:design-time-name="a9621eb1-0dfc-4e74-9008-860e3a5375ac">
           <AttributeID>Typical Distance Miles</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="7ffdb2f5-bb4d-482c-ade0-5ebc2732611a">
+        <Attribute dwd:design-time-name="3579aac1-bc35-471b-bb4b-40b0c3fca648">
           <AttributeID>Base Rate Per Mile</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="7a8a4ef5-a293-474e-8018-7a9517f23c76">
+        <Attribute dwd:design-time-name="18eb1340-e3fd-472a-b51f-fd4d44c74393">
           <AttributeID>Fuel Surcharge Rate</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d8ab1c55-5bfc-4111-9991-f3183316df75">
+        <Attribute dwd:design-time-name="7951d979-41b3-4510-9dcb-c36f1e511c8e">
           <AttributeID>Typical Transit Days</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="6d8e1922-a680-4d7c-a0ba-5696bafb4923">
+        <Hierarchy dwd:design-time-name="59ceda4b-ddc7-48c0-8dfe-079ad4e231be">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="82b689af-7efd-4c07-9b2b-91fc8a244bbc">
+        <Hierarchy dwd:design-time-name="f29efd6a-ef91-43b5-a0e6-d8c134802e17">
           <HierarchyID>Hierarchy 1</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="b110b422-705a-46d8-8933-699ef3d0e6e8">
+    <Dimension dwd:design-time-name="c8e211c1-de51-4b33-aded-b23263128495">
       <ID>Pickup Date</ID>
       <Name>Pickup Date</Name>
       <DimensionID>Dim_Date</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="35539120-39e1-4015-839b-31e549ad1629">
+        <Attribute dwd:design-time-name="633fb4f5-cda0-4312-9526-6cf6d85dca7b">
           <AttributeID>Date Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="afa4228a-679c-460e-8a88-5b4aafd8654b">
+        <Attribute dwd:design-time-name="c835724e-5e1d-40e2-beae-b3b0e1f9f1b1">
           <AttributeID>Month Name</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="452dc575-df77-43f8-a800-c6af074b3b34">
+        <Attribute dwd:design-time-name="1745c8dc-f565-4706-a5cb-ef87b60a9ff1">
           <AttributeID>Calendar Quarter</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="a80bbf47-644b-461f-8003-9be2bd9ceeb1">
+        <Attribute dwd:design-time-name="6a907e87-870b-43c5-8848-4ef28c68f003">
           <AttributeID>Calendar Year</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="d3caa575-a857-4516-ac5d-804eecdbef30">
+        <Attribute dwd:design-time-name="fc8ec266-18f1-422b-8781-54738cd85593">
           <AttributeID>Fiscal Quarter</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="6ffbca99-5a90-42b6-9cc2-71b4cf525dcd">
+        <Attribute dwd:design-time-name="188301a9-2f07-4667-a421-82d8c19d17f6">
           <AttributeID>Fiscal Year</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="9477f95f-6f83-49d0-aad9-5c12bfa0afc0">
+        <Hierarchy dwd:design-time-name="d384f20e-0883-4719-82a7-c84c497cad85">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="359ed089-c563-451a-aa62-dddd20c58390">
+        <Hierarchy dwd:design-time-name="90cfad54-9c4c-4ef6-926e-e898c44fb744">
           <HierarchyID>Hierarchy 1</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="edfffae3-c769-4ccf-83e5-8738506e1be8">
+    <Dimension dwd:design-time-name="147efed1-0ed0-468a-918a-8cb444b99190">
       <ID>Dim_Customer</ID>
       <Name>Dim_Customer</Name>
       <DimensionID>Dim Customer</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="f76d99ba-49ab-4eff-878a-949e23e8da51">
+        <Attribute dwd:design-time-name="47922ff6-8ef0-4f71-a6a9-77b11ba0e608">
           <AttributeID>Customer Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="6bdce8ec-5749-4c40-a8c9-6a30f71842b0">
+        <Attribute dwd:design-time-name="5ff6df65-68a0-4723-afc4-7470f456ee73">
           <AttributeID>Customer Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="88e7dda2-4239-49d2-b8a1-0806a12bffc5">
+        <Attribute dwd:design-time-name="a22aba52-f3ab-481a-80bb-9aed8a6a623a">
           <AttributeID>Customer Name</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="039437a0-1bd9-49c1-b63d-f1ae659d73a7">
+        <Attribute dwd:design-time-name="6c2edf79-92aa-41ef-924a-3ba22818046d">
           <AttributeID>Customer Type</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="b8f23cd1-6cb0-4648-adbe-16e0bf628277">
+        <Attribute dwd:design-time-name="f9c1ffad-7855-4dc2-9be5-68e1d24b360f">
           <AttributeID>Credit Terms Days</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="b1dca00b-b50f-4013-aeb1-dbf60d20016b">
+        <Attribute dwd:design-time-name="b6208f3d-b0cc-4376-a664-d524e8b30948">
           <AttributeID>Primary Freight Type</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="41d724ca-71b2-44c9-8bd2-80895432e1f7">
+        <Attribute dwd:design-time-name="1d728b30-2543-4f16-84d9-663d5716a8ac">
           <AttributeID>Account Status</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="e7c99f69-7ccf-4041-b693-a58ec66fb3e5">
+        <Attribute dwd:design-time-name="6e18f4e6-52e1-4113-9c69-b6f98007760d">
           <AttributeID>Contract Start Date</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="741b159a-67b1-45ed-92f5-1cbbe54a0c23">
+        <Attribute dwd:design-time-name="b1496e46-c4ec-4e87-87dd-0ca6ccbb1285">
           <AttributeID>Annual Revenue Potential</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="bd03260a-f3ba-4e20-9ae2-3802fbeaf85a">
+        <Hierarchy dwd:design-time-name="e6bc6e40-e47f-4ec1-b849-d5a82a32309c">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="ffa55cb0-a6a1-4189-b642-e0ad58ff3e34">
+    <Dimension dwd:design-time-name="ff263bea-777b-4d13-bcb4-0706654561f1">
       <ID>Dim_Load_Profile</ID>
       <Name>Dim_Load_Profile</Name>
       <DimensionID>Dim_Load_Profile</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="cfddd9de-913c-497f-bd81-3f17a04cb85b">
+        <Attribute dwd:design-time-name="90b57582-425e-4840-a328-89d1aa60b9f8">
           <AttributeID>Load Profile Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="a8bc082a-c5cd-4f93-b3bb-3d66a0e4a6a0">
+        <Attribute dwd:design-time-name="62f46b90-f741-4b1b-96e3-e3d36e114f69">
           <AttributeID>Load Status</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="7fcdd030-1e49-4a97-abea-98b07096e3e2">
+        <Attribute dwd:design-time-name="5cb09160-9889-4960-9feb-332015fc78fb">
           <AttributeID>Booking Type</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="6e2de10e-fb1d-4033-923a-697dcf6215ea">
+        <Attribute dwd:design-time-name="4971ec7e-ccf0-4601-9fcd-88752572b241">
           <AttributeID>Load Type</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
-    <Dimension dwd:design-time-name="fcc0458a-be9d-4366-874b-69a7fb6187af">
+    <Dimension dwd:design-time-name="c38ceb52-7872-4aba-91ae-74666ed7d968">
       <ID>Delivery Date</ID>
       <Name>Delivery Date</Name>
       <DimensionID>Dim_Date</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="1e7f7b07-40d3-4335-a216-d64dec3ce3e2">
+        <Attribute dwd:design-time-name="0859def1-d943-4bb6-8c2a-b1c2d53d58a7">
           <AttributeID>Date Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="ff77451a-0e0c-4c30-b233-a3a4d18a08a2">
+        <Attribute dwd:design-time-name="d709680c-5a6b-4cf5-8e95-3a29c3bee1b1">
           <AttributeID>Month Name</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="4b5f4cba-ead9-404b-901e-f1be4973b4d1">
+        <Attribute dwd:design-time-name="e74e76dd-2171-49ba-a26d-5f01375f548e">
           <AttributeID>Calendar Quarter</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="42c73edf-1b85-4058-992f-995f8f195777">
+        <Attribute dwd:design-time-name="c2f8aa9f-b65e-4343-ab82-0dffce4e9e75">
           <AttributeID>Calendar Year</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="5d3ef832-bc67-410a-bd59-55841738ac13">
+        <Attribute dwd:design-time-name="981dfcba-916e-4889-a902-9b287281fb7d">
           <AttributeID>Fiscal Quarter</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="63e28d4e-0c0d-4506-9b7f-e1938d9ac715">
+        <Attribute dwd:design-time-name="bc917550-8df0-45a2-961f-c9532440405b">
           <AttributeID>Fiscal Year</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="f9729ddc-d9bb-4dbd-8d65-ff63c02eb2f3">
+        <Hierarchy dwd:design-time-name="60c95e9c-7822-4900-a567-f45a0b5221da">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
-        <Hierarchy dwd:design-time-name="7eee5ef4-7e74-4cdd-b777-d7c0c8db4c5e">
+        <Hierarchy dwd:design-time-name="f3dd1a31-6e92-4aaf-8885-acafdb245860">
           <HierarchyID>Hierarchy 1</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
-    <Dimension dwd:design-time-name="249a12c2-f2ce-4960-9e42-c00edfcabf00">
+    <Dimension dwd:design-time-name="ca8ef02b-d639-4db9-9fb5-da6ee6519c57">
       <ID>Destination Facility</ID>
       <Name>Destination Facility</Name>
       <DimensionID>Dim_Facility</DimensionID>
       <Attributes>
-        <Attribute dwd:design-time-name="ded6a267-cf7e-42c3-83ef-a9d0999101ac">
+        <Attribute dwd:design-time-name="38f50ea1-81b5-4c29-85f3-bbebd1b6cc8e">
           <AttributeID>Facility Key</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f4bb995e-f9f9-424a-8405-b9b293ac06f9">
+        <Attribute dwd:design-time-name="384d61ad-fc67-4f64-b0f9-c98b2caf28aa">
           <AttributeID>Facility Id</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="a84556b7-2176-418f-bf8d-60a16a1f219f">
+        <Attribute dwd:design-time-name="86d2e391-0826-4a5c-9b71-4d2fe2caea92">
           <AttributeID>Facility Type</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="f100a6f2-e2d1-443b-9a6b-e55b3097a87a">
+        <Attribute dwd:design-time-name="ab5d3699-665b-467c-8cfe-3ea94bcafa08">
           <AttributeID>City</AttributeID>
         </Attribute>
-        <Attribute dwd:design-time-name="418993e9-f576-45cd-be24-f0615f66ce65">
+        <Attribute dwd:design-time-name="6e853ac2-74d5-4a61-8508-ee9fed196b1e">
           <AttributeID>State</AttributeID>
         </Attribute>
       </Attributes>
       <Hierarchies>
-        <Hierarchy dwd:design-time-name="81025717-bcbf-48f9-a39e-b973e3d7c77b">
+        <Hierarchy dwd:design-time-name="861a8a3e-13d8-4ca5-a9d2-3d0759c50476">
           <HierarchyID>Hierarchy</HierarchyID>
         </Hierarchy>
       </Hierarchies>
     </Dimension>
   </Dimensions>
   <MeasureGroups>
-    <MeasureGroup dwd:design-time-name="a80cadb6-d37b-42bd-8a69-49c8e711b58d">
+    <MeasureGroup dwd:design-time-name="248cc9fa-4e1b-4ecb-9be9-a7db7c997777">
       <ID>Fact Delivery Fulfillment</ID>
       <Name>Fact Delivery Fulfillment</Name>
       <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -491,113 +491,113 @@
       <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
       <State>Unprocessed</State>
       <Measures>
-        <Measure dwd:design-time-name="e7e2ed3c-d0a7-4994-a85c-2d27fe31a340">
+        <Measure dwd:design-time-name="4ed6e22f-ca1c-473d-b7bc-90152a262b76">
           <ID>Pickup Detention Minutes</ID>
           <Name>Pickup Detention Minutes</Name>
-          <Source dwd:design-time-name="7da35b4e-612a-4c6a-8c21-c8b9104e5cdf">
+          <Source dwd:design-time-name="b260bc1e-f3de-43b0-985e-9eb97f1ebf28">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="173d92d2-ea2b-4e62-bdc6-0a75b322aa2e">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="7aaaaea7-f375-4fab-a295-cdd7870b5ece">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>pickup_detention_minutes</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="6c4f1ab1-e7b3-4974-9436-c57171d39434">
+        <Measure dwd:design-time-name="72aed0b3-2db6-4ee4-8fa5-30da7245555c">
           <ID>Delivery Detention Minutes</ID>
           <Name>Delivery Detention Minutes</Name>
-          <Source dwd:design-time-name="26c29041-a0cf-453a-ae0e-21ba18c1e3fe">
+          <Source dwd:design-time-name="7fcf6a23-193a-481a-9da8-a9a3b3637aa0">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="d108e357-0697-4538-8c68-3a6ac537ded3">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="d249235a-dc47-4476-a27e-55bfbe66e7fd">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>delivery_detention_minutes</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="42935f31-c039-4a5a-82e4-d67e9added92">
+        <Measure dwd:design-time-name="20beb274-09a8-4c50-bc45-bc0539520c16">
           <ID>Total Detention Minutes</ID>
           <Name>Total Detention Minutes</Name>
-          <Source dwd:design-time-name="d6f94d09-d76a-4644-9ffe-dee9d32ff676">
+          <Source dwd:design-time-name="b21571db-6405-41ed-95e9-e331c4e3b5c0">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="42f74f70-daff-4805-930b-999ce1481dbb">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="95f563d1-4702-4b77-89c1-62977778529e">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>total_detention_minutes</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="36d43517-c594-499e-a90e-d597b17f15df">
+        <Measure dwd:design-time-name="9d5e5c3e-3a41-4054-9736-50c62c83cabe">
           <ID>Transit Duration Hours</ID>
           <Name>Transit Duration Hours</Name>
-          <Source dwd:design-time-name="b5bd6133-531b-4a80-81bd-94924c388eb7">
+          <Source dwd:design-time-name="86a0a4be-36f2-4eee-8e69-b6f0501dacb9">
             <DataType>Double</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="4d7ebb53-38aa-4637-a7cc-877daf59fbbe">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="0feea58d-8f5a-41ab-b3b1-2cc601c7e105">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>transit_duration_hours</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="8ec7234c-9c00-484b-8bc8-ffaa16be3eba">
+        <Measure dwd:design-time-name="3ec3600f-122c-4529-8158-d6e8b9aafa13">
           <ID>Pickup On Time Count</ID>
           <Name>Pickup On Time Count</Name>
-          <Source dwd:design-time-name="14997d66-7aea-4671-b001-e48e824c95e6">
+          <Source dwd:design-time-name="d37e8fb4-279c-40e0-81e9-7e13cfe75a15">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="e20af7a7-469e-40fc-9b4a-dd815e173231">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="28af4bc2-b4a5-4e47-9a1d-412abd1353db">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>pickup_on_time_count</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="639c4342-03b7-4ae3-8f56-206b0976ac44">
+        <Measure dwd:design-time-name="95252527-47be-4f4d-a4b7-e756a22eeba7">
           <ID>Delivery On Time Count</ID>
           <Name>Delivery On Time Count</Name>
-          <Source dwd:design-time-name="9d3634cb-f1cf-4265-a3ac-440d4bfdcc18">
+          <Source dwd:design-time-name="1460537b-bffb-469a-ac94-353d1a498a0a">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="fb034be9-0b5a-4984-abc7-b68a2938c61c">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="f8e963e9-6ed5-4749-adfc-280b90d95184">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>delivery_on_time_count</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="1a03486e-2bab-4695-9fbc-2803bc71f813">
+        <Measure dwd:design-time-name="24a9d8d7-e9d8-4445-832c-4915b6f341c1">
           <ID>Perfect Fulfillment Count</ID>
           <Name>Perfect Fulfillment Count</Name>
-          <Source dwd:design-time-name="967fd0a7-3f38-47ef-be49-f9f37c38a380">
+          <Source dwd:design-time-name="9867157e-ce39-43a6-adfd-3af809468794">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="22b7d126-0863-4b4a-a85b-a9529fe1184b">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="36366c4a-6958-400f-8e10-e3b623cd4076">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>perfect_fulfillment_count</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="21d03577-9395-4e66-b659-731fe7dc0258">
+        <Measure dwd:design-time-name="f5f14d38-940d-4bb7-99b3-e6a69e2ef223">
           <ID>Total Fulfillment Count</ID>
           <Name>Total Fulfillment Count</Name>
-          <Source dwd:design-time-name="dc485417-4317-49c5-8f23-12dfb7fb7220">
+          <Source dwd:design-time-name="393d241e-fb61-45aa-9ba0-394922f71b1f">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="f8e53e46-df8e-4665-b2f9-ddb8eafff615">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="a3831831-c34e-48e0-8ee3-fba0491bd541">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>total_fulfillment_count</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="1432b759-a01a-438f-a375-f124026961db">
+        <Measure dwd:design-time-name="396487bb-33f7-46c2-afbe-d4a0f9998165">
           <ID>Completed Fulfillment Count</ID>
           <Name>Completed Fulfillment Count</Name>
-          <Source dwd:design-time-name="b332d608-733b-4ec5-89a0-abbe9fef1ffe">
+          <Source dwd:design-time-name="30589c64-03ac-4c3a-a116-e22722672647">
             <DataType>Integer</DataType>
-            <Source xsi:type="ColumnBinding" dwd:design-time-name="dd60f94a-b3a5-45d7-a39b-37e0cb8ab590">
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="e894a69a-6c16-4d89-acc9-34e853304fd2">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
               <ColumnID>completed_fulfillment_count</ColumnID>
             </Source>
           </Source>
         </Measure>
-        <Measure dwd:design-time-name="7b6f6f0e-2808-4ad2-b86b-5202fea58608">
+        <Measure dwd:design-time-name="e96cb505-298c-4762-88d2-6b76d844dd9b">
           <ID>Fact Delivery Fulfillment Count</ID>
           <Name>Fact Delivery Fulfillment Count</Name>
           <AggregateFunction>Count</AggregateFunction>
-          <Source dwd:design-time-name="44a85c29-817d-4bb0-a916-61a833764cb1">
+          <Source dwd:design-time-name="0d5bee7f-089c-4c10-bec5-91ee4e18bec7">
             <DataType>Integer</DataType>
             <DataSize>4</DataSize>
-            <Source xsi:type="RowBinding" dwd:design-time-name="ede53860-a4a1-4341-acf7-edb6df050b07">
+            <Source xsi:type="RowBinding" dwd:design-time-name="573c7daf-e545-4be1-9a10-7896b35d57cf">
               <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
             </Source>
           </Source>
@@ -606,15 +606,15 @@
       <StorageMode>Molap</StorageMode>
       <ProcessingMode>Regular</ProcessingMode>
       <Dimensions>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="69a517bd-4207-421b-aeb7-de2680f397a2">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e5244d4d-90a3-4b7c-b9d3-8b4748c9df56">
           <CubeDimensionID>Dim_Route</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="95df89d3-909c-4121-a76e-5e18c5dc4357">
+            <Attribute dwd:design-time-name="33bcec5c-bdab-4910-87c7-24273ae61361">
               <AttributeID>Route Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="d3fce9b5-1bb5-4fd4-9c5b-8ca2b62419e9">
+                <KeyColumn dwd:design-time-name="47eff6a2-e0e1-4286-b232-07fedea3805b">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3f5a2c0d-95e9-4540-a1f8-ba5a584e2ee4">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="e338e160-c5fb-438e-a3e5-99c4b0bfeaa0">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>route_key</ColumnID>
                   </Source>
@@ -624,15 +624,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="88d03915-dd46-497b-9fab-d85e40fa3c2e">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="407fb5cf-7acc-4e9f-9904-07a682190071">
           <CubeDimensionID>Dim_Customer</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="8a0b70e0-2ff1-40f1-89f7-c114615da31f">
+            <Attribute dwd:design-time-name="97e110bd-c202-4137-8eea-15a6d01ae8cd">
               <AttributeID>Customer Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="7d4198bd-0dcc-40a8-b28a-9aeaf172aa10">
+                <KeyColumn dwd:design-time-name="9b0050e7-14a6-4fc8-8358-8e4bb857fdcd">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3162274b-39ba-4415-9d60-58a460e23433">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="381c8d2a-a566-4d4a-9384-d8575f22a1c8">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>customer_key</ColumnID>
                   </Source>
@@ -642,15 +642,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="ae7ea42f-75a1-41c8-af6e-6c8ff07d20fb">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="96625803-99ef-458f-9a39-4996ca40fca0">
           <CubeDimensionID>Dim_Load_Profile</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="5e41a9bb-f823-446c-a474-3eb38754a330">
+            <Attribute dwd:design-time-name="192a32f0-04d8-48f2-9f92-b7cc600ceb30">
               <AttributeID>Load Profile Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="0b32f78f-5dee-4cf1-8ba3-5bcc8819ab09">
+                <KeyColumn dwd:design-time-name="746b3988-503d-48d5-b1b1-063cca600c90">
                   <DataType>SmallInt</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="3a0bbfa9-bbc8-4a50-aaa7-bfc367086bc5">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="376c57be-a13d-4072-ac22-559bda99ebe8">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>load_profile_key</ColumnID>
                   </Source>
@@ -660,15 +660,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="2e4310c6-df8b-469a-b2f1-406e61c77fe6">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="3f7e1d68-886d-42c1-a3e8-32f5e8a0cc92">
           <CubeDimensionID>Pickup Date</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="936a68b6-49c3-49c9-9df1-1ec1f33c113e">
+            <Attribute dwd:design-time-name="d12cc589-6755-494e-b75d-ea795342ff6c">
               <AttributeID>Date Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="aa761366-a210-4a3a-bf65-eea3127e91c7">
+                <KeyColumn dwd:design-time-name="a5fe505b-28a1-4f97-bbca-af9ce2072cdc">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4d5bec9f-56dc-4c45-8cb4-9f486c3d4e1c">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="b133ec30-264a-456c-83a7-7228d96b0a9d">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>pickup_date_key</ColumnID>
                   </Source>
@@ -678,15 +678,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="e98b4b4e-3b53-415b-9e65-f671874e0f8d">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="9cf54d63-bb31-4c07-9609-d87b27f95b38">
           <CubeDimensionID>Delivery Date</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="25dca0ce-b5c5-4f4d-8297-bba027dab965">
+            <Attribute dwd:design-time-name="29f30f12-3d7c-4557-9958-c93cbab9606b">
               <AttributeID>Date Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="19f48329-8b2c-4572-be6e-29e7e73ccb13">
+                <KeyColumn dwd:design-time-name="0169c020-8bb3-4cbf-9d09-2a9f716f212e">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="d6053f86-0146-4c26-b7aa-3c1c88957cfe">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ffd8edcf-a518-4cbf-b9d5-158c80b75150">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>delivery_date_key</ColumnID>
                   </Source>
@@ -696,15 +696,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="64f1fcf9-1de0-4077-bfc4-706624406354">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="6fe07cd5-38ae-493a-ab7b-525f060d03da">
           <CubeDimensionID>Origin Facility</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="b08e9789-9008-47d2-a522-c163f63b6723">
+            <Attribute dwd:design-time-name="ce901792-4bd8-4344-8301-6f057fee903f">
               <AttributeID>Facility Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="7ef7e80b-6b0a-4d8f-8585-4c153a91747e">
+                <KeyColumn dwd:design-time-name="eb52d481-8631-454a-a62f-c19162b11d9a">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="dc6df28e-8944-4eed-b4b2-14eb4956b6db">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="ea8ed977-d84e-445b-93c7-f3bb85c1c764">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>origin_facility_key</ColumnID>
                   </Source>
@@ -714,15 +714,15 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="7e6c01ea-95e4-4cd8-b6ec-171a52efba44">
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="f31d529f-5d36-4ff7-be4d-8d93bfb7b099">
           <CubeDimensionID>Destination Facility</CubeDimensionID>
           <Attributes>
-            <Attribute dwd:design-time-name="65455525-cd11-49d3-be93-62b6e1560ef6">
+            <Attribute dwd:design-time-name="acafc62b-5de2-4460-a56f-afe7f94cf3ca">
               <AttributeID>Facility Key</AttributeID>
               <KeyColumns>
-                <KeyColumn dwd:design-time-name="db4dbda1-84de-49ad-9e28-e6cef96c93b0">
+                <KeyColumn dwd:design-time-name="ab655916-1c2a-4786-9fa8-aa1b15c2e243">
                   <DataType>Integer</DataType>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="0b377fff-8538-41e1-a6e5-2e267af456fe">
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="30c5c9e0-e38b-4e17-8ff0-d354bfa757eb">
                     <TableID>dbo_Fact_Delivery_Fulfillment</TableID>
                     <ColumnID>destination_facility_key</ColumnID>
                   </Source>
@@ -735,11 +735,11 @@
       </Dimensions>
     </MeasureGroup>
   </MeasureGroups>
-  <Source dwd:design-time-name="5f2b89c4-a8f1-471a-84a2-dc047b168664">
+  <Source dwd:design-time-name="990a5ae6-b77b-482b-a58b-36baef1d25e3">
     <DataSourceViewID>DSV_Logistics_DW</DataSourceViewID>
   </Source>
   <MdxScripts>
-    <MdxScript dwd:design-time-name="0d29f0f0-4bd7-44f1-9bf0-043f67a76445">
+    <MdxScript dwd:design-time-name="c767f8d7-d0a2-4661-884b-71256be04313">
       <ID>MdxScript</ID>
       <Name>MdxScript</Name>
       <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -754,7 +754,7 @@ IIF(
     [Measures].[Delivery On Time Count] / [Measures].[Completed Fulfillment Count]
 ),
 FORMAT_STRING = "Percent",
-ASSOCIATED_MEASURE_GROUP = 'Fact Delivery Fulfillment'; 
+ASSOCIATED_MEASURE_GROUP = 'Fact Delivery Fulfillment';
 CREATE MEMBER CURRENTCUBE.[Measures].[Avg Delivery Detention]
  AS [Measures].[Delivery Detention Minutes] / [Measures].[Total Fulfillment Count], 
 VISIBLE = 1  ; 
