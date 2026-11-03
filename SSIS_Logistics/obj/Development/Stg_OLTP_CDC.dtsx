@@ -12,8 +12,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_OLTP_CDC"
   DTS:PackageType="5"
-  DTS:VersionBuild="79"
-  DTS:VersionGUID="{EDD1277F-D537-4089-85F5-7D509EB9DCE3}">
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{02D0099D-77F4-4231-8796-0B3F5857B681}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4088,7 +4088,11 @@ FROM dbo.trips</property>
         <NodeLayout
           Size="191.2,41.6"
           Id="Package\DFT_Extract_CDC_Trips"
-          TopLeft="19.6031746449048,296.450980132307" />
+          TopLeft="19.6031746449048,295.601306930437" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\DFT_Extract_CDC_Trucks"
+          TopLeft="287.142857754109,265.176470443452" />
         <NodeLayout
           Size="192,41.6"
           Id="Package\SQL_Truncate_Stg_CDC"
@@ -4121,14 +4125,14 @@ FROM dbo.trips</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,68.7725489228628"
+              EndConnector="0,67.9228757209934"
               Start="0,0"
-              End="0,61.2725489228628">
+              End="0,60.4228757209934">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.2725489228628" />
+                    End="0,60.4228757209934" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4139,18 +4143,18 @@ FROM dbo.trips</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="114.468254003311,338.050980132307">
+          TopLeft="114.468254003311,337.201306930437">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.211764664324"
+              EndConnector="0,33.0614378661936"
               Start="0,0"
-              End="0,24.711764664324">
+              End="0,25.5614378661936">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.711764664324" />
+                    End="0,25.5614378661936" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4181,10 +4185,6 @@ FROM dbo.trips</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="198.4,41.6"
-          Id="Package\DFT_Extract_CDC_Trucks"
-          TopLeft="287.142857754109,265.176470443452" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="384.476191073251,362.901960484915">
@@ -4257,40 +4257,6 @@ FROM dbo.trips</property>
           Size="197.6,41.6"
           Id="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata"
           TopLeft="190.00000040446,137.647058702876" />
-        <EdgeLayout
-          Id="Package\DFT_Extract_CDC_Customers.Paths[OLE DB Source Output]"
-          TopLeft="278.085714688654,95.1294117177853">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="10.7142857158061,42.5176469850912"
-              Start="0,0"
-              End="10.7142857158061,35.0176469850912">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.2588234925456" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.2588234925456"
-                    Point2="0,21.2588234925456"
-                    Point3="4,21.2588234925456" />
-                  <mssgle:LineSegment
-                    End="6.71428571580611,21.2588234925456" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6.71428571580611,21.2588234925456"
-                    Point2="10.7142857158061,21.2588234925456"
-                    Point3="10.7142857158061,25.2588234925456" />
-                  <mssgle:LineSegment
-                    End="10.7142857158061,35.0176469850912" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="224.8,41.6"
           Id="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers"
@@ -4321,6 +4287,40 @@ FROM dbo.trips</property>
                     Point3="58.6000000957933,28.6999999601175" />
                   <mssgle:LineSegment
                     End="58.6000000957933,41.899999920235" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_Extract_CDC_Customers.Paths[OLE DB Source Output]"
+          TopLeft="278.085714688654,95.1294117177853">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.7142857158061,42.5176469850912"
+              Start="0,0"
+              End="10.7142857158061,35.0176469850912">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2588234925456" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2588234925456"
+                    Point2="0,21.2588234925456"
+                    Point3="4,21.2588234925456" />
+                  <mssgle:LineSegment
+                    End="6.71428571580611,21.2588234925456" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.71428571580611,21.2588234925456"
+                    Point2="10.7142857158061,21.2588234925456"
+                    Point3="10.7142857158061,25.2588234925456" />
+                  <mssgle:LineSegment
+                    End="10.7142857158061,35.0176469850912" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4501,6 +4501,10 @@ FROM dbo.trips</property>
           Size="197.6,41.6"
           Id="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata"
           TopLeft="364.999994561076,146.999997809529" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT_Extract_CDC_Trailers\OLE DB Destination"
+          TopLeft="448.999993309379,274.999995902181" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Trailers.Paths[OLE DB Source Output]"
           TopLeft="354.199995931983,88.5999992996454">
@@ -4535,10 +4539,6 @@ FROM dbo.trips</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\DFT_Extract_CDC_Trailers\OLE DB Destination"
-          TopLeft="448.999993309379,274.999995902181" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Trailers.Paths[Derived Column Output]"
           TopLeft="463.799994561076,188.599997809529">
@@ -4576,6 +4576,32 @@ FROM dbo.trips</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Extract_CDC_Trailers\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT_Extract_CDC_Trips">
     <LayoutInfo>
@@ -4653,6 +4679,10 @@ FROM dbo.trips</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata"
+          TopLeft="232.857143352835,168.235293970182" />
+        <NodeLayout
           Size="159.2,41.6"
           Id="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks"
           TopLeft="194.285714699298,97.8823528553788" />
@@ -4660,10 +4690,6 @@ FROM dbo.trips</property>
           Size="206.4,41.6"
           Id="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks"
           TopLeft="375.000000798277,238.588235084986" />
-        <NodeLayout
-          Size="197.6,41.6"
-          Id="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata"
-          TopLeft="232.857143352835,168.235293970182" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Trucks.Paths[OLE DB Source Output]"
           TopLeft="273.885714699298,139.482352855379">
@@ -4750,32 +4776,6 @@ FROM dbo.trips</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Extract_CDC_Trailers\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
