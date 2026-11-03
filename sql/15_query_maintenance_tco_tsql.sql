@@ -1,58 +1,63 @@
 -- ================================================================================
 -- SCRIPT: sql/15_query_maintenance_tco_tsql.sql
--- MỤC ĐÍCH: Tập hợp các truy vấn T-SQL phân tích nghiệp vụ chuyên sâu 
+-- MỤC ĐÍCH: Tập hợp 3 truy vấn T-SQL phân tích nghiệp vụ chuyên sâu 
 --           cho Fact_Maintenance và tính toán Tổng chi phí sở hữu (Fleet TCO)
+--           (Tương ứng với Mục 3.3.2.4 / 3.2.2.4 trong Báo cáo Đồ án)
 -- PHỤ TRÁCH: Nguyễn Phúc An
 -- ================================================================================
 
 USE Logistics_DW;
 GO
 
--- --------------------------------------------------------------------------------
--- CÂU HỎI 1: SO SÁNH HIỆU QUẢ KINH TẾ GIỮA 6 HÃNG XE ĐẦU KÉO (MAKE EFFICIENCY)
--- Mục tiêu: Tìm ra hãng xe có chi phí bảo trì kinh tế nhất và downtime thấp nhất
--- --------------------------------------------------------------------------------
+-- ================================================================================
+-- TRUY VẤN 1: PHÂN TÍCH LIÊN THÔNG FACT-TO-FACT TÍNH FLEET TCO & CHI PHÍ SÀN/DẶM
+-- Kỹ thuật: Common Table Expressions (CTE) kết hợp Fact_Trip & Fact_Maintenance qua Dim_Truck
+-- Nghiệp vụ: Xác định ngưỡng chi phí tối thiểu ($/mile) để duy trì hoạt động đội xe
+-- ================================================================================
+WITH FuelCostByTruck AS (
+    -- 1. Tổng hợp chi phí nhiên liệu hành trình từ Fact_Trip
+    SELECT 
+        ft.truck_key,
+        SUM(ft.actual_distance_miles) AS Total_Miles,
+        SUM(ft.fuel_gallons_used) AS Total_Fuel_Gallons,
+        -- Đơn giá diesel trung bình thu thập từ crawler EIA 2022-2024 là $3.85 / gallon
+        SUM(ft.fuel_gallons_used * 3.85) AS Total_Fuel_Cost_USD
+    FROM dbo.Fact_Trip ft
+    WHERE ft.truck_key <> -1
+    GROUP BY ft.truck_key
+),
+MaintenanceCostByTruck AS (
+    -- 2. Tổng hợp chi phí bảo dưỡng kỹ thuật từ Fact_Maintenance
+    SELECT 
+        fm.truck_key,
+        SUM(fm.total_maintenance_cost) AS Total_Maintenance_Cost_USD
+    FROM dbo.Fact_Maintenance fm
+    WHERE fm.truck_key <> -1
+    GROUP BY fm.truck_key
+)
 SELECT 
-    t.make AS Truck_Make,
-    COUNT(fm.maintenance_event_key) AS Total_Maintenance_Events,
-    SUM(fm.total_maintenance_cost) AS Total_Cost_USD,
-    ROUND(AVG(fm.total_maintenance_cost), 2) AS Avg_Cost_Per_Event_USD,
-    ROUND(AVG(fm.downtime_hours), 2) AS Avg_Downtime_Hours,
-    ROUND(SUM(fm.parts_cost) * 100.0 / NULLIF(SUM(fm.total_maintenance_cost), 0), 2) AS Parts_Cost_Pct,
-    ROUND(SUM(fm.labor_cost) * 100.0 / NULLIF(SUM(fm.total_maintenance_cost), 0), 2) AS Labor_Cost_Pct
-FROM dbo.Fact_Maintenance fm
-JOIN dbo.Dim_Truck t ON fm.truck_key = t.truck_key
+    t.make AS Make,
+    COUNT(DISTINCT t.truck_key) AS Number_Of_Trucks,
+    ROUND(SUM(fc.Total_Miles), 0) AS Fleet_Miles,
+    ROUND(SUM(fc.Total_Fuel_Cost_USD), 2) AS Total_Fuel_Cost_USD,
+    ROUND(SUM(mc.Total_Maintenance_Cost_USD), 2) AS Total_Maintenance_Cost_USD,
+    ROUND(SUM(fc.Total_Fuel_Cost_USD) + SUM(mc.Total_Maintenance_Cost_USD), 2) AS Fleet_TCO_USD,
+    -- Chi phí sàn vận hành trên mỗi dặm ($/mile)
+    ROUND((SUM(fc.Total_Fuel_Cost_USD) + SUM(mc.Total_Maintenance_Cost_USD)) / NULLIF(SUM(fc.Total_Miles), 0), 4) AS Operating_Cost_Per_Mile
+FROM dbo.Dim_Truck t
+LEFT JOIN FuelCostByTruck fc ON t.truck_key = fc.truck_key
+LEFT JOIN MaintenanceCostByTruck mc ON t.truck_key = mc.truck_key
 WHERE t.make <> 'Unknown'
 GROUP BY t.make
-ORDER BY Total_Cost_USD DESC;
+ORDER BY Fleet_TCO_USD DESC;
 GO
 
 
--- --------------------------------------------------------------------------------
--- CÂU HỎI 2: MA TRẬN 7 LOẠI BẢO DƯỠNG X MỨC ĐỘ KHẨN CẤP (FAILURE MODE ANALYSIS)
--- Mục tiêu: Nhận diện loại hỏng hóc thường xảy ra khẩn cấp (Emergency) và tốn kém nhất
--- --------------------------------------------------------------------------------
-SELECT 
-    mp.maintenance_type AS Maintenance_Type,
-    mp.service_urgency AS Urgency_Level,
-    COUNT(fm.maintenance_event_key) AS Event_Count,
-    SUM(fm.total_maintenance_cost) AS Total_Cost_USD,
-    ROUND(AVG(fm.total_maintenance_cost), 2) AS Avg_Cost_USD,
-    ROUND(AVG(fm.downtime_hours), 2) AS Avg_Downtime_Hours,
-    SUM(fm.parts_cost) AS Total_Parts_USD,
-    SUM(fm.labor_cost) AS Total_Labor_USD
-FROM dbo.Fact_Maintenance fm
-JOIN dbo.Dim_Maintenance_Profile mp ON fm.maintenance_profile_key = mp.maintenance_profile_key
-WHERE mp.maintenance_type <> 'Unknown'
-GROUP BY mp.maintenance_type, mp.service_urgency
-ORDER BY mp.maintenance_type, Total_Cost_USD DESC;
-GO
-
-
--- --------------------------------------------------------------------------------
--- CÂU HỎI 3: TOP 10 ĐẦU XE CÁ BIỆT TỐN KÉM NHẤT CẦN ĐỀ XUẤT THANH LÝ
--- Mục tiêu: Áp dụng Window Function DENSE_RANK() để lập danh sách đen các xe quá tải chi phí
--- --------------------------------------------------------------------------------
+-- ================================================================================
+-- TRUY VẤN 2: XẾP HẠNG CHI PHÍ & TỰ ĐỘNG PHÂN LOẠI CHÍNH SÁCH QUẢN TRỊ TÀI SẢN
+-- Kỹ thuật: Window Function DENSE_RANK() kết hợp CASE WHEN phân loại 3 tầng chính sách
+-- Nghiệp vụ: Cô lập Top đầu xe cá biệt vượt ngưỡng chịu đựng ngân sách (Điển hình Unit 2335)
+-- ================================================================================
 WITH TruckMaintenanceSummary AS (
     SELECT 
         t.truck_key,
@@ -90,62 +95,20 @@ ORDER BY Cost_Rank ASC;
 GO
 
 
--- --------------------------------------------------------------------------------
--- CÂU HỎI 4: FLEET TCO DRILL-ACROSS (KẾT HỢP FACT_TRIP + FACT_MAINTENANCE)
--- Mục tiêu: Tính tổng chi phí sở hữu đội xe và xác định Chi phí sàn vận hành ($/dặm)
--- --------------------------------------------------------------------------------
-WITH FuelCostByTruck AS (
-    -- Tổng hợp chi phí nhiên liệu từ Fact_Trip
-    SELECT 
-        ft.truck_key,
-        SUM(ft.actual_distance_miles) AS Total_Miles,
-        SUM(ft.fuel_gallons_used) AS Total_Fuel_Gallons,
-        -- Đơn giá diesel trung bình thu thập từ EIA Crawler là $3.85 / gallon
-        SUM(ft.fuel_gallons_used * 3.85) AS Total_Fuel_Cost_USD
-    FROM dbo.Fact_Trip ft
-    WHERE ft.truck_key <> -1
-    GROUP BY ft.truck_key
-),
-MaintenanceCostByTruck AS (
-    -- Tổng hợp chi phí bảo dưỡng từ Fact_Maintenance
-    SELECT 
-        fm.truck_key,
-        SUM(fm.total_maintenance_cost) AS Total_Maintenance_Cost_USD
-    FROM dbo.Fact_Maintenance fm
-    WHERE fm.truck_key <> -1
-    GROUP BY fm.truck_key
-)
+-- ================================================================================
+-- TRUY VẤN 3: KIỂM TOÁN ĐỐI SOÁT TÍNH TOÀN VẸN DỮ LIỆU ĐA CHIỀU (CROSS-VALIDATION)
+-- Kỹ thuật: Phép tổng hợp SQL trên Fact_Maintenance đối chiếu trực tiếp với SSAS Cube
+-- Nghiệp vụ: Chứng minh độ sai lệch bằng 0 giữa Relational DWH và Semantic OLAP Cube
+-- ================================================================================
 SELECT 
-    t.make AS Make,
-    COUNT(DISTINCT t.truck_key) AS Number_Of_Trucks,
-    ROUND(SUM(fc.Total_Miles), 0) AS Fleet_Miles,
-    ROUND(SUM(fc.Total_Fuel_Cost_USD), 2) AS Total_Fuel_Cost_USD,
-    ROUND(SUM(mc.Total_Maintenance_Cost_USD), 2) AS Total_Maintenance_Cost_USD,
-    ROUND(SUM(fc.Total_Fuel_Cost_USD) + SUM(mc.Total_Maintenance_Cost_USD), 2) AS Fleet_TCO_USD,
-    -- Chi phí sàn vận hành trên mỗi dặm ($/mile)
-    ROUND((SUM(fc.Total_Fuel_Cost_USD) + SUM(mc.Total_Maintenance_Cost_USD)) / NULLIF(SUM(fc.Total_Miles), 0), 4) AS Operating_Cost_Per_Mile
-FROM dbo.Dim_Truck t
-LEFT JOIN FuelCostByTruck fc ON t.truck_key = fc.truck_key
-LEFT JOIN MaintenanceCostByTruck mc ON t.truck_key = mc.truck_key
-WHERE t.make <> 'Unknown'
-GROUP BY t.make
-ORDER BY Fleet_TCO_USD DESC;
+    'Fact_Maintenance Reconciliation' AS Audit_Scope,
+    COUNT(fm.maintenance_event_key) AS Total_Events_Count,          -- Kỳ vọng: 5,840 lượt
+    SUM(fm.total_maintenance_cost) AS Total_Maintenance_Cost_USD,   -- Kỳ vọng: $11,461,146.00
+    SUM(fm.parts_cost) AS Total_Parts_Cost_USD,                     -- Kỳ vọng: $8,899,286.00
+    SUM(fm.labor_cost) AS Total_Labor_Cost_USD,                     -- Kỳ vọng: $2,561,860.00
+    SUM(fm.downtime_hours) AS Total_Downtime_Hours,                 -- Kỳ vọng: 144,461.00 giờ
+    SUM(fm.labor_hours) AS Total_Labor_Hours,                       -- Kỳ vọng: 24,453.00 giờ
+    ROUND(AVG(fm.total_maintenance_cost), 2) AS Avg_Cost_Per_Event, -- Kỳ vọng: $1,962.53
+    ROUND(AVG(fm.downtime_hours), 2) AS Avg_Downtime_Per_Event      -- Kỳ vọng: 24.74 giờ
+FROM dbo.Fact_Maintenance fm;
 GO
-
-
--- --------------------------------------------------------------------------------
--- CÂU HỎI 5: XU HƯỚNG VÒNG ĐỜI BẢO DƯỠNG THEO THỜI GIAN (HÌNH CHỮ U)
--- --------------------------------------------------------------------------------
-SELECT 
-    d.calendar_year AS Calendar_Year,
-    d.calendar_quarter AS Calendar_Quarter,
-    COUNT(fm.maintenance_event_key) AS Event_Count,
-    SUM(fm.total_maintenance_cost) AS Total_Cost_USD,
-    ROUND(AVG(fm.total_maintenance_cost), 2) AS Avg_Cost_Per_Event,
-    SUM(fm.downtime_hours) AS Total_Downtime_Hours
-FROM dbo.Fact_Maintenance fm
-JOIN dbo.Dim_Date d ON fm.maintenance_date_key = d.date_key
-GROUP BY d.calendar_year, d.calendar_quarter
-ORDER BY d.calendar_year, d.calendar_quarter;
-GO
-
