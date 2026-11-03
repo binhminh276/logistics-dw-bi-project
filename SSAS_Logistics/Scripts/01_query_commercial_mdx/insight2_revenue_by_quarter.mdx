@@ -1,0 +1,30 @@
+WITH 
+MEMBER [Measures].[Fuel_Surcharge_Pct] AS
+    IIF(
+        [Measures].[Total Revenue] = 0,
+        NULL,
+        [Measures].[Fuel Surcharge] / [Measures].[Total Revenue]
+    ), FORMAT_STRING = "Percent"
+MEMBER [Measures].[Accessorial_Pct] AS
+    IIF(
+        [Measures].[Total Revenue] = 0,
+        NULL,
+        [Measures].[Accessorial Charges] / [Measures].[Total Revenue]
+    ), FORMAT_STRING = "Percent"
+SELECT 
+    {
+        [Measures].[Revenue],
+        [Measures].[Fuel Surcharge],
+        [Measures].[Accessorial Charges],
+        [Measures].[Total Revenue],
+        [Measures].[Fuel_Surcharge_Pct],
+        [Measures].[Accessorial_Pct],
+        [Measures].[Load Count]
+    } ON COLUMNS,
+    NON EMPTY 
+    (
+        {[Dim_Date].[Calendar Year].[2022], [Dim_Date].[Calendar Year].[2023]}
+        *
+        [Dim_Date].[Calendar Quarter].[Calendar Quarter].MEMBERS
+    ) ON ROWS
+FROM [Cube_Commercial];

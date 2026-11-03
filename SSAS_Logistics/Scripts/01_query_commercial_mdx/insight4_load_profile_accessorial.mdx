@@ -1,0 +1,13 @@
+-- Insight 3: Ma tran phan tich loai hang va hinh thuc dat xe tac dong len phu phi ngoai hop dong
+SELECT 
+    NON EMPTY {
+        [Measures].[Total Revenue],
+        [Measures].[Accessorial Charges],
+        [Measures].[Weight Lbs],
+        [Measures].[Load Count]
+    } ON COLUMNS,
+    NON EMPTY (
+        [Dim_Load_Profile].[Booking Type].[Booking Type].MEMBERS *
+        [Dim_Load_Profile].[Load Type].[Load Type].MEMBERS
+    ) ON ROWS
+FROM [Cube_Commercial];

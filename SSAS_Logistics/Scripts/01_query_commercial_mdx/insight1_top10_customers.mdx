@@ -1,0 +1,15 @@
+// Truy vấn Top 10 khách hàng có doanh thu lớn nhất kèm phân bổ đơn hàng và tải trọng
+SELECT 
+    {
+        [Measures].[Total Revenue],
+        [Measures].[Revenue],
+        [Measures].[Load Count],
+        [Measures].[Weight Lbs]
+    } ON COLUMNS,
+    NON EMPTY 
+    TOPCOUNT(
+        [Dim_Customer].[Customer Name].[Customer Name].MEMBERS,
+        10,
+        [Measures].[Total Revenue]
+    ) ON ROWS
+FROM [Cube_Commercial];

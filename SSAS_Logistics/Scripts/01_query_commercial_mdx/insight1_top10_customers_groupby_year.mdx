@@ -1,0 +1,17 @@
+SELECT 
+    {
+        [Measures].[Total Revenue],
+        [Measures].[Load Count],
+        [Measures].[Weight Lbs]
+    } ON COLUMNS,
+    NON EMPTY 
+    GENERATE(
+        {[Dim_Date].[Calendar Year].[2022], [Dim_Date].[Calendar Year].[2023]},
+        [Dim_Date].[Calendar Year].CURRENTMEMBER * 
+        TOPCOUNT(
+            [Dim_Customer].[Customer Name].[Customer Name].MEMBERS,
+            10,
+            [Measures].[Total Revenue]
+        )
+    ) ON ROWS
+FROM [Cube_Commercial];

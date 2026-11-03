@@ -1,0 +1,23 @@
+SELECT 
+    {
+        [Measures].[Weight Lbs],
+        [Measures].[Total Revenue],
+        [Measures].[Load Count]
+    } ON COLUMNS,
+    NON EMPTY 
+    TOPCOUNT(
+        (
+            [Dim_Route].[Route ID].[Route ID].MEMBERS *
+            [Dim_Route].[Origin City].[Origin City].MEMBERS *
+            [Dim_Route].[Origin State].[Origin State].MEMBERS *
+            [Dim_Route].[Destination City].[Destination City].MEMBERS *
+            [Dim_Route].[Destination State].[Destination State].MEMBERS *
+			[Dim_Route].[Typical Distance Miles].[Typical Distance Miles].MEMBERS
+        ),
+        10,
+        [Measures].[Total Revenue]
+    ) ON ROWS
+FROM [Cube_Commercial]
+WHERE (
+    {[Dim_Date].[Calendar Year].[2022], [Dim_Date].[Calendar Year].[2023]}
+);
