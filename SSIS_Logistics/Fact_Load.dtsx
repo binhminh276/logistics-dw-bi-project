@@ -3654,7 +3654,7 @@ where [refTable].[route_id] = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{532D86D6-7D23-4D2A-A06C-FEC9C87E994B}"
-              SQLTask:SqlStatementSource="COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="IF @@TRANCOUNT &gt; 0&#xA;BEGIN&#xA;    COMMIT TRANSACTION;&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable

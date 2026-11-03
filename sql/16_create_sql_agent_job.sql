@@ -2,7 +2,10 @@ USE [msdb]
 GO
 
 /****** Object:  Job [Logistics_Daily_ETL_Orchestration]    Script Date: 02/11/2026 11:36:22 SA ******/
-EXEC msdb.dbo.sp_delete_job @job_id=N'2b746d84-0982-4ee8-b1cb-2d01f3067810', @delete_unused_schedule=1
+IF EXISTS (SELECT 1 FROM msdb.dbo.sysjobs WHERE name = N'Logistics_Daily_ETL_Orchestration')
+BEGIN
+    EXEC msdb.dbo.sp_delete_job @job_name = N'Logistics_Daily_ETL_Orchestration', @delete_unused_schedule = 1;
+END
 GO
 
 /****** Object:  Job [Logistics_Daily_ETL_Orchestration]    Script Date: 02/11/2026 11:36:22 SA ******/
@@ -55,7 +58,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'2. Run_F
 		@retry_attempts=0, 
 		@retry_interval=0, 
 		@os_run_priority=0, @subsystem=N'CmdExec', 
-		@command=N'"C:\Users\tranq\AppData\Local\Programs\Python\Python313\python.exe" "D:\Kho\logistics-dw-bi-project\mock_api\fuel_crawler.py"', 
+		@command=N'"D:\Setup\Python\python.exe" "D:\Kho\Project\mock_api\fuel_crawler.py"', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 /****** Object:  Step [3. SSIS_Load_DWH]    Script Date: 02/11/2026 11:36:23 SA ******/

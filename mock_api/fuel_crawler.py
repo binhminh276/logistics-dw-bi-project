@@ -18,6 +18,15 @@ import json
 import logging
 from pathlib import Path
 from datetime import datetime
+# Đảm bảo tài khoản dịch vụ (như SQL Server Agent) luôn nạp được thư viện từ site-packages
+import os
+for py_ver in ['Python313', 'Python312']:
+    user_site = Path.home() / 'AppData' / 'Roaming' / 'Python' / py_ver / 'site-packages'
+    fallback_site = Path(r'C:\Users\Phuc An\AppData\Roaming\Python') / py_ver / 'site-packages'
+    for s_path in [user_site, fallback_site]:
+        if s_path.exists() and str(s_path) not in sys.path:
+            sys.path.insert(0, str(s_path))
+
 import requests
 import pandas as pd
 
