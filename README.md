@@ -7,7 +7,7 @@
 - **Nguyễn Phúc An** - *Phụ trách mảng Kỹ thuật Bảo trì & Tài nguyên Đội xe*
 - **Trần Quang Duy** - *Phụ trách mảng Vận hành Chuyến xe & Chu trình Giao nhận*
 
-## 🛠 Kiến trúc công nghệ (Tech Stack)
+## Kiến trúc công nghệ (Tech Stack)
 - **Data Sources:** SQL Server OLTP (kích hoạt CDC), Flat files (CSV), External API (REST/JSON).
 - **Data Integration & Crawler:** Python (Mock API Crawler).
 - **Staging & Core DWH:** SQL Server 2022.
