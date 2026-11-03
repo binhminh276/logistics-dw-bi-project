@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts" xmlns:ns1="www.microsoft.com/sqlserver/dts/tasks/sqltask" DTS:refId="Package" DTS:CreationDate="10/6/2026 9:33:27 PM" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="PHUCAN" DTS:CreatorName="PhucAn\Phuc An" DTS:DelayValidation="True" DTS:DTSID="{E59CEC99-D139-4A7B-A7C6-6571A5613E2E}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="17.0.1016.0" DTS:LocaleID="1066" DTS:ObjectName="Package1" DTS:PackageType="5" DTS:VersionBuild="27" DTS:VersionGUID="{8208A9FA-2AEA-4435-9B05-5A4A436396F9}">
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts" xmlns:ns1="www.microsoft.com/sqlserver/dts/tasks/sqltask" DTS:refId="Package" DTS:CreationDate="10/6/2026 9:33:27 PM" DTS:CreationName="Microsoft.Package" DTS:CreatorComputerName="PHUCAN" DTS:CreatorName="PhucAn\Phuc An" DTS:DelayValidation="True" DTS:DTSID="{E59CEC99-D139-4A7B-A7C6-6571A5613E2E}" DTS:ExecutableType="Microsoft.Package" DTS:LastModifiedProductVersion="17.0.1016.0" DTS:LocaleID="1066" DTS:ObjectName="Package1" DTS:PackageType="5" DTS:VersionBuild="28" DTS:VersionGUID="{8208A9FA-2AEA-4435-9B05-5A4A436396F9}">
   <DTS:Property DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable DTS:CreationName="" DTS:DTSID="{FADE7644-A5AF-44D2-A7E5-E0AD2F8140A8}" DTS:IncludeInDebugDump="6789" DTS:Namespace="User" DTS:ObjectName="vBatchID">
@@ -1006,9 +1006,17 @@ FROM dbo.Stg_CDC_Trailers;</property>
                 </component>
                 <component refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Trailer\OLE_DST_DQ_Rejections_Trailer" componentClassID="Microsoft.OLEDBDestination" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" description="OLE DB Destination" name="OLE_DST_DQ_Rejections_Trailer" usesDispositions="true" version="4">
                   <properties>
-                    <property dataType="System.Int32" name="CommandTimeout">0</property>
-                    <property dataType="System.String" name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
-                    <property dataType="System.Int32" name="AccessMode">3</property>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable"></property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1258</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
                   </properties>
                   <connections>
                     <connection refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Trailer\OLE_DST_DQ_Rejections_Trailer.Connections[OleDbConnection]" connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external" connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection"></connection>
@@ -1870,9 +1878,17 @@ FROM dbo.Stg_CDC_Trucks;</property>
                 </component>
                 <component refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_DST_DQ_Rejections_Truck" componentClassID="Microsoft.OLEDBDestination" contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4" description="OLE DB Destination" name="OLE_DST_DQ_Rejections_Truck" usesDispositions="true" version="4">
                   <properties>
-                    <property dataType="System.Int32" name="CommandTimeout">0</property>
-                    <property dataType="System.String" name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
-                    <property dataType="System.Int32" name="AccessMode">3</property>
+                    <property dataType="System.Int32" description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out." name="CommandTimeout">0</property>
+                    <property dataType="System.String" description="Specifies the name of the database object used to open a rowset." name="OpenRowset">[audit].[Data_Quality_Rejections]</property>
+                    <property dataType="System.String" description="Specifies the variable that contains the name of the database object used to open a rowset." name="OpenRowsetVariable"></property>
+                    <property dataType="System.String" description="The SQL command to be executed." name="SqlCommand" UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property dataType="System.Int32" description="Specifies the column code page to use when code page information is unavailable from the data source." name="DefaultCodePage">1258</property>
+                    <property dataType="System.Boolean" description="Forces the use of the DefaultCodePage property value when describing character data." name="AlwaysUseDefaultCodePage">false</property>
+                    <property dataType="System.Int32" description="Specifies the mode used to access the database." name="AccessMode" typeConverter="AccessMode">3</property>
+                    <property dataType="System.Boolean" description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on." name="FastLoadKeepIdentity">false</property>
+                    <property dataType="System.Boolean" description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on." name="FastLoadKeepNulls">false</property>
+                    <property dataType="System.String" description="Specifies options to be used with fast load.  Applies only if fast load is turned on." name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                    <property dataType="System.Int32" description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on." name="FastLoadMaxInsertCommitSize">2147483647</property>
                   </properties>
                   <connections>
                     <connection refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_DST_DQ_Rejections_Truck.Connections[OleDbConnection]" connectionManagerID="{DC64635A-9789-4B29-88BF-84D7AFAA1621}:external" connectionManagerRefId="Project.ConnectionManagers[Conn_Staging]" description="The OLE DB runtime connection used to access the database." name="OleDbConnection"></connection>
