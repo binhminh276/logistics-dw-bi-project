@@ -10,10 +10,10 @@
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1066"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="Dim_Fleet"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{914DEE6F-A3DF-4DD7-9ED3-CFFDB39C13FA}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{C248A28A-A60C-47CF-9C67-677FE5DF46C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -5534,12 +5534,12 @@ FROM dbo.Stg_CDC_Trucks;</property>
                         <property
                           containsID="true"
                           dataType="System.String"
-                          name="Expression">[ISNULL](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]}) || [LEN]([TRIM](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]})) != 17 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[tank_capacity_gallons]} &lt;= 0 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]} &lt; 1990 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]} &gt; 2030</property>
+                          name="Expression">[ISNULL](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]}) || [LEN]([TRIM](#{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[vin]})) != 18 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[tank_capacity_gallons]} &lt;= 0 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]} &lt; 1990 || #{Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[model_year]} &gt; 2030</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(vin) || LEN(TRIM(vin)) != 17 || tank_capacity_gallons &lt;= 0 || model_year &lt; 1990 || model_year &gt; 2030</property>
+                          name="FriendlyExpression">ISNULL(vin) || LEN(TRIM(vin)) != 18 || tank_capacity_gallons &lt;= 0 || model_year &lt; 1990 || model_year &gt; 2030</property>
                         <property
                           dataType="System.Int32"
                           name="EvaluationOrder">0</property>
@@ -6209,7 +6209,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck"
-          TopLeft="26.3,310.3" />
+          TopLeft="25.5857142841938,310.3" />
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope.PrecedenceConstraints[Constraint]"
           TopLeft="103.1,47.1">
@@ -6256,18 +6256,18 @@ FROM dbo.Stg_CDC_Trucks;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope.PrecedenceConstraints[Constraint 2]"
-          TopLeft="103.1,250.3">
+          TopLeft="102.742857142097,250.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6278,18 +6278,18 @@ FROM dbo.Stg_CDC_Trucks;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope.PrecedenceConstraints[Constraint 3]"
-          TopLeft="103.1,351.9">
+          TopLeft="102.742857142097,351.9">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,59.9999999999999"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,52.4999999999999">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.4999999999999" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6720,7 +6720,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6742,7 +6744,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6776,7 +6780,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6870,7 +6876,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6892,7 +6900,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6914,7 +6924,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6936,7 +6948,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6958,7 +6972,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6980,7 +6996,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7014,7 +7032,9 @@ FROM dbo.Stg_CDC_Trucks;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
