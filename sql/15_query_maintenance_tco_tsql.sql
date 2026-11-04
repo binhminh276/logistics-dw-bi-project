@@ -9,7 +9,7 @@ USE Logistics_DW;
 GO -- ================================================================================
     -- TRUY VẤN 1: PHÂN TÍCH LIÊN THÔNG FACT-TO-FACT TÍNH FLEET TCO & CHI PHÍ SÀN/DẶM
     -- Kỹ thuật: Common Table Expressions (CTE) kết hợp Fact_Trip & Fact_Maintenance qua Dim_Truck
-    -- Nghiệp vụ: Trực tiếp định lượng Tổng TCO toàn đội ($47.352.808,00) và Ngưỡng sàn ($0.7881 / dặm)
+    -- Nghiệp vụ: Trực tiếp định lượng Tổng TCO toàn đội và Ngưỡng sàn chi phí vận hành biến đổi ($ / dặm)
     -- ================================================================================
     WITH Fleet_Fuel AS (
         -- 1. Tổng hợp chi phí nhiên liệu hành trình từ Fact_Trip
@@ -96,10 +96,10 @@ SELECT Cost_Rank,
     Total_Downtime_Hours,
     Total_Downtime_Days,
     CASE
-        WHEN Total_Maintenance_Cost_USD >= 140000
-        OR Total_Downtime_Hours >= 1500 THEN N'Nhóm 1: Thanh lý khẩn cấp (Urgent Salvage)'
-        WHEN Total_Maintenance_Cost_USD >= 100000
-        OR Latest_Odometer_Km >= 800000 THEN N'Nhóm 2: Đại tu & Chuyển tuyến ngắn (Overhaul)'
+        WHEN Total_Maintenance_Cost_USD >= 70000
+        OR Total_Downtime_Hours >= 750 THEN N'Nhóm 1: Thanh lý khẩn cấp (Urgent Salvage)'
+        WHEN Total_Maintenance_Cost_USD >= 50000
+        OR Latest_Odometer_Km >= 700000 THEN N'Nhóm 2: Đại tu & Chuyển tuyến ngắn (Overhaul)'
         ELSE N'Nhóm 3: Khai thác tuyến dài (Max Utilization)'
     END AS Fleet_Lifecycle_Policy
 FROM TruckMaintenanceSummary

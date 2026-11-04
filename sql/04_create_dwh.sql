@@ -265,6 +265,11 @@ CREATE TABLE Fact_Maintenance (
     CONSTRAINT FK_FactMaint_Profile FOREIGN KEY (maintenance_profile_key) REFERENCES Dim_Maintenance_Profile(maintenance_profile_key)
 );
 
+-- Chỉ mục duy nhất chống trùng lặp dữ liệu khi nạp định kỳ / tăng trưởng (Lớp 1)
+CREATE UNIQUE NONCLUSTERED INDEX UQ_Fact_Maintenance_ID 
+ON Fact_Maintenance (maintenance_id)
+WITH (IGNORE_DUP_KEY = ON);
+
 -- ==============================================================================
 -- PHẦN C: KHỞI TẠO BẢN GHI MẶC ĐỊNH -1 CHO CÁC BẢNG DIMENSION
 -- ==============================================================================

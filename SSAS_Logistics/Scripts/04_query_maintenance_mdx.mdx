@@ -29,7 +29,7 @@ FROM [Cube_Maintenance];
 -- --------------------------------------------------------------------------------
 -- TRUY VẤN 2: NHẬN DIỆN TOP 5 ĐẦU XE CÁ BIỆT TỐN CHI PHÍ BẢO DƯỠNG CAO NHẤT BẰNG HÀM TOPCOUNT
 -- Nghiệp vụ: Quét 120 đầu kéo trên phân cấp Truck Fleet Hierarchy cô lập cá thể xe bất thường.
--- Kết quả: Xe Unit 2335 (Peterbilt 2018) đứng đầu: 82 lượt, $180.322,84, 94,4 ngày xe chết (2.266,2h).
+-- Kết quả: Xe Unit 2335 (Peterbilt 2018) đứng đầu: 41 lượt, $90.161,42, 47,2 ngày xe chết (1.133,1h).
 -- --------------------------------------------------------------------------------
 SELECT 
     { 
@@ -50,7 +50,7 @@ FROM [Cube_Maintenance];
 -- --------------------------------------------------------------------------------
 -- TRUY VẤN 3: PHÂN TÍCH XU HƯỚNG BẢO DƯỠNG THEO THỜI GIAN (NĂM VÀ QUÝ)
 -- Nghiệp vụ: Khoan sâu dữ liệu nhận diện chu kỳ can thiệp kỹ thuật đại tu phòng ngừa.
--- Kết quả: 2022 ($3,86M) -> 2023 ĐẠT ĐỈNH ($3,95M do đại tu tập trung) -> 2024 GIẢM MẠNH ($3,65M).
+-- Kết quả: 2022 ($1,93M) -> 2023 ĐẠT ĐỈNH ($1,97M do đại tu tập trung) -> 2024 GIẢM MẠNH ($1,82M).
 -- --------------------------------------------------------------------------------
 SELECT 
     { 

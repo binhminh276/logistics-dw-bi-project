@@ -98,6 +98,30 @@ BEGIN
 END
 GO
 
+-- =============================================================================
+-- MỤC 5: TẠO CHỈ MỤC CHỐNG DUPLICATE CHO FACT_MAINTENANCE VỚI IGNORE_DUP_KEY (LỚP 1)
+-- Lý do: Bảng Fact_Maintenance vốn là HEAP table không có Primary Key. Khi SSIS
+-- nạp tăng trưởng nhiều lần hoặc chạy lại, nguy cơ bị nhân đôi dữ liệu.
+-- Tuỳ chọn WITH (IGNORE_DUP_KEY = ON) giúp SQL Server tự động bỏ qua các dòng
+-- trùng lặp đã tồn tại mà không làm fail Job / Task SSIS Fast Load.
+-- =============================================================================
+USE [Logistics_DW];
+GO
+
+PRINT '-> 5. Khởi tạo UNIQUE INDEX chống duplicate cho Fact_Maintenance...';
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'UQ_Fact_Maintenance_ID' AND object_id = OBJECT_ID('dbo.Fact_Maintenance'))
+BEGIN
+    CREATE UNIQUE NONCLUSTERED INDEX UQ_Fact_Maintenance_ID 
+    ON dbo.Fact_Maintenance (maintenance_id)
+    WITH (IGNORE_DUP_KEY = ON);
+    PRINT '   Đã tạo thành công UQ_Fact_Maintenance_ID với IGNORE_DUP_KEY = ON.';
+END
+ELSE
+BEGIN
+    PRINT '   UQ_Fact_Maintenance_ID đã tồn tại.';
+END
+GO
+
 PRINT '======================================================================';
 PRINT 'HOÀN TẤT BỔ SUNG CÁC TIỀN ĐỀ SQL CHO SSIS!';
 PRINT '======================================================================';
