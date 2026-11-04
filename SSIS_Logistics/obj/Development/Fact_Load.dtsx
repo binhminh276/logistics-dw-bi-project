@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Load"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{6D6462A3-AAE7-401A-AFCE-5BD3A84E355F}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{150AD6CA-E9C6-4710-AD51-70466A1B1269}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -937,13 +937,17 @@
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Dim_Customer]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT customer_key, customer_id 
+FROM dbo.Dim_Customer 
+WHERE is_current = 1;</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Dim_Customer]) [refTable]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT customer_key, customer_id 
+FROM dbo.Dim_Customer 
+WHERE is_current = 1;) [refTable]
 where [refTable].[customer_id] = ?</property>
                     <property
                       dataType="System.Int32"
@@ -975,7 +979,7 @@ where [refTable].[customer_id] = ?</property>
                     <property
                       dataType="System.String"
                       description="Indicates whether to reference metadata in an XML format."
-                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="credit_terms_days" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="primary_freight_type" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="account_status" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="contract_start_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="annual_revenue_potential" dataType="DT_NUMERIC" length="0" precision="15" scale="2" codePage="0"/&gt;&lt;referenceColumn name="effective_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="expiration_date" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="is_current" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -3477,24 +3481,24 @@ where [refTable].[route_id] = ?</property>
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\SPL_Check_Data_Quality.Outputs[Invalid_Weight_Or_Pieces]" />
                 <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
                   name="Lookup Match Output"
-                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output]" />
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]"
-                  name="Lookup Match Output"
-                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Default_Keys.Inputs[Derived Column Input]"
                   name="Lookup Match Output"
                   startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Outputs[Lookup Match Output]" />
                 <path
-                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
-                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Date.Inputs[Lookup Input]"
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Inputs[Lookup Input]"
                   name="Lookup Match Output"
-                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Outputs[Lookup Match Output]" />
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
+                  endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Load_Profile.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route.Outputs[Lookup Match Output]" />
                 <path
                   refId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
                   endId="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\CNT_Source_Rows.Inputs[Row Count Input 1]"
@@ -4225,6 +4229,10 @@ where [refTable].[route_id] = ?</property>
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\OLE_SRC_Stg_Loads"
           TopLeft="486.020409197875,22.7226890557129" />
         <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections"
+          TopLeft="1107.71428706755,285.126050170244" />
+        <NodeLayout
           Size="171.2,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Customer"
           TopLeft="375.000000798276,302.482352730034" />
@@ -4252,10 +4260,6 @@ where [refTable].[route_id] = ?</property>
           Size="153.6,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\LKP_Dim_Route"
           TopLeft="685.178572887137,296.120588051466" />
-        <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\UNI_Merge_Rejections"
-          TopLeft="1107.71428706755,285.126050170244" />
         <NodeLayout
           Size="198.4,41.6"
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Bad_Revenue"
@@ -4289,55 +4293,177 @@ where [refTable].[route_id] = ?</property>
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load\DER_Audit_Invalid_Weight"
           TopLeft="983.551021835286,194.453781342159" />
         <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
-          TopLeft="674.821430007946,413.330882193998">
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Valid_Rows]"
+          TopLeft="798.959185265678,137.331092410163">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-117.714286279921,0"
+              EndConnector="-591.102042136361,140.257142640638"
               Start="0,0"
-              End="-110.214286279921,0">
+              End="-591.102042136361,132.757142640638">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-110.214286279921,0" />
+                    End="0,44.007478353507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.007478353507"
+                    Point2="0,48.007478353507"
+                    Point3="-4,48.007478353507" />
+                  <mssgle:LineSegment
+                    End="-587.102042136361,48.007478353507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-587.102042136361,48.007478353507"
+                    Point2="-591.102042136361,48.007478353507"
+                    Point3="-591.102042136361,52.007478353507" />
+                  <mssgle:LineSegment
+                    End="-591.102042136361,132.757142640638" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
+              BoundingBox="-321.631782786931,53.007478353507,52.1615234375,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Union All Output 1]"
+          TopLeft="1197.02857272102,326.726050170244">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.2067226230037"
+              Start="0,0"
+              End="0,29.7067226230037">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7067226230037" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 12]"
+          TopLeft="1200.94285810535,486.614705559774">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.0470588054312"
+              Start="0,0"
+              End="0,34.5470588054312">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5470588054312" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 11]"
+          TopLeft="844.371430175584,65.2302521372278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.5008402729352"
+              Start="0,0"
+              End="0,23.0008402729352">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0008402729352" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
+          TopLeft="266.364285910054,499.844117351627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.207143499185,0"
+              Start="0,0"
+              End="119.707143499185,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="119.707143499185,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
+          TopLeft="662.820409197875,43.9764705964703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96.3632658876153,0"
+              Start="0,0"
+              End="88.8632658876153,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="88.8632658876153,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output]"
+          TopLeft="764.400001447542,337.720588051466">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.2294117462726"
+              Start="0,0"
+              End="0,48.7294117462726">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.7294117462726" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,18.5600183731363,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output1]"
-          TopLeft="409.107143728025,412.995588047193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-150.650000673213,0"
-              Start="0,0"
-              End="-143.150000673213,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-143.150000673213,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-119.766387055356,5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
           TopLeft="546.200000798276,320.10147039075">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4361,26 +4487,50 @@ where [refTable].[route_id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
-          TopLeft="764.400001447542,337.720588051466">
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output2]"
+          TopLeft="409.107143728025,412.995588047193">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,56.2294117462726"
+              EndConnector="-150.650000673213,0"
               Start="0,0"
-              End="0,48.7294117462726">
+              End="-143.150000673213,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.7294117462726" />
+                    End="-143.150000673213,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,18.5600183731363,96.3827734375,11.609375"
+              BoundingBox="-119.766387055356,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Lookup Match Output3]"
+          TopLeft="674.821430007946,413.330882193998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.714286279921,0"
+              Start="0,0"
+              End="-110.214286279921,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-110.214286279921,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-103.298529858711,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4602,152 +4752,6 @@ where [refTable].[route_id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Union All Output 1]"
-          TopLeft="1197.02857272102,326.726050170244">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.2067226230037"
-              Start="0,0"
-              End="0,29.7067226230037">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.7067226230037" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 12]"
-          TopLeft="1200.94285810535,486.614705559774">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.0470588054312"
-              Start="0,0"
-              End="0,34.5470588054312">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5470588054312" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 11]"
-          TopLeft="844.371430175584,65.2302521372278">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30.5008402729352"
-              Start="0,0"
-              End="0,23.0008402729352">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0008402729352" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Row Count Output 1]"
-          TopLeft="266.364285910054,499.844117351627">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.207143499185,0"
-              Start="0,0"
-              End="119.707143499185,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="119.707143499185,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[OLE DB Source Output]"
-          TopLeft="662.820409197875,43.9764705964703">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96.3632658876153,0"
-              Start="0,0"
-              End="88.8632658876153,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="88.8632658876153,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence_Fact_Load_Transaction\DFT_Load_Fact_Load.Paths[Valid_Rows]"
-          TopLeft="798.959185265678,137.331092410163">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-591.102042136361,140.257142640638"
-              Start="0,0"
-              End="-591.102042136361,132.757142640638">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.007478353507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.007478353507"
-                    Point2="0,48.007478353507"
-                    Point3="-4,48.007478353507" />
-                  <mssgle:LineSegment
-                    End="-587.102042136361,48.007478353507" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-587.102042136361,48.007478353507"
-                    Point2="-591.102042136361,48.007478353507"
-                    Point3="-591.102042136361,52.007478353507" />
-                  <mssgle:LineSegment
-                    End="-591.102042136361,132.757142640638" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-321.631782786931,53.007478353507,52.1615234375,11.0625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -4770,17 +4774,17 @@ where [refTable].[route_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Dim_Customer]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

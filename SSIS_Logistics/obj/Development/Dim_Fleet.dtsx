@@ -12,8 +12,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{57CDEECE-7FE0-4C43-AABC-954460D89D3F}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{914DEE6F-A3DF-4DD7-9ED3-CFFDB39C13FA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -82,7 +82,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="Finish_Package_Audit"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -130,7 +130,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="ROLLBACK_ON_FAILURE"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -5020,7 +5020,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[truck_id]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="truck_id" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[unit_number]"
@@ -5034,7 +5034,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="make" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[model_year]"
-                          dataType="i2"
+                          dataType="i4"
                           name="model_year" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[vin]"
@@ -5047,8 +5047,10 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="acquisition_date" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[acquisition_mileage]"
-                          dataType="i4"
-                          name="acquisition_mileage" />
+                          dataType="numeric"
+                          name="acquisition_mileage"
+                          precision="12"
+                          scale="2" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[fuel_type]"
                           dataType="wstr"
@@ -5056,8 +5058,10 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="fuel_type" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[tank_capacity_gallons]"
-                          dataType="i2"
-                          name="tank_capacity_gallons" />
+                          dataType="numeric"
+                          name="tank_capacity_gallons"
+                          precision="10"
+                          scale="2" />
                         <externalMetadataColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[status]"
                           dataType="wstr"
@@ -5078,7 +5082,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[truck_id]"
                           name="truck_id" />
                         <outputColumn
@@ -5095,7 +5099,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="make" />
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[model_year]"
-                          dataType="i2"
+                          dataType="i4"
                           lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[model_year]"
                           name="model_year" />
                         <outputColumn
@@ -5111,9 +5115,11 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="acquisition_date" />
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[acquisition_mileage]"
-                          dataType="i4"
+                          dataType="numeric"
                           lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[acquisition_mileage]"
-                          name="acquisition_mileage" />
+                          name="acquisition_mileage"
+                          precision="12"
+                          scale="2" />
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[fuel_type]"
                           dataType="wstr"
@@ -5122,9 +5128,11 @@ FROM dbo.Stg_CDC_Trucks;</property>
                           name="fuel_type" />
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[tank_capacity_gallons]"
-                          dataType="i2"
+                          dataType="numeric"
                           lineageId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[tank_capacity_gallons]"
-                          name="tank_capacity_gallons" />
+                          name="tank_capacity_gallons"
+                          precision="10"
+                          scale="2" />
                         <outputColumn
                           refId="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[status]"
                           dataType="wstr"
@@ -7152,7 +7160,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck\OLE_SRC_Trucks"
-          TopLeft="374.965306342274,81.0966385891985" />
+          TopLeft="374.965306342274,81.8613444708811" />
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck.Paths[New Output]"
           TopLeft="1264.76122639089,128.168907759134">
@@ -7607,7 +7615,7 @@ FROM dbo.Stg_CDC_Trucks;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ_Dimension_Transaction_Scope\DFT_Dim_Truck.Paths[OLE DB Source Output]"
-          TopLeft="534.165306342274,101.898319305994">
+          TopLeft="534.165306342274,102.280672246835">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

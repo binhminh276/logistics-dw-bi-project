@@ -13,7 +13,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stg_OLTP_CDC.dtsx</Name>
-      <LastWriteTime>2026-11-04T05:41:17.4679359Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T09:47:49.268476Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,7 +23,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Commercial.dtsx</Name>
-      <LastWriteTime>2026-11-02T14:40:40.9557225Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T09:04:20.2056303Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -33,7 +33,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Load.dtsx</Name>
-      <LastWriteTime>2026-11-04T05:27:57.4640775Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T09:54:56.6685439Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -48,7 +48,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Fleet.dtsx</Name>
-      <LastWriteTime>2026-11-04T02:28:53.5674053Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T08:49:54.2535807Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
