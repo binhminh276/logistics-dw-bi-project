@@ -12,8 +12,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_OLTP_CDC"
   DTS:PackageType="5"
-  DTS:VersionBuild="80"
-  DTS:VersionGUID="{02D0099D-77F4-4231-8796-0B3F5857B681}">
+  DTS:VersionBuild="106"
+  DTS:VersionGUID="{A0DFBED2-897C-4401-848F-83A222D1849C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -270,13 +270,13 @@
                       cachedLength="20"
                       cachedName="cdc_operation"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers.Inputs[OLE DB Destination Input].ExternalColumns[cdc_operation]"
-                      lineageId="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_operation]" />
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_operation]" />
                     <inputColumn
                       refId="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers.Inputs[OLE DB Destination Input].Columns[cdc_timestamp]"
                       cachedDataType="dbTimeStamp"
                       cachedName="cdc_timestamp"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers.Inputs[OLE DB Destination Input].ExternalColumns[cdc_timestamp]"
-                      lineageId="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_timestamp]" />
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -381,7 +381,57 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH RankedCustomers AS (
+    SELECT 
+        ct.customer_id,
+        ct.customer_name,
+        ct.customer_type,
+        ct.credit_terms_days,
+        ct.primary_freight_type,
+        ct.account_status,
+        ct.contract_start_date,
+        ct.annual_revenue_potential,
+        ct.__$operation,
+        ct.__$start_lsn,
+        ROW_NUMBER() OVER(
+            PARTITION BY ct.customer_id 
+            ORDER BY ct.__$start_lsn DESC, ct.__$seqval DESC
+        ) AS rn
+    FROM cdc.dbo_customers_CT ct
+    WHERE ct.__$operation IN (2, 4)
+)
+SELECT 
+    customer_id,
+    customer_name,
+    customer_type,
+    credit_terms_days,
+    primary_freight_type,
+    account_status,
+    contract_start_date,
+    annual_revenue_potential,
+    CAST(
+        CASE __$operation
+            WHEN 1 THEN N'Delete'
+            WHEN 2 THEN N'Insert'
+            WHEN 4 THEN N'Update'
+            ELSE N'Insert'
+        END AS NVARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(__$start_lsn) AS cdc_timestamp
+FROM RankedCustomers r
+WHERE r.rn = 1
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Dim_Customer dwh
+      WHERE dwh.customer_id = r.customer_id
+        AND dwh.is_current = 1
+        AND ISNULL(dwh.customer_name, '') = ISNULL(r.customer_name, '')
+        AND ISNULL(dwh.customer_type, '') = ISNULL(r.customer_type, '')
+        AND ISNULL(dwh.credit_terms_days, 0) = ISNULL(r.credit_terms_days, 0)
+        AND ISNULL(dwh.primary_freight_type, '') = ISNULL(r.primary_freight_type, '')
+        AND ISNULL(dwh.account_status, '') = ISNULL(r.account_status, '')
+        AND ISNULL(dwh.annual_revenue_potential, 0) = ISNULL(r.annual_revenue_potential, 0)
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -398,7 +448,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -494,6 +544,25 @@
                       lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[annual_revenue_potential]"
                       name="annual_revenue_potential"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      name="cdc_operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -534,6 +603,15 @@
                       refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].ExternalColumns[annual_revenue_potential]"
                       dataType="i8"
                       name="annual_revenue_potential" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -587,6 +665,17 @@
                       lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[annual_revenue_potential]"
                       name="annual_revenue_potential" />
                     <outputColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      name="cdc_operation" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp" />
+                    <outputColumn
                       refId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -606,13 +695,8 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT_Extract_CDC_Customers.Paths[Derived Column Output]"
-              endId="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata.Outputs[Derived Column Output]" />
-            <path
               refId="Package\DFT_Extract_CDC_Customers.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata.Inputs[Derived Column Input]"
+              endId="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers.Outputs[OLE DB Source Output]" />
           </paths>
@@ -919,22 +1003,44 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    driver_id,
-    first_name,
-    last_name,
-    cdl_class,
-    license_state,
-    license_number,
-    date_of_birth,
-    hire_date,
-    termination_date,
-    home_terminal,
-    employment_status,
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH RankedDrivers AS (
+    SELECT 
+        ct.driver_id, ct.first_name, ct.last_name, ct.cdl_class, ct.license_state,
+        ct.license_number, ct.date_of_birth, ct.hire_date, ct.termination_date,
+        ct.home_terminal, ct.employment_status, ct.years_experience,
+        ct.__$operation, ct.__$start_lsn,
+        ROW_NUMBER() OVER(
+            PARTITION BY ct.driver_id 
+            ORDER BY ct.__$start_lsn DESC, ct.__$seqval DESC
+        ) AS rn
+    FROM cdc.dbo_drivers_CT ct
+    WHERE ct.__$operation IN (2, 4)
+)
+SELECT 
+    driver_id, first_name, last_name, cdl_class, license_state, license_number,
+    date_of_birth, hire_date, termination_date, home_terminal, employment_status,
     years_experience,
-    N'Insert' AS cdc_operation,
-    GETDATE() AS cdc_timestamp
-FROM dbo.drivers</property>
+    CAST(
+        CASE __$operation
+            WHEN 1 THEN N'Delete'
+            WHEN 2 THEN N'Insert'
+            WHEN 4 THEN N'Update'
+            ELSE N'Insert'
+        END AS NVARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(__$start_lsn) AS cdc_timestamp
+FROM RankedDrivers r
+WHERE r.rn = 1
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Dim_Driver dwh
+      WHERE dwh.driver_id = r.driver_id
+        AND dwh.is_current = 1
+        AND ISNULL(dwh.cdl_class, '') = ISNULL(r.cdl_class, '')
+        AND ISNULL(dwh.license_state, '') = ISNULL(r.license_state, '')
+        AND ISNULL(dwh.home_terminal, '') = ISNULL(r.home_terminal, '')
+        AND ISNULL(dwh.employment_status, '') = ISNULL(r.employment_status, '')
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1167,7 +1273,7 @@ FROM dbo.drivers</property>
                     <externalMetadataColumn
                       refId="Package\DFT_Extract_CDC_Drivers\OLE_SRC_CDC_Drivers.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
                       dataType="wstr"
-                      length="6"
+                      length="20"
                       name="cdc_operation" />
                     <externalMetadataColumn
                       refId="Package\DFT_Extract_CDC_Drivers\OLE_SRC_CDC_Drivers.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
@@ -1251,7 +1357,7 @@ FROM dbo.drivers</property>
                     <outputColumn
                       refId="Package\DFT_Extract_CDC_Drivers\OLE_SRC_CDC_Drivers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       dataType="wstr"
-                      length="6"
+                      length="20"
                       lineageId="Package\DFT_Extract_CDC_Drivers\OLE_SRC_CDC_Drivers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       name="cdc_operation" />
                     <outputColumn
@@ -1603,21 +1709,25 @@ FROM dbo.drivers</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    load_id,
-    customer_id,
-    route_id,
-    load_date,
-    load_type,
-    weight_lbs,
-    pieces,
-    revenue,
-    fuel_surcharge,
-    accessorial_charges,
-    load_status,
-    booking_type,
-    'Insert' AS cdc_operation,
-    GETDATE() AS cdc_timestamp
-FROM dbo.loads</property>
+    ct.load_id, ct.customer_id, ct.route_id, ct.load_date, ct.load_type,
+    ct.weight_lbs, ct.pieces, ct.revenue, ct.fuel_surcharge, ct.accessorial_charges,
+    ct.load_status, ct.booking_type,
+    CAST(
+        CASE ct.__$operation
+            WHEN 1 THEN 'Delete'
+            WHEN 2 THEN 'Insert'
+            WHEN 4 THEN 'Update'
+            ELSE 'Insert'
+        END AS VARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(ct.__$start_lsn) AS cdc_timestamp
+FROM cdc.dbo_loads_CT ct
+WHERE ct.__$operation IN (2, 4)
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Fact_Load dwh 
+      WHERE dwh.load_id = ct.load_id
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1860,7 +1970,7 @@ FROM dbo.loads</property>
                       refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="20"
                       name="cdc_operation" />
                     <externalMetadataColumn
                       refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
@@ -1949,7 +2059,7 @@ FROM dbo.loads</property>
                       refId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       codePage="1252"
                       dataType="str"
-                      length="6"
+                      length="20"
                       lineageId="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       name="cdc_operation" />
                     <outputColumn
@@ -2233,13 +2343,13 @@ FROM dbo.loads</property>
                       cachedLength="20"
                       cachedName="cdc_operation"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Trailers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cdc_operation]"
-                      lineageId="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_operation]" />
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_operation]" />
                     <inputColumn
                       refId="Package\DFT_Extract_CDC_Trailers\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cdc_timestamp]"
                       cachedDataType="dbTimeStamp"
                       cachedName="cdc_timestamp"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Trailers\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cdc_timestamp]"
-                      lineageId="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_timestamp]" />
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2347,7 +2457,57 @@ FROM dbo.loads</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH RankedTrailers AS (
+    SELECT 
+        ct.trailer_id,
+        ct.trailer_number,
+        ct.trailer_type,
+        ct.length_feet,
+        ct.model_year,
+        ct.vin,
+        ct.acquisition_date,
+        ct.status,
+        ct.current_location,
+        ct.__$operation,
+        ct.__$start_lsn,
+        ROW_NUMBER() OVER(
+            PARTITION BY ct.trailer_id 
+            ORDER BY ct.__$start_lsn DESC, ct.__$seqval DESC
+        ) AS rn
+    FROM cdc.dbo_trailers_CT ct
+    WHERE ct.__$operation IN (2, 4)
+)
+SELECT 
+    trailer_id,
+    trailer_number,
+    trailer_type,
+    length_feet,
+    model_year,
+    vin,
+    acquisition_date,
+    status,
+    current_location,
+    CAST(
+        CASE __$operation
+            WHEN 1 THEN N'Delete'
+            WHEN 2 THEN N'Insert'
+            WHEN 4 THEN N'Update'
+            ELSE N'Insert'
+        END AS NVARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(__$start_lsn) AS cdc_timestamp
+FROM RankedTrailers r
+WHERE r.rn = 1
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Dim_Trailer dwh
+      WHERE dwh.trailer_id = r.trailer_id
+        AND dwh.is_current = 1
+        AND ISNULL(dwh.trailer_number, '') = ISNULL(r.trailer_number, '')
+        AND ISNULL(dwh.trailer_type, '') = ISNULL(r.trailer_type, '')
+        AND ISNULL(dwh.status, '') = ISNULL(r.status, '')
+        AND ISNULL(dwh.current_location, '') = ISNULL(r.current_location, '')
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2364,7 +2524,7 @@ FROM dbo.loads</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2470,6 +2630,25 @@ FROM dbo.loads</property>
                       lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[current_location]"
                       name="current_location"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      name="cdc_operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2515,6 +2694,15 @@ FROM dbo.loads</property>
                       dataType="wstr"
                       length="50"
                       name="current_location" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2574,6 +2762,17 @@ FROM dbo.loads</property>
                       lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[current_location]"
                       name="current_location" />
                     <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      name="cdc_operation" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp" />
+                    <outputColumn
                       refId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -2593,13 +2792,8 @@ FROM dbo.loads</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT_Extract_CDC_Trailers.Paths[Derived Column Output]"
-              endId="Package\DFT_Extract_CDC_Trailers\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata.Outputs[Derived Column Output]" />
-            <path
               refId="Package\DFT_Extract_CDC_Trailers.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata.Inputs[Derived Column Input]"
+              endId="Package\DFT_Extract_CDC_Trailers\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2919,21 +3113,25 @@ FROM dbo.loads</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    trip_id,
-    load_id,
-    driver_id,
-    truck_id,
-    trailer_id,
-    dispatch_date,
-    actual_distance_miles,
-    actual_duration_hours,
-    fuel_gallons_used,
-    average_mpg,
-    idle_time_hours,
-    trip_status,
-    N'Insert' AS cdc_operation,
-    GETDATE() AS cdc_timestamp
-FROM dbo.trips</property>
+    ct.trip_id, ct.load_id, ct.driver_id, ct.truck_id, ct.trailer_id,
+    ct.dispatch_date, ct.actual_distance_miles, ct.actual_duration_hours,
+    ct.fuel_gallons_used, ct.average_mpg, ct.idle_time_hours, ct.trip_status,
+    CAST(
+        CASE ct.__$operation
+            WHEN 1 THEN N'Delete'
+            WHEN 2 THEN N'Insert'
+            WHEN 4 THEN N'Update'
+            ELSE N'Insert'
+        END AS NVARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(ct.__$start_lsn) AS cdc_timestamp
+FROM cdc.dbo_trips_CT ct
+WHERE ct.__$operation IN (2, 4)
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Fact_Trip dwh 
+      WHERE dwh.trip_id = ct.trip_id
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3178,7 +3376,7 @@ FROM dbo.trips</property>
                     <externalMetadataColumn
                       refId="Package\DFT_Extract_CDC_Trips\OLE_SRC_CDC_Trips.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
                       dataType="wstr"
-                      length="6"
+                      length="20"
                       name="cdc_operation" />
                     <externalMetadataColumn
                       refId="Package\DFT_Extract_CDC_Trips\OLE_SRC_CDC_Trips.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
@@ -3268,7 +3466,7 @@ FROM dbo.trips</property>
                     <outputColumn
                       refId="Package\DFT_Extract_CDC_Trips\OLE_SRC_CDC_Trips.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       dataType="wstr"
-                      length="6"
+                      length="20"
                       lineageId="Package\DFT_Extract_CDC_Trips\OLE_SRC_CDC_Trips.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
                       name="cdc_operation" />
                     <outputColumn
@@ -3565,13 +3763,13 @@ FROM dbo.trips</property>
                       cachedLength="20"
                       cachedName="cdc_operation"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks.Inputs[OLE DB Destination Input].ExternalColumns[cdc_operation]"
-                      lineageId="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_operation]" />
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_operation]" />
                     <inputColumn
                       refId="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks.Inputs[OLE DB Destination Input].Columns[cdc_timestamp]"
                       cachedDataType="dbTimeStamp"
                       cachedName="cdc_timestamp"
                       externalMetadataColumnId="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks.Inputs[OLE DB Destination Input].ExternalColumns[cdc_timestamp]"
-                      lineageId="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata.Outputs[Derived Column Output].Columns[cdc_timestamp]" />
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_timestamp]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3692,7 +3890,62 @@ FROM dbo.trips</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH RankedTrucks AS (
+    SELECT 
+        ct.truck_id,
+        ct.unit_number,
+        ct.make,
+        ct.model_year,
+        ct.vin,
+        ct.acquisition_date,
+        ct.acquisition_mileage,
+        ct.fuel_type,
+        ct.tank_capacity_gallons,
+        ct.status,
+        ct.home_terminal,
+        ct.__$operation,
+        ct.__$start_lsn,
+        ROW_NUMBER() OVER(
+            PARTITION BY ct.truck_id 
+            ORDER BY ct.__$start_lsn DESC, ct.__$seqval DESC
+        ) AS rn
+    FROM cdc.dbo_trucks_CT ct
+    WHERE ct.__$operation IN (2, 4)
+)
+SELECT 
+    truck_id,
+    unit_number,
+    make,
+    model_year,
+    vin,
+    acquisition_date,
+    acquisition_mileage,
+    fuel_type,
+    tank_capacity_gallons,
+    status,
+    home_terminal,
+    CAST(
+        CASE __$operation
+            WHEN 1 THEN N'Delete'
+            WHEN 2 THEN N'Insert'
+            WHEN 4 THEN N'Update'
+            ELSE N'Insert'
+        END AS NVARCHAR(20)
+    ) AS cdc_operation,
+    sys.fn_cdc_map_lsn_to_time(__$start_lsn) AS cdc_timestamp
+FROM RankedTrucks r
+WHERE r.rn = 1
+  AND NOT EXISTS (
+      SELECT 1 
+      FROM Logistics_DW.dbo.Dim_Truck dwh
+      WHERE dwh.truck_id = r.truck_id
+        AND dwh.is_current = 1
+        AND ISNULL(dwh.unit_number, '') = ISNULL(r.unit_number, '')
+        AND ISNULL(dwh.fuel_type, '') = ISNULL(r.fuel_type, '')
+        AND ISNULL(dwh.tank_capacity_gallons, 0) = ISNULL(r.tank_capacity_gallons, 0)
+        AND ISNULL(dwh.status, '') = ISNULL(r.status, '')
+        AND ISNULL(dwh.home_terminal, '') = ISNULL(r.home_terminal, '')
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -3709,7 +3962,7 @@ FROM dbo.trips</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -3834,6 +4087,25 @@ FROM dbo.trips</property>
                       lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[home_terminal]"
                       name="home_terminal"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_operation]"
+                      name="cdc_operation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3888,6 +4160,15 @@ FROM dbo.trips</property>
                       dataType="wstr"
                       length="30"
                       name="home_terminal" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      name="cdc_operation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output].ExternalColumns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="cdc_timestamp" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -3958,6 +4239,17 @@ FROM dbo.trips</property>
                       lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[home_terminal]"
                       name="home_terminal" />
                     <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[cdc_operation]"
+                      name="cdc_operation" />
+                    <outputColumn
+                      refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[cdc_timestamp]"
+                      name="cdc_timestamp" />
+                    <outputColumn
                       refId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -3977,13 +4269,8 @@ FROM dbo.trips</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT_Extract_CDC_Trucks.Paths[Derived Column Output]"
-              endId="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata.Outputs[Derived Column Output]" />
-            <path
               refId="Package\DFT_Extract_CDC_Trucks.Paths[OLE DB Source Output]"
-              endId="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata.Inputs[Derived Column Input]"
+              endId="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks.Outputs[OLE DB Source Output]" />
           </paths>
@@ -4125,14 +4412,14 @@ FROM dbo.trips</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,67.9228757209934"
+              EndConnector="0,67.922875720993"
               Start="0,0"
-              End="0,60.4228757209934">
+              End="0,60.422875720993">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,60.4228757209934" />
+                    End="0,60.422875720993" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4147,14 +4434,14 @@ FROM dbo.trips</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.0614378661936"
+              EndConnector="0,33.061437866194"
               Start="0,0"
-              End="0,25.5614378661936">
+              End="0,25.561437866194">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.5614378661936" />
+                    End="0,25.561437866194" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4248,11 +4535,11 @@ FROM dbo.trips</property>
     design-time-name="Package\DFT_Extract_CDC_Customers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.6,41.6"
           Id="Package\DFT_Extract_CDC_Customers\OLE_SRC_Customers"
-          TopLeft="189.285714688654,53.5294117177853" />
+          TopLeft="425.000000904713,51.2352940727374" />
         <NodeLayout
           Size="197.6,41.6"
           Id="Package\DFT_Extract_CDC_Customers\DER_Add_CDC_Metadata"
@@ -4260,67 +4547,33 @@ FROM dbo.trips</property>
         <NodeLayout
           Size="224.8,41.6"
           Id="Package\DFT_Extract_CDC_Customers\OLE_DST_Stg_CDC_Customers"
-          TopLeft="235.000000500253,228.647058623111" />
-        <EdgeLayout
-          Id="Package\DFT_Extract_CDC_Customers.Paths[Derived Column Output]"
-          TopLeft="288.80000040446,179.247058702876">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="58.6000000957933,49.399999920235"
-              Start="0,0"
-              End="58.6000000957933,41.899999920235">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.6999999601175" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.6999999601175"
-                    Point2="0,24.6999999601175"
-                    Point3="4,24.6999999601175" />
-                  <mssgle:LineSegment
-                    End="54.6000000957933,24.6999999601175" />
-                  <mssgle:CubicBezierSegment
-                    Point1="54.6000000957933,24.6999999601175"
-                    Point2="58.6000000957933,24.6999999601175"
-                    Point3="58.6000000957933,28.6999999601175" />
-                  <mssgle:LineSegment
-                    End="58.6000000957933,41.899999920235" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="376.428572229889,206.470588054314" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Customers.Paths[OLE DB Source Output]"
-          TopLeft="278.085714688654,95.1294117177853">
+          TopLeft="513.800000904713,92.8352940727374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10.7142857158061,42.5176469850912"
+              EndConnector="-24.971428674824,113.635293981577"
               Start="0,0"
-              End="10.7142857158061,35.0176469850912">
+              End="-24.971428674824,106.135293981577">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.2588234925456" />
+                    End="0,52.8176469907883" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,17.2588234925456"
-                    Point2="0,21.2588234925456"
-                    Point3="4,21.2588234925456" />
+                    Point1="0,52.8176469907883"
+                    Point2="0,56.8176469907883"
+                    Point3="-4,56.8176469907883" />
                   <mssgle:LineSegment
-                    End="6.71428571580611,21.2588234925456" />
+                    End="-20.971428674824,56.8176469907883" />
                   <mssgle:CubicBezierSegment
-                    Point1="6.71428571580611,21.2588234925456"
-                    Point2="10.7142857158061,21.2588234925456"
-                    Point3="10.7142857158061,25.2588234925456" />
+                    Point1="-20.971428674824,56.8176469907883"
+                    Point2="-24.971428674824,56.8176469907883"
+                    Point3="-24.971428674824,60.8176469907883" />
                   <mssgle:LineSegment
-                    End="10.7142857158061,35.0176469850912" />
+                    End="-24.971428674824,106.135293981577" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4441,10 +4694,10 @@ FROM dbo.trips</property>
         <NodeLayout
           Size="180.8,41.6"
           Id="Package\DFT_Extract_CDC_Loads\OLE_SRC_CDC_Loads"
-          TopLeft="287.142857754109,111.647058725666" />
+          TopLeft="289.142857724307,111.647058725666" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Loads.Paths[OLE DB Source Output]"
-          TopLeft="379.728572032981,153.247058725666">
+          TopLeft="380.72857201808,153.247058725666">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4492,79 +4745,45 @@ FROM dbo.trips</property>
     design-time-name="Package\DFT_Extract_CDC_Trailers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\DFT_Extract_CDC_Trailers\OLE_SRC_Trailers"
-          TopLeft="272.999995931983,46.9999992996454" />
+          TopLeft="423.769224454577,100.076921585661" />
         <NodeLayout
           Size="197.6,41.6"
           Id="Package\DFT_Extract_CDC_Trailers\DER_Add_CDC_Metadata"
-          TopLeft="364.999994561076,146.999997809529" />
+          TopLeft="297.307687877462,189.307689486788" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\DFT_Extract_CDC_Trailers\OLE DB Destination"
           TopLeft="448.999993309379,274.999995902181" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Trailers.Paths[OLE DB Source Output]"
-          TopLeft="354.199995931983,88.5999992996454">
+          TopLeft="504.969224454577,141.676921585661">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="109.599998629093,58.3999985098839"
+              EndConnector="29.230768854802,133.32307431652"
               Start="0,0"
-              End="109.599998629093,50.8999985098839">
+              End="29.230768854802,125.82307431652">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.199999254942" />
+                    End="0,62.66153715826" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.199999254942"
-                    Point2="0,29.199999254942"
-                    Point3="4,29.199999254942" />
+                    Point1="0,62.66153715826"
+                    Point2="0,66.66153715826"
+                    Point3="4,66.66153715826" />
                   <mssgle:LineSegment
-                    End="105.599998629093,29.199999254942" />
+                    End="25.230768854802,66.66153715826" />
                   <mssgle:CubicBezierSegment
-                    Point1="105.599998629093,29.199999254942"
-                    Point2="109.599998629093,29.199999254942"
-                    Point3="109.599998629093,33.199999254942" />
+                    Point1="25.230768854802,66.66153715826"
+                    Point2="29.230768854802,66.66153715826"
+                    Point3="29.230768854802,70.66153715826" />
                   <mssgle:LineSegment
-                    End="109.599998629093,50.8999985098839" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Extract_CDC_Trailers.Paths[Derived Column Output]"
-          TopLeft="463.799994561076,188.599997809529">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="70.3999987483024,86.3999980926514"
-              Start="0,0"
-              End="70.3999987483024,78.8999980926514">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.1999990463257" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39.1999990463257"
-                    Point2="0,43.1999990463257"
-                    Point3="4,43.1999990463257" />
-                  <mssgle:LineSegment
-                    End="66.3999987483024,43.1999990463257" />
-                  <mssgle:CubicBezierSegment
-                    Point1="66.3999987483024,43.1999990463257"
-                    Point2="70.3999987483024,43.1999990463257"
-                    Point3="70.3999987483024,47.1999990463257" />
-                  <mssgle:LineSegment
-                    End="70.3999987483024,78.8999980926514" />
+                    End="29.230768854802,125.82307431652" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4677,7 +4896,7 @@ FROM dbo.trips</property>
     design-time-name="Package\DFT_Extract_CDC_Trucks">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="197.6,41.6"
           Id="Package\DFT_Extract_CDC_Trucks\DER_Add_CDC_Metadata"
@@ -4685,71 +4904,37 @@ FROM dbo.trips</property>
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\DFT_Extract_CDC_Trucks\OLE_SRC_Trucks"
-          TopLeft="194.285714699298,97.8823528553788" />
+          TopLeft="446.593403247313,103.266968159757" />
         <NodeLayout
           Size="206.4,41.6"
           Id="Package\DFT_Extract_CDC_Trucks\OLE_DST_Stg_CDC_Trucks"
           TopLeft="375.000000798277,238.588235084986" />
         <EdgeLayout
           Id="Package\DFT_Extract_CDC_Trucks.Paths[OLE DB Source Output]"
-          TopLeft="273.885714699298,139.482352855379">
+          TopLeft="526.193403247313,144.866968159757">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57.771428653537,28.7529411148035"
+              EndConnector="-47.993402449036,93.721266925229"
               Start="0,0"
-              End="57.771428653537,21.2529411148035">
+              End="-47.993402449036,86.221266925229">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.3764705574018" />
+                    End="0,42.8606334626145" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.3764705574018"
-                    Point2="0,14.3764705574018"
-                    Point3="4,14.3764705574018" />
+                    Point1="0,42.8606334626145"
+                    Point2="0,46.8606334626145"
+                    Point3="-4,46.8606334626145" />
                   <mssgle:LineSegment
-                    End="53.771428653537,14.3764705574018" />
+                    End="-43.993402449036,46.8606334626145" />
                   <mssgle:CubicBezierSegment
-                    Point1="53.771428653537,14.3764705574018"
-                    Point2="57.771428653537,14.3764705574018"
-                    Point3="57.771428653537,18.3764705574018" />
+                    Point1="-43.993402449036,46.8606334626145"
+                    Point2="-47.993402449036,46.8606334626145"
+                    Point3="-47.993402449036,50.8606334626145" />
                   <mssgle:LineSegment
-                    End="57.771428653537,21.2529411148035" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_Extract_CDC_Trucks.Paths[Derived Column Output]"
-          TopLeft="331.657143352835,209.835293970182">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="146.542857445442,28.7529411148034"
-              Start="0,0"
-              End="146.542857445442,21.2529411148034">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.3764705574017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.3764705574017"
-                    Point2="0,14.3764705574017"
-                    Point3="4,14.3764705574017" />
-                  <mssgle:LineSegment
-                    End="142.542857445442,14.3764705574017" />
-                  <mssgle:CubicBezierSegment
-                    Point1="142.542857445442,14.3764705574017"
-                    Point2="146.542857445442,14.3764705574017"
-                    Point3="146.542857445442,18.3764705574017" />
-                  <mssgle:LineSegment
-                    End="146.542857445442,21.2529411148034" />
+                    End="-47.993402449036,86.221266925229" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

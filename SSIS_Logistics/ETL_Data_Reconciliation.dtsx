@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="ETL_Data_Reconciliation"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{38AB3771-75C5-447C-ACD1-84B0D88B588C}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F1985983-701A-4F28-B0F8-A90427CB1ED3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -45,7 +45,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Raise_Discrepancy_Error"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -62,7 +62,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL_Reconciliation_Passed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -134,17 +134,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="225.6,41.6"
-          Id="Package\SQL_Run_Reconciliation_Check"
-          TopLeft="250.714286247991,92.5294116836003" />
+          Size="219.2,41.6"
+          Id="Package\SQL_Raise_Discrepancy_Error"
+          TopLeft="453.571429536963,182.764705722153" />
         <NodeLayout
           Size="205.6,41.6"
           Id="Package\SQL_Reconciliation_Passed"
           TopLeft="88.5714287599738,186.588235130566" />
         <NodeLayout
-          Size="219.2,41.6"
-          Id="Package\SQL_Raise_Discrepancy_Error"
-          TopLeft="453.571429536963,182.764705722153" />
+          Size="225.6,41.6"
+          Id="Package\SQL_Run_Reconciliation_Check"
+          TopLeft="250.714286247991,92.5294116836003" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="363.514286247991,134.1294116836">

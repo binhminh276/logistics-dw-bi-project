@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Fact_Maintenance"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{30B384ED-5DEC-4B83-8D48-D7253E2EA251}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{3764CB63-BF2A-4F34-86B5-A36C79879535}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1873,11 +1873,6 @@ WHERE maintenance_date &gt; ?;</property>
                       name="Conditional Split Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[maintenance_date]"
-                          cachedDataType="dbDate"
-                          cachedName="maintenance_date"
-                          lineageId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]" />
-                        <inputColumn
                           refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input].Columns[labor_hours]"
                           cachedDataType="numeric"
                           cachedName="labor_hours"
@@ -1911,34 +1906,6 @@ WHERE maintenance_date &gt; ?;</property>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[New_Records]"
-                      description="Output 1 of the Conditional Split Transformation"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      exclusionGroup="1"
-                      name="New_Records"
-                      synchronousInputId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                          name="Expression">#{Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\OLE_SRC_Stg_Maintenance.Outputs[OLE DB Source Output].Columns[maintenance_date]} &gt; @[User::vLastLoadDate]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Specifies the friendly version of the expression. This expression version uses column names."
-                          expressionType="Notify"
-                          name="FriendlyExpression">maintenance_date &gt; @[User::vLastLoadDate]</property>
-                        <property
-                          dataType="System.Int32"
-                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                          name="EvaluationOrder">0</property>
-                      </properties>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
                       refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[Bad_Cost_Or_Hours]"
                       description="Output 2 of the Conditional Split Transformation"
                       errorOrTruncationOperation="Computation"
@@ -1962,7 +1929,7 @@ WHERE maintenance_date &gt; ?;</property>
                         <property
                           dataType="System.Int32"
                           description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                          name="EvaluationOrder">1</property>
+                          name="EvaluationOrder">0</property>
                       </properties>
                       <externalMetadataColumns />
                     </output>
@@ -2012,6 +1979,11 @@ WHERE maintenance_date &gt; ?;</property>
                   name="Bad_Cost_Or_Hours"
                   startId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[Bad_Cost_Or_Hours]" />
                 <path
+                  refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[Conditional Split Default Output]"
+                  endId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input]"
+                  name="Conditional Split Default Output"
+                  startId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[Conditional Split Default Output]" />
+                <path
                   refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[Derived Column Output]"
                   endId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\LKP_Dim_Date.Inputs[Lookup Input]"
                   name="Derived Column Output"
@@ -2041,11 +2013,6 @@ WHERE maintenance_date &gt; ?;</property>
                   endId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\DER_Default_Keys.Inputs[Derived Column Input]"
                   name="Lookup Match Output"
                   startId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\LKP_Dim_Profile.Outputs[Lookup Match Output]" />
-                <path
-                  refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[New_Records]"
-                  endId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\DER_Calculations.Inputs[Derived Column Input]"
-                  name="New_Records"
-                  startId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Outputs[New_Records]" />
                 <path
                   refId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[OLE DB Source Output]"
                   endId="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance\SPL_Incremental_Filter.Inputs[Conditional Split Input]"
@@ -2602,30 +2569,6 @@ WHERE maintenance_date &gt; ?;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[New_Records]"
-          TopLeft="471.485714890884,127.476470494729">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.2285718999355,0"
-              Start="0,0"
-              End="26.7285718999355,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="26.7285718999355,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-17.1282921750323,5,60.98515625,11.0625"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[Lookup Match Output2]"
           TopLeft="460.00000097922,288.382352872471">
           <EdgeLayout.Curve>
@@ -2693,7 +2636,7 @@ WHERE maintenance_date &gt; ?;</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,44.9159007138446,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,44.9159007138445,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2796,6 +2739,30 @@ WHERE maintenance_date &gt; ?;</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="4.67099340107551,-11.8617646728704,89.86515625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence_Fact_Maintenance_Transaction\DFT_Load_Fact_Maintenance.Paths[Conditional Split Default Output]"
+          TopLeft="471.485714890884,127.476470494729">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.228571899935,0"
+              Start="0,0"
+              End="26.728571899935,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="26.728571899935,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.2496203000325,5,141.2278125,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

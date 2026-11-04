@@ -13,7 +13,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stg_OLTP_CDC.dtsx</Name>
-      <LastWriteTime>2026-11-03T06:51:41.2970973Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T05:41:17.4679359Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -33,7 +33,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Load.dtsx</Name>
-      <LastWriteTime>2026-11-04T02:28:53.571488Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T05:27:57.4640775Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -53,7 +53,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Maintenance.dtsx</Name>
-      <LastWriteTime>2026-11-04T02:28:53.5741307Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T05:32:34.1702983Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -68,7 +68,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ETL_Data_Reconciliation.dtsx</Name>
-      <LastWriteTime>2026-11-01T14:27:48.2369286Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T05:04:57.9053311Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
