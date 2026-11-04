@@ -11,8 +11,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_CSV_Files"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{22B3C01D-567A-4C20-A5ED-D6C76EA5DC58}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{D1579EDE-9D96-4540-AE35-4DCF62CDA321}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\delivery_events.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\delivery_events.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -41,7 +41,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="event_id"
-              DTS:DTSID="{5A4303CF-1626-47B9-B188-24E4F32EA0A6}"
+              DTS:DTSID="{791BF7FD-F462-4504-9AC3-51A52B0CB068}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -50,7 +50,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="load_id"
-              DTS:DTSID="{48C5AEF8-52B8-46D5-8BD0-DBCD1DE449BD}"
+              DTS:DTSID="{A2AAE532-5708-4CBC-9832-D43AF52D46F5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -59,7 +59,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="trip_id"
-              DTS:DTSID="{DC68B27A-D7D7-4BAE-87DA-6C0F220455A4}"
+              DTS:DTSID="{B8DCFBD0-2BA9-4CBC-8D4D-6409807D177C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -68,7 +68,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="event_type"
-              DTS:DTSID="{B23B381C-0940-4172-87DC-2C8AA09CA1B7}"
+              DTS:DTSID="{2C641491-E596-49DC-B63A-C8DE38BFAF76}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -77,7 +77,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_id"
-              DTS:DTSID="{2A76C0AF-5F3C-4225-9C41-AC0B8C7E7B99}"
+              DTS:DTSID="{4A4F1A3F-62A1-4881-99E5-2031DBC68FAA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -86,7 +86,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="scheduled_datetime"
-              DTS:DTSID="{964A221A-B4AB-473D-B3FF-FA3AB1BCDAF2}"
+              DTS:DTSID="{428B61D3-612B-4DF2-91B1-62ECA209A3A0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -95,7 +95,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="actual_datetime"
-              DTS:DTSID="{F436A5C2-144A-4860-81C5-5A4F3C483F2B}"
+              DTS:DTSID="{0AA03659-AF48-43A9-B0EA-22B621E75AEC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -104,7 +104,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="detention_minutes"
-              DTS:DTSID="{1120DC35-98B3-45F9-8AD4-E0DB9CD682AA}"
+              DTS:DTSID="{DF86AD08-62A6-46E6-8721-7E12B1C3D772}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -113,7 +113,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="on_time_flag"
-              DTS:DTSID="{F0DBC079-E0AD-4A3F-9F2C-67EAF3B3A5E5}"
+              DTS:DTSID="{B1E86439-D45B-4777-B832-D673F2856732}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -122,7 +122,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="location_city"
-              DTS:DTSID="{E17D3B93-2234-479C-9E29-A88B198C1F08}"
+              DTS:DTSID="{37145A21-4E32-4899-A961-0AB2F442AD24}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -131,7 +131,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="location_state"
-              DTS:DTSID="{D17367EC-3A8F-43D7-B029-A17DFFC945C1}"
+              DTS:DTSID="{4A4D267F-FEB4-4B68-99F9-F3DE4F3F085F}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -153,7 +153,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\facilities.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\facilities.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -162,7 +162,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_id"
-              DTS:DTSID="{3C97A385-CBE6-4ED7-96C9-C4E0E7FBFA4E}"
+              DTS:DTSID="{45F81F60-2833-406C-AECD-9F4C61633CFC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -171,7 +171,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_name"
-              DTS:DTSID="{8FB1E1ED-44F5-4261-913B-C0940A526DF6}"
+              DTS:DTSID="{044B5AB9-0E13-44C3-BD83-A150CA9C844D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -180,7 +180,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_type"
-              DTS:DTSID="{2749BB64-D323-4D27-B374-0688F4F56F6D}"
+              DTS:DTSID="{7FA1CBC7-176A-48B7-8BD9-BEE8AC3C1EE8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -189,7 +189,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{490AEC0A-E8FF-48D7-9A0D-60A704E2AD57}"
+              DTS:DTSID="{6A18126F-3CF7-4B7A-8646-668BAB7651B9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -198,7 +198,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{73283655-294A-45A3-A502-B8559E458046}"
+              DTS:DTSID="{8DD714E3-800A-43EB-92DF-6A49EEDFD5E3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -207,7 +207,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="latitude"
-              DTS:DTSID="{7C5C0C19-93FB-4491-841A-596F80D18C1A}"
+              DTS:DTSID="{7ADAF754-6080-4749-A339-9C1EAFD6BBE5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -216,7 +216,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="longitude"
-              DTS:DTSID="{5745210C-D33C-4E65-8820-D424152354AA}"
+              DTS:DTSID="{25BB8F4D-1ADA-4ED1-8E0C-E838F4747BC5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -225,7 +225,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="dock_doors"
-              DTS:DTSID="{1B71F57F-F1BC-4D72-8BC1-1106F6232388}"
+              DTS:DTSID="{34900EDF-DBFD-4716-8734-878BA896468F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -234,7 +234,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="operating_hours"
-              DTS:DTSID="{62AE9802-8E5E-491B-9A97-174B6B4CDF8A}"
+              DTS:DTSID="{E694B5B2-AF77-4090-ADC3-ADB3CC52C8F2}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -256,7 +256,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\maintenance_records.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\maintenance_records.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -265,7 +265,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_id"
-              DTS:DTSID="{17B9E107-0F58-4D04-B40F-EC392EFDAE8A}"
+              DTS:DTSID="{040FFA72-E7FC-4C42-A514-697E455A1F74}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -274,7 +274,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="truck_id"
-              DTS:DTSID="{98900A2A-7607-46D4-A285-DD1F29FD4C4B}"
+              DTS:DTSID="{60DCF1A1-8CC6-40F3-A05D-C08FC2CD7123}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -283,7 +283,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_date"
-              DTS:DTSID="{1F619D2D-A8E4-4997-BF42-C15E9ED30538}"
+              DTS:DTSID="{56A0ECBF-C76A-41AE-9C6B-224C4E4A72FA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -292,7 +292,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="maintenance_type"
-              DTS:DTSID="{98405D4D-4513-429F-9133-64B53241449E}"
+              DTS:DTSID="{3E88F25F-C19A-4C97-946F-F85C82728062}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -301,7 +301,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="odometer_reading"
-              DTS:DTSID="{641350FD-8CF7-47DB-A902-63445BC4B616}"
+              DTS:DTSID="{2659FFB3-4AD7-446A-AF0C-7D3A249970F8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -310,7 +310,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_hours"
-              DTS:DTSID="{B557CA9A-2844-434C-A470-460FC33E55A7}"
+              DTS:DTSID="{DFDFC7BC-B87D-42C2-A475-3DD0280CDA74}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -319,7 +319,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="labor_cost"
-              DTS:DTSID="{42BF4C3F-041D-4D4E-A596-7C37D3ADAB20}"
+              DTS:DTSID="{72CEB3E3-7B7C-4934-AFA3-DCEBFAB4A40C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -328,7 +328,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="parts_cost"
-              DTS:DTSID="{C950393F-B4A0-4EDD-BAF4-2996C7737D3B}"
+              DTS:DTSID="{F3F48EB0-00B5-497A-8A7B-1F175FC5BCC2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -337,7 +337,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="total_cost"
-              DTS:DTSID="{B1DA1941-2A24-4A1C-96A8-27F685D39684}"
+              DTS:DTSID="{169CD5E7-7E8B-402D-914D-2B5846D1E5BD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -346,7 +346,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="facility_location"
-              DTS:DTSID="{7BEE5431-B110-472E-97C0-95B0A03437C3}"
+              DTS:DTSID="{16279242-25A0-4411-B199-5F9AC6BB5B3A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -355,7 +355,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="downtime_hours"
-              DTS:DTSID="{4B54E44C-C9CD-4614-BF29-7BE24DF90B87}"
+              DTS:DTSID="{D0342B7B-EE2C-4EBD-9041-B197FB1A5847}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -364,7 +364,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="service_description"
-              DTS:DTSID="{9D42E5A6-98F8-49CE-9C5E-36B908D090DE}"
+              DTS:DTSID="{2EC1C692-896F-44E1-B72D-43F6071BE295}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -386,7 +386,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\raw\routes.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\raw\routes.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -395,7 +395,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="route_id"
-              DTS:DTSID="{61E70227-46E7-43DF-B37C-DA1121C11C21}"
+              DTS:DTSID="{85D2DDD4-F7DD-44EB-BD2A-3EEAA596CD4E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -404,7 +404,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="origin_city"
-              DTS:DTSID="{8743C458-CA3F-43B9-9011-C66D6831CC2A}"
+              DTS:DTSID="{01895D32-A408-4645-82E7-F9E33B4E218E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -413,7 +413,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="origin_state"
-              DTS:DTSID="{B5AC7160-C9AA-4505-AAD2-B314FB630BA5}"
+              DTS:DTSID="{98EDC304-2FE7-4A65-9194-3477888327A5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -422,7 +422,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="destination_city"
-              DTS:DTSID="{CA03BADF-FB61-4FB0-8800-2106747A2E64}"
+              DTS:DTSID="{B43CFFB8-7A6F-49F5-BE47-5694C2C6C854}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -431,7 +431,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="destination_state"
-              DTS:DTSID="{D9C50F40-4C08-413D-A763-9929C2F9F462}"
+              DTS:DTSID="{D280EA08-8063-4AA3-8CC0-F112D6221C17}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -440,7 +440,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="typical_distance_miles"
-              DTS:DTSID="{6E04492C-2202-4DD1-AFDF-34BA389BA228}"
+              DTS:DTSID="{7FE32DC3-CAA7-4A6E-87A9-45D5F51CB59D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -449,7 +449,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="base_rate_per_mile"
-              DTS:DTSID="{1660F4A0-2AC0-44BE-8171-F7AA5612ED00}"
+              DTS:DTSID="{C7839B59-5F15-43FA-970A-EFFEE334B596}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -458,7 +458,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="fuel_surcharge_rate"
-              DTS:DTSID="{BC1E7134-158F-4C60-9502-E7B8CB1D137D}"
+              DTS:DTSID="{63A86386-A199-4B5B-BAC0-E4A572267894}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -467,7 +467,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="typical_transit_days"
-              DTS:DTSID="{F09F952D-4247-4F84-B439-3B00F1A4BF26}"
+              DTS:DTSID="{2D043CC7-2E6F-4D8E-8984-F69003C182A8}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>

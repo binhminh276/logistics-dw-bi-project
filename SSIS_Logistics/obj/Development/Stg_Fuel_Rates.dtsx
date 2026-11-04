@@ -32,7 +32,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="D:\Kho\Project\data\fuel\fuel_market_rates_2022_2024.csv">
+          DTS:ConnectionString="D:\KHO_DU_LIEU\CODE\DACK\logistics-dw-bi-project\data\fuel\fuel_market_rates_2022_2024.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"

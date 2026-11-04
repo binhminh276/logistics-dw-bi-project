@@ -2,73 +2,73 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>SSIS_Logistics</Name>
-    <LastWriteTime>2026-11-03T14:10:20.8608066Z</LastWriteTime>
+    <LastWriteTime>2026-11-04T03:26:21.1221519Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Master_Orchestrator.dtsx</Name>
-      <LastWriteTime>2026-11-03T07:47:03.6730115Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T02:28:53.5751452Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stg_OLTP_CDC.dtsx</Name>
-      <LastWriteTime>2026-11-03T08:00:12.2118254Z</LastWriteTime>
+      <LastWriteTime>2026-11-03T06:51:41.2970973Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stg_CSV_Files.dtsx</Name>
-      <LastWriteTime>2026-10-22T10:08:52.8038229Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T03:31:07.3792113Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Commercial.dtsx</Name>
-      <LastWriteTime>2026-11-03T07:47:03.6660438Z</LastWriteTime>
+      <LastWriteTime>2026-11-02T14:40:40.9557225Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Driver_Facility.dtsx</Name>
-      <LastWriteTime>2026-11-03T07:47:03.6660438Z</LastWriteTime>
+      <LastWriteTime>2026-11-02T14:40:40.9577376Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Load.dtsx</Name>
-      <LastWriteTime>2026-11-03T13:11:57.2650259Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T02:28:53.571488Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Trip.dtsx</Name>
-      <LastWriteTime>2026-11-01T14:32:19.9242966Z</LastWriteTime>
+      <LastWriteTime>2026-11-01T11:58:44.2364119Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Delivery_Fulfillment.dtsx</Name>
-      <LastWriteTime>2026-11-01T14:32:19.9177375Z</LastWriteTime>
+      <LastWriteTime>2026-11-01T11:58:44.2344093Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Dim_Fleet.dtsx</Name>
-      <LastWriteTime>2026-11-03T13:11:57.2808319Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T02:28:53.5674053Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Fact_Maintenance.dtsx</Name>
-      <LastWriteTime>2026-11-03T14:07:50.4715144Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T02:28:53.5741307Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Stg_Fuel_Rates.dtsx</Name>
-      <LastWriteTime>2026-11-03T14:10:18.119174Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T02:28:53.5781434Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ETL_Trip_Operations_Delivery.dtsx</Name>
-      <LastWriteTime>2026-11-03T13:05:58.008522Z</LastWriteTime>
+      <LastWriteTime>2026-11-04T03:35:32.998538Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ETL_Data_Reconciliation.dtsx</Name>
-      <LastWriteTime>2026-11-02T01:06:19.4856332Z</LastWriteTime>
+      <LastWriteTime>2026-11-01T14:27:48.2369286Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

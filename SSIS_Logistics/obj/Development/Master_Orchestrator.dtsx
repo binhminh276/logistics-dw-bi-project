@@ -98,6 +98,24 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Dimension_Layer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B5E4129A-3481-4C71-92D1-729B51E14392}"
+          DTS:From="Package\SEQ_Dimension_Layer\EPT_Dim_Commercial"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ_Dimension_Layer\EPT_Dim_Driver_Facility" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Dimension_Layer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C9E1729A-4581-4C71-92D1-829B51E14393}"
+          DTS:From="Package\SEQ_Dimension_Layer\EPT_Dim_Driver_Facility"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ_Dimension_Layer\EPT_Dim_Fleet" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SEQ_Fact_Layer"
@@ -244,6 +262,24 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Staging_Layer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{A1E4129A-3481-4C71-92D1-729B51E14390}"
+          DTS:From="Package\SEQ_Staging_Layer\EPT_Stg_CSV_Files"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQ_Staging_Layer\EPT_Stg_Fuel_Rates" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ_Staging_Layer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A2E1729A-4581-4C71-92D1-829B51E14391}"
+          DTS:From="Package\SEQ_Staging_Layer\EPT_Stg_Fuel_Rates"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQ_Staging_Layer\EPT_Stg_OLTP_CDC" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SQL_Finalize_Batch_Success"
