@@ -12,8 +12,8 @@
   DTS:LocaleID="1066"
   DTS:ObjectName="Stg_OLTP_CDC"
   DTS:PackageType="5"
-  DTS:VersionBuild="109"
-  DTS:VersionGUID="{9A6C8412-2366-4960-BE97-3A94B6BDA7BD}">
+  DTS:VersionBuild="110"
+  DTS:VersionGUID="{5F1487AE-1F35-40B9-82DE-100DC0D97274}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
